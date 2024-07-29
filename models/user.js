@@ -1,22 +1,41 @@
 const { DataTypes } = require('sequelize')
 
 const user = (seq) => {
-
     return seq.define('user', {
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+        userId : {
+            type : DataTypes.INTEGER,
+            primaryKey : true,
+            autoIncrement : true,
         },
-        userName: {
-            type: DataTypes.STRING(30),
+        email: {
+            type: DataTypes.STRING(31),
             allowNull: false,
+            unique: true,
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false
         },
+        nickName: {
+            type: DataTypes.STRING(121),
+            allowNull: false,
+        },
+        profileImg : {
+            type : DataTypes.TEXT,
+            allowNull : false,
+            defaultValue : "../images/profileDeafultImg.png",
+        },
+        aboutMe : {
+            type : DataTypes.TEXT,
+            allowNull : false,
+            defaultValue : '',
+        },
+        isEnabled : {
+            type : DataTypes.BOOLEAN,
+            allowNull : false,
+            defaultValue : true,
+        }
     })
 }
 
-module.exports = user
+module.exports = user;
