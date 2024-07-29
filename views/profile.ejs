@@ -7,6 +7,26 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <h3>프로필 페이지</h3>
+    <div class="container">
+        <div id="titleImg"></div>
+        <div class="content">
+            <form class="profileUpdate">
+                <div class="profileBox">
+                    <input type="text">
+                    <input type="password">
+                    <input type="password">
+                    <input type="text">
+                </div>
+                <div class="profile">
+                    <div id="profileImg"></div>
+                    <button type="button" onclick="imgUploadFunc()">파일업로드</button>
+                </div>
+                <div>
+                    <textarea id="introduceText" placeholder="한 줄 자기소개"></textarea>
+                </div>
+                <button>수정 완료</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

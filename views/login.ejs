@@ -7,11 +7,23 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <h3>로그인 페이지</h3>
-    <form action="">
-        <input type="text" id="id" placeholder="아이디"><br />
-        <input type="password" id="pw" placeholder="비밀번호"><br />
-        <button type="button" onclick="">로그인</button>
-    </form>
+    <div class="container">
+        <div id="titleImg"></div>
+        <div class="content">  
+            <div class="loginBox">
+                <form id="loginForm">
+                    <input type="email" placeholder="로그인" autofocus>
+                    <input type="password" placeholder="비밀번호">
+                    <label ><input type="radio" name="loginSs">로그인 상태 유지</label>
+                    <button>로그인</button>
+                </form>
+            </div>
+            <div>
+                <a href="">아이디 찾기</a>
+                <a href="">비밀번호 찾기</a>
+                <a href="">회원가입</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

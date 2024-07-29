@@ -8,5 +8,19 @@
 </head>
 <body>
     <h3>레시피 글쓰기 페이지</h3>
+    <!-- rp = recipe -->
+    <div class="container">
+        <form id="writeRp">
+            <div id="infoRp">
+                <input type="text" placeholder="제목">
+                <textarea id="introduceRp" placeholder="레시피 소개"></textarea>
+                <select id="servings">
+                    <% for(let i = 1; i < 10; i++){ %>
+                        <option value="<%= i %>"><%= i %> 인분</option>
+                    <%}%> 
+                </select>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
