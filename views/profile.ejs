@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
-<body>
-    <div class="container">
-        <div id="titleImg"></div>
-        <div class="content">
-            <form class="profileUpdate">
-                <div class="profileBox">
-                    <input type="text">
-                    <input type="password">
-                    <input type="password">
-                    <input type="text">
-                </div>
-                <div class="profile">
-                    <div id="profileImg"></div>
-                    <button type="button" onclick="imgUploadFunc()">파일업로드</button>
-                </div>
-                <div>
-                    <textarea id="introduceText" placeholder="한 줄 자기소개"></textarea>
-                </div>
-                <button>수정 완료</button>
-            </form>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="logo"></div>
+            <a href="/login"><span class="material-icons-round login">login</span></a>
+            <a href="/profile"><span class="material-icons-round account_circle">account_circle</span></a>
+            <div class="navBar"></div>
+        </header>
+        <div class="container">
+            <div id="titleImg"></div>
+            <div class="content">
+                <form class="profileUpdate">
+                    <div class="profileBox">
+                        <input type="text" />
+                        <input type="password" />
+                        <input type="password" />
+                        <input type="text" />
+                    </div>
+                    <div class="profile">
+                        <div id="profileImg"></div>
+                        <button type="button" onclick="imgUploadFunc()">파일업로드</button>
+                    </div>
+                    <div>
+                        <textarea id="introduceText" placeholder="한 줄 자기소개"></textarea>
+                    </div>
+                    <button>수정 완료</button>
+                </form>
+            </div>
         </div>
-    </div>
-</body>
+        <footer>
+            <div class="companyInfo">
+                <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
 </html>
