@@ -20,4 +20,8 @@ const writeRecipe = ( req, res) =>{
     res.render('writeRecipe');
 }
 
-module.exports = { main, login, signup, profile, recipe, writeRecipe };
+const myRecipe = ( req, res) =>{
+    res.render('myRecipe');
+}
+
+module.exports = { main, login, signup, profile, recipe, writeRecipe, myRecipe };

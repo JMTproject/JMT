@@ -12,7 +12,7 @@ app.use('/', pageRouter)
 const userRouter = require('./routes/user')
 app.use('/api/user', userRouter)
 
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => {
         console.log(`http://localhost:${PORT}`);
     });
