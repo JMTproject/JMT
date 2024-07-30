@@ -57,12 +57,13 @@
                             <li>
                                 <div><p><%= i %>.</p></div>
                                 <div><textarea></textarea></div>
-                                <div onclick="UploadCookingStep()"></div>
+                                <div onclick="updateCookingStep()"></div>
                             </li>
                             <% } %>
                         </ul>
                     </div>
-                    <button type="button" id="writeRpBtn" onclick="writeRpUploadFunc()">레시피 등록</button>
+                    <button type="button" id="writeRpBtn" onclick="UpdateRpUploadFunc()">레시피 수정</button>
+                    <button type="button" id="writeRpBtn" onclick="cancel()">취소</button>
                 </form>
             </div>
         </main>

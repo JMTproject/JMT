@@ -12,12 +12,15 @@ const profile = (req, res) => {
     res.render('profile');
 };
 
-const recipe = ( req,res ) =>{
+const recipe = (req, res) => {
     res.render('recipe');
-}
+};
 
-const writeRecipe = ( req, res) =>{
+const writeRecipe = (req, res) => {
     res.render('writeRecipe');
-}
+};
 
-module.exports = { main, login, signup, profile, recipe, writeRecipe };
+const updateRecipe = (req, res) => {
+    res.render('updateRecipe');
+};
+module.exports = { main, login, signup, profile, recipe, writeRecipe, updateRecipe };
