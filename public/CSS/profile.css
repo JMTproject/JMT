@@ -1,0 +1,256 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 360px;
+  min-height: 835px;
+  margin: 0 auto;
+}
+
+.content {
+  width: 300px;
+  height: 500px;
+  margin: 0 auto;
+  border: 1.5px solid #fca391;
+  border-radius: 15px;
+  padding: 16px;
+  position: relative;
+}
+
+.content > h3 {
+  text-align: center;
+  margin: 8px 0;
+}
+
+.profileUpdate {
+  width: 250px;
+  height: 420px;
+  /* border: 1px solid #333; */
+  margin: 0 auto;
+  position: relative;
+}
+
+.profileUpdate .profileBox {
+  width: 100%;
+  height: 160px;
+  position: relative;
+  /* border: 1px solid #333; */
+  position: relative;
+}
+
+.profileUpdate .profileBox input {
+  width: 100%;
+  height: 30px;
+  border: none;
+  border: 1px solid #fca391;
+  border-radius: 5px;
+  position: relative;
+  padding-left: 5px;
+}
+
+.profileUpdate .profileBox input:nth-child(2) {
+  border: none;
+  position: relative;
+  border: 1px solid #fca391;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  top: 20px;
+}
+.profileUpdate .profileBox input:nth-child(3) {
+  position: relative;
+  border: 1px solid #fca391;
+  border-radius: 0 0 5px 5px;
+  top: 20px;
+}
+.profileUpdate .profileBox input:last-child {
+  position: relative;
+  top: 40px;
+}
+
+.profileUpdate .profile {
+  width: 100%;
+  height: 100px;
+  /* border: 1px solid #333; */
+  position: relative;
+  top: 10px;
+}
+
+.profileUpdate .profile #profileImg {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  border: 1px solid #fca391;
+  border-radius: 5px;
+}
+.profileUpdate .profile #profileBtn {
+  width: 100px;
+  height: 20px;
+  border: none;
+  background-color: #fff;
+  border: 1px solid #fca391;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.profileUpdate .profile #profileBtn:hover {
+  background-color: #eee;
+}
+.profileUpdate .profile #profileBtn:active {
+  background-color: #fca391;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.profileUpdate #introduceText {
+  border-style: none;
+  width: 100%;
+  height: 60px;
+  border: 1px solid #fca391;
+  border-radius: 5px;
+  position: relative;
+  top: 30px;
+}
+
+.profileUpdate #introduceText textarea {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  resize: none;
+}
+
+.profileUpdate #btnDiv {
+  width: 100%;
+  height: 50px;
+  /* border: 1px solid #333; */
+  position: relative;
+  top: 50px;
+}
+.profileUpdate #btnDiv #deleteUser{
+    font-size: 8px;
+}
+
+.profileUpdate #btnDiv #UpdateUser{
+  font-size: 20px;
+}
+
+.profileUpdate #btnDiv #deleteUser {
+  width: 14%;
+  height: 50%;
+  background-color: #fff;
+  color: #757575;
+  border: 1px solid #fca391;
+  border-radius: 5px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.profileUpdate #btnDiv #UpdateUser {
+  width: 69%;
+  height: 100%;
+  background-color: #fca391;
+  color: #fff;
+  border: 1px solid #fca391;
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+}
+
+.profileUpdate #btnDiv #deleteUser:hover {
+  background-color: #eee;
+  color: #333;
+}
+.profileUpdate #btnDiv #deleteUser:active {
+  background-color: #fca391;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.profileUpdate #btnDiv #UpdateUser:hover {
+  background-color: #eee;
+  color: #333;
+}
+.profileUpdate #btnDiv #UpdateUser:active {
+  background-color: #fca391;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+@media (min-width: 1080px) {
+  .container {
+    width: 600px;
+    min-height: 835px;
+    margin: 0 auto;
+  }
+
+  .content > h3 {
+    margin: 20px 0;
+    font-size: 30px;
+  }
+
+  #titleImg {
+    padding: 90px 0 10px 0;
+  }
+
+  .content {
+    width: 600px;
+    height: 750px;
+  }
+
+  .profileUpdate {
+    width: 400px;
+    height: 585px;
+
+  }
+  .profileUpdate .profileBox input {
+    height: 40px;
+  }
+
+  .profileUpdate .profile {
+    width: 100%;
+    height: 150px;
+    top: 70px;
+  }
+
+  .profileUpdate .profile #profileImg {
+    width: 150px;
+    height: 150px;
+  }
+  .profileUpdate .profile #profileBtn {
+    width: 200px;
+    height: 25px;
+  }
+
+  .profileUpdate #introduceText {
+    height: 80px;
+    top: 100px;
+  }
+  
+  .profileUpdate #introduceText textarea {
+    padding: 10px;
+  }
+
+  .profileUpdate #btnDiv {
+    width: 100%;
+    height: 50px;
+    /* border: 1px solid #333; */
+    position: relative;
+    top: 145px;
+  }
+
+  .profileUpdate #btnDiv #deleteUser{
+    font-size: 14px;
+  }
+
+  .profileUpdate #btnDiv #UpdateUser{
+    font-size: 22px;
+  }
+  
+
+}
