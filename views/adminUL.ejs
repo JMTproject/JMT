@@ -1,16 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link rel="stylesheet" href="../public/CSS/headerFooter.css" />
+    <link rel="stylesheet" href="../public/CSS/adminUL.css" />
     <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
 
-</head>
-<body>
-    <h3>admin -> userlist page</h3>
+  <body>
     <header>
-        <!-- 따로 생성 -->
+      <div class="header">
+        <a class="logo" href="/">
+          <img class="logoImg" src="../public/images/logo.png" alt="" />
+        </a>
+        <div class="iconBox">
+          <a href="/login"><span class="material-icons-round login">login</span></a>
+          <a href="/profile"><span class="material-icons-round account_circle">account_circle</span></a>
+        </div>
+      </div>
+      <div class="navBar"></div>
     </header>
-</body>
+    <main>
+      <div class="navBar">
+        <a href="/adminRp">레시피 리스트</a>
+        <a href="/adminUL">유저 리스트</a>
+      </div>
+      <div class="container">
+        <table id="userList">
+          <thead>
+            <tr>
+              <th id="NO">No</th>
+              <th id="nickNameHead">닉네임</th>
+              <th id="emailHead">이메일</th>
+              <th id="isEnabledHead">존재</th>
+              <th id="deleteHead">삭제</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="userId">1</td>
+              <td id="nickName">ㅎㅎㅎ</td>
+              <td id="email">asdf@asdf.com</td>
+              <td id="isEnabled">Y</td>
+              <td id="delete">
+                <button onclick="deleteFunc()">삭제</button>
+              </td>
+            </tr>
+            <tr>
+              <td id="userId">1</td>
+              <td id="nickName">ㅎㅎㅎ</td>
+              <td id="email">asdf@asdf.com</td>
+              <td id="isEnabled">Y</td>
+              <td id="delete">
+                <button onclick="deleteFunc()">삭제</button>
+              </td>
+            </tr>
+            <tr>
+              <td id="userId">1</td>
+              <td id="nickName">ㅎㅎㅎ</td>
+              <td id="email">asdf@asdf.com</td>
+              <td id="isEnabled">Y</td>
+              <td id="delete">
+                <button onclick="deleteFunc()">삭제</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <footer>
+      <div class="companyInfo">
+        <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
 </html>
