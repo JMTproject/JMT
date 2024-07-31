@@ -1,0 +1,257 @@
+.container{
+  min-height: 600px;
+  width: 360px;
+  margin: auto;
+}
+
+.mainHeader {
+  margin: 80px 10px 0;
+  display: flex;
+  flex-direction: row;
+}
+.mainHeader button {
+  font-size: 11px;
+  width: 60px;
+  margin: 0 5px;
+  border-radius: 16.5px;
+  border: 0;
+  background-color: #fdd8d1;
+}
+.mainHeader a {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.mainHeader span {
+  font-size: 30px;
+  color: #ffc8bd;
+}
+
+.recipe {
+  padding: 10px 10px;
+}
+
+.recipe ul li a {
+  color: black;
+  text-decoration: none;
+}
+.recipe ul li #recipeCard {
+  border-radius: 10px;
+  padding: 10px 0;
+  margin: 10px 0 10px;
+  background-color: #fdd8d1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipe ul li #recipeCard #thumbnail {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 30%;
+  border-radius: 5px;
+
+  overflow: hidden; /* 추가: 부모 요소를 벗어나는 부분을 숨김 */
+  position: relative; /* 추가: 자식 요소의 절대 위치를 기준으로 함 */
+}
+
+.recipe ul li #recipeCard img {
+  border-radius: 5px;
+  background-color: aliceblue;
+  margin-left: 10px;
+
+  position: absolute; /* 추가: 절대 위치 */
+    top: 50%; /* 이미지가 부모 요소의 가운데로 이동 */
+    left: 50%; /* 이미지가 부모 요소의 가운데로 이동 */
+    transform: translate(-50%, -50%); /* 가운데 정렬 */
+    width: auto; /* 원본 비율 유지 */
+    height: auto; /* 원본 비율 유지 */
+    max-width: 150%; /* 부모 요소보다 커질 수 있도록(1.5배 까지만) 설정 */
+    max-height: 150%; /* 부모 요소보다 커질 수 있도록(1.5배 까지만) 설정 */
+}
+
+.recipe ul li #recipeCard #content {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe ul li #recipeCard #content #title p {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+#content #starsReviewCount {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 20px 5px;
+}
+
+#starsReviewCount #stars {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#starsReviewCount .material-icons-round.star {
+  color: #7a7a7a;
+  font-size: 18px;
+}
+
+#starsReviewCount .rating {
+  margin-left: 3px;
+  font-size: 13px;
+}
+
+#starsReviewCount #reviewCount {
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#starsReviewCount #reviewCount span {
+  font-size: 13px;
+}
+
+/* pc 기준 */
+@media screen and (min-width: 1024px) {
+  
+  .container{
+    min-height: 600px;
+    width: 1080px;
+    margin: auto;
+  }
+  .mainHeader {
+    margin: 120px 10px 0;
+  }
+  .mainHeader button {
+    font-size: 14px;
+    width: 100px;
+    height: 30px;
+    margin: 0 10px;
+    border-radius: 15px;
+    border: 1px solid #fca391;
+    background-color: #ffffff;
+  }
+  .mainHeader a {
+    margin-right: 0px;
+  }
+
+  .mainHeader span {
+    font-size: 30px;
+  }
+
+  .recipe {
+    padding: 0px 0px 0 20px;
+  }
+  .recipe ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 0; /* 양 끝에 여백 제거 */
+  }
+  .recipe ul li {
+    width: 25%;
+  }
+
+  .recipe ul li a{
+    display: flex;
+    justify-content: center;
+  }
+
+  .recipe ul li:nth-child(4n+1) a {
+    justify-content: flex-start;
+  }
+  
+  .recipe ul li:nth-child(4n) {
+    justify-content: flex-end;
+  }
+
+  .recipe ul li #recipeCard {
+    width: 250px;
+    height: 290px;
+    border-radius: 10px;
+    padding: 10px 0;
+    margin: 10px 0 20px;
+    flex-direction: column;
+  }
+
+  .recipe ul li #recipeCard #thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 225px;
+    height: 220px;
+    margin-left: 0;
+
+    overflow: hidden; /* 추가: 부모 요소를 벗어나는 부분을 숨김 */
+    position: relative; /* 추가: 자식 요소의 절대 위치를 기준으로 함 */
+  }
+
+  .recipe ul li #recipeCard img {
+    border-radius: 5px;
+    margin: 0;
+
+    position: absolute; /* 추가: 절대 위치 */
+    top: 50%; /* 이미지가 부모 요소의 가운데로 이동 */
+    left: 50%; /* 이미지가 부모 요소의 가운데로 이동 */
+    transform: translate(-50%, -50%); /* 가운데 정렬 */
+    width: auto; /* 원본 비율 유지 */
+    height: auto; /* 원본 비율 유지 */
+    max-width: 150%; /* 부모 요소보다 커질 수 있도록 설정 */
+    max-height: 150%; /* 부모 요소보다 커질 수 있도록 설정 */
+  }
+
+  .recipe ul li #recipeCard #content {
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .recipe ul li #recipeCard #content #title {
+    margin-top: 10px;
+  }
+  .recipe ul li #recipeCard #content #title p {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  #content #starsReviewCount {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 20px 5px;
+  }
+
+  #starsReviewCount #stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #starsReviewCount .material-icons-round.star {
+    color: #7a7a7a;
+    font-size: 18px;
+  }
+
+  #starsReviewCount .rating {
+    margin-left: 3px;
+    font-size: 13px;
+  }
+
+  #starsReviewCount #reviewCount {
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #starsReviewCount #reviewCount span {
+    font-size: 13px;
+  }
+}
