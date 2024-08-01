@@ -1,0 +1,1156 @@
+@charset "utf-8";
+@import url(reset.css);
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.material-symbols-rounded {
+    font-size: 30px; /* 아이콘 크기 */
+}
+
+header {
+    width: 100%;
+    height: 100px;
+    /* background-color: f9f9f9; */
+}
+
+.container {
+    width: 360px;
+    /* background-color: aquamarine; */
+    margin: 0 auto;
+}
+
+/* recipe info */
+#recipe_info {
+    /* background-color: bisque; */
+    margin: 0 auto;
+    text-align: center;
+}
+
+#thumbnail {
+    width: 340px;
+    height: 200px;
+    /* background-color: blanchedalmond; */
+    margin: 0 auto;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+}
+
+#recipe_info h3 {
+    margin: 25px 0;
+    font-size: 1.125rem;
+}
+
+#recipe_info > p {
+    margin: 25px 0;
+    font-size: 0.875rem;
+}
+
+.recipe_time {
+    margin: 50px 0;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.recipe_time span {
+    margin-right: 10px;
+}
+
+#blank {
+    width: 50px;
+}
+
+.recipe_time p {
+    font-size: 1rem;
+    line-height: 2rem;
+}
+
+/* ingredients */
+#cooking_ingredients {
+    width: 340px;
+    /* background-color: beige; */
+    margin: 0 auto;
+}
+
+#cooking_ingredients h3 {
+    margin: 10px;
+    font-size: 1.25rem;
+}
+
+.ingredients_box {
+    width: 340px;
+    /* height: 200px; */
+    background-color: white;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+}
+
+.ingredients_list {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.ingredients_1 {
+    width: 150px;
+    height: 25px;
+    border: 1px solid #fca391;
+    border-radius: 12.5px;
+    margin-right: 10px;
+}
+
+.ingredients_1 p {
+    height: 25px;
+    font-size: 0.875rem;
+    text-align: center;
+    line-height: 1.5rem;
+}
+
+.ingredients_2 {
+    width: 70px;
+    height: 25px;
+    border: 1px solid #fca391;
+    border-radius: 12.5px;
+    margin-right: 10px;
+}
+
+.ingredients_2 p {
+    height: 25px;
+    font-size: 0.875rem;
+    text-align: center;
+    line-height: 1.5rem;
+}
+
+#ingredients_buy button[type='button'] {
+    width: 70px;
+    height: 25px;
+    background-color: #fca391;
+    border: 1px solid #fca391;
+    border-radius: 12.5px;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-size: 0.875rem;
+}
+
+#ingredients_buy button[type='button']:hover {
+    background-color: #fdd8d1;
+    border-radius: 12.5px;
+    color: black;
+}
+
+#ingredients_buy:active {
+    position: relative;
+    top: 1px;
+}
+
+/* cookware */
+#cookwares {
+    width: 340px;
+    /* background-color: rgb(100, 100, 22); */
+    margin: 0 auto;
+}
+
+#cookwares h3 {
+    margin: 10px;
+    font-size: 1.25rem;
+}
+
+.cookware_box {
+    width: 340px;
+    /* height: 70px; */
+    background-color: white;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+}
+
+#cookware_list {
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cookware_1 {
+    width: calc(50% - 10px);
+    height: 25px;
+    /* background-color: rgba(252, 216, 209, 0.7); */
+    border: 1px solid #fca391;
+    border-radius: 12.5px;
+    margin: 5px;
+}
+
+.cookware_1 p {
+    height: 25px;
+    font-size: 0.875rem;
+    text-align: center;
+    line-height: 1.5rem;
+}
+
+/* cooking process */
+#cooking_process {
+    width: 340px;
+    /* background-color: rgb(95, 92, 180); */
+    margin: 0 auto;
+}
+
+#cooking_process h3 {
+    margin: 10px;
+    font-size: 1.25rem;
+}
+
+.process_box {
+    width: 340px;
+    height: 1600px;
+    background-color: white;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+}
+
+.process_1 {
+    height: 300px;
+    display: flex;
+    margin: 15px;
+}
+
+.process_number {
+    width: 30px;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: #fca391;
+    margin: 10px;
+    margin-top: 25px;
+}
+
+.process_description {
+    flex: 1;
+    font-size: 1rem;
+    line-height: 2rem;
+    margin: 20px;
+}
+
+.process_1 img {
+    width: 200px;
+    height: 100px;
+    margin: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Writer Info */
+#WriterInfo {
+    width: 340px;
+    margin: 0 auto;
+}
+
+#WriterInfo h3 {
+    margin: 10px;
+    font-size: 1.25rem;
+}
+
+.info_box {
+    width: 340px;
+    height: 100px;
+    background-color: white;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+    display: flex;
+}
+
+#profileImg {
+    width: 90px;
+    height: 90px;
+    background-color: antiquewhite;
+    margin: 5px;
+    margin-left: 10px;
+}
+
+.user_detail {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    margin-top: 50px;
+}
+
+.user_detail p:first-child {
+    color: #fca391;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+.user_detail p:nth-child(2) {
+    font-size: 0.875rem;
+    line-height: 1rem;
+}
+
+/* review */
+#review {
+    width: 340px;
+    margin: 0 auto;
+}
+
+.review_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review_header_1 {
+    display: flex;
+    flex-direction: row;
+}
+
+#review h3 {
+    margin: 10px;
+    font-size: 1.25rem;
+}
+
+.review_header_1 span {
+    margin: 15px 0;
+    font-size: 0.875em;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.review_box {
+    width: 340px;
+    background-color: white;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+}
+
+.review {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #fca391;
+}
+
+.review:last-child {
+    border-bottom: none;
+}
+
+.review_1 {
+    display: flex;
+}
+
+.review_profile {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.review_1 img {
+    width: 80px;
+    height: 80px;
+    margin: 20px;
+}
+
+.review_info {
+    display: flex;
+    margin-top: 40px;
+}
+
+.review_info p {
+    font-size: 0.75rem;
+    /* line-height: 1rem; */
+    color: #fca391;
+    margin: 5px;
+}
+
+.review_info .review_date {
+    font-size: 0.625rem;
+    color: rgba(0, 0, 0, 0.7);
+    margin: 7px;
+}
+
+.review_content {
+    flex: 1;
+}
+
+.review_content p {
+    margin: 10px 0;
+    margin-left: -50px;
+    font-size: 0.875rem;
+    line-height: 1rem;
+}
+
+.review_rating {
+    color: #fdd8d1;
+    font-size: 0.625rem;
+    margin-top: 7px;
+}
+
+@media (min-width: 1080px) {
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+    }
+
+    .material-symbols-rounded {
+        font-size: 30px; /* 아이콘 크기 */
+    }
+
+    header {
+        width: 100%;
+        height: 100px;
+        /* background-color: f9f9f9; */
+    }
+
+    .container {
+        width: 1080px;
+        /* background-color: aquamarine; */
+        margin: 0 auto;
+    }
+
+    /* recipe info */
+    #recipe_info {
+        /* background-color: bisque; */
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    #thumbnail {
+        width: 1000px;
+        height: 500px;
+        /* background-color: blanchedalmond; */
+        margin: 0 auto;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+    }
+
+    #recipe_info h3 {
+        margin: 25px 0;
+        font-size: 1.5rem;
+    }
+
+    #recipe_info > p {
+        margin: 25px 0;
+        font-size: 0.875rem;
+    }
+
+    .recipe_time {
+        margin: 50px 0;
+        padding-bottom: 50px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .recipe_time span {
+        margin-right: 10px;
+    }
+
+    #blank {
+        width: 50px;
+    }
+
+    .recipe_time p {
+        font-size: 1rem;
+        line-height: 2rem;
+    }
+
+    /* ingredients */
+    #cooking_ingredients {
+        width: 1000px;
+        /* background-color: beige; */
+        margin: 0 auto;
+    }
+
+    #cooking_ingredients h3 {
+        margin: 10px;
+        font-size: 1.25rem;
+    }
+
+    .ingredients_box {
+        width: 1000px;
+        /* height: 200px; */
+        background-color: white;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+    }
+
+    .ingredients_list {
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .ingredients_1 {
+        width: 500px;
+        height: 25px;
+        border: 1px solid #fca391;
+        border-radius: 12.5px;
+        margin-right: 10px;
+    }
+
+    .ingredients_1 p {
+        height: 25px;
+        font-size: 0.875rem;
+        text-align: center;
+        line-height: 1.5rem;
+    }
+
+    .ingredients_2 {
+        width: 100px;
+        height: 25px;
+        border: 1px solid #fca391;
+        border-radius: 12.5px;
+        margin-right: 10px;
+    }
+
+    .ingredients_2 p {
+        height: 25px;
+        font-size: 0.875rem;
+        text-align: center;
+        line-height: 1.5rem;
+    }
+
+    #ingredients_buy button[type='button'] {
+        width: 100px;
+        height: 25px;
+        background-color: #fca391;
+        border: 1px solid #fca391;
+        border-radius: 12.5px;
+        display: inline-block;
+        cursor: pointer;
+        color: white;
+        font-size: 0.875rem;
+    }
+
+    #ingredients_buy button[type='button']:hover {
+        background-color: #fdd8d1;
+        border-radius: 12.5px;
+        color: black;
+    }
+
+    #ingredients_buy:active {
+        position: relative;
+        top: 1px;
+    }
+
+    /* cookware */
+    #cookwares {
+        width: 1000px;
+        /* background-color: rgb(100, 100, 22); */
+        margin: 0 auto;
+    }
+
+    #cookwares h3 {
+        margin: 10px;
+        font-size: 1.25rem;
+    }
+
+    .cookware_box {
+        width: 1000px;
+        /* height: 70px; */
+        background-color: white;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+    }
+
+    #cookware_list {
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .cookware_1 {
+        width: calc(25% - 10px);
+        height: 25px;
+        /* background-color: rgba(252, 216, 209, 0.7); */
+        border: 1px solid #fca391;
+        border-radius: 12.5px;
+        margin: 10px;
+    }
+
+    .cookware_1 p {
+        height: 25px;
+        font-size: 0.875rem;
+        text-align: center;
+        line-height: 1.5rem;
+    }
+
+    /* cooking process */
+    #cooking_process {
+        width: 1000px;
+        /* background-color: rgb(95, 92, 180); */
+        margin: 0 auto;
+    }
+
+    #cooking_process h3 {
+        margin: 10px;
+        font-size: 1.25rem;
+    }
+
+    .process_box {
+        width: 1000px;
+        height: 870px;
+        background-color: white;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+    }
+
+    .process_1 {
+        height: 150px;
+        display: flex;
+        margin: 20px;
+    }
+
+    .process_number {
+        width: 100px;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        color: #fca391;
+        margin: 30px;
+    }
+
+    .process_step {
+        display: flex;
+    }
+
+    .process_description {
+        width: 600px;
+        font-size: 1rem;
+        line-height: 2rem;
+        margin: 20px;
+    }
+
+    .process_1 img {
+        width: 200px;
+        height: 100px;
+        margin: 25px;
+    }
+
+    /* Writer Info */
+    #WriterInfo {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    #WriterInfo h3 {
+        margin: 10px;
+        font-size: 1.25rem;
+    }
+
+    .info_box {
+        width: 1000px;
+        height: 150px;
+        background-color: white;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+        display: flex;
+    }
+
+    #profileImg {
+        width: 130px;
+        height: 130px;
+        background-color: antiquewhite;
+        margin: 10px;
+        margin-left: 20px;
+    }
+
+    .user_detail {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        margin-top: 100px;
+    }
+
+    .user_detail p:first-child {
+        color: #fca391;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    .user_detail p:nth-child(2) {
+        font-size: 0.875rem;
+        line-height: 1rem;
+    }
+
+    /* review */
+    #review {
+        width: 1000px;
+        margin: 0 auto;
+    }
+
+    /* .review_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    } */
+
+    .review_header_1 {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #review h3 {
+        margin: 10px;
+        font-size: 1.5rem;
+    }
+
+    .review_header_1 span {
+        margin: 15px 0;
+        font-size: 0.875em;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .review_box {
+        width: 1000px;
+        background-color: white;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+        /* margin: 20px auto;
+        padding: 20px; */
+    }
+
+    .review {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #fca391;
+        padding: 20px 0;
+    }
+
+    .review:last-child {
+        border-bottom: none;
+    }
+
+    /* .review_1 {
+        display: flex;
+        align-items: center;
+    } */
+
+    .review_1 .review_profile_img {
+        width: 100px;
+        height: 100px;
+        background-color: #6c4c3e;
+        margin-right: 20px;
+    }
+
+    .review_profile {
+        flex: 1;
+    }
+
+    .review_profile .review_info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: -370px;
+    }
+
+    .review_info p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+        color: #fca391;
+        margin: 0;
+    }
+
+    .review_info .review_date {
+        font-size: 0.875rem;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .review_profile .review_content {
+        width: 600px;
+        margin-left: -50px;
+        box-sizing: content-box;
+    }
+
+    .review_content p {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.5rem;
+    }
+
+    .review_rating {
+        color: #fdd8d1;
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
+    .review_1 .review_img {
+        width: 160px;
+        height: 100px;
+        background-color: #a0522d;
+        margin-left: 20px;
+    }
+}
+
+@media (min-width: 650px) and (max-width: 1079px) {
+    .container {
+        width: 700px;
+        /* background-color: aquamarine; */
+        margin: 0 auto;
+    }
+
+    /* recipe info */
+    #recipe_info {
+        /* background-color: bisque; */
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    #thumbnail {
+        width: 700px;
+        height: 400px;
+        /* background-color: blanchedalmond; */
+        margin: 0 auto;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+    }
+
+    #recipe_info h3 {
+        margin: 25px 0;
+        font-size: 1.5rem;
+    }
+
+    #recipe_info > p {
+        margin: 25px 0;
+        font-size: 0.875rem;
+    }
+
+    .recipe_time {
+        margin: 50px 0;
+        padding-bottom: 50px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .recipe_time span {
+        margin-right: 10px;
+    }
+
+    #blank {
+        width: 50px;
+    }
+
+    .recipe_time p {
+        font-size: 1rem;
+        line-height: 2rem;
+    }
+
+    /* ingredients */
+    #cooking_ingredients {
+        width: 700px;
+        /* background-color: beige; */
+        margin: 0 auto;
+    }
+
+    #cooking_ingredients h3 {
+        margin: 10px;
+        font-size: 1.25rem;
+    }
+
+    .ingredients_box {
+        width: 700px;
+        /* height: 200px; */
+        background-color: white;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+    }
+
+    .ingredients_list {
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .ingredients_1 {
+        width: 350px;
+        height: 25px;
+        border: 1px solid #fca391;
+        border-radius: 12.5px;
+        margin-right: 10px;
+    }
+
+    .ingredients_1 p {
+        height: 25px;
+        font-size: 0.875rem;
+        text-align: center;
+        line-height: 1.5rem;
+    }
+
+    .ingredients_2 {
+        width: 100px;
+        height: 25px;
+        border: 1px solid #fca391;
+        border-radius: 12.5px;
+        margin-right: 10px;
+    }
+
+    .ingredients_2 p {
+        height: 25px;
+        font-size: 0.875rem;
+        text-align: center;
+        line-height: 1.5rem;
+    }
+
+    #ingredients_buy button[type='button'] {
+        width: 100px;
+        height: 25px;
+        background-color: #fca391;
+        border: 1px solid #fca391;
+        border-radius: 12.5px;
+        display: inline-block;
+        cursor: pointer;
+        color: white;
+        font-size: 0.875rem;
+    }
+
+    #ingredients_buy button[type='button']:hover {
+        background-color: #fdd8d1;
+        border-radius: 12.5px;
+        color: black;
+    }
+
+    #ingredients_buy:active {
+        position: relative;
+        top: 1px;
+    }
+
+    /* cookware */
+    #cookwares {
+        width: 700px;
+        /* background-color: rgb(100, 100, 22); */
+        margin: 0 auto;
+    }
+
+    #cookwares h3 {
+        margin: 10px;
+        font-size: 1.25rem;
+    }
+
+    .cookware_box {
+        width: 700px;
+        /* height: 70px; */
+        background-color: white;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+    }
+
+    #cookware_list {
+        margin: 10px 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .cookware_1 {
+        width: calc(25% - 10px);
+        height: 25px;
+        /* background-color: rgba(252, 216, 209, 0.7); */
+        border: 1px solid #fca391;
+        border-radius: 12.5px;
+        margin: 10px;
+    }
+
+    .cookware_1 p {
+        height: 25px;
+        font-size: 0.875rem;
+        text-align: center;
+        line-height: 1.5rem;
+    }
+
+    /* cooking process */
+    #cooking_process {
+        width: 700px;
+        /* background-color: rgb(95, 92, 180); */
+        margin: 0 auto;
+    }
+
+    #cooking_process h3 {
+        margin: 10px;
+        font-size: 1.25rem;
+    }
+
+    .process_box {
+        width: 700px;
+        height: 870px;
+        background-color: white;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+    }
+
+    .process_1 {
+        height: 150px;
+        display: flex;
+        margin: 20px;
+    }
+
+    .process_number {
+        width: 50px;
+        font-size: 1.5rem;
+        line-height: 2rem;
+        color: #fca391;
+        margin: 30px;
+    }
+
+    .process_step {
+        display: flex;
+    }
+
+    .process_description {
+        width: 300px;
+        font-size: 1rem;
+        line-height: 2rem;
+        margin: 20px;
+    }
+
+    .process_1 img {
+        width: 200px;
+        height: 100px;
+        margin: 25px;
+    }
+
+    /* Writer Info */
+    #WriterInfo {
+        width: 700px;
+        margin: 0 auto;
+    }
+
+    #WriterInfo h3 {
+        margin: 10px;
+        font-size: 1.25rem;
+    }
+
+    .info_box {
+        width: 700px;
+        height: 150px;
+        background-color: white;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+        display: flex;
+    }
+
+    #profileImg {
+        width: 130px;
+        height: 130px;
+        background-color: antiquewhite;
+        margin: 10px;
+        margin-left: 20px;
+    }
+
+    .user_detail {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        margin-top: 100px;
+    }
+
+    .user_detail p:first-child {
+        color: #fca391;
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    .user_detail p:nth-child(2) {
+        font-size: 0.875rem;
+        line-height: 1rem;
+    }
+
+    /* review */
+    #review {
+        width: 700px;
+        margin: 0 auto;
+    }
+
+    .review_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .review_header_1 {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #review h3 {
+        margin: 10px;
+        font-size: 1.25rem;
+    }
+
+    .review_header_1 span {
+        margin: 15px 0;
+        font-size: 0.875em;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .review_box {
+        width: 700px;
+        background-color: white;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+    }
+
+    .review {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid #fca391;
+        padding: 20px 0;
+    }
+
+    .review:last-child {
+        border-bottom: none;
+    }
+
+    /* .review_1 {
+        display: flex;
+        align-items: center;
+    } */
+
+    .review_1 .review_profile_img {
+        width: 80px;
+        height: 80px;
+        background-color: #6c4c3e;
+        margin-right: 20px;
+    }
+
+    .review_profile {
+        flex: 1;
+    }
+
+    .review_profile .review_info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: -150px;
+    }
+
+    .review_info p {
+        font-size: 0.875rem;
+        line-height: 1rem;
+        color: #fca391;
+        margin: 0;
+    }
+
+    .review_info .review_date {
+        font-size: 0.875rem;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    .review_profile .review_content {
+        width: 400px;
+        margin-left: -15px;
+        box-sizing: content-box;
+    }
+
+    .review_content p {
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.5rem;
+    }
+
+    .review_rating {
+        color: #fdd8d1;
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
+    .review_1 .review_img {
+        width: 120px;
+        height: 80px;
+        background-color: #a0522d;
+        /* margin-left: 20px; */
+    }
+}

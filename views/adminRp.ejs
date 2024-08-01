@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
+    <link rel="stylesheet" href="../public/CSS/headerFooter.css" />
+    <link rel="stylesheet" href="../public/CSS/adminRp.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="header">
+        <a class="logo" href="/">
+          <img class="logoImg" src="../public/images/logo.png" alt="" />
+        </a>
+        <div class="iconBox">
+          <a href="/login"><span class="material-icons-round login">login</span></a>
+          <a href="/profile"><span class="material-icons-round account_circle">account_circle</span></a>
+        </div>
+      </div>
+      <div class="navBar"></div>
+    </header>
+    <main>
+      <div class="navBar">
+        <a href="/adminRp">레시피 리스트</a>
+        <a href="/adminUL">유저 리스트</a>
+      </div>
+      <div class="container">
+        <div class="mainHeader">
+          <button id="orderByLatest" onclick="orderByLatest()">최신순</button>
+          <button id="orderByStars" onclick="orderByStars()">별점순</button>
+          <button id="orderByViewCount" onclick="orderByViewCount()">조회수</button>
+          <a href="/writeRecipe"><span class="material-icons-round edit">edit</span></a>
+        </div>
+        <div class="recipe">
+          <ul id="recipeList">
+            <li id="sample">
+              <a href="/recipe">
+                <div id="recipeCard">
+                  <div id="thumbnail">
+                    <img src="/public/images/food-example.jpg" alt="thumbnail" />
+                  </div>
+                  <div id="content">
+                    <div id="title">
+                      <p>제육볶음 간단 레시피</p>
+                    </div>
+                    <div id="starsReviewCount">
+                      <div id="stars">
+                        <span class="material-icons-round star">star</span>
+                        <span class="material-icons-round star">star</span>
+                        <span class="material-icons-round star">star</span>
+                        <span class="material-icons-round star">star</span>
+                        <span class="rating">(4.3)</span>
+                      </div>
+                      <div id="reviewCount">
+                        <span>리뷰 (123개)</span>
+                      </div>
+                    </div>
+                    <div id="updateBox">
+                        <button id="deleteButton" onclick="deleteFunc()">삭제</button>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="companyInfo">
+        <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

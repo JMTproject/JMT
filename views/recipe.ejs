@@ -1,12 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-</head>
-<body>
-    <h3>레시피 페이지</h3>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+            rel="stylesheet" />
+        <link href="../public/CSS/recipe.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <header>
+            <div class="logo"></div>
+            <a href="/login"><span class="material-symbols-rounded login">login</span></a>
+            <a href="/profile"><span class="material-symbols-rounded account_circle">account_circle</span></a>
+            <a href="/"><span class="material-symbols-rounded redo">redo</span></a>
+            <div class="navBar"></div>
+        </header>
+        <!-- <h3>레시피 페이지</h3> -->
+        <div class="container">
+            <br />
+            <div id="recipe_info">
+                <div id="thumbnail">
+                    <img src="/public" alt="thumbnail" />
+                </div>
+                <h3>title</h3>
+                <p>information</p>
+                <div class="recipe_time">
+                    <span class="material-symbols-rounded">person</span>
+                    <p>2 인분</p>
+                    <span id="blank"></span>
+                    <span class="material-symbols-rounded schedule">schedule</span>
+                    <p>10분 이내</p>
+                </div>
+            </div>
+
+            <div id="cooking_ingredients">
+                <h3 id="ingredients">재료</h3>
+                <div class="ingredients_box">
+                    <div class="ingredients_list">
+                        <div class="ingredients_1">
+                            <p>감자</p>
+                        </div>
+                        <div class="ingredients_2">
+                            <p>1개</p>
+                        </div>
+                        <div id="ingredients_buy">
+                            <button type="button" onclick="purchase()" id="buy">구매</button>
+                        </div>
+                    </div>
+                    <div class="ingredients_list">
+                        <div class="ingredients_1">
+                            <p>감자</p>
+                        </div>
+                        <div class="ingredients_2">
+                            <p>1개</p>
+                        </div>
+                        <div id="ingredients_buy">
+                            <button type="button" onclick="purchase()" id="buy">구매</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div id="cookwares">
+                <h3 id="cookware">조리도구</h3>
+                <div class="cookware_box">
+                    <div id="cookware_list">
+                        <div class="cookware_1"><p>프라이팬</p></div>
+                        <div class="cookware_1"><p>뒤집개</p></div>
+                        <div class="cookware_1"><p>보울</p></div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div id="cooking_process">
+                <h3 id="process">조리 순서</h3>
+                <div class="process_box">
+                    <div id="process_list">
+                        <div class="process_1">
+                            <div class="process_number">1.</div>
+                            <div class="process_step">
+                                <div class="process_description">
+                                    소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
+                                    적당한 크기로 잘라주세요.
+                                </div>
+                                <img src="../JMT Design/1.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="process_1">
+                            <div class="process_number">2.</div>
+                            <div class="process_step">
+                                <div class="process_description">
+                                    소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
+                                    적당한 크기로 잘라주세요.
+                                </div>
+                                <img src="../JMT Design/1.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="process_1">
+                            <div class="process_number">3.</div>
+                            <div class="process_step">
+                                <div class="process_description">
+                                    소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
+                                    적당한 크기로 잘라주세요.
+                                </div>
+                                <img src="../JMT Design/1.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="process_1">
+                            <div class="process_number">4.</div>
+                            <div class="process_step">
+                                <div class="process_description">
+                                    소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
+                                    적당한 크기로 잘라주세요.
+                                </div>
+                                <img src="../JMT Design/1.png" alt="" />
+                            </div>
+                        </div>
+                        <div class="process_1">
+                            <div class="process_number">5.</div>
+                            <div class="process_step">
+                                <div class="process_description">
+                                    소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
+                                    적당한 크기로 잘라주세요.
+                                </div>
+                                <img src="../JMT Design/1.png" alt="" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div id="WriterInfo">
+                <h3>레시피 작성자</h3>
+                <div class="info_box">
+                    <div id="profileImg">
+                        <img src="/public" alt="profileImg" />
+                    </div>
+                    <div class="user_detail">
+                        <p class="user_nickname">닉네임</p>
+                        <p class="user_intro">한 줄 자기소개</p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div id="review">
+                <div class="review_header">
+                    <div class="review_header_1">
+                        <h3>리뷰</h3>
+                        <span>(100개)</span>
+                    </div>
+
+                    <span>★★★★★ (4.2)</span>
+                </div>
+                <div class="review_box">
+                    <div class="review">
+                        <div class="review_1">
+                            <img class="review_profile_img" src="/path/to/profile1.png" alt="Profile Image" />
+                            <div class="review_profile">
+                                <div class="review_info">
+                                    <p>닉네임</p>
+                                    <span class="review_date">2023-07-17 18:39:24</span>
+                                    <div class="review_rating">★★★★★</div>
+                                </div>
+                                <div class="review_content">
+                                    <p>
+                                        간단하면서 맛있어요~~하면서 맛있어하면서 맛있어하면서 맛있어하면서 맛있어하면서
+                                        맛있어단하면서 맛있
+                                    </p>
+                                </div>
+                            </div>
+                            <img class="review_img" src="/path/to/review_image.png" alt="Review Image" />
+                        </div>
+                    </div>
+                    <div class="review">
+                        <div class="review_1">
+                            <img class="review_profile_img" src="/path/to/profile2.png" alt="Profile Image" />
+                            <div class="review_profile">
+                                <div class="review_info">
+                                    <p>닉네임</p>
+                                    <span class="review_date">2023-07-17 18:39:24</span>
+                                    <div class="review_rating">★★★★★</div>
+                                </div>
+                                <div class="review_content">
+                                    <p>간단하면서 맛있어요~~</p>
+                                </div>
+                            </div>
+                            <img class="review_img" src="/path/to/review_image.png" alt="Review Image" />
+                        </div>
+                    </div>
+                    <div class="review">
+                        <div class="review_1">
+                            <img class="review_profile_img" src="/path/to/profile2.png" alt="Profile Image" />
+                            <div class="review_profile">
+                                <div class="review_info">
+                                    <p>닉네임</p>
+                                    <span class="review_date">2023-07-17 18:39:24</span>
+                                    <div class="review_rating">★★★★★</div>
+                                </div>
+                                <div class="review_content">
+                                    <p>
+                                        간단하면서 맛있어요~~간단하면서 맛있어요~~간단하면서 맛있어요~~간단하면서
+                                        맛있어요~~간단하면서 맛있어요~~간단하면서 맛있어요~~간단하면서
+                                        맛있어요~~간단하면서 맛있어요~~간단하면서 맛있어요~~
+                                    </p>
+                                </div>
+                            </div>
+                            <img class="review_img" src="/path/to/review_image.png" alt="Review Image" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="/"><span class="material-symbols-rounded">redo</span></a>
+        </div>
+        <footer>
+            <div class="companyInfo">
+                <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
+            </div>
+        </footer>
+    </body>
 </html>

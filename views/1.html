@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Reviews</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #f5f5f5;
+            }
+
+            .review_box {
+                max-width: 800px;
+                margin: 20px auto;
+                background-color: white;
+                border: 1px solid #fca391;
+                border-radius: 5px;
+                padding: 20px;
+            }
+
+            .review {
+                display: flex;
+                flex-direction: column;
+                border-bottom: 1px solid #fca391;
+                padding: 20px 0;
+            }
+
+            .review:last-child {
+                border-bottom: none;
+            }
+
+            .review_1 {
+                display: flex;
+                align-items: center;
+            }
+
+            .review_profile_img {
+                width: 100px;
+                height: 100px;
+                background-color: #a0522d;
+                margin-right: 20px;
+            }
+
+            .review_profile {
+                flex: 1;
+            }
+
+            .review_info {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .review_info p {
+                font-size: 1rem;
+                line-height: 1.5rem;
+                color: #fca391;
+                margin: 0;
+            }
+
+            .review_info .review_date {
+                font-size: 0.875rem;
+                color: rgba(0, 0, 0, 0.7);
+            }
+
+            .review_content p {
+                margin: 0;
+                font-size: 0.875rem;
+                line-height: 1.5rem;
+            }
+
+            .review_rating {
+                color: #fdd8d1;
+                font-size: 0.875rem;
+                margin: 0;
+            }
+
+            .review_img {
+                width: 160px;
+                height: 80px;
+                background-color: #a0522d;
+                margin-left: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="/styles.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="review_box">
+            <div class="review">
+                <div class="review_1">
+                    <img class="review_profile_img" src="/path/to/profile1.png" alt="Profile Image" />
+                    <div class="review_profile">
+                        <div class="review_info">
+                            <p>닉네임</p>
+                            <span class="review_date">2023-07-17 18:39:24</span>
+                            <div class="review_rating">★★★★★</div>
+                        </div>
+                        <div class="review_content">
+                            <p>간단하면서 맛있어요~~</p>
+                        </div>
+                    </div>
+                    <img class="review_img" src="/path/to/review_image.png" alt="Review Image" />
+                </div>
+            </div>
+            <div class="review">
+                <div class="review_1">
+                    <img class="review_profile_img" src="/path/to/profile2.png" alt="Profile Image" />
+                    <div class="review_profile">
+                        <div class="review_info">
+                            <p>닉네임</p>
+                            <span class="review_date">2023-07-17 18:39:24</span>
+                            <div class="review_rating">★★★★★</div>
+                        </div>
+                        <div class="review_content">
+                            <p>간단하면서 맛있어요~~</p>
+                        </div>
+                    </div>
+                    <img class="review_img" src="/path/to/review_image.png" alt="Review Image" />
+                </div>
+            </div>
+            <!-- 추가 리뷰 -->
+        </div>
+    </body>
+</html>

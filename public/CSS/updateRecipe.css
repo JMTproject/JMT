@@ -1,0 +1,543 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans', sans-serif;
+  box-sizing: border-box;
+  background-color: #f7f7f7;
+  color: #333;
+}
+header span {
+  display: flex;
+  flex-direction: column;
+  color: #fdd8d1;
+}
+
+.container {
+  width: 360px;
+  margin: auto;
+}
+
+h3 {
+  font-size: 24px;
+  margin-left: 10px;
+}
+
+#infoRp {
+  width: 350px;
+  height: 480px;
+  text-align: center;
+  margin: 0 auto;
+  border: 1px solid #fdd8d1;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#infoRp #title {
+  width: 300px;
+  height: 40px;
+  border: 1px solid #fdd8d1;
+  border-radius: 3px;
+  margin: 5px auto;
+  opacity: 70%;
+}
+#infoRp textarea {
+  width: 300px;
+  height: 140px;
+  border: 1px solid #fdd8d1;
+  border-radius: 3px;
+  margin: 0 auto;
+  opacity: 70%;
+}
+#infoRp #cookingInfoBox {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+/* #infoRp #cookingInfoBox{
+  display: flex;
+  flex-direction: column;
+} */
+#infoRp #servings {
+  width: 60px;
+  height: 20px;
+  border: 1px solid #fdd8d1;
+  border-radius: 3px;
+  opacity: 70%;
+  margin-left: 75px;
+}
+#infoRp #servingBox {
+  margin-bottom: 10px;
+}
+
+#infoRp #cookingTime {
+  width: 60px;
+  height: 25px;
+  border: 1px solid #fdd8d1;
+  border-radius: 3px;
+  opacity: 70%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  text-align: center;
+}
+
+.uploadImg {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.uploadImg img {
+  width: 120px;
+  height: 120px;
+  border: 1px solid #fdd8d1;
+  border-radius: 13px;
+  margin: 10px auto;
+  background-color: white;
+  float: left;
+  margin-left: 20px;
+  margin-right: 50px;
+}
+.uploadImg button {
+  width: 150px;
+  height: 20px;
+  border: 1px solid #fdd8d1;
+  border-radius: 13px;
+  background-color: white;
+  cursor: pointer;
+  float: right;
+  margin-bottom: 10px;
+  margin-right: 23px;
+}
+.uploadImg button:hover {
+  background-color: #fa6d51;
+  color: white;
+}
+
+#ingredient {
+  width: 350px;
+  height: 200px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  border: 1px solid #fdd8d1;
+  border-radius: 5px;
+}
+#ingredient input {
+  width: 100px;
+  height: 25px;
+  margin: 10px 10px auto;
+  border: 1px solid #fdd8d1;
+  border-radius: 12px;
+  text-align: center;
+}
+#ingredient button {
+  width: 80px;
+  height: 25px;
+  /* margin: 10px 10px auto; */
+  border: 1px solid #fdd8d1;
+  border-radius: 12px;
+  text-align: center;
+  background-color: #fca391;
+  color: white;
+  cursor: pointer;
+}
+#ingredient button:hover {
+  background-color: #fa6d51;
+}
+#cookingTools {
+  width: 350px;
+  height: 200px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  border: 1px solid #fdd8d1;
+  border-radius: 5px;
+}
+#cookingTools input {
+  width: 120px;
+  height: 25px;
+  margin: 15px 15px auto;
+  border: 1px solid #fdd8d1;
+  border-radius: 12px;
+  text-align: center;
+  opacity: 70%;
+}
+#cookingTools button {
+  width: 80px;
+  height: 25px;
+  /* margin: 10px 10px auto; */
+  border: 1px solid #fdd8d1;
+  border-radius: 12px;
+  text-align: center;
+  background-color: #fca391;
+  color: white;
+  cursor: pointer;
+}
+#cookingTools button:hover {
+  background-color: #fa6d51;
+}
+#cookingStep {
+  width: 350px;
+  height: 450px;
+  /* text-align: center; */
+  margin: 0 auto;
+  /* margin-top: 10px; */
+  border: 1px solid #fdd8d1;
+  border-radius: 5px;
+}
+#cookingStep #cookingStep1 {
+  width: 210px;
+  height: 70px;
+  border: 1px solid #fa6d51;
+  border: none;
+}
+#cookingStep #StepItem1 {
+  margin: 10px;
+  /* border-top: ; */
+}
+#cookingStep #StepNum1 {
+  float: left;
+  color: #fa6d51;
+}
+#cookingStep button {
+  width: 100px;
+  height: 70px;
+  border: 1px solid #fdd8d1;
+  border-radius: 5px;
+  float: right;
+  cursor: pointer;
+  font-size: 48px;
+  background-color: white;
+  color: #fdd8d1;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+#cookingStep p {
+  font-size: 1rem;
+  margin: auto;
+}
+
+#cookingStep textarea {
+  width: 50%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  resize: none;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+
+form #butonBox {
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+}
+form #writeRpBtn {
+  width: 200px;
+  height: 30px;
+  margin: 10px 10px auto;
+  /* margin-left: 25%; */
+  text-align: center;
+  background-color: #fca391;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+form #writeRpBtn:hover {
+  background-color: #fa6d51;
+}
+
+@media screen and (min-width: 1024px) {
+  body,
+  html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Sans', sans-serif;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
+    color: #333;
+  }
+  header span {
+    display: flex;
+    flex-direction: column;
+    color: #fdd8d1;
+  }
+
+  .container {
+    width: 1080px;
+    margin: 0 auto;
+  }
+
+  h3 {
+    font-size: 24px;
+    margin-left: 10px;
+  }
+
+  #infoRp {
+    width: 1070px;
+    height: 480px;
+    text-align: center;
+    margin: 0 auto;
+    border: 1px solid #fdd8d1;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #infoRp #title {
+    width: 600px;
+    height: 40px;
+    border: 1px solid #fdd8d1;
+    border-radius: 3px;
+    margin: 5px auto;
+    opacity: 70%;
+  }
+  #infoRp textarea {
+    width: 600px;
+    height: 140px;
+    border: 1px solid #fdd8d1;
+    border-radius: 3px;
+    margin: 0 auto;
+    opacity: 70%;
+  }
+  #infoRp #cookingInfoBox {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  /* #infoRp #cookingInfoBox{
+    display: flex;
+    flex-direction: column;
+  } */
+  #infoRp #servingBox {
+    /* margin-bottom: 10px; */
+    display: flex;
+    /* margin: 3px; */
+    /* flex-direction: column; */
+    /* align-items: ; */
+  }
+  #infoRp #servings {
+    width: 80px;
+    height: 20px;
+    border: 1px solid #fdd8d1;
+    border-radius: 3px;
+    opacity: 70%;
+    /* margin-left: 5%; */
+    /* display: flex;
+      flex-direction: column; */
+  }
+
+  #infoRp #cookingTime #minute {
+    width: 60px;
+    height: 25px;
+    border: 1px solid #fdd8d1;
+    border-radius: 3px;
+    opacity: 70%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* margin-left: 20px; */
+    /* text-align: center; */
+  }
+
+  .uploadImg {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .uploadImg img {
+    width: 150px;
+    height: 120px;
+    border: 1px solid #fdd8d1;
+    border-radius: 13px;
+    margin: 10px auto;
+    background-color: white;
+    /* float: left; */
+    margin-left: 265px;
+    /* margin-right: 50px; */
+  }
+  .uploadImg button {
+    width: 250px;
+    height: 40px;
+    border: 1px solid #fdd8d1;
+    border-radius: 13px;
+    background-color: white;
+    cursor: pointer;
+    float: right;
+    /* margin-bottom: 10px; */
+    margin-left: 140px;
+  }
+  .uploadImg button:hover {
+    background-color: #fa6d51;
+    color: white;
+  }
+
+  #ingredient {
+    width: 1070px;
+    height: 200px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    border: 1px solid #fdd8d1;
+    border-radius: 5px;
+  }
+  #ingredient input {
+    width: 450px;
+    height: 25px;
+    margin: 10px 10px auto;
+    border: 1px solid #fdd8d1;
+    border-radius: 12px;
+    text-align: center;
+    opacity: 70%;
+  }
+  #ingredient button {
+    width: 80px;
+    height: 25px;
+    /* margin: 10px 10px auto; */
+    border: 1px solid #fdd8d1;
+    border-radius: 12px;
+    text-align: center;
+    background-color: #fca391;
+    color: white;
+    cursor: pointer;
+  }
+  #ingredient button:hover {
+    background-color: #fa6d51;
+  }
+  #cookingTools {
+    width: 1070px;
+    height: 200px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10px;
+    border: 1px solid #fdd8d1;
+    border-radius: 5px;
+  }
+  #cookingTools input {
+    width: 420px;
+    height: 25px;
+    margin: 15px 15px auto;
+    border: 1px solid #fdd8d1;
+    border-radius: 12px;
+    text-align: center;
+    opacity: 70%;
+  }
+  #cookingTools button {
+    width: 80px;
+    height: 25px;
+    /* margin: 10px 10px auto; */
+    border: 1px solid #fdd8d1;
+    border-radius: 12px;
+    text-align: center;
+    background-color: #fca391;
+    color: white;
+    cursor: pointer;
+  }
+  #cookingTools button:hover {
+    background-color: #fa6d51;
+  }
+  #cookingStep {
+    width: 1070px;
+    height: 450px;
+    /* text-align: center; */
+    margin: 0 auto;
+    /* margin-top: 10px; */
+    border: 1px solid #fdd8d1;
+    border-radius: 5px;
+  }
+  /* #cookingStep #cookingStep1{
+      width: 210px;
+      height: 70px;
+      border: 1px solid #FA6D51;
+      border: none;
+      
+  } */
+  #cookingStep #StepItem1 {
+    margin: 10px;
+    /* border-top: ; */
+  }
+  #cookingStep #StepNum1 {
+    float: left;
+    color: #fa6d51;
+  }
+  #cookingStep button {
+    width: 13%;
+    height: 70px;
+    border: 1px solid #fdd8d1;
+    border-radius: 5px;
+    float: right;
+    cursor: pointer;
+    font-size: 48px;
+    background-color: white;
+    color: #fdd8d1;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  #cookingStep p {
+    font-size: 1rem;
+    margin: auto;
+  }
+
+  #cookingStep #cookingStep1 {
+    width: 85%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    resize: none;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+  }
+  form #butonBox {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: center;
+  }
+  form #writeRpBtn {
+    width: 450px;
+    height: 45px;
+    margin: 10px 10px auto;
+    /* margin-left: 25%; */
+
+    font-size: 22px;
+    text-align: center;
+    background-color: #fca391;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    align-items: center;
+    line-height: 2;
+    /* display: flex;
+    flex-direction: row; */
+  }
+  form #writeRpBtn:hover {
+    background-color: #fa6d51;
+  }
+}
