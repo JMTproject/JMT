@@ -1,5 +1,8 @@
-const signUp = (req, res) => {
-    console.log(req);
+const {User, Review, Ingredient, CookingTools, CookingStep} = require('../models')
+
+
+const login = (req, res) => {
+    console.log('sample');
 }
 
-module.exports = { signUp };
+module.exports = {login}

@@ -27,5 +27,11 @@ const myRecipe = (req, res) => {
 const updateRecipe = (req, res) => {
     res.render('updateRecipe');
 }
+const adminRp = (req, res) => {
+    res.render('adminRp');
+}
+const adminUL = (req, res) => {
+    res.render('adminUL');
+}
 
-module.exports = { main, login, signup, profile, recipe, writeRecipe, myRecipe, updateRecipe };
+module.exports = { main, login, signup, profile, recipe, writeRecipe, myRecipe, updateRecipe, adminRp, adminUL };
