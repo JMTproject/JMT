@@ -7,7 +7,7 @@
 .container {
   width: 360px;
   min-height: 835px;
-  margin: 0 auto;
+  margin: 80px auto 0;
 }
 
 .content {
@@ -186,7 +186,7 @@
   .container {
     width: 600px;
     min-height: 835px;
-    margin: 0 auto;
+    margin: 150px auto 0;
   }
 
   .content > h3 {
