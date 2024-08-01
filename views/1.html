@@ -6,24 +6,24 @@
         <title>Reviews</title>
         <style>
             body {
-                font-family: Arial, sans-serif;
                 margin: 0;
                 padding: 0;
                 background-color: #f5f5f5;
             }
 
-            .reviews-container {
+            .review_box {
                 max-width: 800px;
                 margin: 20px auto;
+                background-color: white;
+                border: 1px solid #fca391;
+                border-radius: 5px;
                 padding: 20px;
-                background-color: #fff;
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             }
 
             .review {
                 display: flex;
-                border-bottom: 1px solid #e0e0e0;
+                flex-direction: column;
+                border-bottom: 1px solid #fca391;
                 padding: 20px 0;
             }
 
@@ -31,111 +31,97 @@
                 border-bottom: none;
             }
 
-            .review-profile {
+            .review_1 {
                 display: flex;
                 align-items: center;
+            }
+
+            .review_profile_img {
+                width: 100px;
+                height: 100px;
+                background-color: #a0522d;
                 margin-right: 20px;
             }
 
-            .review-profile img {
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                margin-right: 10px;
-            }
-
-            .review-info {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .review-info strong {
-                font-size: 16px;
-                color: #333;
-            }
-
-            .review-info .review-date {
-                font-size: 12px;
-                color: #999;
-            }
-
-            .review-content {
+            .review_profile {
                 flex: 1;
             }
 
-            .review-content p {
-                margin: 0 0 10px;
-                font-size: 14px;
-                color: #666;
+            .review_info {
+                display: flex;
+                align-items: center;
+                gap: 10px;
             }
 
-            .review-rating {
-                color: #ffcc00;
-                font-size: 14px;
+            .review_info p {
+                font-size: 1rem;
+                line-height: 1.5rem;
+                color: #fca391;
+                margin: 0;
             }
 
-            .view-all-btn {
-                display: block;
-                width: 100%;
-                padding: 10px 0;
-                margin: 20px 0 0;
-                background-color: #ff7043;
-                color: #fff;
-                border: none;
-                border-radius: 5px;
-                text-align: center;
-                cursor: pointer;
-                font-size: 16px;
+            .review_info .review_date {
+                font-size: 0.875rem;
+                color: rgba(0, 0, 0, 0.7);
+            }
+
+            .review_content p {
+                margin: 0;
+                font-size: 0.875rem;
+                line-height: 1.5rem;
+            }
+
+            .review_rating {
+                color: #fdd8d1;
+                font-size: 0.875rem;
+                margin: 0;
+            }
+
+            .review_img {
+                width: 160px;
+                height: 80px;
+                background-color: #a0522d;
+                margin-left: 20px;
             }
         </style>
+        <link rel="stylesheet" href="/styles.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     </head>
     <body>
-        <div class="reviews-container">
+        <div class="review_box">
             <div class="review">
-                <div class="review-profile">
-                    <img src="/path/to/profile1.png" alt="PC핸드백 프로필" />
-                    <div class="review-info">
-                        <strong>PC핸드백</strong>
-                        <span class="review-date">2023-07-17 18:39:24</span>
+                <div class="review_1">
+                    <img class="review_profile_img" src="/path/to/profile1.png" alt="Profile Image" />
+                    <div class="review_profile">
+                        <div class="review_info">
+                            <p>닉네임</p>
+                            <span class="review_date">2023-07-17 18:39:24</span>
+                            <div class="review_rating">★★★★★</div>
+                        </div>
+                        <div class="review_content">
+                            <p>간단하면서 맛있어요~~</p>
+                        </div>
                     </div>
-                </div>
-                <div class="review-content">
-                    <p>간단하면서 맛있어요~~가지반찬은 쉬운것같으면서도 어려워서 잘안하게되는데 맛있게 잘먹었습니다</p>
-                    <div class="review-rating">★★★★★</div>
+                    <img class="review_img" src="/path/to/review_image.png" alt="Review Image" />
                 </div>
             </div>
-
             <div class="review">
-                <div class="review-profile">
-                    <img src="/path/to/profile2.png" alt="루시리미 프로필" />
-                    <div class="review-info">
-                        <strong>루시리미</strong>
-                        <span class="review-date">2023-08-18 18:58:47</span>
+                <div class="review_1">
+                    <img class="review_profile_img" src="/path/to/profile2.png" alt="Profile Image" />
+                    <div class="review_profile">
+                        <div class="review_info">
+                            <p>닉네임</p>
+                            <span class="review_date">2023-07-17 18:39:24</span>
+                            <div class="review_rating">★★★★★</div>
+                        </div>
+                        <div class="review_content">
+                            <p>간단하면서 맛있어요~~</p>
+                        </div>
                     </div>
-                </div>
-                <div class="review-content">
-                    <p>
-                        처음에는 양념장 양이 작아보이길래 더 많들어야하나 싶었는데 신기하게 레시피대로 딱 맞네요 ㅋㅋㅋ
-                        맛있어용 ㅎㅎㅎㅎ
-                    </p>
-                    <div class="review-rating">★★★★★</div>
+                    <img class="review_img" src="/path/to/review_image.png" alt="Review Image" />
                 </div>
             </div>
-
-            <div class="review">
-                <div class="review-profile">
-                    <img src="/path/to/profile3.png" alt="스페셜에너지 프로필" />
-                    <div class="review-info">
-                        <strong>스페셜에너지</strong>
-                        <span class="review-date">2024-06-14 22:17:00</span>
-                    </div>
-                </div>
-                <div class="review-content">
-                    <p>남편이 맛있다고 칭찬해줬어요~ 가지나물을 자주먹을수 있겠어요~ 감사합니다 ~^^</p>
-                    <div class="review-rating">★★★★★</div>
-                </div>
-            </div>
-            <button class="view-all-btn">전체보기</button>
+            <!-- 추가 리뷰 -->
         </div>
     </body>
 </html>

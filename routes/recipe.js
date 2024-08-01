@@ -1,5 +1,6 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router();
+
 const { recipeList } = require('../controller/main');
 const { uploadFunc } = require('../controller/writeRecipe');
 
@@ -9,3 +10,4 @@ router.post('/writerecipe', uploadFunc)
 
 
 module.exports = router;
+
