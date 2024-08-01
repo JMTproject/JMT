@@ -9,7 +9,7 @@ module.exports = {
             {
                 rating: 4,
                 content: '정말 맛있네요!',
-                reviewImg: '../images/profileDeafultImg.png',
+                reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
                 userId: 3,
                 recipeId: 1,
                 createdAt: "2024-07-24 20:56:57",
@@ -18,7 +18,7 @@ module.exports = {
             {
                 rating: 4,
                 content: '해먹어 보니 별론데요?',
-                reviewImg: '../images/profileDeafultImg.png',
+                reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
                 userId: 3,
                 recipeId: 1,
                 createdAt: "2024-07-24 20:56:57",
@@ -27,7 +27,7 @@ module.exports = {
             {
                 rating: 4,
                 content: '굿굿',
-                reviewImg: '../images/profileDeafultImg.png',
+                reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
                 userId: 3,
                 recipeId: 1,
                 createdAt: "2024-07-24 20:56:57",
@@ -36,7 +36,7 @@ module.exports = {
             {
                 rating: 4,
                 content: '정말 맛있네요!',
-                reviewImg: '../images/profileDeafultImg.png',
+                reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
                 userId: 3,
                 recipeId: 2,
                 createdAt: "2024-07-24 20:56:57",
@@ -45,7 +45,7 @@ module.exports = {
             {
                 rating: 4,
                 content: '해먹어 보니 별론데요?',
-                reviewImg: '../images/profileDeafultImg.png',
+                reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
                 userId: 3,
                 recipeId: 2,
                 createdAt: "2024-07-24 20:56:57",
@@ -54,7 +54,7 @@ module.exports = {
             {
                 rating: 4,
                 content: '굿굿',
-                reviewImg: '../images/profileDeafultImg.png',
+                reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
                 userId: 3,
                 recipeId: 2,
                 createdAt: "2024-07-24 20:56:57",
@@ -63,7 +63,7 @@ module.exports = {
             {
                 rating: 4,
                 content: '정말 맛있네요!',
-                reviewImg: '../images/profileDeafultImg.png',
+                reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
                 userId: 3,
                 recipeId: 3,
                 createdAt: "2024-07-24 20:56:57",
@@ -72,7 +72,7 @@ module.exports = {
             {
                 rating: 4,
                 content: '해먹어 보니 별론데요?',
-                reviewImg: '../images/profileDeafultImg.png',
+                reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
                 userId: 3,
                 recipeId: 3,
                 createdAt: "2024-07-24 20:56:57",
@@ -81,7 +81,7 @@ module.exports = {
             {
                 rating: 4,
                 content: '굿굿',
-                reviewImg: '../images/profileDeafultImg.png',
+                reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
                 userId: 3,
                 recipeId: 3,
                 createdAt: "2024-07-24 20:56:57",
