@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="360" height="760" viewBox="0 0 360 760">
+  <defs>
+    <style>
+      .cls-1, .cls-3, .cls-6 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-3, .cls-4 {
+        stroke: #fca391;
+      }
+
+      .cls-1, .cls-3 {
+        stroke-width: 1px;
+      }
+
+      .cls-1, .cls-11, .cls-3, .cls-4, .cls-5 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2, .cls-6 {
+        font-size: 20px;
+      }
+
+      .cls-2, .cls-6, .cls-7, .cls-8, .cls-9 {
+        font-family: "Noto Sans KR";
+      }
+
+      .cls-10, .cls-2, .cls-6, .cls-8, .cls-9 {
+        text-transform: uppercase;
+      }
+
+      .cls-3 {
+        stroke-linejoin: round;
+      }
+
+      .cls-4 {
+        fill: none;
+        stroke-width: 0.5px;
+      }
+
+      .cls-5 {
+        fill: #fca391;
+      }
+
+      .cls-7, .cls-8, .cls-9 {
+        font-size: 12px;
+      }
+
+      .cls-8 {
+        opacity: 0.7;
+      }
+
+      .cls-10 {
+        font-size: 48px;
+        font-family: Cookie;
+      }
+
+      .cls-11 {
+        fill: #fdd8d1;
+        opacity: 0.5;
+      }
+    </style>
+  </defs>
+  <g id="Artboard_1" data-name="Artboard 1">
+    <g id="login_box" data-name="login box">
+      <path id="main_box" data-name="main box" class="cls-1" d="M35,125H325a5,5,0,0,1,5,5V620a5,5,0,0,1-5,5H35a5,5,0,0,1-5-5V130A5,5,0,0,1,35,125Z"/>
+      <text id="개인_정보_수정" data-name="개인 정보 수정" class="cls-2" x="121.516" y="164.848">개인 정보 수정</text>
+      <g>
+        <path id="id_pw_box" data-name="id pw box" class="cls-3" d="M300.008,243.99h-240a5,5,0,0,0-5,5v50a5,5,0,0,0,5,5h240a5,5,0,0,0,5-5v-50A5,5,0,0,0,300.008,243.99Z"/>
+        <path id="Line_1" data-name="Line 1" class="cls-4" d="M55,275v-1H305v1H55Z"/>
+      </g>
+      <path id="login_button" data-name="login button" class="cls-5" d="M300.008,568.99h-240a5,5,0,0,0-5,5v30a5,5,0,0,0,5,5h240a5,5,0,0,0,5-5v-30A5,5,0,0,0,300.008,568.99Z"/>
+      <text id="수정_완료" data-name="수정 완료" class="cls-6" x="142.3" y="596.362">수정 완료</text>
+      <path id="id_pw_box-2" data-name="id pw box" class="cls-3" d="M300.008,320.99h-240a5,5,0,0,0-5,5v20a5,5,0,0,0,5,5h240a5,5,0,0,0,5-5v-20A5,5,0,0,0,300.008,320.99Z"/>
+      <path id="id_pw_box-3" data-name="id pw box" class="cls-3" d="M300.008,192.99h-240a5,5,0,0,0-5,5v20a5,5,0,0,0,5,5h240a5,5,0,0,0,5-5v-20A5,5,0,0,0,300.008,192.99Z"/>
+      <text id="user_gmail.com" data-name="user@gmail.com" class="cls-7" x="63.279" y="212.748">user@gmail.com</text>
+      <text id="현재_비밀번호" data-name="현재 비밀번호" class="cls-8" x="62.279" y="263.749">현재 비밀번호</text>
+      <text id="변경할_비밀번호" data-name="변경할 비밀번호" class="cls-8" x="62.279" y="293.748">변경할 비밀번호</text>
+      <text id="닉네임" class="cls-8" x="61.279" y="340.749">닉네임</text>
+      <path id="profile_img" data-name="profile img" class="cls-3" d="M150.008,367.99h-90a5,5,0,0,0-5,5v90a5,5,0,0,0,5,5h90a5,5,0,0,0,5-5v-90A5,5,0,0,0,150.008,367.99Z"/>
+      <path id="upload_button" data-name="upload button" class="cls-1" d="M289.838,447.99h-80a10,10,0,1,0,0,20h80A10,10,0,1,0,289.838,447.99Z"/>
+      <text id="프로필_사진" data-name="프로필 사진" class="cls-8" x="77.279" y="422.748">프로필 사진</text>
+      <text id="파일_업로드" data-name="파일 업로드" class="cls-9" x="221.279" y="462.749">파일 업로드</text>
+      <path id="id_pw_box-4" data-name="id pw box" class="cls-3" d="M300.008,487.99h-240a5,5,0,0,0-5,5v50a5,5,0,0,0,5,5h240a5,5,0,0,0,5-5v-50A5,5,0,0,0,300.008,487.99Z"/>
+      <text id="한_줄_자기소개" data-name="한 줄 자기소개" class="cls-8" x="62.279" y="504.749">한 줄 자기소개</text>
+    </g>
+    <g id="logo">
+      <image id="logo-2" data-name="logo" x="119" y="55" width="45" height="43" xlink:href="data:img/png;base64,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"/>
+      <text id="JMT" class="cls-10" transform="translate(174.676 88.633) scale(0.75)">JMT</text>
+    </g>
+    <path id="nav_main" data-name="nav main" class="cls-11" d="M0.505,709.7h360v50h-360v-50Z"/>
+  </g>
+</svg>
