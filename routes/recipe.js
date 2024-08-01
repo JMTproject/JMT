@@ -1,9 +1,5 @@
-const express = require('express')
+const express = require('express');
 const router = express.Router();
-const {} = require('../controller/recipe')
-
-
-
-
+const {} = require('../controller/recipe');
 
 module.exports = router;

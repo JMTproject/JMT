@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Detail</title>
-    <link rel="stylesheet" href="/styles.css">
-    <style>
-        body {
+@charset "utf-8";
+@import url(reset.css);
+
+body {
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -22,11 +17,13 @@ header {
 
 .container {
     width: 360px;
+    /* background-color: aquamarine; */
     margin: 0 auto;
 }
 
 /* recipe info */
 #recipe_info {
+    /* background-color: bisque; */
     margin: 0 auto;
     text-align: center;
 }
@@ -34,6 +31,7 @@ header {
 #thumbnail {
     width: 340px;
     height: 200px;
+    /* background-color: blanchedalmond; */
     margin: 0 auto;
     border: 1px solid #fca391;
     border-radius: 5px;
@@ -72,6 +70,7 @@ header {
 /* ingredients */
 #cooking_ingredients {
     width: 340px;
+    /* background-color: beige; */
     margin: 0 auto;
 }
 
@@ -82,6 +81,7 @@ header {
 
 .ingredients_box {
     width: 340px;
+    /* height: 200px; */
     background-color: white;
     border: 1px solid #fca391;
     border-radius: 5px;
@@ -149,6 +149,7 @@ header {
 /* cookware */
 #cookwares {
     width: 340px;
+    /* background-color: rgb(100, 100, 22); */
     margin: 0 auto;
 }
 
@@ -159,6 +160,7 @@ header {
 
 .cookware_box {
     width: 340px;
+    /* height: 70px; */
     background-color: white;
     border: 1px solid #fca391;
     border-radius: 5px;
@@ -174,6 +176,7 @@ header {
 .cookware_1 {
     width: calc(50% - 10px);
     height: 25px;
+    /* background-color: rgba(252, 216, 209, 0.7); */
     border: 1px solid #fca391;
     border-radius: 12.5px;
     margin: 5px;
@@ -189,6 +192,7 @@ header {
 /* cooking process */
 #cooking_process {
     width: 340px;
+    /* background-color: rgb(95, 92, 180); */
     margin: 0 auto;
 }
 
@@ -199,12 +203,14 @@ header {
 
 .process_box {
     width: 340px;
+    height: 1600px;
     background-color: white;
     border: 1px solid #fca391;
     border-radius: 5px;
 }
 
 .process_1 {
+    height: 300px;
     display: flex;
     margin: 15px;
 }
@@ -332,6 +338,7 @@ header {
     display: flex;
     align-items: center;
     margin-right: 20px;
+    display: flex;
     flex-direction: column;
 }
 
@@ -348,6 +355,7 @@ header {
 
 .review_info p {
     font-size: 0.75rem;
+    /* line-height: 1rem; */
     color: #fca391;
     margin: 5px;
 }
@@ -387,14 +395,18 @@ header {
     header {
         width: 100%;
         height: 100px;
+        /* background-color: f9f9f9; */
     }
 
     .container {
         width: 1080px;
+        /* background-color: aquamarine; */
         margin: 0 auto;
     }
 
+    /* recipe info */
     #recipe_info {
+        /* background-color: bisque; */
         margin: 0 auto;
         text-align: center;
     }
@@ -402,6 +414,7 @@ header {
     #thumbnail {
         width: 1000px;
         height: 500px;
+        /* background-color: blanchedalmond; */
         margin: 0 auto;
         border: 1px solid #fca391;
         border-radius: 5px;
@@ -437,8 +450,10 @@ header {
         line-height: 2rem;
     }
 
+    /* ingredients */
     #cooking_ingredients {
         width: 1000px;
+        /* background-color: beige; */
         margin: 0 auto;
     }
 
@@ -449,6 +464,7 @@ header {
 
     .ingredients_box {
         width: 1000px;
+        /* height: 200px; */
         background-color: white;
         border: 1px solid #fca391;
         border-radius: 5px;
@@ -513,8 +529,10 @@ header {
         top: 1px;
     }
 
+    /* cookware */
     #cookwares {
         width: 1000px;
+        /* background-color: rgb(100, 100, 22); */
         margin: 0 auto;
     }
 
@@ -525,6 +543,7 @@ header {
 
     .cookware_box {
         width: 1000px;
+        /* height: 70px; */
         background-color: white;
         border: 1px solid #fca391;
         border-radius: 5px;
@@ -540,6 +559,7 @@ header {
     .cookware_1 {
         width: calc(25% - 10px);
         height: 25px;
+        /* background-color: rgba(252, 216, 209, 0.7); */
         border: 1px solid #fca391;
         border-radius: 12.5px;
         margin: 10px;
@@ -552,8 +572,10 @@ header {
         line-height: 1.5rem;
     }
 
+    /* cooking process */
     #cooking_process {
         width: 1000px;
+        /* background-color: rgb(95, 92, 180); */
         margin: 0 auto;
     }
 
@@ -601,6 +623,7 @@ header {
         margin: 25px;
     }
 
+    /* Writer Info */
     #WriterInfo {
         width: 1000px;
         margin: 0 auto;
@@ -645,16 +668,17 @@ header {
         line-height: 1rem;
     }
 
+    /* review */
     #review {
         width: 1000px;
         margin: 0 auto;
     }
 
-    .review_header {
+    /* .review_header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
+    } */
 
     .review_header_1 {
         display: flex;
@@ -663,7 +687,7 @@ header {
 
     #review h3 {
         margin: 10px;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
     }
 
     .review_header_1 span {
@@ -677,6 +701,8 @@ header {
         background-color: white;
         border: 1px solid #fca391;
         border-radius: 5px;
+        /* margin: 20px auto;
+        padding: 20px; */
     }
 
     .review {
@@ -690,15 +716,15 @@ header {
         border-bottom: none;
     }
 
-    .review_1 {
+    /* .review_1 {
         display: flex;
         align-items: center;
-    }
+    } */
 
-    .review_profile_img {
-        width: 120px;
-        height: 120px;
-        background-color: #ffb492;
+    .review_1 .review_profile_img {
+        width: 100px;
+        height: 100px;
+        background-color: #6c4c3e;
         margin-right: 20px;
     }
 
@@ -706,10 +732,11 @@ header {
         flex: 1;
     }
 
-    .review_info {
+    .review_profile .review_info {
         display: flex;
         align-items: center;
         gap: 10px;
+        margin-left: -370px;
     }
 
     .review_info p {
@@ -724,6 +751,12 @@ header {
         color: rgba(0, 0, 0, 0.7);
     }
 
+    .review_profile .review_content {
+        width: 600px;
+        margin-left: -50px;
+        box-sizing: content-box;
+    }
+
     .review_content p {
         margin: 0;
         font-size: 0.875rem;
@@ -736,9 +769,9 @@ header {
         margin: 0;
     }
 
-    .review_img {
+    .review_1 .review_img {
         width: 160px;
-        height: 80px;
+        height: 100px;
         background-color: #a0522d;
         margin-left: 20px;
     }
@@ -747,10 +780,13 @@ header {
 @media (min-width: 650px) and (max-width: 1079px) {
     .container {
         width: 700px;
+        /* background-color: aquamarine; */
         margin: 0 auto;
     }
 
+    /* recipe info */
     #recipe_info {
+        /* background-color: bisque; */
         margin: 0 auto;
         text-align: center;
     }
@@ -758,6 +794,7 @@ header {
     #thumbnail {
         width: 700px;
         height: 400px;
+        /* background-color: blanchedalmond; */
         margin: 0 auto;
         border: 1px solid #fca391;
         border-radius: 5px;
@@ -793,8 +830,10 @@ header {
         line-height: 2rem;
     }
 
+    /* ingredients */
     #cooking_ingredients {
         width: 700px;
+        /* background-color: beige; */
         margin: 0 auto;
     }
 
@@ -805,6 +844,7 @@ header {
 
     .ingredients_box {
         width: 700px;
+        /* height: 200px; */
         background-color: white;
         border: 1px solid #fca391;
         border-radius: 5px;
@@ -869,8 +909,10 @@ header {
         top: 1px;
     }
 
+    /* cookware */
     #cookwares {
         width: 700px;
+        /* background-color: rgb(100, 100, 22); */
         margin: 0 auto;
     }
 
@@ -881,6 +923,7 @@ header {
 
     .cookware_box {
         width: 700px;
+        /* height: 70px; */
         background-color: white;
         border: 1px solid #fca391;
         border-radius: 5px;
@@ -896,6 +939,7 @@ header {
     .cookware_1 {
         width: calc(25% - 10px);
         height: 25px;
+        /* background-color: rgba(252, 216, 209, 0.7); */
         border: 1px solid #fca391;
         border-radius: 12.5px;
         margin: 10px;
@@ -908,8 +952,10 @@ header {
         line-height: 1.5rem;
     }
 
+    /* cooking process */
     #cooking_process {
         width: 700px;
+        /* background-color: rgb(95, 92, 180); */
         margin: 0 auto;
     }
 
@@ -957,6 +1003,7 @@ header {
         margin: 25px;
     }
 
+    /* Writer Info */
     #WriterInfo {
         width: 700px;
         margin: 0 auto;
@@ -1001,6 +1048,7 @@ header {
         line-height: 1rem;
     }
 
+    /* review */
     #review {
         width: 700px;
         margin: 0 auto;
@@ -1037,161 +1085,72 @@ header {
 
     .review {
         display: flex;
+        flex-direction: column;
         border-bottom: 1px solid #fca391;
+        padding: 20px 0;
     }
 
     .review:last-child {
         border-bottom: none;
     }
 
-    .review_1 {
+    /* .review_1 {
         display: flex;
+        align-items: center;
+    } */
+
+    .review_1 .review_profile_img {
+        width: 80px;
+        height: 80px;
+        background-color: #6c4c3e;
+        margin-right: 20px;
     }
 
     .review_profile {
+        flex: 1;
+    }
+
+    .review_profile .review_info {
         display: flex;
         align-items: center;
-        margin-right: 20px;
-        flex-direction: column;
-    }
-
-    .review_profile img {
-        width: 80px;
-        height: 80px;
-        margin: 20px;
-    }
-
-    .review_info {
-        display: flex;
+        gap: 10px;
+        margin-left: -150px;
     }
 
     .review_info p {
         font-size: 0.875rem;
+        line-height: 1rem;
         color: #fca391;
-        margin-top: 5px;
+        margin: 0;
     }
 
     .review_info .review_date {
-        font-size: 0.875em;
+        font-size: 0.875rem;
         color: rgba(0, 0, 0, 0.7);
     }
 
-    .review_content {
-        flex: 1;
+    .review_profile .review_content {
+        width: 400px;
+        margin-left: -15px;
+        box-sizing: content-box;
     }
 
     .review_content p {
-        font-size: 0.75rem;
-        line-height: 1rem;
-        margin-left: -120px;
+        margin: 0;
+        font-size: 0.875rem;
+        line-height: 1.5rem;
     }
 
     .review_rating {
         color: #fdd8d1;
-        font-size: 0.75rem;
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
+    .review_1 .review_img {
+        width: 120px;
+        height: 80px;
+        background-color: #a0522d;
+        /* margin-left: 20px; */
     }
 }
-
-    </style>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <!-- 헤더 내용 -->
-        </header>
-        
-        <main>
-            <!-- 레시피 상세 내용 -->
-            
-            <section id="recipe_info">
-                <div id="thumbnail">
-                    <!-- 썸네일 이미지 -->
-                </div>
-                <h3>TITLE</h3>
-                <p>요리설명 요리설명 요리설명 요리설명 요리설명 요리설명 요리설명 요리설명 요리설명 요리설명 요리설명 요리설명 요리설명 요리설명</p>
-                <div class="recipe_time">
-                    <span><i class="material-icons">person</i> 1인분</span>
-                    <span id="blank"></span>
-                    <span><i class="material-icons">schedule</i> 15분 이내</span>
-                </div>
-            </section>
-            
-            <section id="cooking_ingredients">
-                <h3>재료</h3>
-                <div class="ingredients_box">
-                    <div class="ingredients_list">
-                        <div class="ingredients_1"><p>감자 1개</p></div>
-                        <div class="ingredients_2"><p>구매</p></div>
-                    </div>
-                    <!-- 추가 재료 목록 -->
-                </div>
-            </section>
-            
-            <section id="cookwares">
-                <h3>조리 도구</h3>
-                <div class="cookware_box">
-                    <div id="cookware_list">
-                        <div class="cookware_1"><p>후라이팬</p></div>
-                        <!-- 추가 도구 목록 -->
-                    </div>
-                </div>
-            </section>
-            
-            <section id="cooking_process">
-                <h3>조리 순서</h3>
-                <div class="process_box">
-                    <div class="process_1">
-                        <div class="process_number">1</div>
-                        <div class="process_step">
-                            <div class="process_description">소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.</div>
-                            <img src="/path/to/step_image.png" alt="Step Image">
-                        </div>
-                    </div>
-                    <!-- 추가 조리 순서 -->
-                </div>
-            </section>
-            
-            <section id="WriterInfo">
-                <h3>레시피 작성자</h3>
-                <div class="info_box">
-                    <div id="profileImg"></div>
-                    <div class="user_detail">
-                        <p>닉네임</p>
-                        <p>한 줄 자기소개</p>
-                    </div>
-                </div>
-            </section>
-            
-            <section id="review">
-                <div class="review_header">
-                    <h3>리뷰</h3>
-                    <div class="review_header_1">
-                        <span>(100개)</span>
-                        <span>★★★★★ (4.2)</span>
-                    </div>
-                </div>
-                <div class="review_box">
-                    <div class="review">
-                        <div class="review_1">
-                            <img class="review_profile_img" src="/path/to/profile1.png" alt="Profile Image">
-                            <div class="review_profile">
-                                <div class="review_info">
-                                    <p>닉네임</p>
-                                    <span class="review_date">2023-07-17 18:39:24</span>
-                                    <div class="review_rating">★★★★★</div>
-                                </div>
-                                <div class="review_content">
-                                    <p>간단하면서 맛있어요~~</p>
-                                </div>
-                            </div>
-                            <img class="review_img" src="/path/to/review_image.png" alt="Review Image">
-                        </div>
-                    </div>
-                    <!-- 추가 리뷰 -->
-                </div>
-            </section>
-        </main>
-    </div>
-</body>
-</html>

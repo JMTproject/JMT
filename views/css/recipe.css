@@ -719,12 +719,11 @@ header {
 
     .review_profile {
         display: flex;
-        align-items: center;
         margin-right: 20px;
         flex-direction: column;
     }
 
-    .review_profile img {
+    .review_profile_img {
         width: 80px;
         height: 80px;
         margin: 20px;
@@ -746,10 +745,13 @@ header {
     }
 
     .review_content {
+        width: 500px;
         flex: 1;
     }
 
     .review_content p {
+        width: 100%;
+        box-sizing: content-box;
         font-size: 0.75rem;
         line-height: 1rem;
         margin-left: -120px;
@@ -758,6 +760,12 @@ header {
     .review_rating {
         color: #fdd8d1;
         font-size: 0.75rem;
+    }
+
+    .review_img {
+        width: 160px;
+        height: 80px;
+        background-color: bisque;
     }
 }
 
