@@ -12,14 +12,19 @@
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
             rel="stylesheet" />
         <link href="../public/CSS/recipe.css" rel="stylesheet" type="text/css" />
+        <link href="../public/CSS/headerFooter.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <header>
-            <div class="logo"></div>
-            <a href="/login"><span class="material-symbols-rounded login">login</span></a>
-            <a href="/profile"><span class="material-symbols-rounded account_circle">account_circle</span></a>
-            <a href="/"><span class="material-symbols-rounded redo">redo</span></a>
-            <div class="navBar"></div>
+        <div class="header">
+            <a class="logo" href="/">
+              <img class="logoImg" src="../public/images/logo.png" alt="" />
+            </a>
+            <div class="iconBox">
+              <a href="/login"><span class="material-icons-round login">login</span></a>
+              <a href="/profile"><span class="material-icons-round account_circle">account_circle</span></a>
+            </div>
+          </div>
+          <div class="navBar"></div>
         </header>
         <!-- <h3>레시피 페이지</h3> -->
         <div class="container">
@@ -220,8 +225,8 @@
         </div>
         <footer>
             <div class="companyInfo">
-                <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
+              <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
             </div>
-        </footer>
+          </footer>
     </body>
 </html>
