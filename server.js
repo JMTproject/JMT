@@ -9,9 +9,7 @@ app.use('/public', express.static(__dirname + '/public'))
 
 
 
-app.use("/public", express.static(__dirname + '/public'));
 
-//라우터
 const pageRouter = require('./routes/page')
 app.use('/', pageRouter)
 const userRouter = require('./routes/user')
