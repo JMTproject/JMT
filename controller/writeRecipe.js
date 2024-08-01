@@ -51,7 +51,5 @@ const uploadFunc = async (req, res) => {
   });
 };
 
-const main = (req, res) => {
-  res.render('writeRecipe');
-};
-module.exports = { uploadFunc, main };
+
+module.exports = { uploadFunc };
