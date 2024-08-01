@@ -24,3 +24,4 @@ db.sequelize.sync({ force: false }).then(() => {
     console.log(`http://localhost:${PORT}`);
   });
 });
+
