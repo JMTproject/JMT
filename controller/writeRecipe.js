@@ -21,7 +21,8 @@ const upload = multer({
       cb(null, { fieldName: file.fieldName });
     },
     key: function (req, file, cb) {
-      cb(null, Data.now().toString() + '-' + file.originalname);
+      // cb(null, Data.now().toString() + '-' + file.originalname);
+      cb(null, Date.now().toString() + '-' + file.originalname);
     },
   }),
 });
@@ -50,6 +51,5 @@ const uploadFunc = async (req, res) => {
     }
   });
 };
-
 
 module.exports = { uploadFunc };

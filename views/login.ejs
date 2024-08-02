@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="../public/CSS/login.css" />
-    <link rel="stylesheet" href="../public/CSS/headerFooter.css">
-    <script defer src="../public/JS/login.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div id="titleImg">
-        <div id="imgSample"></div>
-      </div>
-      <div class="content">
-        <form action="#" id="login_form">
-          <label class="login_input_container">
-            <span>이메일</span>
-            <input type="email" id="input_login_id" autofocus autocomplete="email" placeholder />
-            <i class="icon_cancle"></i>
-          </label>
-          <label class="login_input_container">
-            <span>비밀번호</span>
-            <input type="password" id="input_login_pwd" autocomplete="new-password" placeholder />
-            <i class="icon_cancle"></i>
-          </label>
-          <label id="loginSc"><input type="checkbox" name="loginSc" id="ckeck1" />로그인 상태 유지</label>
-          <button type="button" id="button_login" class="login_button" onclick="loginFunc()" disabled>로그인</button>
-        </form>
-      </div>
-      <div id="FPS">
-        <a href="">아이디 찾기</a>
-        <a href="">비밀번호 찾기</a>
-        <a href="">회원가입</a>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="stylesheet" href="../public/CSS/login.css" />
+  <link rel="stylesheet" href="../public/CSS/headerFooter.css">
+  <script defer src="../public/JS/login.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div id="titleImg">
+      <div id="imgSample"></div>
     </div>
-    <footer>
-      <div class="companyInfo">
-        <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
-      </div>
-    </footer>
-  </body>
+    <div class="content">
+      <form action="#" id="login_form">
+        <label class="login_input_container">
+          <span>이메일</span>
+          <input type="email" id="input_login_id" autofocus autocomplete="email" placeholder />
+          <i class="icon_cancle"></i>
+        </label>
+        <label class="login_input_container">
+          <span>비밀번호</span>
+          <input type="password" id="input_login_pwd" autocomplete="new-password" placeholder />
+          <i class="icon_cancle"></i>
+        </label>
+        <label id="loginSc"><input type="checkbox" name="loginSc" id="ckeck1" />로그인 상태 유지</label>
+        <button type="button" id="button_login" class="login_button" onclick="loginFunc()" disabled>로그인</button>
+      </form>
+    </div>
+    <div id="FPS">
+      <a href="">아이디 찾기</a>
+      <a href="">비밀번호 찾기</a>
+      <a href="">회원가입</a>
+    </div>
+  </div>
+  <footer>
+    <div class="companyInfo">
+      <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
 </html>

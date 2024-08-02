@@ -69,9 +69,11 @@
 
         <h3>조리 도구</h3>
         <div id="cookingTools">
-          <input type="text" placeholder="ex)후라이팬" />
-          <button type="button" onclick="cookingToolsFunc()">입력</button>
-          <ul></ul>
+          <div id="cookingToolInput">
+            <input type="text" id="toolName" placeholder="ex)후라이팬" />
+            <button type="button" onclick="addCookingTool()">입력</button>
+          </div>
+          <ul id="cookingToolList"></ul>
         </div>
 
         <h3>조리 순서(최대 5단계)</h3>

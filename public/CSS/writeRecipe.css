@@ -121,7 +121,7 @@ h3 {
   background-color: #fa6d51;
   color: white;
 }
-
+/*ingredient  */
 #ingredient {
   width: 350px;
   height: 200px;
@@ -153,6 +153,8 @@ h3 {
 #ingredient button:hover {
   background-color: #fa6d51;
 }
+
+/* cooking */
 #cookingTools {
   width: 350px;
   height: 200px;
