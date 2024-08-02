@@ -21,6 +21,10 @@ header {
     margin: 0 auto;
 }
 
+.between {
+    height: 100px;
+}
+
 /* recipe info */
 #recipe_info {
     /* background-color: bisque; */
@@ -266,6 +270,7 @@ header {
     background-color: antiquewhite;
     margin: 5px;
     margin-left: 10px;
+    border-radius: 5px;
 }
 
 .user_detail {
@@ -320,6 +325,66 @@ header {
     border-radius: 5px;
 }
 
+.review_write {
+    display: flex;
+    border-bottom: 1px solid #fca391;
+}
+
+.review_photo_upload {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+    margin: 20px 10px 20px 20px;
+    cursor: pointer;
+}
+
+.material-symbols-rounded.add {
+    font-size: 30px;
+    color: #fca391;
+    margin: 10px;
+}
+
+.review_write_info {
+    width: 300px;
+    margin: 20px 0;
+}
+
+textarea {
+    width: 100%;
+    height: 50px;
+    line-height: 150%;
+    resize: vertical;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+    resize: none;
+}
+
+.review_write_upload button[type='button'] {
+    width: 50px;
+    height: 50px;
+    background-color: #fca391;
+    border: 1px solid #fca391;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    margin: 20px 20px 20px 10px;
+    border-radius: 5px;
+}
+
+.review_write_upload button[type='button']:hover {
+    background-color: #fdd8d1;
+    color: black;
+    border-radius: 5px;
+}
+
+.review_write_upload:active {
+    position: relative;
+    top: 1px;
+}
+
 .review {
     width: 100%;
     display: flex;
@@ -340,6 +405,7 @@ header {
     margin-right: 20px;
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
 }
 
 .review_1 img {
@@ -402,6 +468,10 @@ header {
         width: 1080px;
         /* background-color: aquamarine; */
         margin: 0 auto;
+    }
+
+    .between {
+        height: 150px;
     }
 
     /* recipe info */
@@ -649,6 +719,7 @@ header {
         background-color: antiquewhite;
         margin: 10px;
         margin-left: 20px;
+        border-radius: 5px;
     }
 
     .user_detail {
@@ -705,6 +776,99 @@ header {
         padding: 20px; */
     }
 
+    .review_write {
+        display: flex;
+        border-bottom: 1px solid #fca391;
+    }
+
+    .review_photo_upload {
+        width: 100px;
+        height: 100px;
+        background-color: white;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+        margin: 20px 10px 20px 20px;
+        cursor: pointer;
+    }
+
+    .material-symbols-rounded.add {
+        font-size: 50px;
+        color: #fca391;
+        margin: 25px;
+    }
+
+    .review_write_info {
+        width: 700px;
+        height: 100px;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .review_star {
+        display: flex;
+    }
+
+    .star {
+        position: relative;
+        font-size: 1.25rem;
+        color: #ddd;
+        margin: -5px 0 10px 5px;
+    }
+
+    .star input {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .star span {
+        width: 0;
+        position: absolute;
+        left: 0;
+        color: #fca391;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    textarea {
+        width: 100%;
+        height: 100px;
+        line-height: 150%;
+        resize: vertical;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+        resize: none;
+    }
+
+    .review_write_upload button[type='button'] {
+        width: 100px;
+        height: 100px;
+        background-color: #fca391;
+        border: 1px solid #fca391;
+        display: inline-block;
+        cursor: pointer;
+        color: white;
+        font-size: 1rem;
+        margin-top: 20px;
+        margin-left: 30px;
+        border-radius: 5px;
+    }
+
+    .review_write_upload button[type='button']:hover {
+        background-color: #fdd8d1;
+        color: black;
+        border-radius: 5px;
+    }
+
+    .review_write_upload:active {
+        position: relative;
+        top: 1px;
+    }
+
     .review {
         display: flex;
         flex-direction: column;
@@ -726,6 +890,7 @@ header {
         height: 100px;
         background-color: #6c4c3e;
         margin-right: 20px;
+        border-radius: 5px;
     }
 
     .review_profile {
@@ -782,6 +947,10 @@ header {
         width: 700px;
         /* background-color: aquamarine; */
         margin: 0 auto;
+    }
+
+    .between {
+        height: 150px;
     }
 
     /* recipe info */
@@ -1029,6 +1198,7 @@ header {
         background-color: antiquewhite;
         margin: 10px;
         margin-left: 20px;
+        border-radius: 5px;
     }
 
     .user_detail {
@@ -1083,6 +1253,103 @@ header {
         border-radius: 5px;
     }
 
+    .review_write {
+        display: flex;
+        border-bottom: 1px solid #fca391;
+    }
+
+    .review_photo_upload {
+        width: 80px;
+        height: 80px;
+        background-color: white;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+        margin: 20px 10px 20px 20px;
+        cursor: pointer;
+    }
+
+    .material-symbols-rounded.add {
+        font-size: 50px;
+        color: #fca391;
+        margin: 15px;
+    }
+
+    .review_write_info {
+        width: 700px;
+        height: 80px;
+        margin: 20px 0;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .review_star {
+        display: flex;
+        margin: -5px 0 10px 5px;
+    }
+
+    .review_star p {
+        font-size: 0.875rem;
+    }
+
+    .star {
+        position: relative;
+        font-size: 0.875rem;
+        color: #ddd;
+        margin-left: 5px;
+    }
+
+    .star input {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .star span {
+        width: 0;
+        position: absolute;
+        left: 0;
+        color: #fca391;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+    textarea {
+        width: 100%;
+        height: 80px;
+        line-height: 150%;
+        resize: vertical;
+        border: 1px solid #fca391;
+        border-radius: 5px;
+        resize: none;
+    }
+
+    .review_write_upload button[type='button'] {
+        width: 80px;
+        height: 80px;
+        background-color: #fca391;
+        border: 1px solid #fca391;
+        display: inline-block;
+        cursor: pointer;
+        color: white;
+        font-size: 1rem;
+        margin: 20px;
+        border-radius: 5px;
+    }
+
+    .review_write_upload button[type='button']:hover {
+        background-color: #fdd8d1;
+        color: black;
+        border-radius: 5px;
+    }
+
+    .review_write_upload:active {
+        position: relative;
+        top: 1px;
+    }
+
     .review {
         display: flex;
         flex-direction: column;
@@ -1104,6 +1371,7 @@ header {
         height: 80px;
         background-color: #6c4c3e;
         margin-right: 20px;
+        border-radius: 5px;
     }
 
     .review_profile {
