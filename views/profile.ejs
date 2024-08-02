@@ -28,17 +28,19 @@
         <h3>개인 정보 수정</h3>
         <form class="profileUpdate">
           <div class="profileBox">
-            <input id="readId" type="text" readonly />
-            <input id="" type="password" placeholder="현재 비밀번호" />
-            <input type="password" placeholder="변경할 비밀번호" />
-            <input type="text" placeholder="닉네임" />
+            <input id="read_email" type="text" readonly />
+            <input id="now_pwd" type="password" placeholder="현재 비밀번호" />
+            <input id="update_Pwd" type="password" placeholder="변경할 비밀번호" />
+            <input id="update_NN" type="text" placeholder="닉네임" />
           </div>
           <div class="profile">
-            <div id="profileImg"></div>
+            <div id="profileImg">
+              <img id="viewImg" src="">
+            </div>
             <button id="profileBtn" type="button" onclick="imgUploadFunc()">파일업로드</button>
           </div>
           <div id="introduceText">
-            <textarea placeholder="한 줄 자기소개"></textarea>
+            <textarea id="introduceBox" placeholder="한 줄 자기소개"></textarea>
           </div>
           <div id="btnDiv">
             <button id="deleteUser">탈퇴</button>
