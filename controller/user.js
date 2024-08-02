@@ -2,36 +2,36 @@ const { User, Review, Ingredient } = require('../models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const idCheckFunc = async (req, res) =>{
+const idCheckFunc = async (req, res) => {
   try {
-    const {email} = req.body;
-    const find = await User.findOne({where : {email}})
-    if(find){
-      res.json({result : false, message : "이미 존재하는 ID입니다."})
+    const { email } = req.body;
+    const find = await User.findOne({ where: { email } });
+    if (find) {
+      res.json({ result: false, message: '이미 존재하는 ID입니다.' });
     } else {
-      res.json({result : true, message : "사용가능한 ID입니다."})
+      res.json({ result: true, message: '사용가능한 ID입니다.' });
     }
   } catch (error) {
     console.log(error);
     res.status(500).json({ result: false, message: '서버오류' });
   }
-}
+};
 
 //NN = NickName
-const NNCheckFunc = async (req, res) =>{
+const NNCheckFunc = async (req, res) => {
   try {
-    const {nickName} = req.body;
-    const find = await User.findOne({where : {nickName}})
-    if(find){
-      res.json({result : false, message : "이미 존재하는 닉네임입니다."})
+    const { nickName } = req.body;
+    const find = await User.findOne({ where: { nickName } });
+    if (find) {
+      res.json({ result: false, message: '이미 존재하는 닉네임입니다.' });
     } else {
-      res.json({result : true, message : "사용가능한 닉네임입니다."})
+      res.json({ result: true, message: '사용가능한 닉네임입니다.' });
     }
   } catch (error) {
     console.log(error);
     res.status(500).json({ result: false, message: '서버오류' });
   }
-}
+};
 
 const signupFunc = async (req, res) => {
   try {
@@ -78,6 +78,20 @@ const loginFunc = async (req, res) => {
   }
 };
 
-const infoFunc = async (req, res) => {};
+const infoFunc = async (req, res) => {
+  try {
+    const { email, nickName, profileImg, aboutMe } = req.userInfo;
+    const response = {
+      email,
+      nickName,
+      profileImg,
+      aboutMe,
+    };
+    res.json({ result: true, response});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ result: false, message: '서버오류' });
+  }
+};
 
-module.exports = {idCheckFunc, NNCheckFunc ,signupFunc, loginFunc, infoFunc };
+module.exports = { idCheckFunc, NNCheckFunc, signupFunc, loginFunc, infoFunc };

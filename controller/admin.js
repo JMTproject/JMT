@@ -4,4 +4,8 @@ const adminRp = (req, res) => {
     console.log('sample');
 }
 
-module.exports = {}
+const adminUL = (req, res) => {
+    console.log('sample');
+}
+
+module.exports = {adminRp, adminUL}
