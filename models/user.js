@@ -23,7 +23,7 @@ const user = (seq) => {
         profileImg : {
             type : DataTypes.TEXT,
             allowNull : false,
-            defaultValue : "../images/profileDeafultImg.png",
+            defaultValue : "https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/profileDeafultImg.png",
         },
         aboutMe : {
             type : DataTypes.TEXT,

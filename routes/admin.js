@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router();
-const {} = require('../controller/admin')
+const { adminRp, adminUL } = require('../controller/admin')
 
-
+router.post('/recipelist', adminRp)
+router.post('/userlist', adminUL )
 
 
 
