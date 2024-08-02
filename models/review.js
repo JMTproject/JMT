@@ -19,6 +19,11 @@ const review = (seq) => {
         reviewImg : {
             type : DataTypes.TEXT,
         },
+        isEnabled : {
+            type : DataTypes.BOOLEAN,
+            allowNull : false,
+            defaultValue : true,
+        },
         userId : {
             type : DataTypes.INTEGER,
             references : {

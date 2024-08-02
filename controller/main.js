@@ -3,7 +3,12 @@ const { User, Recipe, Review, Ingredient, CookingTools, CookingStep } = require(
 
 const recipeList = async (req, res) => {
   try {
-    const allRecipe = await Recipe.findAll();
+    const allRecipe = await Recipe.findAll({where: {isEnabled: true},
+            order: [
+        ['createdAt', 'DESC'], // createdAt을 기준으로 내림차순 정렬
+      ],
+      
+    });
 
     // 리뷰수 만드는 함수
     await Promise.all(
@@ -25,5 +30,6 @@ const recipeList = async (req, res) => {
     res.status(500).json({ result: false });
   }
 };
+
 
 module.exports = { recipeList };

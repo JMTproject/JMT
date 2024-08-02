@@ -45,6 +45,9 @@ const orderByViewCountButton = document.querySelector('#orderByViewCount');
                         <span>리뷰 (${recipe.reviewCount}개)</span>
                       </div>
                     </div>
+                    <div id="deleteButtonBox">
+                        <button onclick="deleteFunc()">삭제</button>
+                    </div>
                   </div>
                 </div>
               </a>
@@ -90,6 +93,9 @@ const orderByLatest = async () => {
                       <div id="reviewCount">
                         <span>리뷰 (${recipe.reviewCount}개)</span>
                       </div>
+                    </div>
+                    <div id="deleteButtonBox">
+                        <button onclick="deleteFunc()">삭제</button>
                     </div>
                   </div>
                 </div>
@@ -152,6 +158,9 @@ const orderByStars = async () => {
                         <span>리뷰 (${recipe.reviewCount}개)</span>
                       </div>
                     </div>
+                    <div id="deleteButtonBox">
+                        <button onclick="deleteFunc()">삭제</button>
+                    </div>
                   </div>
                 </div>
               </a>
@@ -200,6 +209,9 @@ const orderByViewCount = async () => {
                         <span>리뷰 (${recipe.reviewCount}개)</span>
                       </div>
                     </div>
+                    <div id="deleteButtonBox">
+                        <button onclick="deleteFunc()">삭제</button>
+                    </div>
                   </div>
                 </div>
               </a>
@@ -207,3 +219,8 @@ const orderByViewCount = async () => {
         `;
   });
 };
+
+
+const deleteFunc = async () => {
+    
+}
