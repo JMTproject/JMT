@@ -61,8 +61,8 @@ const loginFunc = async (req, res) => {
       const pass = await bcrypt.compare(password, find.password);
       if (pass) {
         // console.log("=-===============", find.dataValues);
-        const { email, nickName, profileImg, aboutMe } = find.dataValues;
-        const token = jwt.sign({ email, nickName, profileImg, aboutMe }, process.env.SECRET, { expiresIn: '1h' });
+        const { userId, email, nickName, profileImg, aboutMe } = find.dataValues;
+        const token = jwt.sign({ userId, email, nickName, profileImg, aboutMe }, process.env.SECRET, { expiresIn: '1h' });
         // console.log(token);
         const response = { token };
         res.json({ result: true, response, message: '로그인 성공' });

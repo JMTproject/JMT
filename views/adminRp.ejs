@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../public/CSS/headerFooter.css" />
     <link rel="stylesheet" href="../public/CSS/adminRp.css" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="../public/JS/header.js"></script>
     <script defer src="../public/JS/adminRp.js"></script>
     <title>Document</title>
   </head>
@@ -14,12 +15,20 @@
   <body>
     <header>
       <div class="header">
-        <a class="logo" href="/adminRp">
+        <a class="logo" href="/">
           <img class="logoImg" src="../public/images/logo.png" alt="" />
         </a>
         <div class="iconBox">
-          <a href="/login"><span class="material-icons-round login">login</span></a>
-          <a href="/profile"><span class="material-icons-round account_circle">account_circle</span></a>
+          <div id="logout_div" onclick="logoutFunc()"><span class="material-icons-round logout">logout</span></div>
+          <p class="arrowLogout">로그아웃</p>
+          <a id="login_a" href="/login"><span class="material-icons-round key">key</span></a>
+          <p class="arrowLogin">로그인</p>
+          <div id="profile_div" onclick="myPageToggle()"><span class="material-icons-round account_circle">account_circle</span></div>
+          <p class="arrowProfile">마이페이지</p>
+          <div class="myPageBox" style="display: none;">
+            <a href="/profile">개인정보 수정</a>
+            <a href="/myrecipe">나의 레시피</a>
+          </div>
         </div>
       </div>
       <div class="navBar"></div>
@@ -34,7 +43,8 @@
           <button id="orderByLatest" onclick="orderByLatest()">최신순</button>
           <button id="orderByStars" onclick="orderByStars()">별점순</button>
           <button id="orderByViewCount" onclick="orderByViewCount()">조회수</button>
-          <a href="/writeRecipe"><span class="material-icons-round edit">edit</span></a>
+          <a id="write_a" href="/writeRecipe"><span class="material-icons-round edit">edit</span></a>
+          <p class="arrowWrite">레시피 작성</p>
         </div>
         <div class="recipe">
           <ul id="recipeList">

@@ -2,12 +2,13 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
 exports.auth = (req, res, next) => {
-  const headers = req.headers.authorization;
-  if (!headers) {
-    return res.status(401).json({ result: false });
+  
+  const token = req.headers.authorization;
+  console.log('콘솔확인', token);
+  
+  if (!token) {
+    return res.json({ result: false, message:'토큰 정보 없음'});
   }
-  const [bearer, token] = headers.split(' ');
-  if (bearer === 'Bearer') {
     jwt.verify(token, process.env.SECRET, (err, decode) => {
       if (err) {
         return res.status(403).json({ result: false });
@@ -15,7 +16,5 @@ exports.auth = (req, res, next) => {
       req.userInfo = decode; 
       next();
     });
-  } else {
-    return res.status(401).json({ result: false });
-  }
+  
 };
