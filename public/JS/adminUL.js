@@ -126,11 +126,18 @@ const selectPage = (page) => {
 (async function recipeList() {
   userListTbody.innerHTML = '';
 
+  let token;
+  if(localStorage.getItem('token')) {
+    token = localStorage.getItem('token');
+  } else if(sessionStorage.getItem('token')) {
+    token = sessionStorage.getItem('token');
+  }
+
   const res = await axios({
     method: 'post',
     url: '/api/admin/userlist',
     headers: {
-      Authorization: localStorage.getItem('token'),
+      Authorization: token,
     },
   });
 
