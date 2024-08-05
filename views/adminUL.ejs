@@ -6,6 +6,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
     <link rel="stylesheet" href="../public/CSS/headerFooter.css" />
     <link rel="stylesheet" href="../public/CSS/adminUL.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="../public/JS/header.js"></script>
+    <script defer src="../public/JS/adminUL.js"></script>
     <title>Document</title>
   </head>
 
@@ -16,8 +19,16 @@
           <img class="logoImg" src="../public/images/logo.png" alt="" />
         </a>
         <div class="iconBox">
-          <a href="/login"><span class="material-icons-round login">login</span></a>
-          <a href="/profile"><span class="material-icons-round account_circle">account_circle</span></a>
+          <div id="logout_div" onclick="logoutFunc()"><span class="material-icons-round logout">logout</span></div>
+          <p class="arrowLogout">로그아웃</p>
+          <a id="login_a" href="/login"><span class="material-icons-round key">key</span></a>
+          <p class="arrowLogin">로그인</p>
+          <div id="profile_div" onclick="myPageToggle()"><span class="material-icons-round account_circle">account_circle</span></div>
+          <p class="arrowProfile">마이페이지</p>
+          <div class="myPageBox" style="display: none;">
+            <a href="/profile">개인정보 수정</a>
+            <a href="/myrecipe">나의 레시피</a>
+          </div>
         </div>
       </div>
       <div class="navBar"></div>
@@ -39,36 +50,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td id="userId">1</td>
-              <td id="nickName">ㅎㅎㅎ</td>
-              <td id="email">asdf@asdf.com</td>
-              <td id="isEnabled">Y</td>
-              <td id="delete">
-                <button onclick="deleteFunc()">삭제</button>
-              </td>
-            </tr>
-            <tr>
-              <td id="userId">1</td>
-              <td id="nickName">ㅎㅎㅎ</td>
-              <td id="email">asdf@asdf.com</td>
-              <td id="isEnabled">Y</td>
-              <td id="delete">
-                <button onclick="deleteFunc()">삭제</button>
-              </td>
-            </tr>
-            <tr>
-              <td id="userId">1</td>
-              <td id="nickName">ㅎㅎㅎ</td>
-              <td id="email">asdf@asdf.com</td>
-              <td id="isEnabled">Y</td>
-              <td id="delete">
-                <button onclick="deleteFunc()">삭제</button>
-              </td>
-            </tr>
+            
           </tbody>
         </table>
       </div>
+      <div id="paginationBox">
+
+      </div>
+
+    </div>
     </main>
     <footer>
       <div class="companyInfo">

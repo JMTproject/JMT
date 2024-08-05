@@ -31,9 +31,11 @@ const loginFunc = async (req, res) => {
         return res.json({ result: false, code: 201, message: '탈퇴한 계정입니다.' });
       }
       if (pass) {
-        const { email } = find.dataValues;
 
-        const token = jwt.sign({ email }, process.env.SECRET, { expiresIn: '10h' });
+        const {  userId, email } = find.dataValues;
+
+        const token = jwt.sign({ userId, email }, process.env.SECRET, { expiresIn: '10h' });
+
         const response = { token };
         res.json({ result: true, check, email, response, message: '토큰 로그인 성공' });
       } else {

@@ -5,9 +5,12 @@ const router = express.Router();
 
 const { recipeList } = require('../controller/main');
 const { uploadFunc } = require('../controller/writeRecipe');
+const { myRecipeList } = require('../controller/myRecipe');
+const { auth } = require('../middleware');
 
 router.post('/recipelist', recipeList); //hyun
 router.post('/writerecipe', uploadFunc);
+router.post('/myrecipe', auth, myRecipeList); //hyun
 
 // router.get('/recipe/:id', async (req, res) => {
 //     try {
