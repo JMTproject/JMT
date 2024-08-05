@@ -39,6 +39,7 @@
               <input type="number" id="servings" />
               <span id="serving">인분</span>
             </div>
+            <!--cookingTime  -->
             <select id="cookingTime">
               <% for(let i=1; i < 31; i++){ %>
                 <option value="<%= i %>">
@@ -50,13 +51,13 @@
           </div>
           <div class="uploadImg">
             <div id="imgBox">
-              <img id="uploadedImg" src="" alt="MainImg">
+              <img id="uploadedImg" src="">
             </div>
             <input type="file" id="fileInput" style="display:none;" onchange="fileUploadFunc()">
             <button type="button" onclick="document.getElementById('fileInput').click()">파일업로드</button>
           </div>
         </div>
-
+        <!-- ingredient -->
         <h3>재료</h3>
         <div id="ingredient">
           <div id="ingredientInput">
@@ -66,7 +67,7 @@
           </div>
           <ul id="ingredientList"></ul>
         </div>
-
+        <!-- cookingTools  -->
         <h3>조리 도구</h3>
         <div id="cookingTools">
           <div id="cookingToolInput">
@@ -75,52 +76,63 @@
           </div>
           <ul id="cookingToolList"></ul>
         </div>
-
+        <!-- cookingStep -->
         <h3>조리 순서(최대 5단계)</h3>
-        <div id="cookingStep" class="">
+        <div id="cookingStep">
           <div id="StepItem1">
-            <p id="StepNum1">1.</p>
-            <textarea id="cookingStep1" placeholder="조리 과정을 적어주세요!"></textarea>
-            <button type="button" id="upload" onclick="fileUpload()">+</button>
+            <p id="pnone">1.</p>
+            <textarea placeholder="조리 과정을 적어주세요!"></textarea>
+            <div class="upload-box" onclick="triggerFileUpload(1)">
+              <input type="file" id="fileInput1" style="display:none;" accept="image/*"
+                onchange="displayImage(event, 1)">
+              <img id="imgPreview1" style="display:none;" />
+              <button type="button" id="upload1" class="upload-btn">+</button>
+            </div>
           </div>
           <div id="StepItem1">
-            <p id="StepNum1">2.</p>
-            <textarea id="cookingStep1" placeholder="조리 과정을 적어주세요!"></textarea>
-            <button type="button" id="upload" onclick="fileUpload()">+</button>
+            <p>2.</p>
+            <textarea placeholder="조리 과정을 적어주세요!"></textarea>
+            <div class="upload-box" onclick="triggerFileUpload(2)">
+              <input type="file" id="fileInput2" style="display:none;" accept="image/*"
+                onchange="displayImage(event, 2)">
+              <img id="imgPreview2" style="display:none;" />
+              <button type="button" id="upload2" class="upload-btn">+</button>
+            </div>
           </div>
           <div id="StepItem1">
-            <p id="StepNum1">3.</p>
-            <textarea id="cookingStep1" placeholder="조리 과정을 적어주세요!"></textarea>
-            <button type="button" id="upload" onclick="fileUpload()">+</button>
+            <p>3.</p>
+            <textarea placeholder="조리 과정을 적어주세요!"></textarea>
+            <div class="upload-box" onclick="triggerFileUpload(3)">
+              <input type="file" id="fileInput3" style="display:none;" accept="image/*"
+                onchange="displayImage(event, 3)">
+              <img id="imgPreview3" style="display:none;" />
+              <button type="button" id="upload3" class="upload-btn">+</button>
+            </div>
           </div>
           <div id="StepItem1">
-            <p id="StepNum1">4.</p>
-            <textarea id="cookingStep1" placeholder="조리 과정을 적어주세요!"></textarea>
-            <button type="button" id="upload" onclick="fileUpload()">+</button>
+            <p>4.</p>
+            <textarea placeholder="조리 과정을 적어주세요!"></textarea>
+            <div class="upload-box" onclick="triggerFileUpload(4)">
+              <input type="file" id="fileInput4" style="display:none;" accept="image/*"
+                onchange="displayImage(event, 4)">
+              <img id="imgPreview4" style="display:none;" />
+              <button type="button" id="upload4" class="upload-btn">+</button>
+            </div>
           </div>
           <div id="StepItem1">
-            <p id="StepNum1">5.</p>
-            <textarea id="cookingStep1" placeholder="조리 과정을 적어주세요!"></textarea>
-            <button type="button" id="upload" onclick="fileUpload()">+</button>
+            <p>5.</p>
+            <textarea placeholder="조리 과정을 적어주세요!"></textarea>
+            <div class="upload-box" onclick="triggerFileUpload(5)">
+              <input type="file" id="fileInput5" style="display:none;" accept="image/*"
+                onchange="displayImage(event, 5)">
+              <img id="imgPreview5" style="display:none;" />
+              <button type="button" id="upload5" class="upload-btn">+</button>
+            </div>
           </div>
-
-          <!-- <ul> -->
-          <!-- <% for(let i = 1; i <= 5; i++){ %> -->
-          <!-- <li> -->
-          <!-- <div><p><%= i %>.</p></div> -->
-          <!-- <div><textarea placeholder="1"></textarea></div> -->
-          <!-- </li> -->
-          <!-- <% } %> -->
-          <!-- </ul> -->
-          <!-- <textarea id="cookingStep1" placeholder="1."></textarea>
-                                <button type="button" onclick="UploadCookingStep()">+</button><br />
-                        <textarea id="cookingStep1" placeholder="2."></textarea><br />
-                        <textarea id="cookingStep1" placeholder="3."></textarea><br />
-                        <textarea id="cookingStep1" placeholder="4."></textarea><br />
-                        <textarea id="cookingStep1" placeholder="5."></textarea> -->
         </div>
-        <button type="button" id="writeRpBtn" onclick="writeRpUploadFunc()">레시피 등록</button>
-      </form>
+    </div>
+    <button type="button" id="writeRpBtn" onclick="writeRpUploadFunc()">레시피 등록</button>
+    </form>
     </div>
   </main>
   <footer>
