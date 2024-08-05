@@ -185,6 +185,28 @@ main .navBar a {
   border: none;
 }
 
+#paginationBox {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#paginationBox span {
+  cursor: pointer;
+  font-size: 15px;
+  margin: 0 5px;
+  padding: 0 5px 3px;
+  border-radius: 5px;
+}
+
+#paginationBox .material-icons-round {
+  color: #fca391;
+  font-size: 40px;
+  margin: 0px;
+}
+
 /* pc 기준 */
 @media screen and (min-width: 1024px) {
   main .navBar {
@@ -335,5 +357,21 @@ main .navBar a {
 
   #starsReviewCount #reviewCount span {
     font-size: 13px;
+  }
+
+  #paginationBox {
+    margin-bottom: 20px;
+  }
+
+  #paginationBox span {
+    font-size: 20px;
+    margin: 0 8px;
+    padding: 0 7px 3px;
+    border-radius: 7px;
+  }
+
+  #paginationBox .material-icons-round {
+    font-size: 50px;
+    margin: 0px;
   }
 }
