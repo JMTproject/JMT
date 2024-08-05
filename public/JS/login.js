@@ -1,47 +1,94 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // ID 및 비밀번호 입력 필드를 가져옵니다.
-    let loginIdInput = document.getElementById("input_login_id");
-    let loginPwdInput = document.getElementById("input_login_pwd");
+document.addEventListener('DOMContentLoaded', function () {
+  let loginIdInput = document.getElementById('input_login_id');
+  let loginPwdInput = document.getElementById('input_login_pwd');
 
-    // 부모 컨테이너를 가져옵니다.
-    let idContainer = loginIdInput.closest('.login_input_container'); 
-    let pwdContainer = loginPwdInput.closest('.login_input_container');
+  let idContainer = loginIdInput.closest('.login_input_container');
+  let pwdContainer = loginPwdInput.closest('.login_input_container');
 
-    // 입력 필드의 상태를 확인하고 클래스를 추가/제거하는 함수입니다.
-    function checkInputValue(input, container) {
-        if (input.value.trim() !== "") {
-            container.classList.add("isTyping");
-        } else {
-            container.classList.remove("isTyping");
-        }
+  function checkInputValue(input, container) {
+    if (input.value.trim() !== '') {
+      container.classList.add('isTyping');
+    } else {
+      container.classList.remove('isTyping');
     }
-
-    // 이벤트 리스너를 추가하여 입력 필드의 상태가 변경될 때마다 함수를 호출합니다.
-    loginIdInput.addEventListener("input", function() {
-        checkInputValue(loginIdInput, idContainer);
-    });
-
-    loginPwdInput.addEventListener("input", function() {
-        checkInputValue(loginPwdInput, pwdContainer);
-    });
-
-    // 페이지 로드 시 초기 상태를 설정합니다.
+  }
+  loginIdInput.addEventListener('input', function () {
     checkInputValue(loginIdInput, idContainer);
+  });
+
+  loginPwdInput.addEventListener('input', function () {
     checkInputValue(loginPwdInput, pwdContainer);
+  });
+  checkInputValue(loginIdInput, idContainer);
+  checkInputValue(loginPwdInput, pwdContainer);
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  let loginIdInput = document.getElementById('input_login_id');
+  let loginPwInput = document.getElementById('input_login_pwd');
+  let loginButton = document.querySelector('.login_button');
 
-document.addEventListener("DOMContentLoaded", function() {
-    let loginIdInput = document.getElementById("input_login_id");
-    let loginPwInput = document.getElementById("input_login_pwd");
-    let loginButton = document.querySelector(".login_button");
+  function updateLoginButtonState() {
+    loginButton.disabled = loginIdInput.value.trim() === '' || loginPwInput.value.trim() === '';
+  }
 
-    function updateLoginButtonState() {
-        loginButton.disabled = loginIdInput.value.trim() === "" || loginPwInput.value.trim() === "";
-    }
+  loginIdInput.addEventListener('input', updateLoginButtonState);
+  loginPwInput.addEventListener('input', updateLoginButtonState);
 
-    loginIdInput.addEventListener("input", updateLoginButtonState);
-    loginPwInput.addEventListener("input", updateLoginButtonState);
+  updateLoginButtonState();
+});
 
-    updateLoginButtonState();
+function loginFunc() {
+  const data = {
+    email: document.getElementById('input_login_id').value,
+    password: document.getElementById('input_login_pwd').value,
+    check: document.getElementById('ckeck1').checked,
+  };
+
+  axios({
+    method: 'post',
+    url: '/api/user/login',
+    data,
+  })
+    .then((res) => {
+      console.log(res.data.code === 200);
+      if (res.data.result) {
+        if (res.data.check) {
+          alert('로그인 성공! 메인 페이지로 이동합니다');
+          localStorage.setItem('token', res.data.response.token);
+          if (res.data.email === 'admin@admin.com') {
+            document.location.href = '/adminRp';
+          } else {
+            document.location.href = '/';
+          }
+        } else if (!res.data.check) {
+          alert('로그인 성공! 메인 페이지로 이동합니다');
+          sessionStorage.setItem('token', res.data.response.token);
+          if (res.data.email === 'admin@admin.com') {
+            document.location.href = '/adminRp';
+          } else {
+            document.location.href = '/';
+          }
+        }
+      } else if (res.data.code === 202) {
+        alert('비밀번호가 일치하지않습니다.');
+        document.querySelector('#input_login_pwd').value = '';
+      } else if (res.data.code === 200) {
+        alert('존재하지 않는 아이디입니다.');
+        document.querySelector('#input_login_pwd').value = '';
+      } else if (res.data.code === 201) {
+        alert('탈퇴한 계정입니다.');
+        document.querySelector('#input_login_id').value = '';
+        document.querySelector('#input_login_pwd').value = '';
+      }
+    })
+    .catch((error) => {
+      alert(error.response.data.message);
+    });
+}
+
+document.getElementById('login_form').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    loginFunc();
+  }
 });

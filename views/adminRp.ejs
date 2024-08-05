@@ -6,6 +6,9 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
     <link rel="stylesheet" href="../public/CSS/headerFooter.css" />
     <link rel="stylesheet" href="../public/CSS/adminRp.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="../public/JS/header.js"></script>
+    <script defer src="../public/JS/adminRp.js"></script>
     <title>Document</title>
   </head>
 
@@ -16,8 +19,16 @@
           <img class="logoImg" src="../public/images/logo.png" alt="" />
         </a>
         <div class="iconBox">
-          <a href="/login"><span class="material-icons-round login">login</span></a>
-          <a href="/profile"><span class="material-icons-round account_circle">account_circle</span></a>
+          <div id="logout_div" onclick="logoutFunc()"><span class="material-icons-round logout">logout</span></div>
+          <p class="arrowLogout">로그아웃</p>
+          <a id="login_a" href="/login"><span class="material-icons-round key">key</span></a>
+          <p class="arrowLogin">로그인</p>
+          <div id="profile_div" onclick="myPageToggle()"><span class="material-icons-round account_circle">account_circle</span></div>
+          <p class="arrowProfile">마이페이지</p>
+          <div class="myPageBox" style="display: none;">
+            <a href="/profile">개인정보 수정</a>
+            <a href="/myrecipe">나의 레시피</a>
+          </div>
         </div>
       </div>
       <div class="navBar"></div>
@@ -32,42 +43,20 @@
           <button id="orderByLatest" onclick="orderByLatest()">최신순</button>
           <button id="orderByStars" onclick="orderByStars()">별점순</button>
           <button id="orderByViewCount" onclick="orderByViewCount()">조회수</button>
-          <a href="/writeRecipe"><span class="material-icons-round edit">edit</span></a>
+          <a id="write_a" href="/writeRecipe"><span class="material-icons-round edit">edit</span></a>
+          <p class="arrowWrite">레시피 작성</p>
         </div>
         <div class="recipe">
           <ul id="recipeList">
-            <li id="sample">
-              <a href="/recipe">
-                <div id="recipeCard">
-                  <div id="thumbnail">
-                    <img src="/public/images/food-example.jpg" alt="thumbnail" />
-                  </div>
-                  <div id="content">
-                    <div id="title">
-                      <p>제육볶음 간단 레시피</p>
-                    </div>
-                    <div id="starsReviewCount">
-                      <div id="stars">
-                        <span class="material-icons-round star">star</span>
-                        <span class="material-icons-round star">star</span>
-                        <span class="material-icons-round star">star</span>
-                        <span class="material-icons-round star">star</span>
-                        <span class="rating">(4.3)</span>
-                      </div>
-                      <div id="reviewCount">
-                        <span>리뷰 (123개)</span>
-                      </div>
-                    </div>
-                    <div id="updateBox">
-                        <button id="deleteButton" onclick="deleteFunc()">삭제</button>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </li>
+        
           </ul>
         </div>
       </div>
+      <div id="paginationBox">
+
+      </div>
+
+    </div>
     </main>
     <footer>
       <div class="companyInfo">

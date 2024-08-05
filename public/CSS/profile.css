@@ -12,7 +12,7 @@
 
 .content {
   width: 300px;
-  height: 500px;
+  height: 540px;
   margin: 0 auto;
   border: 1.5px solid #fca391;
   border-radius: 15px;
@@ -55,19 +55,41 @@
   border: none;
   position: relative;
   border: 1px solid #fca391;
-  border-bottom: none;
-  border-radius: 5px 5px 0 0;
-  top: 20px;
+  border-radius: 5px;
+  top: 5px;
 }
-.profileUpdate .profileBox input:nth-child(3) {
+
+.profileUpdate .profileBox #pwResultBox {
+  font-size: 12px;
+  position: relative;
+  margin-left: 5px;
+  top: 6px;
+}
+
+.profileUpdate .profileBox #update_Pwd1 {
+  border: none;
+  border: 1px solid #fca391;
+  border-bottom: none;
+  position: relative;
+  top: 10px;
+  border-radius: 5px 5px 0 0;
+}
+.profileUpdate .profileBox #update_Pwd2 {
   position: relative;
   border: 1px solid #fca391;
   border-radius: 0 0 5px 5px;
-  top: 20px;
+  top: 10px;
 }
-.profileUpdate .profileBox input:last-child {
+
+.profileUpdate .profileBox #pwdCheck{
+  font-size: 12px;
   position: relative;
-  top: 40px;
+  margin-left: 5px;
+  top: 12px;
+}
+.profileUpdate .profileBox #update_NN {
+  position: relative;
+  top: 15px;
 }
 
 .profileUpdate .profile {
@@ -75,7 +97,7 @@
   height: 100px;
   /* border: 1px solid #333; */
   position: relative;
-  top: 10px;
+  top: 50px;
 }
 
 .profileUpdate .profile #profileImg {
@@ -85,6 +107,12 @@
   border: 1px solid #fca391;
   border-radius: 5px;
 }
+
+.profileUpdate .profile #profileImg #viewImg {
+  width: 100%;
+  height: 100%;
+}
+
 .profileUpdate .profile #profileBtn {
   width: 100px;
   height: 20px;
@@ -112,7 +140,7 @@
   border: 1px solid #fca391;
   border-radius: 5px;
   position: relative;
-  top: 30px;
+  top: 70px;
 }
 
 .profileUpdate #introduceText textarea {
@@ -129,13 +157,13 @@
   height: 50px;
   /* border: 1px solid #333; */
   position: relative;
-  top: 50px;
+  top: 90px;
 }
-.profileUpdate #btnDiv #deleteUser{
-    font-size: 8px;
+.profileUpdate #btnDiv #deleteUser {
+  font-size: 8px;
 }
 
-.profileUpdate #btnDiv #UpdateUser{
+.profileUpdate #btnDiv #UpdateUser {
   font-size: 20px;
 }
 
@@ -206,7 +234,6 @@
   .profileUpdate {
     width: 400px;
     height: 585px;
-
   }
   .profileUpdate .profileBox input {
     height: 40px;
@@ -231,7 +258,7 @@
     height: 80px;
     top: 100px;
   }
-  
+
   .profileUpdate #introduceText textarea {
     padding: 10px;
   }
@@ -244,13 +271,11 @@
     top: 145px;
   }
 
-  .profileUpdate #btnDiv #deleteUser{
+  .profileUpdate #btnDiv #deleteUser {
     font-size: 14px;
   }
 
-  .profileUpdate #btnDiv #UpdateUser{
+  .profileUpdate #btnDiv #UpdateUser {
     font-size: 22px;
   }
-  
-
 }

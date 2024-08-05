@@ -1,4 +1,4 @@
-body,
+/* body,
 html {
   margin: 0;
   padding: 0;
@@ -11,7 +11,7 @@ header span {
   display: flex;
   flex-direction: column;
   color: #fdd8d1;
-}
+} */
 
 .container {
   width: 360px;

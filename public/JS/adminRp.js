@@ -2,7 +2,6 @@ const recipeUl = document.querySelector('ul');
 const orderByLatestButton = document.querySelector('#orderByLatest');
 const orderByStarsButton = document.querySelector('#orderByStars');
 const orderByViewCountButton = document.querySelector('#orderByViewCount');
-const paginationBox = document.querySelector('#paginationBox');
 
 let allRecipe = [];
 
@@ -17,7 +16,6 @@ let currentButtonPack = 0;
 let startRecipe = 0;
 let endRecipe = recipesPerPage;
 
-// 레시피카드 펼지기
 const makeRecipeCard = () => {
   currentRecipes = allRecipe.slice(startRecipe, endRecipe);
 
@@ -52,10 +50,14 @@ const makeRecipeCard = () => {
                   </div>
                 </div>
               </a>
+              <div id="deleteButtonBox">
+                <button onclick="deleteFunc(${recipe.recipeId})">삭제</button>
+              </div>
             </li>
         `;
   });
 };
+
 
 // 페이지네이션 버튼 생성하고 배열에 넣기
 const makePageButtons = () => {
@@ -80,7 +82,7 @@ const makePageButtons = () => {
     paginationBox.innerHTML += html;
   });
 
-  if (currentButtonPack !== pageButtons.length - 1) {
+if (currentButtonPack !== pageButtons.length - 1) {
     paginationBox.innerHTML += `<span class="material-icons-round arrow_right" onclick="nextPages()">arrow_right</span>`;
   }
 };
@@ -130,28 +132,48 @@ const selectPage = (page) => {
 
   pageButton.style.backgroundColor = '#FCA391'
 
-
   endRecipe = page * recipesPerPage;
   startRecipe = endRecipe - recipesPerPage;
   makeRecipeCard();
 };
 
 
-// 새로고침
 (async function recipeList() {
   orderByLatestButton.style.backgroundColor = '#FCA391';
   orderByStarsButton.style.backgroundColor = '#fff';
   orderByViewCountButton.style.backgroundColor = '#fff';
   recipeUl.innerHTML = '';
 
+  let token;
+  if(localStorage.getItem('token')) {
+    token = localStorage.getItem('token');
+  } else if(sessionStorage.getItem('token')) {
+    token = sessionStorage.getItem('token');
+  }
+
   const res = await axios({
     method: 'post',
-    url: '/api/recipe/recipelist',
+    url: '/api/admin/recipelist',
+    headers: {
+      Authorization: token,
+    },
   });
 
-  allRecipe = res.data.allRecipe;
-  console.log('db에서 가져온 전체 레시피', allRecipe)
+  console.log('콘솔확인###', res.data);
 
+  if (res.data.message === '관리자 권한 없음') {
+    alert('관리자 권한이 필요합니다.');
+    document.location.href = '/';
+    return;
+  }
+
+  if (res.data.message === '토큰 정보 없음') {
+    alert('로그인 하세요');
+    document.location.href = '/login';
+    return;
+  }
+
+  allRecipe = res.data.allRecipe;
 
   startRecipe = 0;
   endRecipe = recipesPerPage;
@@ -171,7 +193,6 @@ const orderByLatest = async () => {
     url: '/api/recipe/recipelist',
   });
   allRecipe = res.data.allRecipe;
-  // console.log('allRecipe', allRecipe);
 
   startRecipe = 0;
   endRecipe = recipesPerPage;
@@ -232,4 +253,22 @@ const orderByViewCount = async () => {
   makeRecipeCard();
   // 페이지네이션
   makePageButtons();
+};
+
+const deleteFunc = async (id) => {
+  if (!confirm('정말로 삭제하시겠습니까?')) {
+    return;
+  }
+  const res = await axios({
+    method: 'patch',
+    url: '/api/admin/deleterecipe',
+    data: { id },
+  });
+  const result = res.data.result;
+  if (result) {
+    alert('레시피가 삭제되었습니다.');
+    document.location.reload();
+  } else {
+    alert('서버 문제로 삭제 실패');
+  }
 };

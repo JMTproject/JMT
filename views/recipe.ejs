@@ -12,18 +12,25 @@
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
             rel="stylesheet" />
         <link href="../public/CSS/recipe.css" rel="stylesheet" type="text/css" />
+        <link href="../public/CSS/headerFooter.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <header>
-            <div class="logo"></div>
-            <a href="/login"><span class="material-symbols-rounded login">login</span></a>
-            <a href="/profile"><span class="material-symbols-rounded account_circle">account_circle</span></a>
-            <a href="/"><span class="material-symbols-rounded redo">redo</span></a>
+            <div class="header">
+                <a class="logo" href="/">
+                    <img class="logoImg" src="../public/images/logo.png" alt="" />
+                </a>
+                <div class="iconBox">
+                    <a href="/login"><span class="material-symbols-rounded login">login</span></a>
+                    <a href="/profile"><span class="material-symbols-rounded account_circle">account_circle</span></a>
+                </div>
+            </div>
             <div class="navBar"></div>
         </header>
         <!-- <h3>레시피 페이지</h3> -->
+
         <div class="container">
-            <br />
+            <div class="between"></div>
             <div id="recipe_info">
                 <div id="thumbnail">
                     <img src="/public" alt="thumbnail" />
@@ -159,6 +166,27 @@
                     <span>★★★★★ (4.2)</span>
                 </div>
                 <div class="review_box">
+                    <div class="review_write">
+                        <div class="review_photo_upload">
+                            <span class="material-symbols-rounded add">add</span>
+                        </div>
+
+                        <div class="review_write_info">
+                            <div class="review_star">
+                                <p>별점:</p>
+                                <span class="star">
+                                    ★★★★★
+                                    <span>★★★★★</span>
+                                    <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10" />
+                                </span>
+                            </div>
+                            <textarea name="" id="" placeholder=" 요리 후기를 남겨주세요!"></textarea>
+                        </div>
+
+                        <div class="review_write_upload">
+                            <button type="button">등록</button>
+                        </div>
+                    </div>
                     <div class="review">
                         <div class="review_1">
                             <img class="review_profile_img" src="/path/to/profile1.png" alt="Profile Image" />
@@ -223,5 +251,42 @@
                 <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
             </div>
         </footer>
+
+        <script>
+            const drawStar = (target) => {
+                document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
+            };
+        </script>
+
+        <!-- <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                axios.get('/api/recipe/1')
+                    .then(response => {
+                        const data = response.data;
+                        document.getElementById('mainImg').src = data.mainImg;
+                        document.getElementById('recipeTitle').innerText = data.title;
+                        document.getElementById('description').innerText = data.description;
+                        document.getElementById('servings').innerText = data.servings;
+                        document.getElementById('cookingTime').innerText = data.cookingTime;
+                        document.getElementById('ingredientsName').innerText = data.ingredientsName;
+                        document.getElementById('quantity').innerText = data.quantity;
+                        document.getElementById('toolName').innerText = data.toolName;
+                        document.getElementById('step').innerText = data.step;
+                        document.getElementById('content').innerText = data.content;
+                        document.getElementById('StepImg').src = data.StepImg;
+                        document.getElementById('profileImg').src = data.profileImg;
+                        document.getElementById('nickName').innerText = data.nickName;
+                        document.getElementById('aboutMe').innerText = data.aboutMe;
+                        document.getElementById('reviewProfileImg').src = data.reviewProfileImg;
+                        document.getElementById('reviewNickName').innerText = data.reviewNickName;
+                        document.getElementById('reviewDate').innerText = data.reviewDate;
+                        document.getElementById('reviewRating').innerText = '★'.repeat(data.reviewRating);
+                        document.getElementById('reviewContent').innerText = data.reviewContent;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching the recipe data:', error);
+                    });
+            });
+        </script> -->
     </body>
 </html>

@@ -23,6 +23,8 @@ main .navBar a {
   margin: 20px 10px 0;
   display: flex;
   flex-direction: row;
+
+  position: relative; /* 말풍선을 위한 포지션 */
 }
 .mainHeader button {
   font-size: 11px;
@@ -42,6 +44,42 @@ main .navBar a {
   color: #ffc8bd;
 }
 
+/* 말풍선 */
+.mainHeader .arrowWrite {
+  display: none ; 
+  position: absolute;
+  width: 100px;
+  padding: 8px;
+  bottom: -50px;
+  right: -35px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  background: #333;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+}
+
+.arrowWrite:after {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -10px;
+  border: solid transparent;
+  border-color: rgba(51, 51, 51, 0);
+  border-bottom-color: #333;
+  border-width: 10px;
+  pointer-events: none;
+  content: ' ';
+}
+
+#write_a:hover + p.arrowWrite {
+  display: block;
+} /* 여기까지 말풍선 */
+
 .recipe {
   padding: 10px 10px;
 }
@@ -53,7 +91,7 @@ main .navBar a {
 .recipe ul li #recipeCard {
   border-radius: 10px;
   padding: 10px 0;
-  margin: 10px 0 10px;
+  margin: 10px 0 2px;
   background-color: #fdd8d1;
   display: flex;
   flex-direction: row;
@@ -132,19 +170,41 @@ main .navBar a {
   font-size: 13px;
 }
 
-#updateBox {
-  margin: 10px 20px 0 0;
+#deleteButtonBox {
+  margin: 5px 10px 15px 0;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 }
-#updateBox button {
+#deleteButtonBox button {
   background-color: #fca391;
   width: 50px;
   height: 25px;
   font-size: 12px;
   border-radius: 12.5px;
   border: none;
+}
+
+#paginationBox {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+#paginationBox span {
+  cursor: pointer;
+  font-size: 15px;
+  margin: 0 5px;
+  padding: 0 5px 3px;
+  border-radius: 5px;
+}
+
+#paginationBox .material-icons-round {
+  color: #fca391;
+  font-size: 40px;
+  margin: 0px;
 }
 
 /* pc 기준 */
@@ -221,7 +281,7 @@ main .navBar a {
     height: 290px;
     border-radius: 10px;
     padding: 10px 0;
-    margin: 10px 0 20px;
+    margin: 10px 0 2px;
     flex-direction: column;
   }
 
@@ -297,5 +357,21 @@ main .navBar a {
 
   #starsReviewCount #reviewCount span {
     font-size: 13px;
+  }
+
+  #paginationBox {
+    margin-bottom: 20px;
+  }
+
+  #paginationBox span {
+    font-size: 20px;
+    margin: 0 8px;
+    padding: 0 7px 3px;
+    border-radius: 7px;
+  }
+
+  #paginationBox .material-icons-round {
+    font-size: 50px;
+    margin: 0px;
   }
 }

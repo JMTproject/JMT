@@ -83,53 +83,62 @@
 
 #signUpRadio {
   width: 100%;
-  height: 100%;
+  height: 40px;
   border: 1px solid #fca391;
   border-radius: 5px;
   color: #fca391;
   margin-bottom: 15%;
   padding: 10px;
-}
-
-#signUpRadio label {
-  width: 85%;
-  padding-left: 5%;
+  position: relative;
 }
 #signUpRadio #signUpRadioInput {
-  width: 10%;  
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 10px;
+  align-items: center;
+}
+
+#signUpRadio label p {
+  width: 85%;
+  height: 100%;
+  padding-left: 5%;
+  position: absolute;
+  font-size: 18px;
+  left: 24px;
+  top: 0;
+  align-items: center;
+  line-height: 2;
 }
 
 .content #signUpBtn {
   width: 100%;
   height: 12%;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #fca391;
   border: none;
   border-radius: 5px;
   font-size: 20px;
 }
 
-
 @media (min-width: 1080px) {
-
   .container {
     width: 600px;
     min-height: 835px;
     margin: 0 auto;
   }
 
-  
   #titleImg {
     height: 200px;
     margin: 0 auto;
     margin-top: 30px;
-    padding: 70px 0 30px 0 ;
+    padding: 70px 0 30px 0;
   }
-  
+
   .content {
     width: 600px;
     height: 500px;
-    padding : 20px;
+    padding: 20px;
   }
 
   #titleBox p {
@@ -139,7 +148,7 @@
   #SignUpForm {
     height: 85%;
   }
-  
+
   #SignUpForm .signUpBox {
     margin-bottom: 10%;
   }
@@ -153,5 +162,4 @@
     height: 15%;
     font-size: 22px;
   }
-  
 }

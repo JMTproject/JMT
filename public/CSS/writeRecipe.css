@@ -1,8 +1,8 @@
 /* * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
 } */
 body,
 html {
@@ -10,18 +10,19 @@ html {
   padding: 0;
   font-family: 'Noto Sans', sans-serif;
   box-sizing: border-box;
-  background-color: #f7f7f7;
-  color: #333;
+  /* background-color: #f7f7f7;
+  color: #333; */
 }
-header span {
+/* header span {
   display: flex;
   flex-direction: column;
   color: #fdd8d1;
-}
+} */
 
 .container {
+  min-height: 600px;
   width: 360px;
-  margin: auto;
+  margin: 120px auto;
 }
 
 h3 {
@@ -120,7 +121,7 @@ h3 {
   background-color: #fa6d51;
   color: white;
 }
-
+/*ingredient  */
 #ingredient {
   width: 350px;
   height: 200px;
@@ -152,6 +153,8 @@ h3 {
 #ingredient button:hover {
   background-color: #fa6d51;
 }
+
+/* cooking */
 #cookingTools {
   width: 350px;
   height: 200px;
@@ -184,12 +187,10 @@ h3 {
 #cookingTools button:hover {
   background-color: #fa6d51;
 }
-#cookingStep {
+/* #cookingStep {
   width: 350px;
   height: 450px;
-  /* text-align: center; */
   margin: 0 auto;
-  /* margin-top: 10px; */
   border: 1px solid #fdd8d1;
   border-radius: 5px;
 }
@@ -201,7 +202,6 @@ h3 {
 }
 #cookingStep #StepItem1 {
   margin: 10px;
-  /* border-top: ; */
 }
 #cookingStep #StepNum1 {
   float: left;
@@ -217,9 +217,9 @@ h3 {
   font-size: 48px;
   background-color: white;
   color: #fdd8d1;
-}
+} */
 
-ul {
+/* ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -229,9 +229,9 @@ li {
   display: flex;
   align-items: flex-start;
   margin-bottom: 10px;
-}
+} */
 
-#cookingStep p {
+/* #cookingStep p {
   font-size: 1rem;
   margin: auto;
 }
@@ -245,9 +245,78 @@ li {
   resize: none;
   box-sizing: border-box;
   margin-bottom: 5px;
+} */
+
+/* cookingStep */
+#cookingStep {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #fdd8d1;
 }
 
-form #writeRpBtn {
+#cookingStep > div {
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+#cookingStep #pnone {
+  border: none;
+}
+
+#cookingStep p {
+  flex: 0 0 30px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #fdd8d1;
+}
+
+#cookingStep textarea {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  resize: none;
+  margin: 0;
+}
+
+.upload-box {
+  position: relative;
+  width: 100px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fdd8d1;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.upload-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fdd8d1;
+}
+
+/* form #writeRpBtn {
   width: 200px;
   height: 30px;
   margin: 10px 10px auto;
@@ -261,6 +330,23 @@ form #writeRpBtn {
 }
 form #writeRpBtn:hover {
   background-color: #fa6d51;
+} */
+
+#writeRpBtn {
+  width: 200px;
+  height: 30px;
+  margin: 10px 10px auto;
+  margin-left: 25%;
+  text-align: center;
+  background-color: #fca391;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+#writeRpBtn:hover {
+  background-color: #fa6d51;
 }
 
 @media screen and (min-width: 1024px) {
@@ -270,8 +356,8 @@ form #writeRpBtn:hover {
     padding: 0;
     font-family: 'Noto Sans', sans-serif;
     box-sizing: border-box;
-    background-color: #f7f7f7;
-    color: #333;
+    /* background-color: #f7f7f7;
+    color: #333; */
   }
   header span {
     display: flex;
@@ -281,7 +367,7 @@ form #writeRpBtn:hover {
 
   .container {
     width: 1080px;
-    margin: 0 auto;
+    margin: 120px auto;
   }
 
   h3 {
@@ -454,71 +540,77 @@ form #writeRpBtn:hover {
   #cookingTools button:hover {
     background-color: #fa6d51;
   }
+
   #cookingStep {
-    width: 1070px;
-    height: 450px;
-    /* text-align: center; */
-    margin: 0 auto;
-    /* margin-top: 10px; */
-    border: 1px solid #fdd8d1;
-    border-radius: 5px;
-  }
-  /* #cookingStep #cookingStep1{
-      width: 210px;
-      height: 70px;
-      border: 1px solid #FA6D51;
-      border: none;
-      
-  } */
-  #cookingStep #StepItem1 {
-    margin: 10px;
-    /* border-top: ; */
-  }
-  #cookingStep #StepNum1 {
-    float: left;
-    color: #fa6d51;
-  }
-  #cookingStep button {
-    width: 13%;
-    height: 70px;
-    border: 1px solid #fdd8d1;
-    border-radius: 5px;
-    float: right;
-    cursor: pointer;
-    font-size: 48px;
-    background-color: white;
-    color: #fdd8d1;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  li {
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 10px;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid #fdd8d1;
+    border-radius: 3px;
+  }
+
+  #cookingStep > div {
+    display: flex;
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  #cookingStep #pnone {
+    border: none;
   }
 
   #cookingStep p {
-    font-size: 1rem;
-    margin: auto;
+    flex: 0 0 30px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border-top: 1px solid #fdd8d1; */
   }
 
-  #cookingStep #cookingStep1 {
-    width: 85%;
+  #cookingStep textarea {
+    flex: 1;
+    border: none;
     padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    font-size: 1rem;
     resize: none;
-    box-sizing: border-box;
-    margin-bottom: 5px;
+    margin: 0;
   }
 
-  form #writeRpBtn {
+  .upload-box {
+    position: relative;
+    width: 100px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #fdd8d1;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .upload-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .upload-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fdd8d1;
+  }
+
+  #writeRpBtn {
     width: 450px;
     height: 45px;
     margin: 10px 10px auto;
@@ -534,8 +626,9 @@ form #writeRpBtn:hover {
     display: flex;
     flex-direction: column;
     line-height: 2;
+    justify-content: center;
   }
-  form #writeRpBtn:hover {
+  #writeRpBtn:hover {
     background-color: #fa6d51;
   }
 }

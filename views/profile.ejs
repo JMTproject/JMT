@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
-    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="../public/CSS/profile.css" />
     <link rel="stylesheet" href="../public/CSS/headerFooter.css" />
     <script defer src="../public/JS/profile.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
   </head>
   <body>
     <header>
@@ -28,23 +28,28 @@
         <h3>개인 정보 수정</h3>
         <form class="profileUpdate">
           <div class="profileBox">
-            <input id="readId" type="text" readonly />
-            <input id="" type="password" placeholder="현재 비밀번호" />
-            <input type="password" placeholder="변경할 비밀번호" />
-            <input type="text" placeholder="닉네임" />
+            <input id="read_email" type="text" readonly />
+            <input id="now_pwd" type="password" placeholder="현재 비밀번호" />
+            <p id="pwResultBox"></p>
+            <input id="update_Pwd1" type="password" placeholder="변경할 비밀번호" />
+            <input id="update_Pwd2" type="password" placeholder="변경할 비밀번호 확인" />
+            <p id="pwdCheck"></p>
+            <input id="update_NN" type="text" placeholder="닉네임" />
           </div>
           <div class="profile">
-            <div id="profileImg"></div>
-            <button id="profileBtn" type="button" onclick="imgUploadFunc()">파일업로드</button>
+            <div id="profileImg">
+              <img id="viewImg" src="" />
+            </div>
+            <input type="file" id="fileInput" style="display:none;" onchange="fileUploadFunc()">
+            <button id="profileBtn" type="button" onclick="document.getElementById('fileInput').click()">파일업로드</button>
           </div>
           <div id="introduceText">
-            <textarea placeholder="한 줄 자기소개"></textarea>
+            <textarea id="introduceBox" placeholder="한 줄 자기소개"></textarea>
           </div>
           <div id="btnDiv">
-            <button id="deleteUser">탈퇴</button>
-            <button id="UpdateUser">수정 완료</button>
+            <button id="UpdateUser" type="button" onclick="updateFunc()">수정 완료</button>
+            <button id="deleteUser" type="button" onclick="deleteFunc()">탈퇴</button>
           </div>
-          
         </form>
       </div>
     </div>
