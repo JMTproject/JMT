@@ -42,20 +42,49 @@ function loginFunc() {
   const data = {
     email: document.getElementById('input_login_id').value,
     password: document.getElementById('input_login_pwd').value,
+    check: document.getElementById('ckeck1').checked,
   };
 
   axios({
     method: 'post',
     url: '/api/user/login',
     data,
-  }).then((res) => {
-    console.log(res);
-    if (res.data.result) {
-      alert('로그인 성공! 메인 페이지로 이동합니다');
-      localStorage.setItem("token", res.data.response.token);
-      document.location.href = '/';
-    }
-  });
+  })
+    .then((res) => {
+      console.log(res.data.code === 200);
+      if (res.data.result) {
+        if (res.data.check) {
+          alert('로그인 성공! 메인 페이지로 이동합니다');
+          localStorage.setItem('token', res.data.response.token);
+          if (res.data.email === 'admin@admin.com') {
+            document.location.href = '/adminRp';
+          } else {
+            document.location.href = '/';
+          }
+        } else if (!res.data.check) {
+          alert('로그인 성공! 메인 페이지로 이동합니다');
+          sessionStorage.setItem('token', res.data.response.token);
+          if (res.data.email === 'admin@admin.com') {
+            document.location.href = '/adminRp';
+          } else {
+            document.location.href = '/';
+          }
+        }
+      } else if (res.data.code === 202) {
+        alert('비밀번호가 일치하지않습니다.');
+        document.querySelector('#input_login_pwd').value = '';
+      } else if (res.data.code === 200) {
+        alert('존재하지 않는 아이디입니다.');
+        document.querySelector('#input_login_pwd').value = '';
+      } else if (res.data.code === 201) {
+        alert('탈퇴한 계정입니다.');
+        document.querySelector('#input_login_id').value = '';
+        document.querySelector('#input_login_pwd').value = '';
+      }
+    })
+    .catch((error) => {
+      alert(error.response.data.message);
+    });
 }
 
 document.getElementById('login_form').addEventListener('keypress', function (e) {
