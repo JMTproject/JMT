@@ -144,11 +144,18 @@ const selectPage = (page) => {
   orderByViewCountButton.style.backgroundColor = '#fff';
   recipeUl.innerHTML = '';
 
+  let token;
+  if(localStorage.getItem('token')) {
+    token = localStorage.getItem('token');
+  } else if(sessionStorage.getItem('token')) {
+    token = sessionStorage.getItem('token');
+  }
+
   const res = await axios({
     method: 'post',
     url: '/api/admin/recipelist',
     headers: {
-      Authorization: localStorage.getItem('token'),
+      Authorization: token,
     },
   });
 

@@ -122,14 +122,14 @@ const prevPages = () => {
 
 // 페이지 번호 클릭시 레시피 펼치기
 const selectPage = (page) => {
-  const pageButton = document.querySelector(`#page${page}`)
-  const allPageButton = document.querySelectorAll('#paginationBox span')
+  const pageButton = document.querySelector(`#page${page}`);
+  const allPageButton = document.querySelectorAll('#paginationBox span');
 
   allPageButton.forEach((button) => {
-    button.style.backgroundColor = '#fff'
-  })
+    button.style.backgroundColor = '#fff';
+  });
 
-  pageButton.style.backgroundColor = '#FCA391'
+  pageButton.style.backgroundColor = '#FCA391';
 
   endRecipe = page * recipesPerPage;
   startRecipe = endRecipe - recipesPerPage;
@@ -143,11 +143,18 @@ const selectPage = (page) => {
   orderByViewCountButton.style.backgroundColor = '#fff';
   recipeUl.innerHTML = '';
 
+  let token;
+  if(localStorage.getItem('token')) {
+    token = localStorage.getItem('token');
+  } else if(sessionStorage.getItem('token')) {
+    token = sessionStorage.getItem('token');
+  }
+
   const res = await axios({
     method: 'post',
     url: '/api/recipe/myrecipe',
     headers: {
-      Authorization: localStorage.getItem('token'),
+      Authorization: token,
     },
   });
 

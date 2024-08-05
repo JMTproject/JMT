@@ -1,22 +1,20 @@
 (async function () {
-  let res;
-  if(localStorage.getItem('token')){
-    res = await axios({
-      method: 'get',
-      url: '/api/user/info',
-      headers: {
-        Authorization: `${localStorage.getItem('token')}`,
-      },
-    });
-  } else if(sessionStorage.getItem('token')){
-    res = await axios({
-      method: 'get',
-      url: '/api/user/info',
-      headers: {
-        Authorization: `${sessionStorage.getItem('token')}`,
-      },
-    });
+
+  if(localStorage.getItem('token')) {
+    token = localStorage.getItem('token');
+  } else if(sessionStorage.getItem('token')) {
+    token = sessionStorage.getItem('token');
   }
+
+  const res = await axios({
+    method: 'get',
+    url: '/api/user/info',
+    headers: {
+      Authorization: token,
+    },
+  });
+
+
   
   console.log(res.data.response);
   const { email, nickName, profileImg, aboutMe } = res.data.response;

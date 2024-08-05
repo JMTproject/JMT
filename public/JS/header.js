@@ -1,9 +1,10 @@
 const loginA = document.querySelector('#login_a');
 const logoutDiv = document.querySelector('#logout_div');
-const token = localStorage.getItem('token');
+const localToken = localStorage.getItem('token');
+const sessionToken = sessionStorage.getItem('token');
 const myPageBox = document.querySelector('.myPageBox');
 
-if (token) {
+if (localToken || sessionToken) {
   loginA.style.display = 'none';
 } else {
   logoutDiv.style.display = 'none';
@@ -13,11 +14,10 @@ const logoutFunc = () => {
   if (!confirm('로그아웃 하시겠습니까?')) {
     return;
   }
-  if (localStorage.getItem('token')) {
+  if (localToken || sessionToken) {
     localStorage.removeItem('token');
-  } else if (sessionStorage.getItem('token')) {
     sessionStorage.removeItem('token');
-  }
+  } 
   document.location.reload();
 };
 
