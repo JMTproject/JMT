@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../public/CSS/profile.css" />
     <link rel="stylesheet" href="../public/CSS/headerFooter.css" />
     <script defer src="../public/JS/profile.js"></script>
+    <script defer src="../public/JS/header.js"></script>  
     <title>Document</title>
   </head>
   <body>
@@ -17,8 +18,16 @@
           <img class="logoImg" src="../public/images/logo.png" alt="" />
         </a>
         <div class="iconBox">
-          <a href="/login"><span class="material-icons-round login">login</span></a>
-          <a href="/profile"><span class="material-icons-round account_circle">account_circle</span></a>
+          <div id="logout_div" onclick="logoutFunc()"><span class="material-icons-round logout">logout</span></div>
+          <p class="arrowLogout">로그아웃</p>
+          <a id="login_a" href="/login"><span class="material-icons-round key">key</span></a>
+          <p class="arrowLogin">로그인</p>
+          <div id="profile_div" onclick="myPageToggle()"><span class="material-icons-round account_circle">account_circle</span></div>
+          <p class="arrowProfile">마이페이지</p>
+          <div class="myPageBox" style="display: none;">
+            <a href="/profile">개인정보 수정</a>
+            <a href="/myrecipe">나의 레시피</a>
+          </div>
         </div>
       </div>
       <div class="navBar"></div>
@@ -29,10 +38,10 @@
         <form class="profileUpdate">
           <div class="profileBox">
             <input id="read_email" type="text" readonly />
-            <input id="now_pwd" type="password" placeholder="현재 비밀번호" />
+            <input id="now_pwd" type="password" placeholder="현재 비밀번호 [필수]" />
             <p id="pwResultBox"></p>
-            <input id="update_Pwd1" type="password" placeholder="변경할 비밀번호" />
-            <input id="update_Pwd2" type="password" placeholder="변경할 비밀번호 확인" />
+            <input id="update_Pwd1" oninput="checkPasswords()" type="password" placeholder="변경할 비밀번호 [선택]" />
+            <input id="update_Pwd2" oninput="checkPasswords()" type="password" placeholder="변경할 비밀번호 확인 [선택]" />
             <p id="pwdCheck"></p>
             <input id="update_NN" type="text" placeholder="닉네임" />
           </div>

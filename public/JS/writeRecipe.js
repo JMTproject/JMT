@@ -193,6 +193,7 @@ function writeRpUploadFunc() {
   }
   formData.append('steps', JSON.stringify(steps));
 
+
   const fileArray = [
     mainImage.files[0],
     stepImg1.files[0],
@@ -203,14 +204,7 @@ function writeRpUploadFunc() {
   ];
 
   formData.append('files', fileArray);
-  // 메인 이미지와 요리 단계의 이미지를 폼 데이터에 추가
-  // fileArray.append('files', mainImage.files[0]);
-  // fileArray.append('files', stepImg1.files[0]);
-  // fileArray.append('files', stepImg2.files[0]);
-  // fileArray.append('files', stepImg3.files[0]);
-  // fileArray.append('files', stepImg4.files[0]);
-  // fileArray.append('files', stepImg5.files[0]);
-
+ 
   console.log('콘솔확인@@@', mainImage.files[0]); // 폼 데이터에 있는 파일들을 콘솔에 출력
   console.log(fileArray);
 

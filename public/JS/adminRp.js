@@ -139,8 +139,8 @@ const selectPage = (page) => {
 
 
 (async function recipeList() {
-  orderByLatestButton.style.backgroundColor = '#FCA391';
-  orderByStarsButton.style.backgroundColor = '#fff';
+  orderByLatestButton.style.backgroundColor = '#fff';
+  orderByStarsButton.style.backgroundColor = '#FCA391';
   orderByViewCountButton.style.backgroundColor = '#fff';
   recipeUl.innerHTML = '';
 
@@ -175,10 +175,24 @@ const selectPage = (page) => {
 
   allRecipe = res.data.allRecipe;
 
+  // 모든 레시피 별점 평균 계산
+  const C = allRecipe.reduce((acc, recipe) => acc + parseFloat(recipe.rating), 0) / allRecipe.length;
+
+  // m: 리뷰수의 중요도를 결정하는 계수 -> 사용자가 많아 전체적인 리뷰수가 높을수록 높게 잡아야함
+  const m = 10;
+
+  // 가중 평균 계산하여 allRecipe에 속성 추가
+  allRecipe.forEach((recipe) => {
+    recipe.wr = (recipe.reviewCount * parseFloat(recipe.rating) + C * m) / (parseInt(recipe.reviewCount) + m);
+  });
+  console.log('콘솔확인@@@', allRecipe);
+
+  // wr값을 기준으로 내림차순으로 정렬
+  allRecipe.sort((a, b) => b.wr - a.wr);
+
   startRecipe = 0;
   endRecipe = recipesPerPage;
   makeRecipeCard();
-
   // 페이지네이션
   makePageButtons();
 })();
@@ -254,6 +268,43 @@ const orderByViewCount = async () => {
   // 페이지네이션
   makePageButtons();
 };
+
+
+// 검색된 레시피 나열
+const enterkeySearch = async () => {
+  const keyword = document.querySelector('#searchInput').value;
+
+  const data = { keyword };
+
+  const res = await axios({
+    method: 'post',
+    url: '/api/recipe/search',
+    data,
+  });
+  console.log('검색된 모든 레시피' ,res.data.allRecipe);
+
+  allRecipe = res.data.allRecipe;
+
+  // 별점순 조건문
+  if(orderByStarsButton.style.backgroundColor === '#FCA391') {
+  const C = allRecipe.reduce((acc, recipe) => acc + parseFloat(recipe.rating), 0) / allRecipe.length;
+  const m = 10;
+  allRecipe.forEach((recipe) => {
+    recipe.wr = (recipe.reviewCount * parseFloat(recipe.rating) + C * m) / (parseInt(recipe.reviewCount) + m);
+  });
+  allRecipe.sort((a, b) => b.wr - a.wr);
+  // 조회수순 조건문
+  } else if(orderByViewCountButton.style.backgroundColor === '#FCA391' ) {
+    allRecipe.sort((a, b) => b.viewCount - a.viewCount);
+  }
+
+  startRecipe = 0;
+  endRecipe = recipesPerPage;
+  makeRecipeCard();
+  // 페이지네이션
+  makePageButtons();
+};
+
 
 const deleteFunc = async (id) => {
   if (!confirm('정말로 삭제하시겠습니까?')) {

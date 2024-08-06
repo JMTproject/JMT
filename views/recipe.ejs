@@ -1,292 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-            rel="stylesheet" />
-        <link href="../public/CSS/recipe.css" rel="stylesheet" type="text/css" />
-        <link href="../public/CSS/headerFooter.css" rel="stylesheet" type="text/css" />
-    </head>
-    <body>
-        <header>
-            <div class="header">
-                <a class="logo" href="/">
-                    <img class="logoImg" src="../public/images/logo.png" alt="" />
-                </a>
-                <div class="iconBox">
-                    <a href="/login"><span class="material-symbols-rounded login">login</span></a>
-                    <a href="/profile"><span class="material-symbols-rounded account_circle">account_circle</span></a>
-                </div>
-            </div>
-            <div class="navBar"></div>
-        </header>
-        <!-- <h3>레시피 페이지</h3> -->
 
-        <div class="container">
-            <div class="between"></div>
-            <div id="recipe_info">
-                <div id="thumbnail">
-                    <img src="/public" alt="thumbnail" />
-                </div>
-                <h3>title</h3>
-                <p>information</p>
-                <div class="recipe_time">
-                    <span class="material-symbols-rounded">person</span>
-                    <p>2 인분</p>
-                    <span id="blank"></span>
-                    <span class="material-symbols-rounded schedule">schedule</span>
-                    <p>10분 이내</p>
-                </div>
-            </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" />
+    <link href="../public/CSS/recipe.css" rel="stylesheet" type="text/css" />
+    <link href="../public/CSS/headerFooter.css" rel="stylesheet" type="text/css" />
+</head>
 
-            <div id="cooking_ingredients">
-                <h3 id="ingredients">재료</h3>
-                <div class="ingredients_box">
-                    <div class="ingredients_list">
-                        <div class="ingredients_1">
-                            <p>감자</p>
-                        </div>
-                        <div class="ingredients_2">
-                            <p>1개</p>
-                        </div>
-                        <div id="ingredients_buy">
-                            <button type="button" onclick="purchase()" id="buy">구매</button>
-                        </div>
-                    </div>
-                    <div class="ingredients_list">
-                        <div class="ingredients_1">
-                            <p>감자</p>
-                        </div>
-                        <div class="ingredients_2">
-                            <p>1개</p>
-                        </div>
-                        <div id="ingredients_buy">
-                            <button type="button" onclick="purchase()" id="buy">구매</button>
-                        </div>
-                    </div>
-                </div>
+<body>
+    <header>
+        <div class="header">
+            <a class="logo" href="/">
+                <img class="logoImg" src="../public/images/logo.png" alt="" />
+            </a>
+            <div class="iconBox">
+                <a href="/login"><span class="material-symbols-rounded login">login</span></a>
+                <a href="/profile"><span class="material-symbols-rounded account_circle">account_circle</span></a>
             </div>
-            <br />
-            <div id="cookwares">
-                <h3 id="cookware">조리도구</h3>
-                <div class="cookware_box">
-                    <div id="cookware_list">
-                        <div class="cookware_1"><p>프라이팬</p></div>
-                        <div class="cookware_1"><p>뒤집개</p></div>
-                        <div class="cookware_1"><p>보울</p></div>
-                    </div>
-                </div>
-            </div>
-            <br />
-            <div id="cooking_process">
-                <h3 id="process">조리 순서</h3>
-                <div class="process_box">
-                    <div id="process_list">
-                        <div class="process_1">
-                            <div class="process_number">1.</div>
-                            <div class="process_step">
-                                <div class="process_description">
-                                    소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
-                                    적당한 크기로 잘라주세요.
-                                </div>
-                                <img src="../JMT Design/1.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="process_1">
-                            <div class="process_number">2.</div>
-                            <div class="process_step">
-                                <div class="process_description">
-                                    소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
-                                    적당한 크기로 잘라주세요.
-                                </div>
-                                <img src="../JMT Design/1.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="process_1">
-                            <div class="process_number">3.</div>
-                            <div class="process_step">
-                                <div class="process_description">
-                                    소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
-                                    적당한 크기로 잘라주세요.
-                                </div>
-                                <img src="../JMT Design/1.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="process_1">
-                            <div class="process_number">4.</div>
-                            <div class="process_step">
-                                <div class="process_description">
-                                    소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
-                                    적당한 크기로 잘라주세요.
-                                </div>
-                                <img src="../JMT Design/1.png" alt="" />
-                            </div>
-                        </div>
-                        <div class="process_1">
-                            <div class="process_number">5.</div>
-                            <div class="process_step">
-                                <div class="process_description">
-                                    소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
-                                    적당한 크기로 잘라주세요.
-                                </div>
-                                <img src="../JMT Design/1.png" alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br />
-            <div id="WriterInfo">
-                <h3>레시피 작성자</h3>
-                <div class="info_box">
-                    <div id="profileImg">
-                        <img src="/public" alt="profileImg" />
-                    </div>
-                    <div class="user_detail">
-                        <p class="user_nickname">닉네임</p>
-                        <p class="user_intro">한 줄 자기소개</p>
-                    </div>
-                </div>
-            </div>
-            <br />
-            <div id="review">
-                <div class="review_header">
-                    <div class="review_header_1">
-                        <h3>리뷰</h3>
-                        <span>(100개)</span>
-                    </div>
-
-                    <span>★★★★★ (4.2)</span>
-                </div>
-                <div class="review_box">
-                    <div class="review_write">
-                        <div class="review_photo_upload">
-                            <span class="material-symbols-rounded add">add</span>
-                        </div>
-
-                        <div class="review_write_info">
-                            <div class="review_star">
-                                <p>별점:</p>
-                                <span class="star">
-                                    ★★★★★
-                                    <span>★★★★★</span>
-                                    <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10" />
-                                </span>
-                            </div>
-                            <textarea name="" id="" placeholder=" 요리 후기를 남겨주세요!"></textarea>
-                        </div>
-
-                        <div class="review_write_upload">
-                            <button type="button">등록</button>
-                        </div>
-                    </div>
-                    <div class="review">
-                        <div class="review_1">
-                            <img class="review_profile_img" src="/path/to/profile1.png" alt="Profile Image" />
-                            <div class="review_profile">
-                                <div class="review_info">
-                                    <p>닉네임</p>
-                                    <span class="review_date">2023-07-17 18:39:24</span>
-                                    <div class="review_rating">★★★★★</div>
-                                </div>
-                                <div class="review_content">
-                                    <p>
-                                        간단하면서 맛있어요~~하면서 맛있어하면서 맛있어하면서 맛있어하면서 맛있어하면서
-                                        맛있어단하면서 맛있
-                                    </p>
-                                </div>
-                            </div>
-                            <img class="review_img" src="/path/to/review_image.png" alt="Review Image" />
-                        </div>
-                    </div>
-                    <div class="review">
-                        <div class="review_1">
-                            <img class="review_profile_img" src="/path/to/profile2.png" alt="Profile Image" />
-                            <div class="review_profile">
-                                <div class="review_info">
-                                    <p>닉네임</p>
-                                    <span class="review_date">2023-07-17 18:39:24</span>
-                                    <div class="review_rating">★★★★★</div>
-                                </div>
-                                <div class="review_content">
-                                    <p>간단하면서 맛있어요~~</p>
-                                </div>
-                            </div>
-                            <img class="review_img" src="/path/to/review_image.png" alt="Review Image" />
-                        </div>
-                    </div>
-                    <div class="review">
-                        <div class="review_1">
-                            <img class="review_profile_img" src="/path/to/profile2.png" alt="Profile Image" />
-                            <div class="review_profile">
-                                <div class="review_info">
-                                    <p>닉네임</p>
-                                    <span class="review_date">2023-07-17 18:39:24</span>
-                                    <div class="review_rating">★★★★★</div>
-                                </div>
-                                <div class="review_content">
-                                    <p>
-                                        간단하면서 맛있어요~~간단하면서 맛있어요~~간단하면서 맛있어요~~간단하면서
-                                        맛있어요~~간단하면서 맛있어요~~간단하면서 맛있어요~~간단하면서
-                                        맛있어요~~간단하면서 맛있어요~~간단하면서 맛있어요~~
-                                    </p>
-                                </div>
-                            </div>
-                            <img class="review_img" src="/path/to/review_image.png" alt="Review Image" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="/"><span class="material-symbols-rounded">redo</span></a>
         </div>
-        <footer>
-            <div class="companyInfo">
-                <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
+        <div class="navBar"></div>
+    </header>
+    <!-- <h3>레시피 페이지</h3> -->
+
+    <div class="container">
+        <div class="between"></div>
+        <div id="recipe_info">
+            <div id="thumbnail">
+                <img id="recipe-mainImg" src="" alt="Thumbnail" />
             </div>
-        </footer>
+            <br>
+            <h3 id="recipeTitle"></h3>
+            <p id="recipe-description"></p>
+            <div class="recipe_time">
+                <span class="material-symbols-rounded">person</span>
+                <span id="recipe-servings"></span>
+                <p>인분</p>
+                <span id="blank"></span>
+                <span class="material-symbols-rounded schedule">schedule</span>
+                <span id="recipe-cookingTime"></span>
+                <p>분 이내</p>
+            </div>
+        </div>
 
-        <script>
-            const drawStar = (target) => {
-                document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
-            };
-        </script>
+        <div id="cooking_ingredients">
+            <h3 id="ingredients">재료</h3>
+            <div class="ingredients_box">
+            </div>
+        </div>
+        <br />
+        <div id="cookwares">
+            <h3 id="cookware">조리도구</h3>
+            <div class="cookware_box">
+                <div id="cookware_list">
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="cooking_process">
+            <h3 id="process">조리 순서</h3>
+            <div class="process_box">
+                <div id="process_list">
+                    <!-- <div class="process_1">
+                        <div class="process_number">1.</div>
+                        <div class="process_step">
+                            <div class="process_description">
+                                소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
+                                적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
+                                적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
+                                적당한 크기로 잘라주세요.
+                            </div>
+                            <img src="../JMT Design/1.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="process_1">
+                        <div class="process_number">2.</div>
+                        <div class="process_step">
+                            <div class="process_description">
+                                소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
+                                적당한 크기로 잘라주세요.
+                            </div>
+                            <img src="../JMT Design/1.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="process_1">
+                        <div class="process_number">3.</div>
+                        <div class="process_step">
+                            <div class="process_description">
+                                소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
+                                적당한 크기로 잘라주세요.
+                            </div>
+                            <img src="../JMT Design/1.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="process_1">
+                        <div class="process_number">4.</div>
+                        <div class="process_step">
+                            <div class="process_description">
+                                소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
+                                적당한 크기로 잘라주세요.
+                            </div>
+                            <img src="../JMT Design/1.png" alt="" />
+                        </div>
+                    </div>
+                    <div class="process_1">
+                        <div class="process_number">5.</div>
+                        <div class="process_step">
+                            <div class="process_description">
+                                소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
+                                적당한 크기로 잘라주세요.
+                            </div>
+                            <img src="../JMT Design/1.png" alt="" />
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="WriterInfo">
+            <h3>레시피 작성자</h3>
+            <div class="info_box">
+                <div id="profileImg">
+                    <img id="writer-profileImg" src="" alt="Profile Image" />
+                </div>
+                <div class="user_detail">
+                    <p id="writer-nickName"></p>
+                    <p id="writer-aboutMe"></p>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div id="review">
+            <div class="review_header">
+                <div class="review_header_1">
+                    <h3>리뷰</h3>
+                    <p>(<span id="review-count"></span>개)</p>
+                </div>
 
-        <!-- <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                axios.get('/api/recipe/1')
-                    .then(response => {
-                        const data = response.data;
-                        document.getElementById('mainImg').src = data.mainImg;
-                        document.getElementById('recipeTitle').innerText = data.title;
-                        document.getElementById('description').innerText = data.description;
-                        document.getElementById('servings').innerText = data.servings;
-                        document.getElementById('cookingTime').innerText = data.cookingTime;
-                        document.getElementById('ingredientsName').innerText = data.ingredientsName;
-                        document.getElementById('quantity').innerText = data.quantity;
-                        document.getElementById('toolName').innerText = data.toolName;
-                        document.getElementById('step').innerText = data.step;
-                        document.getElementById('content').innerText = data.content;
-                        document.getElementById('StepImg').src = data.StepImg;
-                        document.getElementById('profileImg').src = data.profileImg;
-                        document.getElementById('nickName').innerText = data.nickName;
-                        document.getElementById('aboutMe').innerText = data.aboutMe;
-                        document.getElementById('reviewProfileImg').src = data.reviewProfileImg;
-                        document.getElementById('reviewNickName').innerText = data.reviewNickName;
-                        document.getElementById('reviewDate').innerText = data.reviewDate;
-                        document.getElementById('reviewRating').innerText = '★'.repeat(data.reviewRating);
-                        document.getElementById('reviewContent').innerText = data.reviewContent;
-                    })
-                    .catch(error => {
-                        console.error('Error fetching the recipe data:', error);
-                    });
+                <span id="review_rating_av">★★★★★ (4.2)</span>
+            </div>
+            <div class="review_box">
+                <div class="review_write">
+                    <div class="review_photo_upload" onclick="document.getElementById('file_1').click();"
+                        style="cursor: pointer">
+                        <span class="material-symbols-rounded add">add</span>
+                        <input type="file" id="file_1" style="display: none" />
+                    </div>
+
+                    <div class="review_write_info">
+                        <div class="rating-container">
+                            <p>별점:</p>
+                            <div class="stars" id="stars">
+                                <span class="star" data-value="1">★</span>
+                                <span class="star" data-value="2">★</span>
+                                <span class="star" data-value="3">★</span>
+                                <span class="star" data-value="4">★</span>
+                                <span class="star" data-value="5">★</span>
+                            </div>
+                        </div>
+                        <!-- <button id="submit-rating">Submit Rating</button> -->
+                        <textarea class="review_2" id="reviewContent" placeholder=" 요리 후기를 남겨주세요!" required></textarea>
+                    </div>
+
+                    <div class="review_write_upload">
+                        <button type="button" id="submitReview" onclick="updateFunc()">등록</button>
+                    </div>
+                </div>
+
+
+                <div id="reviews"></div>
+            </div>
+        </div>
+        <a href="/"><span class="material-symbols-rounded">redo</span></a>
+    </div>
+    <footer>
+        <div class="companyInfo">
+            <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="../public/JS/rating.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const recipeId = window.location.pathname.split('/recipe/').pop();
+            const res = await axios({
+                method: 'get',
+                url: `/api/recipe/data/${recipeId}`,
+            })
+            console.log(res.data)
+
+
+            // axios.get(`/api/recipe/data/${recipeId}`);
+            // console
+            //     .log('recipeId:', recipeId)
+            //     .then((response) => {
+            //         const data = response.data;
+            //         console.log('@@@@', data);
+
+            document.getElementById('recipe-mainImg').src = res.data.recipe.mainImg;
+            document.getElementById('recipeTitle').innerText = res.data.recipe.recipeTitle;
+            document.getElementById('recipe-description').innerText = res.data.recipe.description;
+            document.getElementById('recipe-servings').innerText = res.data.recipe.servings;
+            document.getElementById('recipe-cookingTime').innerText = res.data.recipe.cookingTime;
+
+            const ingredientsList = document.querySelector('.ingredients_box');
+            res.data.ingredients.forEach((ingredient) => {
+                const ingredientDiv = document.createElement('div');
+                ingredientDiv.classList.add('ingredients_list');
+                ingredientDiv.innerHTML = `
+                <div class="ingredients_1"><p>${ingredient.ingredientName}</p></div>
+                <div class="ingredients_2"><p>${ingredient.quantity}</p></div>
+                <div id="ingredients_buy">
+                            <button type="button" onclick="purchase(${ingredient.ingredientId})" id="buy">구매</button>
+                </div>
+            `;
+                ingredientsList.appendChild(ingredientDiv);
             });
-        </script> -->
-    </body>
+
+            const cookwareList = document.querySelector('#cookware_list');
+            res.data.cookingTools.forEach((cookingTool) => {
+                const toolDiv = document.createElement('div');
+                toolDiv.classList.add('cookware_1');
+                toolDiv.innerHTML = `<div><p>${cookingTool.toolName}</p></div>`;
+                cookwareList.appendChild(toolDiv);
+            });
+
+            const cookingSteps = document.querySelector('#process_list');
+            res.data.cookingSteps.forEach((cookingStep) => {
+                const stepDiv = document.createElement('div');
+                stepDiv.classList.add('process_1');
+                stepDiv.innerHTML = `
+                <div class="process_number">${cookingStep.step}</div>
+                <div class="process_step">
+                    <div class="process_description">${cookingStep.content}</div>
+                    <img src="${cookingStep.stepImg}" alt="Step Image">
+                </div>
+            `;
+                cookingSteps.appendChild(stepDiv);
+            });
+
+            document.getElementById('writer-profileImg').src = res.data.user.profileImg;
+            document.getElementById('writer-nickName').innerText = res.data.user.nickName;
+            document.getElementById('writer-aboutMe').innerText = res.data.user.aboutMe;
+
+            document.getElementById('review-count').innerText = res.data.reviews.length;
+
+            // function updateFunc() {
+            //     const form = document.forms['review-form'];
+            //     const data = {
+            //         id: Number(form.id.value),
+            //         pw: form.pw.value,
+            //         name: form.name.value,
+            //     };
+            //     axios({
+            //         method: 'post',
+            //         url: '/api/review',
+            //         data,
+            //     }).then((res) => {
+            //         alert('리뷰가 등록 되었습니다!');
+            //         document.location.reload();
+            //     });
+            // }
+
+            const reviews = document.querySelector('.review_box');
+            res.data.reviews.forEach((review) => {
+                const reviewDiv = document.createElement('div');
+                reviewDiv.classList.add('review');
+
+                reviewDiv.innerHTML = `
+            <div class="review_1">
+                <img class="review_profile_img" src="${review.user.profileImg}" alt="Profile Image">
+                <div class="review_profile">
+                    <div class="review_info">
+                        <p>${review.user.nickName}</p>
+                        <span class="review_date">${new Date(review.createdAt).toLocaleString('ko-KR')}</span>
+                        <div class="review_rating">${'★'.repeat(review.rating)}</div>
+                    </div>
+                    <div class="review_content">
+                        <p>${review.content}</p>
+                    </div>
+                </div>
+                <img class="review_img" src="${review.reviewImg}" alt="Review Image">
+            </div>
+            `;
+                reviews.appendChild(reviewDiv);
+            });
+        })
+            .catch((error) => {
+                console.error('Error fetching recipe data:', error);
+            });
+
+    </script>
+</body>
+
 </html>

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="../public/CSS/signUp.css" />
-    <link rel="stylesheet" href="../public/CSS/headerFooter.css" />
+    <!-- <link rel="stylesheet" href="../public/CSS/signUp.css" /> -->
+    <!-- <link rel="stylesheet" href="../public/CSS/headerFooter.css" /> -->
     <script defer src="../public/JS/signUp.js"></script>
   </head>
   <body>
@@ -19,14 +19,22 @@
         <form id="SignUpForm">
           <div class="signUpBox">
             <input type="email" id="email" placeholder="이메일" autofocus />
-            <input type="password" id="pwd1" placeholder="비밀번호" />
-            <input type="password" id="pwd2" placeholder="비밀번호 확인" />
+            <button type="button" id="emailFuncBtn" onclick="emailCheckFunc()">인증</button>
+            <p id="emailResult"></p>
+            <input type="number" id="authCode" placeholder="인증번호 입력" hidden />
+            <button type="button" id="authCheckBtn" oninput="authCheckFunc()" hidden>확인</button>
+            <p id="authResult"></p>
+            <input type="password" oninput="PwdCheck()" id="pwd1" placeholder="비밀번호" />
+            <input type="password" oninput="PwdCheck()" id="pwd2" placeholder="비밀번호 확인" />
+            <p id="checkPwd"></p>
             <input type="text" id="nickname" placeholder="닉네임" />
+            <button type="button" onclick="NNcheckFunc()">중복검사</button>
+            <p id="checkNN"></p>
           </div>
           <div>
             <div id="signUpRadio">
               <label
-                ><input id="signUpRadioInput" type="checkbox" value="1" readonly />
+                ><input id="signUpRadioInput" type="checkbox" readonly />
                 <p>약관 전체 동의 [필수]</p>
               </label>
             </div>
