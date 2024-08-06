@@ -90,6 +90,18 @@ h3 {
   text-align: center;
 }
 
+/* #infoRp input[type='file']::file-selector-button {
+  width: 150px;
+  height: 30px;
+  background: #fff;
+  border: 1px solid #fdd8d1;
+  border-radius: 10px;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  font-size: 10px;
+} */
+
 .uploadImg {
   display: flex;
   flex-direction: row;
@@ -183,6 +195,7 @@ h3 {
   background-color: #fca391;
   color: white;
   cursor: pointer;
+  margin: 10px auto;
 }
 #cookingTools button:hover {
   background-color: #fa6d51;
