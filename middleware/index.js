@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 
 
 exports.auth = (req, res, next) => {
+
   
   const token = req.headers.authorization;
   console.log('콘솔확인', token);
@@ -18,6 +19,7 @@ exports.auth = (req, res, next) => {
       next();
     });
   
+
 
 };
 

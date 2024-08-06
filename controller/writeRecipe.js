@@ -30,24 +30,24 @@ const upload = multer({
 const arrayFiles = upload.array('files');
 const uploadFunc = async (req, res) => {
   arrayFiles(req, res, async (err) => {
+    console.log('req.body!#$#$#', req.body.files);
     console.log('req.body!#$#$#', req.body);
-    console.log('req.files@#$#@', req.files);
+    if (err) {
+      return res.status(500).json({ result: false });
+    }
 
     try {
-      const { title, introduceRp, servings, cookingTime, ingredients, tools, steps } = req.body;
+      const { title, introduceRp, servings, cookingTime, ingredients, tools, steps, files } = req.body;
       console.log('title!!!', title);
       const result = await Recipe.create({ recipeTitle: title, description: introduceRp, mainImg: content });
 
       const images = [];
-      req.files.forEach((value) => {
+      req.body.files.forEach((value) => {
         images.push({
           url: value.location,
           postId: post.id,
         });
       });
-      if (err) {
-        return res.status(500).json({ result: false });
-      }
     } catch (error) {
       res.status(500).json({ result: false });
     }
