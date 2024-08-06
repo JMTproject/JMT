@@ -1,9 +1,13 @@
+let token;
 (async function () {
-
-  if(localStorage.getItem('token')) {
+  if (localStorage.getItem('token')) {
     token = localStorage.getItem('token');
-  } else if(sessionStorage.getItem('token')) {
+  } else if (sessionStorage.getItem('token')) {
     token = sessionStorage.getItem('token');
+  } else{
+    alert('로그인이 필요한 페이지입니다.');
+    document.location.href = '/login';
+    return;
   }
 
   const res = await axios({
@@ -14,8 +18,6 @@
     },
   });
 
-
-  
   console.log(res.data.response);
   const { email, nickName, profileImg, aboutMe } = res.data.response;
   document.querySelector('#read_email').value = email;
@@ -28,10 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const emailInput = document.querySelector('#read_email');
   const passwordInput = document.querySelector('#now_pwd');
   const currentPassword = document.querySelector('#pwResultBox');
-  const pwd1 = document.querySelector('#update_Pwd1');
-  const pwd2 = document.querySelector('#update_Pwd2');
-  const pwdCheck = document.querySelector('#pwdCheck');
-
   passwordInput.addEventListener('input', () => {
     axios({
       method: 'post',
@@ -50,20 +48,35 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+});
 
-  function checkPasswords() {
-    if (pwd1.value === pwd2.value) {
-      pwdCheck.textContent = '비밀번호가 일치합니다.';
-      pwdCheck.style.color = 'green';
+function checkPasswords() {
+  const nowPwd = document.querySelector('#now_pwd').value;
+  const pwd1 = document.querySelector('#update_Pwd1').value;
+  const pwd2 = document.querySelector('#update_Pwd2').value;
+  const pwdCheck = document.querySelector('#pwdCheck');
+  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&#.~_-])[A-Za-z\d@$!%*?&#.~_-]{8,20}$/;
+
+  if (passwordRegex.test(pwd1)) {
+    console.log(pwd1);
+
+    if (pwd1 === pwd2) {
+      if (nowPwd === pwd1) {
+        pwdCheck.textContent = '현재 비밀번호와 동일한 비밀번호 입니다.';
+        pwdCheck.style.color = 'red';
+      } else {
+        pwdCheck.textContent = '비밀번호가 일치합니다.';
+        pwdCheck.style.color = 'green';
+      }
     } else {
       pwdCheck.textContent = '비밀번호가 일치하지 않습니다.';
       pwdCheck.style.color = 'red';
     }
+  } else {
+    pwdCheck.textContent = '비밀번호는 최소 8자에서 16자까지, 영문자, 숫자 및 특수 문자를 포함해야 합니다.';
+    pwdCheck.style.color = 'red';
   }
-
-  pwd1.addEventListener('input', checkPasswords);
-  pwd2.addEventListener('input', checkPasswords);
-});
+}
 
 function fileUploadFunc() {
   const fileInput = document.getElementById('fileInput');
@@ -93,6 +106,12 @@ async function updateFunc() {
   const pwd1 = document.querySelector('#update_Pwd1');
   const pwd2 = document.querySelector('#update_Pwd2');
 
+  if (localStorage.getItem('token')) {
+    token = localStorage.getItem('token');
+  } else if (sessionStorage.getItem('token')) {
+    token = sessionStorage.getItem('token');
+  }
+
   const res = axios({
     method: 'post',
     url: '/api/user/login',
@@ -105,7 +124,7 @@ async function updateFunc() {
           url: '/api/user/update',
           data: resData,
           headers: {
-            Authorization: `${localStorage.getItem('token')}`,
+            Authorization: token,
           },
         });
         location.reload();
@@ -121,7 +140,7 @@ async function updateFunc() {
             aboutMe: document.querySelector('#introduceBox').value,
           },
           headers: {
-            Authorization: `${localStorage.getItem('token')}`,
+            Authorization: token,
           },
         });
         location.reload();
@@ -135,6 +154,12 @@ async function updateFunc() {
   });
 }
 
+if (localStorage.getItem('token')) {
+  token = localStorage.getItem('token');
+} else if (sessionStorage.getItem('token')) {
+  token = sessionStorage.getItem('token');
+}
+
 async function deleteFunc() {
   if (!confirm('탈퇴하시겠습니까?')) {
     return;
@@ -146,10 +171,18 @@ async function deleteFunc() {
       isEnabled: false,
     },
     headers: {
-      Authorization: `${localStorage.getItem('token')}`,
+      Authorization: token,
     },
   });
   alert('회원탈퇴가 완료되었습니다');
-  document.location.href = '/';
   localStorage.removeItem('token');
+  sessionStorage.removeItem('token');
+  document.location.href = '/';
 }
+
+
+document.querySelector('.profileUpdate').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    updateFunc();
+  }
+});

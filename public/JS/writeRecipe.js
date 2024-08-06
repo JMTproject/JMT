@@ -156,7 +156,7 @@ function writeRpUploadFunc() {
   formData.append('steps', JSON.stringify(steps));
 
   // const fileInput = document.getElementById('fileInput');
-  // if (fileInput.files.length > 0) {
+  // if (fileInput.files.length > 0) {`
   //   formData.append('mainImage', fileInput.files[0]);
   // }
 
