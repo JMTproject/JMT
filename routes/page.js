@@ -17,7 +17,7 @@ router.get('/', main);
 router.get('/login', login);
 router.get('/signup', signup);
 router.get('/profile', profile);
-router.get('/recipe', recipe);
+router.get('/recipe/:id', recipe);
 router.get('/writeRecipe', writeRecipe);
 router.get('/updateRecipe', updateRecipe);
 router.get('/myRecipe', myRecipe);

@@ -39,6 +39,14 @@ header {
     margin: 0 auto;
     border: 1px solid #fca391;
     border-radius: 5px;
+    display: grid;
+    place-items: center;
+    box-sizing: content-box;
+}
+
+#thumbnail img {
+    width: 340px;
+    height: 200px;
 }
 
 #recipe_info h3 {
@@ -60,6 +68,12 @@ header {
 
 .recipe_time span {
     margin-right: 10px;
+}
+
+.recipe_time #recipe-servings,
+.recipe_time #recipe-cookingTime {
+    font-size: 1rem;
+    line-height: 2rem;
 }
 
 #blank {
@@ -264,10 +278,10 @@ header {
     display: flex;
 }
 
-#profileImg {
+#writer-profileImg {
     width: 90px;
     height: 90px;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
     margin: 5px;
     margin-left: 10px;
     border-radius: 5px;
@@ -277,17 +291,18 @@ header {
     display: flex;
     flex-direction: column;
     margin: 10px;
-    margin-top: 50px;
+    margin-top: 45px;
 }
 
-.user_detail p:first-child {
+.user_detail #writer-nickName {
     color: #fca391;
     font-size: 1rem;
     line-height: 1.5rem;
 }
-.user_detail p:nth-child(2) {
+.user_detail #writer-aboutMe {
     font-size: 0.875rem;
     line-height: 1rem;
+    margin-top: 5px;
 }
 
 /* review */
@@ -312,7 +327,7 @@ header {
     font-size: 1.25rem;
 }
 
-.review_header_1 span {
+.review_header_1 p {
     margin: 15px 0;
     font-size: 0.875em;
     color: rgba(0, 0, 0, 0.7);
@@ -348,12 +363,40 @@ header {
 
 .review_write_info {
     width: 300px;
+    height: 50px;
     margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.rating-container {
+    display: flex;
+    margin: 0 0 10px 5px;
+}
+
+.rating-container p {
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+}
+
+.stars {
+    display: flex;
+    margin-left: 5px;
+}
+
+.star {
+    font-size: 0.75rem;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.star.highlight {
+    color: #fca391;
 }
 
 textarea {
     width: 100%;
-    height: 50px;
+    height: 30px;
     line-height: 150%;
     resize: vertical;
     border: 1px solid #fca391;
@@ -361,16 +404,22 @@ textarea {
     resize: none;
 }
 
+textarea::placeholder {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #949494;
+    font-size: 0.75rem;
+}
+
 .review_write_upload button[type='button'] {
     width: 50px;
-    height: 50px;
+    height: 30px;
     background-color: #fca391;
     border: 1px solid #fca391;
     display: inline-block;
     cursor: pointer;
     color: white;
     font-size: 1rem;
-    margin: 20px 20px 20px 10px;
+    margin: 40px 20px 20px 10px;
     border-radius: 5px;
 }
 
@@ -388,6 +437,7 @@ textarea {
 .review {
     width: 100%;
     display: flex;
+    flex-direction: column;
     border-bottom: 1px solid #fca391;
 }
 
@@ -397,49 +447,50 @@ textarea {
 
 .review_1 {
     display: flex;
+    align-items: center;
+    /* flex-direction: column; */
 }
 
-.review_profile {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-    display: flex;
-    flex-direction: column;
+.review_1 .review_profile_img {
+    width: 50px;
+    height: 50px;
+    /* background-color: #6c4c3e; */
+    margin: 10px;
     border-radius: 5px;
 }
 
-.review_1 img {
-    width: 80px;
-    height: 80px;
-    margin: 20px;
+.review_profile {
+    width: 100%;
 }
 
 .review_info {
     display: flex;
-    margin-top: 40px;
+    flex-direction: column;
+    justify-content: center;
+    /* margin-top: 5px; */
 }
 
 .review_info p {
     font-size: 0.75rem;
     /* line-height: 1rem; */
     color: #fca391;
-    margin: 5px;
+    margin: 5px 5px 5px 0;
 }
 
 .review_info .review_date {
     font-size: 0.625rem;
     color: rgba(0, 0, 0, 0.7);
-    margin: 7px;
 }
 
 .review_content {
+    width: 100%;
     flex: 1;
 }
 
 .review_content p {
-    margin: 10px 0;
-    margin-left: -50px;
-    font-size: 0.875rem;
+    margin: 5px;
+    margin-left: 10px;
+    font-size: 0.75rem;
     line-height: 1rem;
 }
 
@@ -447,6 +498,13 @@ textarea {
     color: #fdd8d1;
     font-size: 0.625rem;
     margin-top: 7px;
+}
+
+.review_1 .review_img {
+    width: 100px;
+    height: 70px;
+    background-color: #a0522d;
+    margin: 10px;
 }
 
 @media (min-width: 1080px) {
@@ -488,6 +546,14 @@ textarea {
         margin: 0 auto;
         border: 1px solid #fca391;
         border-radius: 5px;
+        display: grid;
+        place-items: center;
+        box-sizing: content-box;
+    }
+
+    #thumbnail img {
+        width: 1000px;
+        height: 500px;
     }
 
     #recipe_info h3 {
@@ -505,6 +571,12 @@ textarea {
         padding-bottom: 50px;
         display: flex;
         justify-content: center;
+    }
+
+    .recipe_time #recipe-servings,
+    .recipe_time #recipe-cookingTime {
+        font-size: 1rem;
+        line-height: 2rem;
     }
 
     .recipe_time span {
@@ -685,9 +757,10 @@ textarea {
         font-size: 1rem;
         line-height: 2rem;
         margin: 20px;
+        margin-top: 30px;
     }
 
-    .process_1 img {
+    .process_step img {
         width: 200px;
         height: 100px;
         margin: 25px;
@@ -713,28 +786,34 @@ textarea {
         display: flex;
     }
 
-    #profileImg {
-        width: 130px;
-        height: 130px;
-        background-color: antiquewhite;
+    #writer-profileImg {
+        width: 120px;
+        height: 120px;
+        /* background-color: antiquewhite; */
         margin: 10px;
-        margin-left: 20px;
+        /* margin-left: 20px; */
         border-radius: 5px;
     }
+
+    /* #profileImg img {
+        width: 120px;
+        height: 120px;
+    } */
 
     .user_detail {
         display: flex;
         flex-direction: column;
-        margin: 10px;
-        margin-top: 100px;
+        margin: 50px;
+        margin-top: 80px;
     }
 
-    .user_detail p:first-child {
+    .user_detail #writer-nickName {
         color: #fca391;
         font-size: 1rem;
         line-height: 1.5rem;
     }
-    .user_detail p:nth-child(2) {
+    .user_detail #writer-aboutMe {
+        margin-top: 10px;
         font-size: 0.875rem;
         line-height: 1rem;
     }
@@ -761,9 +840,10 @@ textarea {
         font-size: 1.5rem;
     }
 
-    .review_header_1 span {
+    .review_header_1 p {
         margin: 15px 0;
-        font-size: 0.875em;
+        font-size: 1rem;
+        line-height: 1.25rem;
         color: rgba(0, 0, 0, 0.7);
     }
 
@@ -872,7 +952,7 @@ textarea {
     textarea::placeholder {
         font-family: 'Noto Sans KR', sans-serif;
         color: #949494;
-        font-size: 1em;
+        font-size: 1rem;
     }
 
     .review_write_upload button[type='button'] {
@@ -911,15 +991,16 @@ textarea {
         border-bottom: none;
     }
 
-    /* .review_1 {
+    .review_1 {
         display: flex;
         align-items: center;
-    } */
+        flex-direction: row;
+    }
 
     .review_1 .review_profile_img {
         width: 100px;
         height: 100px;
-        background-color: #6c4c3e;
+        /* background-color: #6c4c3e; */
         margin-right: 20px;
         border-radius: 5px;
     }
@@ -933,6 +1014,13 @@ textarea {
         align-items: center;
         gap: 10px;
         margin-left: -370px;
+    }
+
+    .review_info {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        /* margin-top: 5px; */
     }
 
     .review_info p {
@@ -949,7 +1037,7 @@ textarea {
 
     .review_profile .review_content {
         width: 600px;
-        margin-left: -50px;
+        margin-left: 10px;
         box-sizing: content-box;
     }
 
@@ -998,6 +1086,14 @@ textarea {
         margin: 0 auto;
         border: 1px solid #fca391;
         border-radius: 5px;
+        display: grid;
+        place-items: center;
+        box-sizing: content-box;
+    }
+
+    #thumbnail img {
+        width: 700px;
+        height: 400px;
     }
 
     #recipe_info h3 {
@@ -1015,6 +1111,12 @@ textarea {
         padding-bottom: 50px;
         display: flex;
         justify-content: center;
+    }
+
+    .recipe_time #recipe-servings,
+    .recipe_time #recipe-cookingTime {
+        font-size: 1rem;
+        line-height: 2rem;
     }
 
     .recipe_time span {
@@ -1197,7 +1299,7 @@ textarea {
         margin: 20px;
     }
 
-    .process_1 img {
+    .process_step img {
         width: 200px;
         height: 100px;
         margin: 25px;
@@ -1223,28 +1325,29 @@ textarea {
         display: flex;
     }
 
-    #profileImg {
-        width: 130px;
-        height: 130px;
-        background-color: antiquewhite;
+    #writer-profileImg {
+        width: 120px;
+        height: 120px;
+        /* background-color: antiquewhite; */
         margin: 10px;
-        margin-left: 20px;
+        margin-left: 10px;
         border-radius: 5px;
     }
 
     .user_detail {
         display: flex;
         flex-direction: column;
-        margin: 10px;
-        margin-top: 100px;
+        margin: 50px;
+        margin-top: 75px;
     }
 
-    .user_detail p:first-child {
+    .user_detail #writer-nickName {
         color: #fca391;
         font-size: 1rem;
         line-height: 1.5rem;
     }
-    .user_detail p:nth-child(2) {
+    .user_detail #writer-aboutMe {
+        margin-top: 10px;
         font-size: 0.875rem;
         line-height: 1rem;
     }
@@ -1255,11 +1358,11 @@ textarea {
         margin: 0 auto;
     }
 
-    .review_header {
+    /* .review_header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
+    } */
 
     .review_header_1 {
         display: flex;
@@ -1271,9 +1374,9 @@ textarea {
         font-size: 1.25rem;
     }
 
-    .review_header_1 span {
+    .review_header_1 p {
         margin: 15px 0;
-        font-size: 0.875em;
+        font-size: 1rem;
         color: rgba(0, 0, 0, 0.7);
     }
 
@@ -1313,38 +1416,29 @@ textarea {
         flex-direction: column;
     }
 
-    .review_star {
+    .rating-container {
         display: flex;
-        margin: -5px 0 10px 5px;
+        margin: 0 0 10px 5px;
     }
 
-    .review_star p {
-        font-size: 0.875rem;
+    .rating-container p {
+        font-size: 1rem;
+        line-height: 1rem;
     }
 
-    .star {
-        position: relative;
-        font-size: 0.875rem;
-        color: #ddd;
+    .stars {
+        display: flex;
         margin-left: 5px;
     }
 
-    .star input {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        opacity: 0;
+    .star {
+        font-size: 1rem;
         cursor: pointer;
+        color: #ccc;
     }
 
-    .star span {
-        width: 0;
-        position: absolute;
-        left: 0;
+    .star.highlight {
         color: #fca391;
-        overflow: hidden;
-        pointer-events: none;
     }
 
     textarea {
@@ -1357,9 +1451,15 @@ textarea {
         resize: none;
     }
 
+    textarea::placeholder {
+        font-family: 'Noto Sans KR', sans-serif;
+        color: #949494;
+        font-size: 0.875rem;
+    }
+
     .review_write_upload button[type='button'] {
         width: 80px;
-        height: 80px;
+        height: 55px;
         background-color: #fca391;
         border: 1px solid #fca391;
         display: inline-block;
@@ -1367,6 +1467,8 @@ textarea {
         color: white;
         font-size: 1rem;
         margin: 20px;
+        margin-top: 45px;
+        margin-left: 20px;
         border-radius: 5px;
     }
 
@@ -1392,15 +1494,16 @@ textarea {
         border-bottom: none;
     }
 
-    /* .review_1 {
+    .review_1 {
         display: flex;
         align-items: center;
-    } */
+        flex-direction: row;
+    }
 
     .review_1 .review_profile_img {
         width: 80px;
         height: 80px;
-        background-color: #6c4c3e;
+        /* background-color: #6c4c3e; */
         margin-right: 20px;
         border-radius: 5px;
     }
@@ -1414,6 +1517,12 @@ textarea {
         align-items: center;
         gap: 10px;
         margin-left: -150px;
+    }
+    .review_info {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        /* margin-top: 5px; */
     }
 
     .review_info p {
@@ -1430,7 +1539,7 @@ textarea {
 
     .review_profile .review_content {
         width: 400px;
-        margin-left: -15px;
+        margin-left: 10px;
         box-sizing: content-box;
     }
 

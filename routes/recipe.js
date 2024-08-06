@@ -15,5 +15,4 @@ router.post('/myrecipe', auth, myRecipeList); //hyun
 router.post('/mysearch', auth, myRecipeSearch); //hyun
 router.post('/search', searchRecipe); //hyun
 
-
 module.exports = router;

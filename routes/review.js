@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const reviewController = require('../controllers/review');
+const review = require('../controller/review');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 
 // 모든 리뷰 가져오기
-router.get('/', reviewController.getAllReviews);
+router.get('/', review.getAllReviews);
 
 // 새로운 리뷰 추가
-router.post('/', upload.single('reviewImg'), reviewController.addReview);
+router.post('/', upload.single('reviewImg'), review.addReview);
 
 module.exports = router;
