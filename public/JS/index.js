@@ -2,69 +2,27 @@ const recipeUl = document.querySelector('ul');
 const orderByLatestButton = document.querySelector('#orderByLatest');
 const orderByStarsButton = document.querySelector('#orderByStars');
 const orderByViewCountButton = document.querySelector('#orderByViewCount');
+const paginationBox = document.querySelector('#paginationBox');
 
-(async function recipeList() {
-  orderByLatestButton.style.backgroundColor = '#FCA391';
-  orderByStarsButton.style.backgroundColor = '#fff';
-  orderByViewCountButton.style.backgroundColor = '#fff';
+let allRecipe = [];
+
+let currentRecipes = [];
+
+const recipesPerPage = 12; // 한페이지당 몇개의 레시피를 띄울지 정함
+let currentPage = 1; //현재페이지
+let totalPages = 0; //만들어질 전체 페이지
+let pageButtons = []; //5개묶음으로된 배열(buttonPack)들이 원소인 배열
+let buttonPack = [];
+let currentButtonPack = 0;
+let startRecipe = 0;
+let endRecipe = recipesPerPage;
+
+// 레시피카드 펼지기
+const makeRecipeCard = () => {
+  currentRecipes = allRecipe.slice(startRecipe, endRecipe);
+
   recipeUl.innerHTML = '';
-
-  const res = await axios({
-    method: 'post',
-    url: '/api/recipe/recipelist',
-  });
-
-  const allRecipe = res.data.allRecipe;
-
-  console.log('allRecipe', allRecipe);
-
-  allRecipe.forEach((recipe) => {
-    const ratingStars = parseInt(recipe.rating);
-    let starsHtml = '';
-    for (i = 1; i <= ratingStars; i++) {
-      starsHtml += '<span class="material-icons-round star">star</span>';
-    }
-
-    recipeUl.innerHTML += `
-        <li id="sample">
-              <a href="/recipe/${recipe.recipeId}">
-                <div id="recipeCard">
-                  <div id="thumbnail">
-                    <img src=${recipe.mainImg} />
-                  </div>
-                  <div id="content">
-                    <div id="title">
-                      <p>${recipe.recipeTitle}</p>
-                    </div>
-                    <div id="starsReviewCount">
-                      <div id="stars">
-                        ${starsHtml}
-                        <span class="rating">(${recipe.rating})</span>
-                      </div>
-                      <div id="reviewCount">
-                        <span>리뷰 (${recipe.reviewCount}개)</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </li>
-        `;
-  });
-})();
-
-const orderByLatest = async () => {
-  orderByLatestButton.style.backgroundColor = '#FCA391';
-  orderByStarsButton.style.backgroundColor = '#fff';
-  orderByViewCountButton.style.backgroundColor = '#fff';
-  recipeUl.innerHTML = '';
-  const res = await axios({
-    method: 'post',
-    url: '/api/recipe/recipelist',
-  });
-  const allRecipe = res.data.allRecipe;
-  // console.log('allRecipe', allRecipe);
-  allRecipe.forEach((recipe) => {
+  currentRecipes.forEach((recipe) => {
     const ratingStars = parseInt(recipe.rating);
     let starsHtml = '';
     for (i = 1; i <= ratingStars; i++) {
@@ -99,6 +57,129 @@ const orderByLatest = async () => {
   });
 };
 
+// 페이지네이션 버튼 생성하고 배열에 넣기
+const makePageButtons = () => {
+  totalPages = Math.ceil(allRecipe.length / recipesPerPage);
+
+  for (i = 1; i <= totalPages; i++) {
+    // 버튼 5개씩 buttonPack에 넣기
+    if (buttonPack.length === 5) {
+      pageButtons.push(buttonPack);
+      buttonPack = [];
+    }
+    buttonPack.push(`<span id="page${i}" onclick='selectPage(${i})'>${i}</span>`);
+    if (i === totalPages) {
+      pageButtons.push(buttonPack);
+      buttonPack = [];
+    }
+  }
+  paginationBox.innerHTML = '';
+  currentButtonPack = 0;
+
+  pageButtons[currentButtonPack].forEach((html) => {
+    paginationBox.innerHTML += html;
+  });
+
+  if (currentButtonPack !== pageButtons.length - 1) {
+    paginationBox.innerHTML += `<span class="material-icons-round arrow_right" onclick="nextPages()">arrow_right</span>`;
+  }
+};
+
+// next버튼 클릭시 페이지 번호 전환
+const nextPages = () => {
+  paginationBox.innerHTML = '';
+  currentButtonPack++;
+  if (currentButtonPack !== 0) {
+    paginationBox.innerHTML += `<span class="material-icons-round arrow_left" onclick="prevPages()">arrow_left</span>`;
+  }
+
+  pageButtons[currentButtonPack].forEach((html) => {
+    paginationBox.innerHTML += html;
+  });
+
+  if (currentButtonPack !== pageButtons.length - 1) {
+    paginationBox.innerHTML += `<span class="material-icons-round arrow_right" onclick="nextPages()">arrow_right</span>`;
+  }
+};
+
+// prev버튼 클릭시 페이지 번호 전환
+const prevPages = () => {
+  paginationBox.innerHTML = '';
+  currentButtonPack--;
+  if (currentButtonPack !== 0) {
+    paginationBox.innerHTML += `<span class="material-icons-round arrow_left" onclick="prevPages()">arrow_left</span>`;
+  }
+
+  pageButtons[currentButtonPack].forEach((html) => {
+    paginationBox.innerHTML += html;
+  });
+
+  if (currentButtonPack !== pageButtons.length - 1) {
+    paginationBox.innerHTML += `<span class="material-icons-round arrow_right" onclick="nextPages()">arrow_right</span>`;
+  }
+};
+
+// 페이지 번호 클릭시 레시피 펼치기
+const selectPage = (page) => {
+  const pageButton = document.querySelector(`#page${page}`)
+  const allPageButton = document.querySelectorAll('#paginationBox span')
+
+  allPageButton.forEach((button) => {
+    button.style.backgroundColor = '#fff'
+  })
+
+  pageButton.style.backgroundColor = '#FCA391'
+
+
+  endRecipe = page * recipesPerPage;
+  startRecipe = endRecipe - recipesPerPage;
+  makeRecipeCard();
+};
+
+
+// 새로고침
+(async function recipeList() {
+  orderByLatestButton.style.backgroundColor = '#FCA391';
+  orderByStarsButton.style.backgroundColor = '#fff';
+  orderByViewCountButton.style.backgroundColor = '#fff';
+  recipeUl.innerHTML = '';
+
+  const res = await axios({
+    method: 'post',
+    url: '/api/recipe/recipelist',
+  });
+
+  allRecipe = res.data.allRecipe;
+  console.log('db에서 가져온 전체 레시피', allRecipe)
+
+
+  startRecipe = 0;
+  endRecipe = recipesPerPage;
+  makeRecipeCard();
+
+  // 페이지네이션
+  makePageButtons();
+})();
+
+const orderByLatest = async () => {
+  orderByLatestButton.style.backgroundColor = '#FCA391';
+  orderByStarsButton.style.backgroundColor = '#fff';
+  orderByViewCountButton.style.backgroundColor = '#fff';
+  recipeUl.innerHTML = '';
+  const res = await axios({
+    method: 'post',
+    url: '/api/recipe/recipelist',
+  });
+  allRecipe = res.data.allRecipe;
+  // console.log('allRecipe', allRecipe);
+
+  startRecipe = 0;
+  endRecipe = recipesPerPage;
+  makeRecipeCard();
+  // 페이지네이션
+  makePageButtons();
+};
+
 const orderByStars = async () => {
   orderByLatestButton.style.backgroundColor = '#fff';
   orderByStarsButton.style.backgroundColor = '#FCA391';
@@ -108,7 +189,7 @@ const orderByStars = async () => {
     method: 'post',
     url: '/api/recipe/recipelist',
   });
-  const allRecipe = res.data.allRecipe;
+  allRecipe = res.data.allRecipe;
 
   // 모든 레시피 별점 평균 계산
   const C = allRecipe.reduce((acc, recipe) => acc + parseFloat(recipe.rating), 0) / allRecipe.length;
@@ -125,39 +206,11 @@ const orderByStars = async () => {
   // wr값을 기준으로 내림차순으로 정렬
   allRecipe.sort((a, b) => b.wr - a.wr);
 
-  allRecipe.forEach((recipe) => {
-    const ratingStars = parseInt(recipe.rating);
-    let starsHtml = '';
-    for (i = 1; i <= ratingStars; i++) {
-      starsHtml += '<span class="material-icons-round star">star</span>';
-    }
-
-    recipeUl.innerHTML += `
-        <li id="sample">
-              <a href="/recipe/${recipe.recipeId}">
-                <div id="recipeCard">
-                  <div id="thumbnail">
-                    <img src=${recipe.mainImg} />
-                  </div>
-                  <div id="content">
-                    <div id="title">
-                      <p>${recipe.recipeTitle}</p>
-                    </div>
-                    <div id="starsReviewCount">
-                      <div id="stars">
-                        ${starsHtml}
-                        <span class="rating">(${recipe.rating})</span>
-                      </div>
-                      <div id="reviewCount">
-                        <span>리뷰 (${recipe.reviewCount}개)</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </li>
-        `;
-  });
+  startRecipe = 0;
+  endRecipe = recipesPerPage;
+  makeRecipeCard();
+  // 페이지네이션
+  makePageButtons();
 };
 
 const orderByViewCount = async () => {
@@ -169,41 +222,14 @@ const orderByViewCount = async () => {
     method: 'post',
     url: '/api/recipe/recipelist',
   });
-  const allRecipe = res.data.allRecipe;
+  allRecipe = res.data.allRecipe;
 
   // viewCount값을 기준으로 내림차순으로 정렬
   allRecipe.sort((a, b) => b.viewCount - a.viewCount);
 
-  allRecipe.forEach((recipe) => {
-    const ratingStars = parseInt(recipe.rating);
-    let starsHtml = '';
-    for (i = 1; i <= ratingStars; i++) {
-      starsHtml += '<span class="material-icons-round star">star</span>';
-    }
-    recipeUl.innerHTML += `
-        <li id="sample">
-              <a href="/recipe/${recipe.recipeId}">
-                <div id="recipeCard">
-                  <div id="thumbnail">
-                    <img src=${recipe.mainImg} />
-                  </div>
-                  <div id="content">
-                    <div id="title">
-                      <p>${recipe.recipeTitle}</p>
-                    </div>
-                    <div id="starsReviewCount">
-                      <div id="stars">
-                        ${starsHtml}
-                        <span class="rating">(${recipe.rating})</span>
-                      </div>
-                      <div id="reviewCount">
-                        <span>리뷰 (${recipe.reviewCount}개)</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </li>
-        `;
-  });
+  startRecipe = 0;
+  endRecipe = recipesPerPage;
+  makeRecipeCard();
+  // 페이지네이션
+  makePageButtons();
 };
