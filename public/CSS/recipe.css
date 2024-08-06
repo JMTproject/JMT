@@ -178,7 +178,7 @@ header {
 }
 
 .cookware_1 {
-    width: calc(50% - 10px);
+    width: calc(75% - 10px);
     height: 25px;
     /* background-color: rgba(252, 216, 209, 0.7); */
     border: 1px solid #fca391;
@@ -805,7 +805,7 @@ textarea {
         flex-direction: column;
     }
 
-    .review_star {
+    /* .review_star {
         display: flex;
     }
 
@@ -832,6 +832,31 @@ textarea {
         color: #fca391;
         overflow: hidden;
         pointer-events: none;
+    } */
+
+    .rating-container {
+        display: flex;
+        margin: 0 0 10px 5px;
+    }
+
+    .rating-container p {
+        font-size: 1rem;
+        line-height: 1.25rem;
+    }
+
+    .stars {
+        display: flex;
+        margin-left: 5px;
+    }
+
+    .star {
+        font-size: 1.25rem;
+        cursor: pointer;
+        color: #ccc;
+    }
+
+    .star.highlight {
+        color: #fca391;
     }
 
     textarea {
@@ -844,16 +869,22 @@ textarea {
         resize: none;
     }
 
+    textarea::placeholder {
+        font-family: 'Noto Sans KR', sans-serif;
+        color: #949494;
+        font-size: 1em;
+    }
+
     .review_write_upload button[type='button'] {
         width: 100px;
-        height: 100px;
+        height: 70px;
         background-color: #fca391;
         border: 1px solid #fca391;
         display: inline-block;
         cursor: pointer;
         color: white;
         font-size: 1rem;
-        margin-top: 20px;
+        margin-top: 50px;
         margin-left: 30px;
         border-radius: 5px;
     }

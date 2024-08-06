@@ -34,22 +34,33 @@
             <div class="between"></div>
             <div id="recipe_info">
                 <div id="thumbnail">
-                    <img id="recipe-mainImg" src="" alt="Thumbnail" />
+                    <img src="/public" alt="thumbnail" />
                 </div>
                 <h3 id="recipeTitle">title</h3>
-                <p id="recipe-description"></p>
+                <p>information</p>
                 <div class="recipe_time">
                     <span class="material-symbols-rounded">person</span>
-                    <span id="recipe-servings">인분</span>
+                    <p>2 인분</p>
                     <span id="blank"></span>
                     <span class="material-symbols-rounded schedule">schedule</span>
-                    <span id="recipe-cookingTime">분 이내</span>
+                    <p>10분 이내</p>
                 </div>
             </div>
 
             <div id="cooking_ingredients">
                 <h3 id="ingredients">재료</h3>
                 <div class="ingredients_box">
+                    <div class="ingredients_list">
+                        <div class="ingredients_1">
+                            <p>감자</p>
+                        </div>
+                        <div class="ingredients_2">
+                            <p>1개</p>
+                        </div>
+                        <div id="ingredients_buy">
+                            <button type="button" onclick="purchase()" id="buy">구매</button>
+                        </div>
+                    </div>
                     <div class="ingredients_list">
                         <div class="ingredients_1">
                             <p>감자</p>
@@ -137,11 +148,11 @@
                 <h3>레시피 작성자</h3>
                 <div class="info_box">
                     <div id="profileImg">
-                        <img id="writer-profileImg" src="" alt="Profile Image" />
+                        <img src="/public" alt="profileImg" />
                     </div>
                     <div class="user_detail">
-                        <p id="writer-nickName"></p>
-                        <p id="writer-aboutMe"></p>
+                        <p class="user_nickname">닉네임</p>
+                        <p class="user_intro">한 줄 자기소개</p>
                     </div>
                 </div>
             </div>
@@ -150,7 +161,7 @@
                 <div class="review_header">
                     <div class="review_header_1">
                         <h3>리뷰</h3>
-                        <span id="review-count"></span>개
+                        <span>(100개)</span>
                     </div>
 
                     <span>★★★★★ (4.2)</span>
@@ -257,84 +268,37 @@
         <script src="../public/JS/rating.js"></script>
 
         <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const recipeId = window.location.pathname.split('/').pop();
+            // const drawStar = (target) => {
+            //     document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
+            // };
 
+            document.addEventListener('DOMContentLoaded', () => {
                 axios
-                    .get(`/api/recipe/data/${recipeId}`)
+                    .get('/api/recipe/id')
                     .then((response) => {
                         const data = response.data;
-
-                        document.getElementById('recipe-mainImg').src = data.recipe.mainImg;
-                        document.getElementById('recipe-recipeTitle').innerText = data.recipe.recipeTitle;
-                        document.getElementById('recipe-description').innerText = data.recipe.description;
-                        document.getElementById('recipe-servings').innerText = data.recipe.servings;
-                        document.getElementById('recipe-cookingTime').innerText = data.recipe.cookingTime;
-                        document.getElementById('recipe-viewCount').innerText = data.recipe.viewCount;
-
-                        const ingredientsList = document.getElementById('ingredients_list');
-                        data.ingredients.forEach((ingredient) => {
-                            const ingredientDiv = document.createElement('div');
-                            ingredientDiv.classList.add('ingredients_list');
-                            ingredientDiv.innerHTML = `
-              <div class="ingredients_1"><p>${ingredient.ingredientName}</p></div>
-              <div class="ingredients_2"><p>${ingredient.quantity}</p></div>
-            `;
-                            ingredientsList.appendChild(ingredientDiv);
-                        });
-
-                        const cookwareList = document.getElementById('cookware_list');
-                        data.cookingTools.forEach((tool) => {
-                            const toolDiv = document.createElement('div');
-                            toolDiv.innerHTML = `<div class="cookware_1"><p>${tool.toolName}</p></div>`;
-                            cookwareList.appendChild(toolDiv);
-                        });
-
-                        const cookingSteps = document.getElementById('cooking_steps');
-                        data.cookingSteps.forEach((cookingStep) => {
-                            const stepDiv = document.createElement('div');
-                            stepDiv.classList.add('process_1');
-                            stepDiv.innerHTML = `
-              <div class="process_number">${cookingStep.step}</div>
-              <div class="process_step">
-                <div class="process_description">${cookingStep.content}</div>
-                <img src="${cookingStep.stepImg}" alt="Step Image">
-              </div>
-            `;
-                            cookingSteps.appendChild(stepDiv);
-                        });
-
-                        document.getElementById('writer-profileImg').src = data.user.profileImg;
-                        document.getElementById('writer-nickName').innerText = data.user.nickName;
-                        document.getElementById('writer-aboutMe').innerText = data.user.aboutMe;
-
-                        document.getElementById('review-count').innerText = data.reviews.length;
-
-                        const reviews = document.getElementById('reviews');
-                        data.reviews.forEach((review) => {
-                            const reviewDiv = document.createElement('div');
-                            reviewDiv.classList.add('review');
-                            reviewDiv.innerHTML = `
-              <div class="review_1">
-                <img class="review_profile_img" src="${user.profileImg}" alt="Profile Image">
-                <div class="review_profile">
-                  <div class="review_info">
-                    <p>${user.nickName}</p>
-                    <span class="review_date">${new Date(review.reviewDate).toLocaleString()}</span>
-                    <div class="review_rating">${'★'.repeat(review.rating)}</div>
-                  </div>
-                  <div class="review_content">
-                    <p>${review.content}</p>
-                  </div>
-                </div>
-                <img class="review_img" src="${review.reviewImg}" alt="Review Image">
-              </div>
-            `;
-                            reviews.appendChild(reviewDiv);
-                        });
+                        document.getElementById('mainImg').src = data.mainImg;
+                        document.getElementById('recipeTitle').innerText = data.title;
+                        document.getElementById('description').innerText = data.description;
+                        document.getElementById('servings').innerText = data.servings;
+                        document.getElementById('cookingTime').innerText = data.cookingTime;
+                        document.getElementById('ingredientsName').innerText = data.ingredientsName;
+                        document.getElementById('quantity').innerText = data.quantity;
+                        document.getElementById('toolName').innerText = data.toolName;
+                        document.getElementById('step').innerText = data.step;
+                        document.getElementById('content').innerText = data.content;
+                        document.getElementById('StepImg').src = data.StepImg;
+                        document.getElementById('profileImg').src = data.profileImg;
+                        document.getElementById('nickName').innerText = data.nickName;
+                        document.getElementById('aboutMe').innerText = data.aboutMe;
+                        document.getElementById('reviewProfileImg').src = data.reviewProfileImg;
+                        document.getElementById('reviewNickName').innerText = data.reviewNickName;
+                        document.getElementById('reviewDate').innerText = data.reviewDate;
+                        document.getElementById('reviewRating').innerText = '★'.repeat(data.reviewRating);
+                        document.getElementById('reviewContent').innerText = data.reviewContent;
                     })
                     .catch((error) => {
-                        console.error('Error fetching recipe data:', error);
+                        console.error('Error fetching the recipe data:', error);
                     });
             });
         </script>
