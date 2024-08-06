@@ -7,10 +7,33 @@
 .mainHeader {
   margin: 80px 10px 0;
   display: flex;
+  flex-direction: column;
+}
+
+.mainHeader #searchBox {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.mainHeader #searchBox #searchInput {
+  width: 270px;
+  height: 27px;
+  margin-left: 10px;
+  border: 2px solid #ffc8bd;
+  border-radius: 7px;
+  padding-left: 8px;
+}
+
+.mainHeader .orderByBox {
+  display: flex;
   flex-direction: row;
 
   position: relative; /* 말풍선을 위한 포지션 */
 }
+
 .mainHeader button {
   font-size: 11px;
   width: 60px;
@@ -29,8 +52,12 @@
   color: #ffc8bd;
 }
 
+#searchBox {
+}
+
 /* 말풍선 */
 .mainHeader .arrowWrite {
+  z-index: 10;
   display: none;
   position: absolute;
   width: 100px;
@@ -187,6 +214,19 @@
   .mainHeader {
     margin: 120px 10px 0;
   }
+
+  .mainHeader #searchBox {
+  
+  }
+
+  .mainHeader #searchBox #searchInput {
+
+  }
+
+  .mainHeader .orderByBox {
+
+  }
+
   .mainHeader button {
     font-size: 14px;
     width: 100px;

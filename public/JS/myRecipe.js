@@ -138,18 +138,16 @@ const selectPage = (page) => {
 
 // 새로고침
 (async function recipeList() {
-  orderByLatestButton.style.backgroundColor = '#FCA391';
-  orderByStarsButton.style.backgroundColor = '#fff';
+  orderByLatestButton.style.backgroundColor = '#fff';
+  orderByStarsButton.style.backgroundColor = '#FCA391';
   orderByViewCountButton.style.backgroundColor = '#fff';
   recipeUl.innerHTML = '';
-
   let token;
-  if(localStorage.getItem('token')) {
+  if (localStorage.getItem('token')) {
     token = localStorage.getItem('token');
-  } else if(sessionStorage.getItem('token')) {
+  } else if (sessionStorage.getItem('token')) {
     token = sessionStorage.getItem('token');
   }
-
   const res = await axios({
     method: 'post',
     url: '/api/recipe/myrecipe',
@@ -157,25 +155,29 @@ const selectPage = (page) => {
       Authorization: token,
     },
   });
-
-  console.log('콘솔확인###', res.data);
-
-  if (res.data.message === '토큰 정보 없음') {
-    alert('로그인이 필요합니다.');
-    document.location.href = '/login';
-    return;
-  }
-
   myRecipe = res.data.myRecipe;
+  console.log('마이레시피', myRecipe);
+
+  // 모든 레시피 별점 평균 계산
+  const C = myRecipe.reduce((acc, recipe) => acc + parseFloat(recipe.rating), 0) / myRecipe.length;
+
+  // m: 리뷰수의 중요도를 결정하는 계수 -> 사용자가 많아 전체적인 리뷰수가 높을수록 높게 잡아야함
+  const m = 10;
+
+  // 가중 평균 계산하여 myRecipe에 속성 추가
+  myRecipe.forEach((recipe) => {
+    recipe.wr = (recipe.reviewCount * parseFloat(recipe.rating) + C * m) / (parseInt(recipe.reviewCount) + m);
+  });
+  // console.log('콘솔확인@@@', myRecipe);
+
+  // wr값을 기준으로 내림차순으로 정렬
+  myRecipe.sort((a, b) => b.wr - a.wr);
 
   startRecipe = 0;
   endRecipe = recipesPerPage;
   makeRecipeCard();
-
   // 페이지네이션
   makePageButtons();
-
-  console.log('myRecipe', myRecipe);
 })();
 
 const orderByLatest = async () => {
@@ -183,11 +185,17 @@ const orderByLatest = async () => {
   orderByStarsButton.style.backgroundColor = '#fff';
   orderByViewCountButton.style.backgroundColor = '#fff';
   recipeUl.innerHTML = '';
+  let token;
+  if (localStorage.getItem('token')) {
+    token = localStorage.getItem('token');
+  } else if (sessionStorage.getItem('token')) {
+    token = sessionStorage.getItem('token');
+  }
   const res = await axios({
     method: 'post',
     url: '/api/recipe/myrecipe',
     headers: {
-      Authorization: localStorage.getItem('token'),
+      Authorization: token,
     },
   });
   myRecipe = res.data.myRecipe;
@@ -204,11 +212,17 @@ const orderByStars = async () => {
   orderByStarsButton.style.backgroundColor = '#FCA391';
   orderByViewCountButton.style.backgroundColor = '#fff';
   recipeUl.innerHTML = '';
+  let token;
+  if (localStorage.getItem('token')) {
+    token = localStorage.getItem('token');
+  } else if (sessionStorage.getItem('token')) {
+    token = sessionStorage.getItem('token');
+  }
   const res = await axios({
     method: 'post',
     url: '/api/recipe/myrecipe',
     headers: {
-      Authorization: localStorage.getItem('token'),
+      Authorization: token,
     },
   });
   myRecipe = res.data.myRecipe;
@@ -240,17 +254,68 @@ const orderByViewCount = async () => {
   orderByStarsButton.style.backgroundColor = '#fff';
   orderByViewCountButton.style.backgroundColor = '#FCA391';
   recipeUl.innerHTML = '';
+  let token;
+  if (localStorage.getItem('token')) {
+    token = localStorage.getItem('token');
+  } else if (sessionStorage.getItem('token')) {
+    token = sessionStorage.getItem('token');
+  }
   const res = await axios({
     method: 'post',
     url: '/api/recipe/myrecipe',
     headers: {
-      Authorization: localStorage.getItem('token'),
+      Authorization: token,
     },
   });
   myRecipe = res.data.myRecipe;
 
   // viewCount값을 기준으로 내림차순으로 정렬
   myRecipe.sort((a, b) => b.viewCount - a.viewCount);
+
+  startRecipe = 0;
+  endRecipe = recipesPerPage;
+  makeRecipeCard();
+  // 페이지네이션
+  makePageButtons();
+};
+
+// 검색된 레시피 나열
+const enterkeySearch = async () => {
+  const keyword = document.querySelector('#searchInput').value;
+
+  const data = { keyword };
+
+  let token;
+  if (localStorage.getItem('token')) {
+    token = localStorage.getItem('token');
+  } else if (sessionStorage.getItem('token')) {
+    token = sessionStorage.getItem('token');
+  }
+
+  const res = await axios({
+    method: 'post',
+    url: '/api/recipe/mysearch',
+    data,
+    headers: {
+      Authorization: token,
+    },
+  });
+  console.log('검색된 모든 레시피' ,res.data.myRecipe);
+
+  myRecipe = res.data.myRecipe;
+
+  // 별점순 조건문
+  if(orderByStarsButton.style.backgroundColor === '#FCA391') {
+  const C = myRecipe.reduce((acc, recipe) => acc + parseFloat(recipe.rating), 0) / myRecipe.length;
+  const m = 10;
+  myRecipe.forEach((recipe) => {
+    recipe.wr = (recipe.reviewCount * parseFloat(recipe.rating) + C * m) / (parseInt(recipe.reviewCount) + m);
+  });
+  myRecipe.sort((a, b) => b.wr - a.wr);
+  // 조회수순 조건문
+  } else if(orderByViewCountButton.style.backgroundColor === '#FCA391' ) {
+    myRecipe.sort((a, b) => b.viewCount - a.viewCount);
+  }
 
   startRecipe = 0;
   endRecipe = recipesPerPage;
