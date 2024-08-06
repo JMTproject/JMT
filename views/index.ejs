@@ -23,9 +23,11 @@
           <p class="arrowLogout">로그아웃</p>
           <a id="login_a" href="/login"><span class="material-icons-round key">key</span></a>
           <p class="arrowLogin">로그인</p>
-          <div id="profile_div" onclick="myPageToggle()"><span class="material-icons-round account_circle">account_circle</span></div>
+          <div id="profile_div" onclick="myPageToggle()">
+            <span class="material-icons-round account_circle">account_circle</span>
+          </div>
           <p class="arrowProfile">마이페이지</p>
-          <div class="myPageBox" style="display: none;">
+          <div class="myPageBox" style="display: none">
             <a href="/profile">개인정보 수정</a>
             <a href="/myrecipe">나의 레시피</a>
           </div>
@@ -36,22 +38,23 @@
     <main>
       <div class="container">
         <div class="mainHeader">
-          <button id="orderByLatest" onclick="orderByLatest()">최신순</button>
-          <button id="orderByStars" onclick="orderByStars()">별점순</button>
-          <button id="orderByViewCount" onclick="orderByViewCount()">조회수</button>
-          <a id="write_a" href="/writeRecipe"><span class="material-icons-round edit">edit</span></a>
-          <p class="arrowWrite">레시피 작성</p>
+          <div id="searchBox">
+            <label for="searchInput"><span class="material-icons-round search">search</span></label>
+            <input id="searchInput" type="input" placeholder="검색" onkeyup="enterkeySearch()" />
+          </div>
+          <div class="orderByBox">
+            <button id="orderByStars" onclick="orderByStars()">별점순</button>
+            <button id="orderByLatest" onclick="orderByLatest()">최신순</button>
+            <button id="orderByViewCount" onclick="orderByViewCount()">조회수</button>
+            <a id="write_a" href="/writeRecipe"><span class="material-icons-round edit">edit</span></a>
+            <p class="arrowWrite">레시피 작성</p>
+          </div>
         </div>
         <div class="recipe">
-          <ul id="recipeList">
-    
-          </ul>
+          <ul id="recipeList"></ul>
         </div>
 
-        <div id="paginationBox">
-
-        </div>
-
+        <div id="paginationBox"></div>
       </div>
     </main>
     <footer>
