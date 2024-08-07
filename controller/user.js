@@ -9,7 +9,6 @@ const { User } = require('../models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 // const nodemailer = require('nodemailer');
-const senderInfo = require('../config/email.json');
 
 const NNcheckFunc = async (req, res) => {
   try {
