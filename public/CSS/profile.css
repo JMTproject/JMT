@@ -11,7 +11,7 @@
 }
 
 .content {
-  width: 300px;
+  width: 350px;
   height: 540px;
   margin: 0 auto;
   border: 1.5px solid #fca391;
@@ -242,7 +242,7 @@
   .profileUpdate .profile {
     width: 100%;
     height: 150px;
-    top: 70px;
+    top: 100px;
   }
 
   .profileUpdate .profile #profileImg {
@@ -256,7 +256,7 @@
 
   .profileUpdate #introduceText {
     height: 80px;
-    top: 100px;
+    top: 120px;
   }
 
   .profileUpdate #introduceText textarea {
