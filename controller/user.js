@@ -9,7 +9,6 @@ const { User } = require('../models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 // const nodemailer = require('nodemailer');
-const senderInfo = require('../config/email.json');
 
 const NNcheckFunc = async (req, res) => {
   try {
@@ -44,7 +43,7 @@ const sendMail = async (req, res) => {
       },
     });
 
-    const code = String(Math.floor(Math.random() * 1000000)).padStart(6, '0');    
+    const code = String(Math.floor(Math.random() * 1000000)).padStart(6, '0');
     const emailHtml =
       `<p>안녕하세요.</p>
         <p>해당 메일은 ` +
@@ -65,10 +64,10 @@ const sendMail = async (req, res) => {
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log(error);
-        res.json({result : false, info});
+        res.json({ result: false, info });
       } else {
         console.log('Email Sent', info);
-        res.json({result : true, code});       
+        res.json({ result: true, code });
       }
     });
   } catch (error) {
@@ -107,9 +106,7 @@ const loginFunc = async (req, res) => {
       }
       if (pass) {
         const { userId, email } = find.dataValues;
-
         const token = jwt.sign({ userId, email }, process.env.SECRET, { expiresIn: '10h' });
-
         const response = { token };
         res.json({ result: true, check, email, response, message: '토큰 로그인 성공' });
       } else {

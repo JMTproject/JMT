@@ -29,5 +29,8 @@
     "sequelize": "^6.37.3",
     "sequelize-cli": "^6.6.2",
     "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/multer-s3": "^2.7.12"
   }
 }
