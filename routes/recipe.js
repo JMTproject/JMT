@@ -9,7 +9,6 @@ const recipe = require('../controller/recipe');
 router.post('/recipelist', recipeList); //hyun
 router.post('/writerecipe', uploadFunc);
 router.get('/data/:id', recipe.getRecipePage);
-router.post('/recipelist', recipeList); //hyun
 router.post('/writerecipe', uploadFunc);
 router.post('/myrecipe', auth, myRecipeList); //hyun
 router.post('/mysearch', auth, myRecipeSearch); //hyun
