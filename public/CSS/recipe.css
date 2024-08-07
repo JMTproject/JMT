@@ -847,6 +847,10 @@ textarea::placeholder {
         color: rgba(0, 0, 0, 0.7);
     }
 
+    #average_stars {
+        color: #fca391;
+    }
+
     .review_box {
         width: 1000px;
         background-color: white;

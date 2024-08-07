@@ -18,6 +18,8 @@ const recipeRouter = require('./routes/recipe');
 app.use('/api/recipe', recipeRouter);
 const adminRouter = require('./routes/admin');
 app.use('/api/admin', adminRouter);
+const reviewRouter = require('./routes/review');
+app.use('/api', reviewRouter);
 
 db.sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => {

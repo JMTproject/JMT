@@ -4,14 +4,14 @@ async function emailCheckFunc() {
   const emailBtn = document.querySelector('#emailFuncBtn');
   const authBtn = document.querySelector('#authCheckBtn');
   const emailP = document.querySelector('#emailResult');
-  const authP = document.querySelector('#authResult');
+  const authDiv = document.querySelector('#authDiv');
   const data = { email: email.value };
 
   try {
     const res = await axios({
       method: 'post',
       url: '/api/user/mail',
-      data
+      data,
     });
 
     if (res.data.result) {
@@ -22,7 +22,8 @@ async function emailCheckFunc() {
       emailBtn.textContent = '재전송';
       authCode.hidden = false;
       authBtn.hidden = false;
-      
+      authDiv.hidden = false;
+
       authCode.dataset.code = res.data.code;
     } else {
       emailP.textContent = '유효한 이메일을 입력해주세요.';
@@ -35,19 +36,26 @@ async function emailCheckFunc() {
   }
 }
 
-document.querySelector('#authCheckBtn').addEventListener('click', function() {
+document.querySelector('#authCheckBtn').addEventListener('click', function () {
   const authCode = document.querySelector('#authCode');
+  const authBtn = document.querySelector('#authCheckBtn');
+  const emailP = document.querySelector('#emailResult');
   const authP = document.querySelector('#authResult');
+  const authDiv = document.querySelector('#authDiv');
   const inputCode = authCode.value;
   const savedCode = authCode.dataset.code;
 
-  authCheckFunc(savedCode, inputCode, authP);
+  authCheckFunc(savedCode, inputCode, emailP, authP, authCode, authBtn, authDiv);
 });
 
-async function authCheckFunc(authcode, inputcode, authP) {
+async function authCheckFunc(authcode, inputcode, emailP, authP, authCode, authBtn, authDiv) {
   if (String(authcode) === String(inputcode)) {
-    authP.textContent = '인증이 완료되었습니다.';
-    authP.style.color = 'green';
+    emailP.textContent = '인증이 완료되었습니다.';
+    emailP.style.color = 'green';
+    authCode.hidden = true;
+    authBtn.hidden = true;
+    authP.hidden = true;
+    authDiv.hidden = true;
   } else {
     authP.textContent = '인증번호를 확인해주세요';
     authP.style.color = 'red';
@@ -96,28 +104,48 @@ function NNcheckFunc() {
 }
 
 function signUpFunc() {
-  const pwd1 = document.getElementById('pwd1').value;
-  const pwd2 = document.getElementById('pwd2').value;
+  const emailResult = document.querySelector('#emailResult').textContent;
+  const checkPwd = document.querySelector('#checkPwd').textContent;
+  const checkNN = document.querySelector('#checkNN').textContent;
+  const checkBox = document.querySelector('#signUpRadioInput').checked;
 
-  if (pwd1 !== pwd2) {
-    alert('비밀번호가 일치하지 않습니다.');
-    return;
+  let email = 0;
+  let pwd = 0;
+  let name = 0;
+  let box = 0;
+
+  if (emailResult === '인증이 완료되었습니다.') {
+    email = 1;
+  }
+  if (checkPwd === '비밀번호가 일치합니다.') {
+    pwd = 1;
+  }
+  if (checkNN === '사용 가능한 닉네임입니다.') {
+    name = 1;
+  }
+  if (checkBox) {
+    box = 1;
   }
 
-  const data = {
-    email: document.getElementById('email').value,
-    password: pwd1,
-    nickName: document.getElementById('nickname').value,
-  };
+  if (email && pwd && name && box) {
+    const data = {
+      email: document.getElementById('email').value,
+      password: document.querySelector('pwd1').value,
+      nickName: document.getElementById('nickname').value,
+    };
 
-  axios({
-    method: 'post',
-    url: '/api/user/signup',
-    data,
-  }).then((res) => {
-    if (res.data.result) {
-      alert('회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.');
-      document.location.href = '/login';
-    }
-  });
+    axios({
+      method: 'post',
+      url: '/api/user/signup',
+      data,
+    }).then((res) => {
+      if (res.data.result) {
+        alert('회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.');
+        // document.location.href = '/login';
+      }
+    });
+  } else {
+    // alert('조건 실패');
+    
+  }
 }

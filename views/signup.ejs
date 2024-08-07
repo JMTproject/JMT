@@ -5,30 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <!-- <link rel="stylesheet" href="../public/CSS/signUp.css" /> -->
-    <!-- <link rel="stylesheet" href="../public/CSS/headerFooter.css" /> -->
+    <link rel="stylesheet" href="../public/CSS/signUp.css" />
+    <link rel="stylesheet" href="../public/CSS/headerFooter.css" />
     <script defer src="../public/JS/signUp.js"></script>
   </head>
   <body>
     <div class="container">
       <div id="titleImg">
-        <div id="imgSample"></div>
+        <div id="imgSample"><img src="../public/images/logo.png" alt="로고이미지" /></div>
       </div>
       <div class="content">
         <div id="titleBox"><p>회원가입</p></div>
         <form id="SignUpForm">
           <div class="signUpBox">
-            <input type="email" id="email" placeholder="이메일" autofocus />
-            <button type="button" id="emailFuncBtn" onclick="emailCheckFunc()">인증</button>
+            <div id="emailDiv">
+              <input type="email" id="email" placeholder="이메일" autofocus />
+              <button type="button" id="emailFuncBtn" onclick="emailCheckFunc()">인증</button>
+            </div>
             <p id="emailResult"></p>
-            <input type="number" id="authCode" placeholder="인증번호 입력" hidden />
-            <button type="button" id="authCheckBtn" oninput="authCheckFunc()" hidden>확인</button>
+            <div id="authDiv" hidden>
+              <input type="number" id="authCode" placeholder="인증번호 입력" hidden />
+              <button type="button" id="authCheckBtn" oninput="authCheckFunc()" hidden>확인</button>
+            </div>
             <p id="authResult"></p>
-            <input type="password" oninput="PwdCheck()" id="pwd1" placeholder="비밀번호" />
-            <input type="password" oninput="PwdCheck()" id="pwd2" placeholder="비밀번호 확인" />
+            <div id="passDiv">
+              <input type="password" oninput="PwdCheck()" id="pwd1" placeholder="비밀번호" />
+              <input type="password" oninput="PwdCheck()" id="pwd2" placeholder="비밀번호 확인" />
+            </div>
             <p id="checkPwd"></p>
-            <input type="text" id="nickname" placeholder="닉네임" />
-            <button type="button" onclick="NNcheckFunc()">중복검사</button>
+            <div id="NNDiv">
+              <input type="text" id="nickname" placeholder="닉네임" />
+              <button type="button" onclick="NNcheckFunc()">중복검사</button>
+            </div>
             <p id="checkNN"></p>
           </div>
           <div>
@@ -37,6 +45,9 @@
                 ><input id="signUpRadioInput" type="checkbox" readonly />
                 <p>약관 전체 동의 [필수]</p>
               </label>
+              <div id="checkBox" onclick="checkBoxFunc()">
+                <!-- 버튼 -->
+              </div>
             </div>
             <div id="agreement" hidden>
               <p>
@@ -65,7 +76,9 @@
               </p>
             </div>
           </div>
-          <button type="button" onclick="signUpFunc()" id="signUpBtn">회원가입 하기</button>
+          <div id="btnDiv">
+            <button type="button" onclick="signUpFunc()" id="signUpBtn" >회원가입 하기</button>
+          </div>
         </form>
       </div>
     </div>
