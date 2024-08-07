@@ -1,14 +1,9 @@
-// import nodemailer from 'nodemailer';
-// import dotenv from 'dotenv';
-// dotenv.config();
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 dotenv.config();
-// const nodemailer = require('nodemailer');
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-// const nodemailer = require('nodemailer');
 
 const NNcheckFunc = async (req, res) => {
   try {
