@@ -193,7 +193,6 @@ function writeRpUploadFunc() {
   }
   formData.append('steps', JSON.stringify(steps));
 
-
   const fileArray = [
     mainImage.files[0],
     stepImg1.files[0],
@@ -203,11 +202,22 @@ function writeRpUploadFunc() {
     stepImg5.files[0],
   ];
 
-  formData.append('files', fileArray);
- 
-  console.log('콘솔확인@@@', mainImage.files[0]); // 폼 데이터에 있는 파일들을 콘솔에 출력
-  console.log(fileArray);
+  formData.append('files1', mainImage.files[0]);
+  formData.append('files2', stepImg1.files[0]);
+  formData.append('files3', stepImg2.files[0]);
+  formData.append('files4', stepImg3.files[0]);
+  formData.append('files5', stepImg4.files[0]);
+  formData.append('files6', stepImg5.files[0]);
 
+  console.log('콘솔확인@@@', mainImage.files[0]); // 폼 데이터에 있는 파일들을 콘솔에 출력
+  console.log(title);
+
+  let token;
+  if (localStorage.getItem('token')) {
+    token = localStorage.getItem('token');
+  } else if (sessionStorage.getItem('token')) {
+    token = sessionStorage.getItem('token');
+  }
   // Axios를 사용하여 폼 데이터를 서버에 전송
   axios({
     method: 'post',
@@ -215,6 +225,7 @@ function writeRpUploadFunc() {
     data: formData,
     headers: {
       'Content-Type': 'multipart/form-data',
+      Authorization: token,
     },
   })
     .then((res) => {
