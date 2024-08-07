@@ -5,7 +5,6 @@ const { User } = require('../models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-
 const NNcheckFunc = async (req, res) => {
   try {
     const { nickName } = req.query;
