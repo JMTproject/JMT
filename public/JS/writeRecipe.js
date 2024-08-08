@@ -224,27 +224,16 @@ function writeRpUploadFunc() {
   formData.append('tools', JSON.stringify(tools));
 
   // 요리 단계와 이미지 파일을 배열로 만들어 폼 데이터에 추가
-  const steps = [];
-  for (let i = 1; i <= 5; i++) {
-    const textarea = document.querySelector(`#StepItem${i} textarea`);
-    const image = document.querySelector(`#imgPreview${i}`).src;
-    if (textarea && textarea.value.trim()) {
-      steps.push({
-        text: textarea.value,
-        image: image,
-      });
-    }
-  }
-  formData.append('stepContents', JSON.stringify(steps));
 
-  const fileArray = [
-    mainImage.files[0],
-    stepImg1.files[0],
-    stepImg2.files[0],
-    stepImg3.files[0],
-    stepImg4.files[0],
-    stepImg5.files[0],
-  ];
+  const stepContents = [];
+  for (let i = 1; i <= 5; i++) {
+    const textarea = document.querySelector(`#stepContent${i}`);
+
+    stepContents.push(textarea.value || '');
+  }
+  console.log('step!!!!', stepContents);
+
+  formData.append('stepContents', JSON.stringify(stepContents));
 
   formData.append('files1', mainImage.files[0]);
   formData.append('files2', stepImg1.files[0]);
@@ -271,7 +260,6 @@ function writeRpUploadFunc() {
       console.log('서버 응답', res); // 서버 응답을 콘솔에 출력
       if (res.data.result) {
         alert('레시피 등록 성공! 메인 페이지로 이동 합니다'); // 성공 시 알림 표시
-        localStorage.setItem('token', res.data.response.token); // 응답에서 받은 토큰을 로컬 스토리지에 저장
         document.location.href = '/'; // 메인 페이지로 이동
       } else {
         alert('레시피 등록 실패' + res.data.message || '알 수 없는 오류'); // 실패 시 오류 메시지 표시

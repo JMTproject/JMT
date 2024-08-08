@@ -3,6 +3,7 @@ const multer = require('multer');
 const multerS3 = require('multer-s3');
 const { User, Recipe, Review, Ingredient, CookingTools, CookingStep } = require('../models');
 const recipe = require('../models/recipe');
+const { Json } = require('sequelize/lib/utils');
 
 //aws 설정
 aws.config.update({
@@ -42,8 +43,6 @@ const uploadFunc = async (req, res) => {
     if (err) {
       return res.status(500).json({ result: false, message: '업도르 오류' });
     }
-    console.log('req.file!#$#$#', req.files);
-    console.log('req.body!#$#$#', req.body);
 
     try {
       if (!req.userInfo) {
@@ -53,18 +52,33 @@ const uploadFunc = async (req, res) => {
       const { userId } = req.userInfo;
       const { files1, files2, files3, files4, files5, files6 } = req.files;
 
+      const filesArray = [files2, files3, files4, files5, files6];
+      console.log('파일즈2', files2[0].location);
       const { title, introduceRp, servings, cookingTime, ingredientNames, ingredientAmounts, tools, stepContents } =
         req.body;
 
-      console.log('step', steps);
+      // console.log('title!!!!', title);
+      // console.log('introduceRp!!!!', introduceRp);
+      // console.log('servings!!!!', servings);
+      // console.log('cookingTime!!!!', cookingTime);
+      // console.log('ingredientNames!!!!', ingredientNames);
+      // console.log('ingredientAmounts!!!!', ingredientAmounts);
+      // console.log('stepContents!!!!', stepContents);
+      // console.log('stepsImg!!!!', stepsImg);
       // console.log('img', stepImg);
-
+      console.log('파싱전 스텝', stepContents);
       //JSON 문자열을 배열로 파싱
       const parsedIngredients = JSON.parse(ingredientNames);
       const parsedAmounts = JSON.parse(ingredientAmounts);
       const parsedTools = JSON.parse(tools);
-      const parsedSteps = JSON.parse(stepContents);
+      const parsedStepContents = JSON.parse(stepContents);
       // const parsedStepsImg = JSON.parse(stepImg);
+      // console.log('1', parsedIngredients);
+      // console.log('2', parsedAmounts);
+      // console.log('3', parsedTools);
+      // console.log('4', parsedSteps);
+      // console.log('5', parsedStepsImg);
+      // introduceRp, files1[0].location, servings, cookingTime, userId
 
       const recipe = await Recipe.create({
         recipeTitle: title,
@@ -75,12 +89,6 @@ const uploadFunc = async (req, res) => {
         userId,
       });
 
-      console.log('recipeId@@', recipe.dataValues.recipeId);
-      console.log('tools@@@##', parsedTools);
-      console.log('ingre!!!', parsedIngredients);
-      console.log('parsedAmo!!', parsedAmounts);
-      console.log('parsedImg', parsedSteps);
-
       let ingredientData = [];
       for (i = 0; i < parsedIngredients.length; i++) {
         ingredientData.push({
@@ -89,7 +97,7 @@ const uploadFunc = async (req, res) => {
           recipeId: recipe.dataValues.recipeId,
         });
       }
-
+      console.log('재료데이터:', ingredientData);
       let cookingToolData = [];
       for (i = 0; i < parsedTools.length; i++) {
         cookingToolData.push({
@@ -98,35 +106,34 @@ const uploadFunc = async (req, res) => {
         });
       }
 
+      let cookingStepData = [];
+      for (i = 0; i < parsedStepContents.length; i++) {
+        cookingStepData.push({
+          step: i + 1,
+          content: parsedStepContents[i],
+          stepImg: filesArray[i] != undefined ? filesArray[i][0].location : '',
+          recipeId: recipe.dataValues.recipeId,
+        });
+      }
+      console.log('data', cookingStepData);
       // let cookingStepData = [];
+      // console.log('뭐징', parsedStepsImg);
       // for (i = 0; i < parsedSteps.length; i++) {
       //   cookingStepData.push({
-      //     step: parsedSteps[i],
-      //     content: parsedSteps[i].text,
-      //     stepImg: ,
+      //     step: [i + 1],
+      //     content: parsedSteps[i],
+      //         stepImg: parsedStepsImg[i],
       //     recipeId: recipe.dataValues.recipeId,
       //   });
       // }
 
-      console.log('재료배열', ingredientData);
-      console.log('쿠킹툴배열', cookingToolData);
-      // console.log('스탭배열', cookingStepData);
-
       await CookingTools.bulkCreate(cookingToolData);
+
       await Ingredient.bulkCreate(ingredientData);
-      // await CookingStep.bulkCreate(cookingStepData);
 
-      const images = [];
-      req.files.forEach((value) => {
-        images.push({
-          url: value.location,
-          recipeId: result.recipeId,
-        });
-      });
-      await Recipe.create(); //이미지를 데이터베이스에 저장
+      await CookingStep.bulkCreate(cookingStepData);
+
       res.json({ result: true });
-
-      console.log(images);
     } catch (error) {
       res.status(500).json({ result: false });
     }
