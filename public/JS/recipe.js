@@ -56,6 +56,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
         console.log(res.data);
 
+        const viewCount = res.data.recipe.viewCount;
+        const formatLargeNumber = (viewCount) => {
+            if (viewCount < 1e3) return viewCount;
+            if (viewCount >= 1e3 && viewCount < 1e6) return +(viewCount / 1e3).toFixed(1) + 'K';
+            if (viewCount >= 1e6 && viewCount < 1e9) return +(viewCount / 1e6).toFixed(1) + 'M';
+            if (viewCount >= 1e9 && viewCount < 1e12) return +(viewCount / 1e9).toFixed(1) + 'B';
+            if (viewCount >= 1e12) return +(viewCount / 1e12).toFixed(1) + 'T';
+        };
+
+        document.getElementById('view-count').innerText = formatLargeNumber(viewCount);
         document.getElementById('recipe-mainImg').src = res.data.recipe.mainImg;
         document.getElementById('recipeTitle').innerText = res.data.recipe.recipeTitle;
         document.getElementById('recipe-description').innerText = res.data.recipe.description;
@@ -129,7 +139,9 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <p>${reviewArray[i].content}</p>
                         </div>
                     </div>
-                    <img class="review_img" src="${reviewArray[i].reviewImg}" alt="Review Image">
+                    <img class="review_img" src="${reviewArray[i].reviewImg}" alt="Review Image"${
+                reviewArray[i].reviewImg ? '' : 'style="display:none;"'
+            }>
                 </div>
             </div>`;
             reviewBox.insertAdjacentHTML('beforeend', html);

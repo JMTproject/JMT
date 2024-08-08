@@ -330,7 +330,26 @@ header {
 .review_header_1 p {
     margin: 15px 0;
     font-size: 0.875em;
-    color: rgba(0, 0, 0, 0.7);
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.review_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#review_rating_av {
+    font-size: 0.875em;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+#average_stars {
+    margin-left: 150px;
+}
+
+#average_stars span.star {
+    color: #fca391;
 }
 
 .review_box {
@@ -537,6 +556,23 @@ textarea::placeholder {
         /* background-color: bisque; */
         margin: 0 auto;
         text-align: center;
+    }
+
+    #view-count-info {
+        display: flex;
+        justify-content: left;
+        margin: 5px;
+        margin-left: 50px;
+    }
+
+    .material-symbols-rounded.visibility {
+        font-size: 1.5rem;
+        color: #fca391;
+    }
+
+    #view-count {
+        margin-left: 5px;
+        line-height: 1.5rem;
     }
 
     #thumbnail {
@@ -844,10 +880,25 @@ textarea::placeholder {
         margin: 15px 0;
         font-size: 1rem;
         line-height: 1.25rem;
-        color: rgba(0, 0, 0, 0.7);
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .review_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #review_rating_av {
+        font-size: 1rem;
+        color: rgba(0, 0, 0, 0.5);
     }
 
     #average_stars {
+        margin-left: 750px;
+    }
+
+    #average_stars span.star {
         color: #fca391;
     }
 
@@ -888,35 +939,6 @@ textarea::placeholder {
         display: flex;
         flex-direction: column;
     }
-
-    /* .review_star {
-        display: flex;
-    }
-
-    .star {
-        position: relative;
-        font-size: 1.25rem;
-        color: #ddd;
-        margin: -5px 0 10px 5px;
-    }
-
-    .star input {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 0;
-        opacity: 0;
-        cursor: pointer;
-    }
-
-    .star span {
-        width: 0;
-        position: absolute;
-        left: 0;
-        color: #fca391;
-        overflow: hidden;
-        pointer-events: none;
-    } */
 
     .rating-container {
         display: flex;
@@ -1381,7 +1403,25 @@ textarea::placeholder {
     .review_header_1 p {
         margin: 15px 0;
         font-size: 1rem;
-        color: rgba(0, 0, 0, 0.7);
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    .review_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #review_rating_av {
+        font-size: 1rem;
+        color: rgba(0, 0, 0, 0.5);
+    }
+
+    #average_stars {
+        margin-left: 480px;
+    }
+
+    #average_stars span.star {
+        color: #fca391;
     }
 
     .review_box {
