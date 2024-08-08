@@ -2,7 +2,6 @@ let currentRating = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
     const stars = document.querySelectorAll('.star');
-    // const fileInput = document.getElementById('file_1');
 
     stars.forEach((star) => {
         star.addEventListener('mouseover', (e) => {
@@ -48,40 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// function updateFunc() {
-//     const reviewContent = document.getElementById('reviewContent').value;
-//     const fileInput = document.getElementById('file_1');
-//     const recipeId = window.location.pathname.split('/recipe/').pop();
-
-//     if (!reviewContent || currentRating === 0) {
-//         alert('별점과 리뷰 내용을 입력해주세요.');
-//         return;
-//     }
-
-//     const formData = new FormData();
-//     formData.append('reviewRating', currentRating);
-//     formData.append('reviewContent', reviewContent);
-//     formData.append('reviewImg', fileInput.files[0]);
-
-//     axios({
-//         method: 'post',
-//         url: '/api/review/recipe/' + recipeId + '/reviews',
-//         data: formData,
-//         headers: {
-//             'Content-Type': 'multipart/form-data',
-//         },
-//     })
-//         .then((response) => {
-//             alert('리뷰가 성공적으로 등록되었습니다.');
-//             location.reload();
-//         })
-//         .catch((error) => {
-//             console.error('리뷰 등록 중 오류 발생:', error);
-//         });
-// }
-
-document
-    .addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
         const recipeId = window.location.pathname.split('/recipe/').pop();
         const res = await axios({
             method: 'get',
@@ -137,29 +104,38 @@ document
 
         document.getElementById('review-count').innerText = res.data.reviews.length;
 
-        const reviews = document.querySelector('.review_box');
-        res.data.reviews.forEach((review) => {
+        const reviewBox = document.querySelector('.review_box');
+        const reviewArray = res.data.reviews;
+
+        for (let i = 0; i < reviewArray.length; i++) {
+            console.log(reviewArray.length);
             const reviewDiv = document.createElement('div');
             reviewDiv.classList.add('review');
 
-            reviewDiv.innerHTML = `
+            const profileImage = reviewArray[i].user ? reviewArray[i].user.profileImg : '';
+            const nickName = reviewArray[i].user ? reviewArray[i].user.nickName : '';
+            const html = `<div class="review">
             <div class="review_1">
-                <img class="review_profile_img" src="${review.user.profileImg}" alt="Profile Image">
-                <div class="review_profile">
-                    <div class="review_info">
-                        <p>${review.user.nickName}</p>
-                        <span class="review_date">${new Date(review.createdAt).toLocaleString('ko-KR')}</span>
-                        <div class="review_rating">${'★'.repeat(review.rating)}</div>
+                <img class="review_profile_img" src="${profileImage}" alt="Profile Image"> 
+                    <div class="review_profile">
+                        <div class="review_info">
+                            <p>${nickName}</p>
+                            <span class="review_date">${new Date(reviewArray[i].createdAt).toLocaleString(
+                                'ko-KR'
+                            )}</span>
+                            <div class="review_rating">${'★'.repeat(reviewArray[i].rating)}</div>
+                        </div>
+                        <div class="review_content">
+                            <p>${reviewArray[i].content}</p>
+                        </div>
                     </div>
-                    <div class="review_content">
-                        <p>${review.content}</p>
-                    </div>
+                    <img class="review_img" src="${reviewArray[i].reviewImg}" alt="Review Image">
                 </div>
-                <img class="review_img" src="${review.reviewImg}" alt="Review Image">
-            </div>
-            `;
-            reviews.appendChild(reviewDiv);
-        });
+            </div>`;
+            reviewBox.insertAdjacentHTML('beforeend', html);
+            // reviews.appendChild(reviewDiv);
+        }
+
         const averageRating = res.data.averageRating;
         document.getElementById('review_rating_av').textContent = averageRating.toFixed(1);
 
@@ -233,80 +209,44 @@ document
                 });
             }
         });
-    })
-    .catch((error) => {
+    } catch (error) {
         console.error('Error fetching recipe data:', error);
-    });
+    }
+});
 
 async function updateFunc() {
     const reviewContent = document.getElementById('reviewContent').value;
     const fileInput = document.getElementById('file_1');
     const recipeId = window.location.pathname.split('/recipe/').pop();
 
+    if (localStorage.getItem('token')) {
+        token = localStorage.getItem('token');
+    } else if (sessionStorage.getItem('token')) {
+        token = sessionStorage.getItem('token');
+    }
+
     if (!reviewContent || currentRating === 0) {
         alert('별점과 리뷰 내용을 입력해주세요.');
         return;
     }
-
     const formData = new FormData();
     formData.append('rating', currentRating);
     formData.append('content', reviewContent);
-    formData.append('reviewImg', fileInput.files[0]);
+    formData.append('files', fileInput.files[0]);
     const res = await axios({
         method: 'post',
         url: `/api/recipe/data/${recipeId}/reviews`,
         data: formData,
         headers: {
             'Content-Type': 'multipart/form-data',
+            Authorization: token,
         },
     })
-        .then((response) => {
+        .then((res) => {
             alert('리뷰가 성공적으로 등록되었습니다.');
-            addReviewToDOM(reviewContent, currentRating, fileInput.files[0]);
+            document.location.reload();
         })
         .catch((error) => {
             console.error('리뷰 등록 중 오류 발생:', error);
         });
-}
-
-function addReviewToDOM(content, rating, imageFile) {
-    const reviewsContainer = document.getElementById('reviews'); // 리뷰가 표시될 컨테이너 요소
-    const reviewElement = document.createElement('div');
-    reviewElement.classList.add('review');
-
-    // 별점 추가
-    const starsElement = document.createElement('div');
-    starsElement.classList.add('stars');
-    for (let i = 0; i < rating; i++) {
-        const star = document.createElement('span');
-        star.classList.add('star');
-        star.textContent = '★';
-        starsElement.appendChild(star);
-    }
-    for (let i = rating; i < 5; i++) {
-        const emptyStar = document.createElement('span');
-        emptyStar.classList.add('star');
-        emptyStar.textContent = '☆';
-        starsElement.appendChild(emptyStar);
-    }
-    reviewElement.appendChild(starsElement);
-
-    // 리뷰 내용 추가
-    const contentElement = document.createElement('p');
-    contentElement.textContent = content;
-    reviewElement.appendChild(contentElement);
-
-    // 이미지 추가
-    if (imageFile) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            const imgElement = document.createElement('img');
-            imgElement.src = e.target.result;
-            imgElement.alt = '리뷰 이미지';
-            reviewElement.appendChild(imgElement);
-        };
-        reader.readAsDataURL(imageFile);
-    }
-
-    reviewsContainer.appendChild(reviewElement);
 }

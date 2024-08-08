@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
@@ -13,134 +14,81 @@
     <link href="../public/CSS/recipe.css" rel="stylesheet" type="text/css" />
     <link href="../public/CSS/headerFooter.css" rel="stylesheet" type="text/css" />
     <script defer src="../public/JS/purchase.js"></script>
-  </head>
+</head>
 
-  <body>
+<body>
     <header>
-      <div class="header">
-        <a class="logo" href="/">
-          <img class="logoImg" src="../public/images/logo.png" alt="" />
-        </a>
-        <div class="iconBox">
-          <a href="/login"><span class="material-symbols-rounded login">login</span></a>
-          <a href="/profile"><span class="material-symbols-rounded account_circle">account_circle</span></a>
+        <div class="header">
+            <a class="logo" href="/">
+                <img class="logoImg" src="../public/images/logo.png" alt="" />
+            </a>
+            <div class="iconBox">
+                <a href="/login"><span class="material-symbols-rounded login">login</span></a>
+                <a href="/profile"><span class="material-symbols-rounded account_circle">account_circle</span></a>
+            </div>
         </div>
-      </div>
-      <div class="navBar"></div>
+        <div class="navBar"></div>
     </header>
-    <!-- <h3>레시피 페이지</h3> -->
 
     <div class="container">
-      <div class="between"></div>
-      <div id="recipe_info">
-        <div id="thumbnail">
-          <img id="recipe-mainImg" src="" alt="Thumbnail" />
+        <div class="between"></div>
+        <div id="recipe_info">
+            <div id="thumbnail">
+                <img id="recipe-mainImg" src="" alt="Thumbnail" />
+            </div>
+            <br />
+            <h3 id="recipeTitle"></h3>
+            <p id="recipe-description"></p>
+            <div class="recipe_time">
+                <span class="material-symbols-rounded">person</span>
+                <span id="recipe-servings"></span>
+                <p>인분</p>
+                <span id="blank"></span>
+                <span class="material-symbols-rounded schedule">schedule</span>
+                <span id="recipe-cookingTime"></span>
+                <p>분 이내</p>
+            </div>
+        </div>
+
+        <div id="cooking_ingredients">
+            <h3 id="ingredients">재료</h3>
+            <div class="ingredients_box"></div>
         </div>
         <br />
-        <h3 id="recipeTitle"></h3>
-        <p id="recipe-description"></p>
-        <div class="recipe_time">
-          <span class="material-symbols-rounded">person</span>
-          <span id="recipe-servings"></span>
-          <p>인분</p>
-          <span id="blank"></span>
-          <span class="material-symbols-rounded schedule">schedule</span>
-          <span id="recipe-cookingTime"></span>
-          <p>분 이내</p>
+        <div id="cookwares">
+            <h3 id="cookware">조리도구</h3>
+            <div class="cookware_box">
+                <div id="cookware_list"></div>
+            </div>
         </div>
-      </div>
-
-      <div id="cooking_ingredients">
-        <h3 id="ingredients">재료</h3>
-        <div class="ingredients_box"></div>
-      </div>
-      <br />
-      <div id="cookwares">
-        <h3 id="cookware">조리도구</h3>
-        <div class="cookware_box">
-          <div id="cookware_list"></div>
+        <br />
+        <div id="cooking_process">
+            <h3 id="process">조리 순서</h3>
+            <div class="process_box">
+                <div id="process_list">
+                </div>
+            </div>
         </div>
-      </div>
-      <br />
-      <div id="cooking_process">
-        <h3 id="process">조리 순서</h3>
-        <div class="process_box">
-          <div id="process_list">
-            <!-- <div class="process_1">
-                        <div class="process_number">1.</div>
-                        <div class="process_step">
-                            <div class="process_description">
-                                소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
-                                적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
-                                적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
-                                적당한 크기로 잘라주세요.
-                            </div>
-                            <img src="../JMT Design/1.png" alt="" />
-                        </div>
-                    </div>
-                    <div class="process_1">
-                        <div class="process_number">2.</div>
-                        <div class="process_step">
-                            <div class="process_description">
-                                소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
-                                적당한 크기로 잘라주세요.
-                            </div>
-                            <img src="../JMT Design/1.png" alt="" />
-                        </div>
-                    </div>
-                    <div class="process_1">
-                        <div class="process_number">3.</div>
-                        <div class="process_step">
-                            <div class="process_description">
-                                소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
-                                적당한 크기로 잘라주세요.
-                            </div>
-                            <img src="../JMT Design/1.png" alt="" />
-                        </div>
-                    </div>
-                    <div class="process_1">
-                        <div class="process_number">4.</div>
-                        <div class="process_step">
-                            <div class="process_description">
-                                소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
-                                적당한 크기로 잘라주세요.
-                            </div>
-                            <img src="../JMT Design/1.png" alt="" />
-                        </div>
-                    </div>
-                    <div class="process_1">
-                        <div class="process_number">5.</div>
-                        <div class="process_step">
-                            <div class="process_description">
-                                소고기는 기름기를 떼어내고 적당한 크기로 잘라주세요.소고기는 기름기를 떼어내고
-                                적당한 크기로 잘라주세요.
-                            </div>
-                            <img src="../JMT Design/1.png" alt="" />
-                        </div>
-                    </div> -->
-          </div>
+        <br />
+        <div id="WriterInfo">
+            <h3>레시피 작성자</h3>
+            <div class="info_box">
+                <div id="profileImg">
+                    <img id="writer-profileImg" src="" alt="Profile Image" />
+                </div>
+                <div class="user_detail">
+                    <p id="writer-nickName"></p>
+                    <p id="writer-aboutMe"></p>
+                </div>
+            </div>
         </div>
-      </div>
-      <br />
-      <div id="WriterInfo">
-        <h3>레시피 작성자</h3>
-        <div class="info_box">
-          <div id="profileImg">
-            <img id="writer-profileImg" src="" alt="Profile Image" />
-          </div>
-          <div class="user_detail">
-            <p id="writer-nickName"></p>
-            <p id="writer-aboutMe"></p>
-          </div>
-        </div>
-      </div>
-      <br />
-      <div id="review">
-        <div class="review_header">
-          <div class="review_header_1">
-            <h3>리뷰</h3>
-            <p>(<span id="review-count"></span>개)</p>
-          </div>
+        <br />
+        <div id="review">
+            <div class="review_header">
+                <div class="review_header_1">
+                    <h3>리뷰</h3>
+                    <p>(<span id="review-count"></span>개)</p>
+                </div>
 
 
                 <div id="review_rating_av">평균 별점: 0</div>
@@ -166,25 +114,24 @@
                                 <span class="star" data-value="5">★</span>
                             </div>
                         </div>
-                        <!-- <button id="submit-rating">Submit Rating</button> -->
                         <textarea class="review_2" id="reviewContent" placeholder=" 요리 후기를 남겨주세요!" required></textarea>
                     </div>
 
 
-            <div class="review_write_upload">
-              <button type="button" id="submitReview" onclick="updateFunc()">등록</button>
-            </div>
-          </div>
+                    <div class="review_write_upload">
+                        <button type="button" id="submitReview" onclick="updateFunc()">등록</button>
+                    </div>
+                </div>
 
-          <div id="reviews"></div>
+                <div id="reviews"></div>
+            </div>
         </div>
-      </div>
-      <a href="/"><span class="material-symbols-rounded">redo</span></a>
+        <a href="/"><span class="material-symbols-rounded">redo</span></a>
     </div>
     <footer>
-      <div class="companyInfo">
-        <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
-      </div>
+        <div class="companyInfo">
+            <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
+        </div>
     </footer>
     <script src="../public/JS/recipe.js"></script>
 </body>

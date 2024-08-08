@@ -9,7 +9,7 @@ exports.getRecipePage = async (req, res) => {
         const cookingTools = await CookingTools.findAll({ where: { recipeId } });
         const ingredients = await Ingredient.findAll({ where: { recipeId } });
         const reviews = await Review.findAll({
-            where: { recipeId, isEnabled: true }, // isEnabled가 true인 리뷰만 가져오기
+            where: { recipeId, isEnabled: true },
             include: [
                 {
                     model: User,
@@ -19,12 +19,12 @@ exports.getRecipePage = async (req, res) => {
         });
 
         const user = await User.findByPk(recipe.userId);
+
         let sumRating = 0;
         reviews.forEach((review) => {
             sumRating += review.rating;
         });
         const averageRating = sumRating / reviews.length;
-        console.log(averageRating);
 
         res.json({
             recipe,
@@ -38,5 +38,4 @@ exports.getRecipePage = async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
-
 };
