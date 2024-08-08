@@ -503,7 +503,7 @@ textarea::placeholder {
 .review_1 .review_img {
     width: 100px;
     height: 70px;
-    background-color: #a0522d;
+    /* background-color: #a0522d; */
     margin: 10px;
 }
 
@@ -1060,7 +1060,7 @@ textarea::placeholder {
     .review_1 .review_img {
         width: 160px;
         height: 100px;
-        background-color: #a0522d;
+        /* background-color: #a0522d; */
         margin-left: 20px;
     }
 }
@@ -1562,7 +1562,7 @@ textarea::placeholder {
     .review_1 .review_img {
         width: 120px;
         height: 80px;
-        background-color: #a0522d;
+        /* background-color: #a0522d; */
         /* margin-left: 20px; */
     }
 }
