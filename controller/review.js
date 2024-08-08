@@ -39,9 +39,8 @@ exports.submitReview = async (req, res) => {
 
         const recipeId = req.params.id;
         const { rating, content } = req.body;
-        const reviewImg = req.files[0].location;
+        const reviewImg = req.files[0] ? req.files[0].location : '';
         const { userId } = req.userInfo;
-        console.log('########', reviewImg);
 
         try {
             if (!rating || !content) {
