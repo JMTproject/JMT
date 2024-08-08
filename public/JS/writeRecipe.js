@@ -1,3 +1,35 @@
+let token;
+if (localStorage.getItem('token')) {
+  token = localStorage.getItem('token');
+} else if (sessionStorage.getItem('token')) {
+  token = sessionStorage.getItem('token');
+}
+
+(async function verify() {
+  const res = await axios({
+    method: 'post',
+    url: '/api/recipe/verify',
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: token,
+    },
+  });
+  console.log(res.data);
+
+  if (res.data.message === '토큰 정보 없음') {
+    alert('로그인이 필요한 페이지 입니다');
+    document.location.href = '/login';
+  }
+
+  document.querySelector('#title').value = '테스트';
+  document.querySelector('#introduceRp').value = '테스트';
+  document.querySelector('#servings').value = 1;
+  document.querySelector('#cookingTime').value = 1;
+  document.querySelector('#ingredientName').value = '테스트';
+  document.querySelector('#ingredientAmount').value = '1개';
+  document.querySelector('#toolName').value = '테스트';
+})();
+
 function fileUploadFunc() {
   // html에서 파일 입력 요소와 이미지를 표시할 요소를 가져옴
   const fileInput = document.getElementById('fileInput');
@@ -18,8 +50,6 @@ function fileUploadFunc() {
   }
 }
 
-const serVing = document.getElementById('serving');
-
 //addIngredient
 function addIngredient() {
   //html에서 재료 이름과 계량 값을 가져옴
@@ -38,12 +68,17 @@ function addIngredient() {
   li.className = 'ingredient-item';
 
   //재료 이름과 계량을 텍스트 노드로 생성, 이를 <li> 요소에 추가
-  const text = document.createTextNode(`${ingredientName} ${ingredientAmount}`);
-  li.appendChild(text);
+  const igdNameSpan = document.createElement('span');
+  igdNameSpan.className = 'igdNameSpan';
+  igdNameSpan.textContent = `${ingredientName}`;
+
+  const igdAmountSpan = document.createElement('span');
+  igdAmountSpan.className = 'igdAmountSpan';
+  igdAmountSpan.textContent = `${ingredientAmount}`;
 
   //삭제 버튼 생성
   const removeButton = document.createElement('button');
-  removeButton.innerHTML = 'x';
+  // removeButton.innerHTML = 'x';
   removeButton.className = 'remove-btn';
 
   //삭제 버튼이 클릭되면 실행될 함수를 설정
@@ -56,6 +91,8 @@ function addIngredient() {
   //재료 리스트를 나타내는 <ul> 요소룰 가져와서, 새로 생성한<li> 요소를 추가
   const ingredientList = document.getElementById('ingredientList');
   ingredientList.appendChild(li);
+  li.appendChild(igdNameSpan);
+  li.appendChild(igdAmountSpan);
 
   //입력 필드를 초기화
   document.getElementById('ingredientName').value = '';
@@ -91,7 +128,7 @@ function addCookingTool() {
 
   // 삭제 버튼을 생성
   const removeButton = document.createElement('button');
-  removeButton.innerHTML = 'x';
+  // removeButton.innerHTML = 'x';
   removeButton.className = 'remove-btn';
   // 삭제 버튼이 클릭되면 실행될 함수를 설정
   removeButton.onclick = function () {
@@ -138,7 +175,7 @@ function displayImage(event, step) {
     // document.getElementById('upload' + step).style.display = 'none';
   }
 }
-
+//writeRpUploadFunc
 function writeRpUploadFunc() {
   // 사용자가 입력한 각 필드의 값을 가져옴
   const title = document.getElementById('title').value;
@@ -166,11 +203,18 @@ function writeRpUploadFunc() {
   formData.append('cookingTime', cookingTime);
 
   // 재료 목록을 배열로 만들어 폼 데이터에 추가
-  const ingredients = [];
-  document.querySelectorAll('#ingredientList li').forEach((li) => {
-    ingredients.push(li.textContent);
+  const ingredientNames = [];
+  document.querySelectorAll('#ingredientList .igdNameSpan').forEach((span) => {
+    ingredientNames.push(span.textContent);
   });
-  formData.append('ingredients', JSON.stringify(ingredients));
+  const ingredientAmounts = [];
+  document.querySelectorAll('#ingredientList .igdAmountSpan').forEach((span) => {
+    ingredientAmounts.push(span.textContent);
+  });
+
+  console.log('igdName!!!', ingredientNames);
+  formData.append('ingredientNames', JSON.stringify(ingredientNames));
+  formData.append('ingredientAmounts', JSON.stringify(ingredientAmounts));
 
   // 조리 도구 목록을 배열로 만들어 폼 데이터에 추가
   const tools = [];
@@ -191,7 +235,7 @@ function writeRpUploadFunc() {
       });
     }
   }
-  formData.append('steps', JSON.stringify(steps));
+  formData.append('stepContents', JSON.stringify(steps));
 
   const fileArray = [
     mainImage.files[0],
@@ -212,13 +256,8 @@ function writeRpUploadFunc() {
   console.log('콘솔확인@@@', mainImage.files[0]); // 폼 데이터에 있는 파일들을 콘솔에 출력
   console.log(title);
 
-  let token;
-  if (localStorage.getItem('token')) {
-    token = localStorage.getItem('token');
-  } else if (sessionStorage.getItem('token')) {
-    token = sessionStorage.getItem('token');
-  }
   // Axios를 사용하여 폼 데이터를 서버에 전송
+  console.log('폼데이터-툴즈!!', formData);
   axios({
     method: 'post',
     url: '/api/recipe/writerecipe', // 서버의 API 엔드포인트

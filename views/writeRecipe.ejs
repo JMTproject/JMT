@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../public/CSS/headerFooter.css">
   <link rel="stylesheet" href="../public/CSS/writeRecipe.css">
   <script defer src="../public/JS/writeRecipe.js"></script>
+  <script defer src="../public/JS/header.js"></script>
 
 </head>
 
@@ -25,10 +26,11 @@
         <p class="arrowLogout">로그아웃</p>
         <a id="login_a" href="/login"><span class="material-icons-round key">key</span></a>
         <p class="arrowLogin">로그인</p>
-        <div id="profile_div" onclick="myPageToggle()"><span
-            class="material-icons-round account_circle">account_circle</span></div>
+        <div id="profile_div" onclick="myPageToggle()">
+          <span class="material-icons-round account_circle">account_circle</span>
+        </div>
         <p class="arrowProfile">마이페이지</p>
-        <div class="myPageBox" style="display: none;">
+        <div class="myPageBox" style="display: none">
           <a href="/profile">개인정보 수정</a>
           <a href="/myrecipe">나의 레시피</a>
         </div>

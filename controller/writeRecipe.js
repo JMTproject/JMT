@@ -51,11 +51,70 @@ const uploadFunc = async (req, res) => {
         return;
       }
       const { userId } = req.userInfo;
-      console.log('유저아이디@', userId);
+      const { files1, files2, files3, files4, files5, files6 } = req.files;
 
-      const { title, introduceRp, servings, cookingTime, ingredients, tools, steps } = req.body;
-      console.log('title!!!', title);
-      const result = await Recipe.create({ recipeTitle: title, description: introduceRp, mainImg: mainImg });
+      const { title, introduceRp, servings, cookingTime, ingredientNames, ingredientAmounts, tools, stepContents } =
+        req.body;
+
+      console.log('step', steps);
+      // console.log('img', stepImg);
+
+      //JSON 문자열을 배열로 파싱
+      const parsedIngredients = JSON.parse(ingredientNames);
+      const parsedAmounts = JSON.parse(ingredientAmounts);
+      const parsedTools = JSON.parse(tools);
+      const parsedSteps = JSON.parse(stepContents);
+      // const parsedStepsImg = JSON.parse(stepImg);
+
+      const recipe = await Recipe.create({
+        recipeTitle: title,
+        description: introduceRp,
+        mainImg: files1[0].location,
+        servings,
+        cookingTime,
+        userId,
+      });
+
+      console.log('recipeId@@', recipe.dataValues.recipeId);
+      console.log('tools@@@##', parsedTools);
+      console.log('ingre!!!', parsedIngredients);
+      console.log('parsedAmo!!', parsedAmounts);
+      console.log('parsedImg', parsedSteps);
+
+      let ingredientData = [];
+      for (i = 0; i < parsedIngredients.length; i++) {
+        ingredientData.push({
+          ingredientName: parsedIngredients[i],
+          quantity: parsedAmounts[i],
+          recipeId: recipe.dataValues.recipeId,
+        });
+      }
+
+      let cookingToolData = [];
+      for (i = 0; i < parsedTools.length; i++) {
+        cookingToolData.push({
+          toolName: parsedTools[i],
+          recipeId: recipe.dataValues.recipeId,
+        });
+      }
+
+      // let cookingStepData = [];
+      // for (i = 0; i < parsedSteps.length; i++) {
+      //   cookingStepData.push({
+      //     step: parsedSteps[i],
+      //     content: parsedSteps[i].text,
+      //     stepImg: ,
+      //     recipeId: recipe.dataValues.recipeId,
+      //   });
+      // }
+
+      console.log('재료배열', ingredientData);
+      console.log('쿠킹툴배열', cookingToolData);
+      // console.log('스탭배열', cookingStepData);
+
+      await CookingTools.bulkCreate(cookingToolData);
+      await Ingredient.bulkCreate(ingredientData);
+      // await CookingStep.bulkCreate(cookingStepData);
 
       const images = [];
       req.files.forEach((value) => {
