@@ -23,6 +23,22 @@ const NNcheckFunc = async (req, res) => {
   }
 };
 
+const emailCheck = async (req, res) =>{
+  try {
+    console.log('sss=====================',req.body);
+    const { email } = req.body;
+    const find = await User.findOne({where : {email}})
+    if(!find){
+      res.json({result : true});
+    } else{
+      res.status(409).json({result : false});
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ result: false, message: '서버오류' });
+  }
+}
+
 const sendMail = async (req, res) => {
   try {
     const { email } = req.body;
@@ -169,4 +185,4 @@ const deleteFunc = async (req, res) => {
   }
 };
 
-module.exports = { sendMail, NNcheckFunc, signupFunc, loginFunc, infoFunc, updateFunc, deleteFunc };
+module.exports = { sendMail, emailCheck, NNcheckFunc, signupFunc, loginFunc, infoFunc, updateFunc, deleteFunc };

@@ -35,6 +35,7 @@
   border: 1.5px solid #fca391;
   border-radius: 15px;
   padding: 10px;
+  position: relative;
 }
 
 #titleBox {
@@ -182,28 +183,38 @@
   border: 1px solid #fca391;
   border-radius: 5px;
   color: #fca391;
-  padding: 10px;
+
   position: relative;
   margin-top: 20px;
 }
 #signUpRadio #signUpRadioInput {
   width: 18px;
   height: 18px;
+  margin: 10px;
+  margin-left: 0;
   position: absolute;
   left: 10px;
   align-items: center;
 }
 
 #signUpRadio label p {
-  width: 85%;
+  width: 200px;
   height: 100%;
   padding-left: 5%;
   position: absolute;
   font-size: 18px;
   left: 24px;
-  top: 0;
   align-items: center;
   line-height: 2;
+}
+#signUpRadio #checkBox {
+  position: absolute;
+  right: 10px;
+}
+#signUpRadio #checkBox span {
+  font-size: 40px;
+  padding: 0;
+  margin: 0;
 }
 .content #SignUpForm #btnDiv {
   width: 300px;
@@ -212,11 +223,39 @@
   margin-top: 20px;
 }
 
+.content #agreement {
+  position: relative;
+  margin: 0 auto;
+  background-color: aliceblue;
+  border: 1px solid #333;
+  border-radius: 10px;
+  top: -350px;
+  padding: 10px;
+}
+.content #agreement h3 {
+  display: flex;
+  height: 10px;
+  justify-content: center;
+}
+
+.content #closeBtn span {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: end;
+}
+
+.content #agreement p {
+  font-size: 12px;
+  text-align: justify;
+  display: flex;
+}
+
 .content #SignUpForm #signUpBtn {
   width: 100%;
   height: 100%;
   color: #ffffff;
-  background-color: #fca391;
+  background-color: #ccc;
   border: none;
   border-radius: 5px;
   font-size: 20px;
