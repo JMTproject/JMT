@@ -141,6 +141,21 @@
   flex-direction: column;
 }
 
+#recipeCard #viewCount {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#recipeCard #viewCount span{
+  color: #7a7a7a;
+  font-size: 18px;
+  margin: 10px 0px 10px 22px;
+}
+#recipeCard #viewCount p{
+  font-size: 13px;
+  margin: 10px 0px 10px 5px;
+}
+
 .recipe ul li #recipeCard #content #title p {
   text-align: center;
   font-size: 16px;
@@ -312,6 +327,17 @@
     padding: 0 10px;
     display: flex;
     flex-direction: column;
+  }
+
+  #recipeCard #viewCount {
+  }
+  #recipeCard #viewCount span{
+    font-size: 18px;
+    margin: 10px 0px 0px 22px;
+  }
+  #recipeCard #viewCount p{
+    font-size: 13px;
+    margin: 10px 0px 0px 5px;
   }
 
   .recipe ul li #recipeCard #content #title {
