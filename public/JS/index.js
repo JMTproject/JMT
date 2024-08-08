@@ -33,10 +33,15 @@ const makeRecipeCard = () => {
         <li id="sample">
               <a href="/recipe/${recipe.recipeId}">
                 <div id="recipeCard">
+                  
                   <div id="thumbnail">
                     <img src=${recipe.mainImg} />
                   </div>
                   <div id="content">
+                  <div id="viewCount">
+                    <span class="material-icons-round visivility">visibility</span>
+                    <p>${recipe.viewCount}</p>
+                  </div>
                     <div id="title">
                       <p>${recipe.recipeTitle}</p>
                     </div>
@@ -48,6 +53,7 @@ const makeRecipeCard = () => {
                       <div id="reviewCount">
                         <span>리뷰 (${recipe.reviewCount}개)</span>
                       </div>
+                      
                     </div>
                   </div>
                 </div>

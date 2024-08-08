@@ -35,6 +35,10 @@ const makeRecipeCard = () => {
                     <img src=${recipe.mainImg} />
                   </div>
                   <div id="content">
+                  <div id="viewCount">
+                    <span class="material-icons-round visivility">visibility</span>
+                    <p>${recipe.viewCount}</p>
+                  </div>
                     <div id="title">
                       <p>${recipe.recipeTitle}</p>
                     </div>
