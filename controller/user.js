@@ -1,15 +1,9 @@
-// import nodemailer from 'nodemailer';
-// import dotenv from 'dotenv';
-// dotenv.config();
 const nodemailer = require('nodemailer');
 const dotenv = require('dotenv');
 dotenv.config();
-// const nodemailer = require('nodemailer');
 const { User } = require('../models');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-// const nodemailer = require('nodemailer');
-const senderInfo = require('../config/email.json');
 
 const NNcheckFunc = async (req, res) => {
   try {
@@ -29,6 +23,22 @@ const NNcheckFunc = async (req, res) => {
   }
 };
 
+const emailCheck = async (req, res) =>{
+  try {
+    console.log('sss=====================',req.body);
+    const { email } = req.body;
+    const find = await User.findOne({where : {email}})
+    if(!find){
+      res.json({result : true});
+    } else{
+      res.status(409).json({result : false});
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ result: false, message: '서버오류' });
+  }
+}
+
 const sendMail = async (req, res) => {
   try {
     const { email } = req.body;
@@ -44,7 +54,7 @@ const sendMail = async (req, res) => {
       },
     });
 
-    const code = String(Math.floor(Math.random() * 1000000)).padStart(6, '0');    
+    const code = String(Math.floor(Math.random() * 1000000)).padStart(6, '0');
     const emailHtml =
       `<p>안녕하세요.</p>
         <p>해당 메일은 ` +
@@ -65,10 +75,10 @@ const sendMail = async (req, res) => {
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.log(error);
-        res.json({result : false, info});
+        res.json({ result: false, info });
       } else {
         console.log('Email Sent', info);
-        res.json({result : true, code});       
+        res.json({ result: true, code });
       }
     });
   } catch (error) {
@@ -107,9 +117,7 @@ const loginFunc = async (req, res) => {
       }
       if (pass) {
         const { userId, email } = find.dataValues;
-
         const token = jwt.sign({ userId, email }, process.env.SECRET, { expiresIn: '10h' });
-
         const response = { token };
         res.json({ result: true, check, email, response, message: '토큰 로그인 성공' });
       } else {
@@ -177,4 +185,4 @@ const deleteFunc = async (req, res) => {
   }
 };
 
-module.exports = { sendMail, NNcheckFunc, signupFunc, loginFunc, infoFunc, updateFunc, deleteFunc };
+module.exports = { sendMail, emailCheck, NNcheckFunc, signupFunc, loginFunc, infoFunc, updateFunc, deleteFunc };

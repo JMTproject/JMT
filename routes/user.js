@@ -1,11 +1,12 @@
 require('dotenv').config();
 const express = require('express');
-const { signupFunc, loginFunc, infoFunc, deleteFunc, updateFunc, NNcheckFunc, sendMail } = require('../controller/user');
+const { signupFunc, emailCheck, loginFunc, infoFunc, deleteFunc, updateFunc, NNcheckFunc, sendMail } = require('../controller/user');
 const { auth } = require('../middleware');
 const router = express.Router();
 
 // router.get('/idcheck', idCheckFunc); //세용
-router.post('/mail', sendMail);
+router.post('/mail', sendMail); //세용
+router.post('/emailcheck', emailCheck) //세용
 router.get('/findNN', NNcheckFunc); //세용
 router.post('/signup', signupFunc); //세용
 router.post('/login', loginFunc); //세용

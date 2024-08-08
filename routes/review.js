@@ -1,13 +1,11 @@
+// routes/recipeRoutes.js
 const express = require('express');
 const router = express.Router();
-const review = require('../controller/review');
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' });
+const { auth } = require('../middleware');
+const { submitReview } = require('../controller/review');
 
-// 모든 리뷰 가져오기
-router.get('/', review.getAllReviews);
-
-// 새로운 리뷰 추가
-router.post('/', upload.single('reviewImg'), review.addReview);
+// 리뷰 제출하기
+router.post('/recipe/data/:id/reviews', auth, submitReview);
 
 module.exports = router;

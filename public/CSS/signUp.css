@@ -1,9 +1,6 @@
-/* *{
-  margin: 0;
-  padding: 0;
+* {
   box-sizing: border-box;
-  
-} */
+}
 
 .container {
   width: 360px;
@@ -13,28 +10,32 @@
 
 #titleImg {
   width: 360px;
-  height: 125px;
+  height: 80px;
   margin: 0 auto;
-  padding: 30px 0;
+  padding-top: 10px;
 }
 
 #titleImg #imgSample {
-  width: 230px;
+  width: 60px;
   height: 60px;
-  background-color: #fca391;
   margin: 0 auto;
 }
 
-#titleImg img {
-  background-color: #fca391;
+#titleImg #imgSample img {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  line-height: 2;
 }
 
 .content {
   width: 350px;
-  height: 500px;
+  height: 550px;
   margin: 0 auto;
   border: 1.5px solid #fca391;
   border-radius: 15px;
+  padding: 10px;
+  position: relative;
 }
 
 #titleBox {
@@ -44,81 +45,221 @@
   text-align: center;
   /* border: 1px solid #333; */
 }
+
 #titleBox p {
   width: 100%;
   height: 100%;
   line-height: 2;
 }
 
-#SignUpForm {
-  width: 80%;
-  height: 80%;
-  margin: 0 auto;
-  /* border: 1px solid #333; */
-}
-
-#SignUpForm .signUpBox {
-  width: 100%;
-  height: 50%;
-  margin-bottom: 15%;
-}
-
-#SignUpForm .signUpBox input {
-  height: 25%;
-  width: 100%;
-  border-style: none;
-  border: 1px solid #fca391;
-  border-bottom: none;
-  padding-left: 15px;
-}
-
-#SignUpForm .signUpBox input:first-child {
-  border-radius: 5px 5px 0 0;
-}
-
-#SignUpForm .signUpBox input:last-child {
-  border-bottom: 1px solid #fca391;
-  border-radius: 0 0 5px 5px;
-}
-
-#signUpRadio {
-  width: 100%;
+.signUpBox #emailDiv {
+  width: 300px;
   height: 40px;
   border: 1px solid #fca391;
   border-radius: 5px;
-  color: #fca391;
-  margin-bottom: 15%;
-  padding: 10px;
+  margin: 0 auto;
   position: relative;
+}
+
+.signUpBox #emailDiv input {
+  border: none;
+  position: absolute;
+  border-radius: 5px;
+  height: 100%;
+  width: 240px;
+  padding-left: 15px;
+  left: 0;
+}
+
+.signUpBox #emailDiv button {
+  border: none;
+  position: absolute;
+  height: 100%;
+  background-color: #fca391;
+  border-radius: 5px;
+  color: #ffffff;
+  width: 60px;
+  right: 0;
+}
+
+.signUpBox #authDiv {
+  width: 300px;
+  height: 40px;
+  border: 1px solid #fca391;
+  border-radius: 5px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.signUpBox #authDiv input {
+  border: none;
+  position: absolute;
+  height: 100%;
+  width: 240px;
+  padding-left: 15px;
+  border-radius: 5px;
+  left: 0;
+}
+
+.signUpBox #authDiv button {
+  border: none;
+  position: absolute;
+  background-color: #fca391;
+  color: #ffffff;
+  border-radius: 5px;
+  height: 100%;
+  width: 60px;
+  right: 0;
+}
+
+.signUpBox p {
+  padding-left: 20px;
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.signUpBox #passDiv {
+  width: 300px;
+  height: 80px;
+  border: 1px solid #fca391;
+  border-radius: 5px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.signUpBox #passDiv input {
+  border: none;
+  position: absolute;
+  height: 50%;
+  width: 298px;
+  padding-left: 15px;
+  font-size: 16px;
+}
+
+.signUpBox #passDiv #pwd1 {
+  top: 0;
+  border-bottom: 1px solid #fca391;
+  border-radius: 5px 5px 0 0;
+}
+.signUpBox #passDiv #pwd2 {
+  bottom: 0;
+  border-radius: 0 0 5px 5px;
+}
+
+.signUpBox #NNDiv {
+  width: 300px;
+  height: 40px;
+  border: 1px solid #fca391;
+  border-radius: 5px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.signUpBox #NNDiv input {
+  border: none;
+  position: absolute;
+  height: 100%;
+  width: 240px;
+  border-radius: 5px;
+  padding-left: 15px;
+  left: 0;
+}
+
+.signUpBox #NNDiv button {
+  border: none;
+  position: absolute;
+  background-color: #fca391;
+  color: #ffffff;
+  border-radius: 5px;
+  height: 100%;
+  width: 60px;
+  right: 0;
+}
+
+#signUpRadio {
+  width: 300px;
+  height: 40px;
+  margin: 0 auto;
+  border: 1px solid #fca391;
+  border-radius: 5px;
+  color: #fca391;
+
+  position: relative;
+  margin-top: 20px;
 }
 #signUpRadio #signUpRadioInput {
   width: 18px;
   height: 18px;
+  margin: 10px;
+  margin-left: 0;
   position: absolute;
   left: 10px;
   align-items: center;
 }
 
 #signUpRadio label p {
-  width: 85%;
+  width: 200px;
   height: 100%;
   padding-left: 5%;
   position: absolute;
   font-size: 18px;
   left: 24px;
-  top: 0;
   align-items: center;
   line-height: 2;
 }
+#signUpRadio #checkBox {
+  position: absolute;
+  right: 10px;
+}
+#signUpRadio #checkBox span {
+  font-size: 40px;
+  padding: 0;
+  margin: 0;
+}
+.content #SignUpForm #btnDiv {
+  width: 300px;
+  height: 50px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
 
-.content #signUpBtn {
+.content #agreement {
+  position: relative;
+  margin: 0 auto;
+  background-color: aliceblue;
+  border: 1px solid #333;
+  border-radius: 10px;
+  top: -350px;
+  padding: 10px;
+}
+.content #agreement h3 {
+  display: flex;
+  height: 10px;
+  justify-content: center;
+}
+
+.content #closeBtn span {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: end;
+}
+
+.content #agreement p {
+  font-size: 12px;
+  text-align: justify;
+  display: flex;
+}
+
+.content #SignUpForm #signUpBtn {
   width: 100%;
-  height: 12%;
+  height: 100%;
   color: #ffffff;
-  background-color: #fca391;
+  background-color: #ccc;
   border: none;
   border-radius: 5px;
   font-size: 20px;
+  margin: 0 auto;
 }
 
 @media (min-width: 1080px) {

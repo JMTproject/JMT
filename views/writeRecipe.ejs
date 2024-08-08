@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../public/CSS/headerFooter.css">
   <link rel="stylesheet" href="../public/CSS/writeRecipe.css">
   <script defer src="../public/JS/writeRecipe.js"></script>
+  <script defer src="../public/JS/header.js"></script>
 
 </head>
 
@@ -25,10 +26,11 @@
         <p class="arrowLogout">로그아웃</p>
         <a id="login_a" href="/login"><span class="material-icons-round key">key</span></a>
         <p class="arrowLogin">로그인</p>
-        <div id="profile_div" onclick="myPageToggle()"><span
-            class="material-icons-round account_circle">account_circle</span></div>
+        <div id="profile_div" onclick="myPageToggle()">
+          <span class="material-icons-round account_circle">account_circle</span>
+        </div>
         <p class="arrowProfile">마이페이지</p>
-        <div class="myPageBox" style="display: none;">
+        <div class="myPageBox" style="display: none">
           <a href="/profile">개인정보 수정</a>
           <a href="/myrecipe">나의 레시피</a>
         </div>
@@ -62,7 +64,7 @@
             <div id="imgBox">
               <img id="uploadedImg" src="">
             </div>
-            <input type="file" id="fileInput" style="display:none;" onchange="fileUploadFunc()" multiple>
+            <input type="file" id="fileInput" style="display:none;" onchange="fileUploadFunc()">
             <button type="button" onclick="document.getElementById('fileInput').click()">파일업로드</button>
           </div>
         </div>
@@ -93,7 +95,7 @@
             <textarea placeholder="조리 과정을 적어주세요!"></textarea>
             <div class="upload-box" onclick="triggerFileUpload(1)">
               <input type="file" id="fileInput1" style="display:none;" accept="image/*"
-                onchange="displayImage(event, 1)" multiple>
+                onchange="displayImage(event, 1)">
               <img id="imgPreview1" style="display:none;" />
               <button type="button" id="upload1" class="upload-btn">+</button>
             </div>
@@ -103,7 +105,7 @@
             <textarea placeholder="조리 과정을 적어주세요!"></textarea>
             <div class="upload-box" onclick="triggerFileUpload(2)">
               <input type="file" id="fileInput2" style="display:none;" accept="image/*"
-                onchange="displayImage(event, 2)" multiple>
+                onchange="displayImage(event, 2)">
               <img id="imgPreview2" style="display:none;" />
               <button type="button" id="upload2" class="upload-btn">+</button>
             </div>
@@ -113,7 +115,7 @@
             <textarea placeholder="조리 과정을 적어주세요!"></textarea>
             <div class="upload-box" onclick="triggerFileUpload(3)">
               <input type="file" id="fileInput3" style="display:none;" accept="image/*"
-                onchange="displayImage(event, 3)" multiple>
+                onchange="displayImage(event, 3)">
               <img id="imgPreview3" style="display:none;" />
               <button type="button" id="upload3" class="upload-btn">+</button>
             </div>
@@ -123,7 +125,7 @@
             <textarea placeholder="조리 과정을 적어주세요!"></textarea>
             <div class="upload-box" onclick="triggerFileUpload(4)">
               <input type="file" id="fileInput4" style="display:none;" accept="image/*"
-                onchange="displayImage(event, 4)" multiple>
+                onchange="displayImage(event, 4)">
               <img id="imgPreview4" style="display:none;" />
               <button type="button" id="upload4" class="upload-btn">+</button>
             </div>
@@ -133,7 +135,7 @@
             <textarea placeholder="조리 과정을 적어주세요!"></textarea>
             <div class="upload-box" onclick="triggerFileUpload(5)">
               <input type="file" id="fileInput5" style="display:none;" accept="image/*"
-                onchange="displayImage(event, 5)" multiple>
+                onchange="displayImage(event, 5)">
               <img id="imgPreview5" style="display:none;" />
               <button type="button" id="upload5" class="upload-btn">+</button>
             </div>
