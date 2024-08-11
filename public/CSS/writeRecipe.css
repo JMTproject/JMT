@@ -200,65 +200,6 @@ h3 {
 #cookingTools button:hover {
   background-color: #fa6d51;
 }
-/* #cookingStep {
-  width: 350px;
-  height: 450px;
-  margin: 0 auto;
-  border: 1px solid #fdd8d1;
-  border-radius: 5px;
-}
-#cookingStep #cookingStep1 {
-  width: 210px;
-  height: 70px;
-  border: 1px solid #fa6d51;
-  border: none;
-}
-#cookingStep #StepItem1 {
-  margin: 10px;
-}
-#cookingStep #StepNum1 {
-  float: left;
-  color: #fa6d51;
-}
-#cookingStep button {
-  width: 100px;
-  height: 70px;
-  border: 1px solid #fdd8d1;
-  border-radius: 5px;
-  float: right;
-  cursor: pointer;
-  font-size: 48px;
-  background-color: white;
-  color: #fdd8d1;
-} */
-
-/* ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 10px;
-} */
-
-/* #cookingStep p {
-  font-size: 1rem;
-  margin: auto;
-}
-
-#cookingStep textarea {
-  width: 50%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-  resize: none;
-  box-sizing: border-box;
-  margin-bottom: 5px;
-} */
 
 /* cookingStep */
 #cookingStep {
@@ -328,22 +269,6 @@ li {
   justify-content: center;
   color: #fdd8d1;
 }
-
-/* form #writeRpBtn {
-  width: 200px;
-  height: 30px;
-  margin: 10px 10px auto;
-  margin-left: 25%;
-  text-align: center;
-  background-color: #fca391;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-}
-form #writeRpBtn:hover {
-  background-color: #fa6d51;
-} */
 
 #writeRpBtn {
   width: 200px;

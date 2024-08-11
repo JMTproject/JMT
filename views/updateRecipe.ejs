@@ -9,117 +9,152 @@
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="../public/CSS/headerFooter.css">
   <link rel="stylesheet" href="../public/CSS/updateRecipe.css">
+  <script defer src="../public/JS/updateRecipe.js"></script>
+  <script defer src="../public/JS/header.js"></script>
+
 </head>
 
 <body>
   <!-- rp = recipe -->
+  <header>
+    <div class="header">
+      <a class="logo" href="/">
+        <img class="logoImg" src="../public/images/logo.png" alt="" />
+      </a>
+      <div class="iconBox">
+        <div id="logout_div" onclick="logoutFunc()"><span class="material-icons-round logout">logout</span></div>
+        <p class="arrowLogout">로그아웃</p>
+        <a id="login_a" href="/login"><span class="material-icons-round key">key</span></a>
+        <p class="arrowLogin">로그인</p>
+        <div id="profile_div" onclick="myPageToggle()">
+          <span class="material-icons-round account_circle">account_circle</span>
+        </div>
+        <p class="arrowProfile">마이페이지</p>
+        <div class="myPageBox" style="display: none">
+          <a href="/profile">개인정보 수정</a>
+          <a href="/myrecipe">나의 레시피</a>
+        </div>
+      </div>
+    </div>
+    <div class="navBar"></div>
+  </header>
   <main>
-    <header>
-      <div class="logo"></div>
-      <a href="/login"><span class="material-icons-round login">login</span></a>
-      <a href="/profile"><span class="material-icons-round account_circle">account_circle</span></a>
-      <div class="navBar"></div>
-    </header>
-    <main>
-      <div class="container">
-        <form id="writeRp">
-          <div id="infoRp">
-            <h3>레시피 정보</h3>
-            <input type="text" id="title" placeholder="제목" /><br />
-            <textarea id="introduceRp" placeholder="레시피 소개"></textarea>
-            <div id="cookingInfoBox">
-              <div id="servingBox">
-                <input type="number" id="servings" />
-                <span id="">인분</span>
-              </div>
-              <select id="cookingTime">
-                <% for(let i=1; i < 31; i++){ %>
-                  <option value="<%= i %>">
-                    <%= i %>
-                  </option>
-                  <%}%>
-              </select>
-              <span id="minute">분</span>
+    <div class="container">
+      <form id="writeRp">
+        <div id="infoRp">
+          <h3>레시피 정보</h3>
+          <input type="text" id="title" placeholder="제목" /><br />
+          <textarea id="introduceRp" placeholder="레시피 소개"></textarea>
+          <div id="cookingInfoBox">
+            <div id="servingBox">
+              <input type="number" id="servings" />
+              <span id="serving">인분</span>
             </div>
-            <div class="uploadImg">
-              <div id="imgBox">
-                <img src="/public" alt="upload">
-              </div>
-              <button type="button" onclick="fileUploadFunc()">파일업로드</button>
+            <!--cookingTime  -->
+            <select id="cookingTime">
+              <% for(let i=1; i < 31; i++){ %>
+                <option value="<%= i %>">
+                  <%= i %>
+                </option>
+                <%}%>
+            </select>
+            <span id="minute">분</span>
+          </div>
+          <div class="uploadImg">
+            <div id="imgBox">
+              <img id="uploadedImg" src="">
+            </div>
+            <input type="file" id="fileInput" style="display:none;" onchange="fileUploadFunc()">
+            <button type="button" id="obtn" onclick="document.getElementById('fileInput').click()">파일업로드</button>
+          </div>
+        </div>
+        <!-- ingredient -->
+        <h3>재료</h3>
+        <div id="ingredient">
+          <div id="ingredientInput">
+            <input type="text" id="ingredientName" placeholder="재료 입력" />
+            <input type="text" id="ingredientAmount" placeholder="계량 kg/g/1t" />
+            <button type="button" onclick="addIngredient()">입력</button>
+          </div>
+          <ul id="ingredientList"></ul>
+        </div>
+        <!-- cookingTools  -->
+        <h3>조리 도구</h3>
+        <div id="cookingTools">
+          <div id="cookingToolInput">
+            <input type="text" id="toolName" placeholder="ex)후라이팬" />
+            <button type="button" onclick="addCookingTool()">입력</button>
+          </div>
+          <ul id="cookingToolList"></ul>
+        </div>
+        <!-- cookingStep -->
+        <h3>조리 순서(최대 5단계)</h3>
+        <div id="cookingStep">
+          <div id="StepItem1">
+            <p id="pnone">1.</p>
+            <textarea id="stepContent1" placeholder="조리 과정을 적어주세요!"></textarea>
+            <div class="upload-box" onclick="triggerFileUpload(1)">
+              <input type="file" id="fileInput1" style="display:none;" accept="image/*"
+                onchange="displayImage(event, 1)">
+              <img id="imgPreview1" src="" />
+              <button type="button" id="upload1" class="upload-btn">+</button>
             </div>
           </div>
-
-          <h3>재료</h3>
-          <div id="ingredient">
-            <input type="text" placeholder="재료 입력" />
-            <input type="text" placeholder="계량 kg/g/1t" />
-            <button type="button" onclick="ingredientFunc()">입력</button>
-            <ul></ul>
+          <div id="StepItem1">
+            <p>2.</p>
+            <textarea id="stepContent2" placeholder="조리 과정을 적어주세요!"></textarea>
+            <div class="upload-box" onclick="triggerFileUpload(2)">
+              <input type="file" id="fileInput2" style="display:none;" accept="image/*"
+                onchange="displayImage(event, 2)">
+              <img id="imgPreview2" src="" />
+              <button type="button" id="upload2" class="upload-btn">+</button>
+            </div>
           </div>
-
-          <h3>조리 도구</h3>
-          <div id="cookingTools">
-            <input type="text" placeholder="ex)후라이팬" />
-            <button type="button" onclick="cookingToolsFunc()">입력</button>
-            <ul></ul>
+          <div id="StepItem1">
+            <p>3.</p>
+            <textarea id="stepContent3" placeholder="조리 과정을 적어주세요!"></textarea>
+            <div class="upload-box" onclick="triggerFileUpload(3)">
+              <input type="file" id="fileInput3" style="display:none;" accept="image/*"
+                onchange="displayImage(event, 3)">
+              <img id="imgPreview3" src="" />
+              <button type="button" id="upload3" class="upload-btn">+</button>
+            </div>
           </div>
-
-          <h3>조리 순서(최대 5단계)</h3>
-          <div id="cookingStep" class="">
-            <div id="StepItem1">
-              <p id="StepNum1">1.</p>
-              <textarea id="cookingStep1" placeholder="조리 과정을 적어주세요!"></textarea>
-              <button type="button" id="upload" onclick="fileUpload()">+</button>
+          <div id="StepItem1">
+            <p>4.</p>
+            <textarea id="stepContent4" placeholder="조리 과정을 적어주세요!"></textarea>
+            <div class="upload-box" onclick="triggerFileUpload(4)">
+              <input type="file" id="fileInput4" style="display:none;" accept="image/*"
+                onchange="displayImage(event, 4)">
+              <img id="imgPreview4" src="" />
+              <button type="button" id="upload4" class="upload-btn">+</button>
             </div>
-            <div id="StepItem1">
-              <p id="StepNum1">2.</p>
-              <textarea id="cookingStep1" placeholder="조리 과정을 적어주세요!"></textarea>
-              <button type="button" id="upload" onclick="fileUpload()">+</button>
-            </div>
-            <div id="StepItem1">
-              <p id="StepNum1">3.</p>
-              <textarea id="cookingStep1" placeholder="조리 과정을 적어주세요!"></textarea>
-              <button type="button" id="upload" onclick="fileUpload()">+</button>
-            </div>
-            <div id="StepItem1">
-              <p id="StepNum1">4.</p>
-              <textarea id="cookingStep1" placeholder="조리 과정을 적어주세요!"></textarea>
-              <button type="button" id="upload" onclick="fileUpload()">+</button>
-            </div>
-            <div id="StepItem1">
-              <p id="StepNum1">5.</p>
-              <textarea id="cookingStep1" placeholder="조리 과정을 적어주세요!"></textarea>
-              <button type="button" id="upload" onclick="fileUpload()">+</button>
-            </div>
-
-            <!-- <ul> -->
-            <!-- <% for(let i = 1; i <= 5; i++){ %> -->
-            <!-- <li> -->
-            <!-- <div><p><%= i %>.</p></div> -->
-            <!-- <div><textarea placeholder="1"></textarea></div> -->
-            <!-- </li> -->
-            <!-- <% } %> -->
-            <!-- </ul> -->
-            <!-- <textarea id="cookingStep1" placeholder="1."></textarea>
-                                    <button type="button" onclick="UploadCookingStep()">+</button><br />
-                            <textarea id="cookingStep1" placeholder="2."></textarea><br />
-                            <textarea id="cookingStep1" placeholder="3."></textarea><br />
-                            <textarea id="cookingStep1" placeholder="4."></textarea><br />
-                            <textarea id="cookingStep1" placeholder="5."></textarea> -->
           </div>
-          <div id="butonBox">
-            <button type="button" id="writeRpBtn" onclick="UpdateRpUploadFunc()">레시피 수정</button>
-            <button type="button" id="writeRpBtn" onclick="cancel()">취소</button>
+          <div id="StepItem1">
+            <p>5.</p>
+            <textarea id="stepContent5" placeholder="조리 과정을 적어주세요!"></textarea>
+            <div class="upload-box" onclick="triggerFileUpload(5)">
+              <input type="file" id="fileInput5" style="display:none;" accept="image/*"
+                onchange="displayImage(event, 5)">
+              <img id="imgPreview5" src="" />
+              <button type="button" id="upload5" class="upload-btn">+</button>
+            </div>
           </div>
+        </div>
+    </div>
+    <div id="butonBox">
+      <button type="button" id="writeRpBtn" onclick="UpdateRpUploadFunc()">레시피 수정</button>
+      <button type="button" id="writeRpBtn" onclick="cancel()">취소</button>
+    </div>
 
-        </form>
-      </div>
-    </main>
-    <footer>
-      <div class="companyInfo">
-        <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved. </p>
-      </div>
-    </footer>
+    </form>
+    </div>
+  </main>
+  <footer>
+    <div class="companyInfo">
+      <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved. </p>
+    </div>
+  </footer>
 </body>
 
 </html>
