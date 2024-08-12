@@ -126,6 +126,14 @@ function addIngredient() {
     return;
   }
 
+  const ingredientsList = document.getElementById('ingredientList');
+  const ingredientItems = ingredientsList.getElementsByClassName('ingredient-item');
+
+  if (ingredientItems.length >= 10) {
+    alert('재료는 최대 10개까지만 추가할 수 있습니다.');
+    return;
+  }
+
   //새로운 <li> 요소를 생성
   const li = document.createElement('li');
   //<li> 요소에 클래스 이름 'ingredient-item'을 추가
@@ -174,7 +182,7 @@ function removeIngredient(button) {
   //삭제 버튼의 부모 요소인 <li> 요소를 가져 옴
   const li = button.parentNode;
   //<li> 요소를 리스트에서 제거
-  li.parentNode.removeChild(li);
+  li.parentNode.remove(li);
 }
 
 //addCookingTool
@@ -227,7 +235,7 @@ function removeCookingTool(button) {
   // 삭제 버튼의 부모 요소인 <li> 요소를 가져옴
   const li = button.parentNode;
   // <li> 요소를 리스트에서 제거
-  li.parentNode.removeChild(li);
+  li.parentNode.remove(li);
 }
 
 //cookingStep

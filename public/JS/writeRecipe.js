@@ -62,7 +62,17 @@ function addIngredient() {
     return;
   }
 
+  // 현재 재료 목록의 개수를 확인
+  const ingredientsList = document.getElementById('ingredientList');
+  const ingredientItems = ingredientsList.getElementsByClassName('ingredient-item');
+
+  if (ingredientItems.length >= 10) {
+    alert('재료는 최대 10개까지만 추가할 수 있습니다.');
+    return;
+  }
+
   //새로운 <li> 요소를 생성
+  const ul = document.querySelector('#ingredientList');
   const li = document.createElement('li');
   //<li> 요소에 클래스 이름 'ingredient-item'을 추가
   li.className = 'ingredient-item';
@@ -115,7 +125,7 @@ function removeIngredient(button) {
   //삭제 버튼의 부모 요소인 <li> 요소를 가져 옴
   const li = button.parentNode;
   //<li> 요소를 리스트에서 제거
-  li.parentNode.removeChild(li);
+  li.parentNode.remove(li);
 }
 
 //addCookingTool
@@ -134,15 +144,14 @@ function addCookingTool() {
   // <li> 요소에 클래스 이름 'cooking-tool-item'을 추가
   li.className = 'cooking-tool-item';
 
-  const cookingToolBox = document.createElement('div')
-  cookingToolBox.className = 'cookingToolBox'
-  li.appendChild(cookingToolBox)
-
+  const cookingToolBox = document.createElement('div');
+  cookingToolBox.className = 'cookingToolBox';
+  li.appendChild(cookingToolBox);
 
   // 조리 도구 이름을 <span>으로 생성하고, 이를 cookingToolBox에 추가
   const cookingToolName = document.createElement('span');
-  cookingToolName.className = 'cookingToolName'
-  cookingToolName.textContent = `${toolName}`
+  cookingToolName.className = 'cookingToolName';
+  cookingToolName.textContent = `${toolName}`;
   cookingToolBox.appendChild(cookingToolName);
 
   // 삭제 버튼을 생성
@@ -171,7 +180,6 @@ function removeCookingTool(button) {
   // <li> 요소를 리스트에서 제거
   li.parentNode.removeChild(li);
 }
-
 
 //cookingStep
 function triggerFileUpload(step) {
@@ -299,15 +307,14 @@ async function generateRecipe() {
 
   const cookingName = document.querySelector('#inputAI').value;
 
-  document.querySelector('#loadingGif').style.display = 'block'
+  document.querySelector('#loadingGif').style.display = 'block';
   const res = await axios({
     method: 'post',
     url: '/api/recipe/generateRecipe',
     data: { cookingName },
   });
 
-  document.querySelector('#loadingGif').style.display = 'none'
-  
+  document.querySelector('#loadingGif').style.display = 'none';
 
   console.log('제미나이응답 : ', res.data);
   const { recipeTitle, description, servings, cookingTime, cookingTools, ingredients, quantity, cookingSteps } =
