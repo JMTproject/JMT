@@ -11,7 +11,7 @@ const { generateRecipe } = require('../controller/geminiAI');
 
 router.post('/recipelist', recipeList); //hyun
 router.post('/writerecipe', auth, uploadFunc);
-router.get('/data/:id', recipe.getRecipePage);
+router.get('/data/:id', auth, recipe.getRecipePage);
 router.post('/writerecipe', uploadFunc);
 router.post('/verify', auth, verify);
 router.post('/myrecipe', auth, myRecipeList); //hyun

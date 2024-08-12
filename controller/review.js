@@ -42,10 +42,18 @@ exports.submitReview = async (req, res) => {
     const reviewImg = req.files[0] ? req.files[0].location : '';
     const { userId } = req.userInfo;
 
+
+        const recipeId = req.params.id;
+        const { rating, content } = req.body;
+        const reviewImg = req.files[0] ? req.files[0].location : '';
+        // const { userId } = req.userInfo;
+        const userId = req.userInfo ? req.userInfo.userId : null;
+
     try {
       if (!rating || !content) {
         throw new Error('rating과 content는 필수 입력 사항입니다.');
       }
+
 
       const review = await Review.create({
         recipeId: recipeId,
@@ -84,4 +92,55 @@ exports.submitReview = async (req, res) => {
       res.status(500).send('서버 오류');
     }
   });
+};
+
+exports.updateReview = async (req, res) => {
+    try {
+        const reviewId = req.params.id;
+        const { content } = req.body;
+        const { email } = req.body;
+        const userId = req.userInfo ? req.userInfo.userId : null;
+        console.log('#####@@@@@@@', userId);
+        const review = await Review.findByPk(reviewId);
+
+        if (!review) {
+            return res.status(404).send('리뷰를 찾을 수 없습니다.');
+        }
+
+        if (review.userId !== userId.userId && email !== 'admin@admin.com') {
+            return res.status(403).send('이 리뷰를 수정할 권한이 없습니다.');
+        }
+
+        review.content = content;
+        await review.save();
+
+        res.json({ result: true });
+    } catch (error) {
+        console.error('리뷰 수정 에러:', error);
+        res.status(500).send('서버 오류');
+    }
+};
+
+exports.deleteReview = async (req, res) => {
+    try {
+        const reviewId = req.params.id;
+        const { userId, email } = req.userInfo;
+        const review = await Review.findByPk(reviewId);
+
+        if (!review) {
+            return res.status(404).send('리뷰를 찾을 수 없습니다.');
+        }
+
+        if (review.userId !== userId.userId && email !== 'admin@admin.com') {
+            return res.status(403).send('이 리뷰를 삭제할 권한이 없습니다.');
+        }
+
+        review.isEnabled = false;
+        await review.save();
+
+        res.json({ result: true });
+    } catch (error) {
+        console.error('리뷰 삭제 에러:', error);
+        res.status(500).send('서버 오류');
+    }
 };
