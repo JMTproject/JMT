@@ -93,6 +93,7 @@ const uploadFunc = async (req, res) => {
       let ingredientData = [];
       for (i = 0; i < parsedIngredients.length; i++) {
         ingredientData.push({
+          ingredientNum : i+1,
           ingredientName: parsedIngredients[i],
           quantity: parsedAmounts[i],
           recipeId: recipe.dataValues.recipeId,
@@ -102,6 +103,7 @@ const uploadFunc = async (req, res) => {
       let cookingToolData = [];
       for (i = 0; i < parsedTools.length; i++) {
         cookingToolData.push({
+          toolNum : i+1,
           toolName: parsedTools[i],
           recipeId: recipe.dataValues.recipeId,
         });

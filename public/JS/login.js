@@ -87,8 +87,15 @@ function loginFunc() {
     });
 }
 
+function homeFunc(){
+  location.href = '/'
+}
+
 document.getElementById('login_form').addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
     loginFunc();
   }
 });
+
+
+
