@@ -37,8 +37,9 @@ const arrayFiles = upload.fields([
   { name: 'files5' },
   { name: 'files6' },
 ]);
+
 const uploadFunc = async (req, res) => {
-  console.log(req.body);
+  console.log('@@@@@', req.body);
   arrayFiles(req, res, async (err) => {
     if (err) {
       return res.status(500).json({ result: false, message: '업도르 오류' });

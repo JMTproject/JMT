@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="ingredients_1"><p>${ingredient.ingredientName}</p></div>
                 <div class="ingredients_2"><p>${ingredient.quantity}</p></div>
                 <div id="ingredients_buy">
-                            <button type="button" onclick="purchase(${ingredient.ingredientId})" id="buy">구매</button>
+                            <button type="button" onclick="purchase('${ingredient.ingredientName}')" id="buy">구매</button>
                 </div>
             `;
             ingredientsList.appendChild(ingredientDiv);

@@ -14,20 +14,20 @@ if (localStorage.getItem('token')) {
       Authorization: token,
     },
   });
-  console.log(res.data);
+  // console.log(res.data);
 
   if (res.data.message === '토큰 정보 없음') {
     alert('로그인이 필요한 페이지 입니다');
     document.location.href = '/login';
   }
 
-  document.querySelector('#title').value = '테스트';
-  document.querySelector('#introduceRp').value = '테스트';
-  document.querySelector('#servings').value = 1;
-  document.querySelector('#cookingTime').value = 1;
-  document.querySelector('#ingredientName').value = '테스트';
-  document.querySelector('#ingredientAmount').value = '1개';
-  document.querySelector('#toolName').value = '테스트';
+  // document.querySelector('#title').value = '테스트';
+  // document.querySelector('#introduceRp').value = '테스트';
+  // document.querySelector('#servings').value = 1;
+  // document.querySelector('#cookingTime').value = 1;
+  // document.querySelector('#ingredientName').value = '테스트';
+  // document.querySelector('#ingredientAmount').value = '1개';
+  // document.querySelector('#toolName').value = '테스트';
 })();
 
 function fileUploadFunc() {
@@ -67,7 +67,12 @@ function addIngredient() {
   //<li> 요소에 클래스 이름 'ingredient-item'을 추가
   li.className = 'ingredient-item';
 
-  //재료 이름과 계량을 텍스트 노드로 생성, 이를 <li> 요소에 추가
+  //새로운 <div> 요소를 생성
+  const ingredientBox = document.createElement('div');
+  //<div> 요소에 클래스 이름 'ingredientBox'을 추가
+  ingredientBox.className = 'ingredientBox';
+
+  //재료 이름과 계량을 텍스트 노드로 생성
   const igdNameSpan = document.createElement('span');
   igdNameSpan.className = 'igdNameSpan';
   igdNameSpan.textContent = `${ingredientName}`;
@@ -80,19 +85,26 @@ function addIngredient() {
   const removeButton = document.createElement('button');
   // removeButton.innerHTML = 'x';
   removeButton.className = 'remove-btn';
+  removeButton.textContent = 'x';
 
   //삭제 버튼이 클릭되면 실행될 함수를 설정
   removeButton.onclick = function () {
     removeIngredient(this);
   };
-  //삭제 버튼을 <li> 요소에 추가
-  li.appendChild(removeButton);
+
+  // <li>에 ingredientBox를 추가
+  li.appendChild(ingredientBox);
+
+  // ingredientBox에 재료이름, 수량 추가
+  ingredientBox.appendChild(igdNameSpan);
+  ingredientBox.appendChild(igdAmountSpan);
+
+  //삭제 버튼을 ingredientBox에 추가
+  ingredientBox.appendChild(removeButton);
 
   //재료 리스트를 나타내는 <ul> 요소룰 가져와서, 새로 생성한<li> 요소를 추가
   const ingredientList = document.getElementById('ingredientList');
   ingredientList.appendChild(li);
-  li.appendChild(igdNameSpan);
-  li.appendChild(igdAmountSpan);
 
   //입력 필드를 초기화
   document.getElementById('ingredientName').value = '';
@@ -122,21 +134,28 @@ function addCookingTool() {
   // <li> 요소에 클래스 이름 'cooking-tool-item'을 추가
   li.className = 'cooking-tool-item';
 
-  // 조리 도구 이름을 텍스트 노드로 생성하고, 이를 <li> 요소에 추가
-  const text = document.createTextNode(toolName);
-  li.appendChild(text);
+  const cookingToolBox = document.createElement('div')
+  cookingToolBox.className = 'cookingToolBox'
+  li.appendChild(cookingToolBox)
+
+
+  // 조리 도구 이름을 <span>으로 생성하고, 이를 cookingToolBox에 추가
+  const cookingToolName = document.createElement('span');
+  cookingToolName.className = 'cookingToolName'
+  cookingToolName.textContent = `${toolName}`
+  cookingToolBox.appendChild(cookingToolName);
 
   // 삭제 버튼을 생성
   const removeButton = document.createElement('button');
-  // removeButton.innerHTML = 'x';
+  removeButton.textContent = 'x';
   removeButton.className = 'remove-btn';
   // 삭제 버튼이 클릭되면 실행될 함수를 설정
   removeButton.onclick = function () {
     removeCookingTool(this);
   };
 
-  // 삭제 버튼을 <li> 요소에 추가
-  li.appendChild(removeButton);
+  // 삭제 버튼을 cookingToolBox에 추가
+  cookingToolBox.appendChild(removeButton);
 
   // 조리 도구 리스트를 나타내는 <ul> 요소를 가져와서, 새로 생성한 <li> 요소를 추가
   const cookingToolList = document.getElementById('cookingToolList');
@@ -152,6 +171,7 @@ function removeCookingTool(button) {
   // <li> 요소를 리스트에서 제거
   li.parentNode.removeChild(li);
 }
+
 
 //cookingStep
 function triggerFileUpload(step) {
@@ -218,8 +238,8 @@ function writeRpUploadFunc() {
 
   // 조리 도구 목록을 배열로 만들어 폼 데이터에 추가
   const tools = [];
-  document.querySelectorAll('#cookingToolList li').forEach((li) => {
-    tools.push(li.textContent);
+  document.querySelectorAll('#cookingToolList .cookingToolName').forEach((span) => {
+    tools.push(span.textContent);
   });
   formData.append('tools', JSON.stringify(tools));
 
@@ -269,4 +289,56 @@ function writeRpUploadFunc() {
       console.error('업로드 실패:', error); // 업로드 실패 시 오류를 콘솔에 출력
       // alert('업로드 중 오류가 발생했습니다.'); //처리된 알림
     });
+}
+
+// AI활용 레시피 생성---------------------------------------------- hyun
+
+async function generateRecipe() {
+  document.querySelector('#ingredientList').replaceChildren();
+  document.querySelector('#cookingToolList').replaceChildren();
+
+  const cookingName = document.querySelector('#inputAI').value;
+
+  const res = await axios({
+    method: 'post',
+    url: '/api/recipe/generateRecipe',
+    data: { cookingName },
+  });
+
+  console.log('제미나이응답 : ', res.data);
+  const { recipeTitle, description, servings, cookingTime, cookingTools, ingredients, quantity, cookingSteps } =
+    res.data;
+  document.querySelector('#title').value = recipeTitle;
+  document.querySelector('#introduceRp').value = description;
+  document.querySelector('#servings').value = servings;
+  document.querySelector('#cookingTime').value = Number(cookingTime);
+
+  for (let i = 0; i < cookingTools.length; i++) {
+    document.querySelector('#toolName').value = cookingTools[i];
+    addCookingTool();
+  }
+  for (let i = 0; i < ingredients.length; i++) {
+    document.querySelector('#ingredientName').value = ingredients[i];
+    document.querySelector('#ingredientAmount').value = quantity[i];
+    addIngredient();
+  }
+  for (let i = 0; i < cookingSteps.length; i++) {
+    document.querySelector(`#stepContent${i + 1}`).value = cookingSteps[i];
+  }
+
+  //   document.querySelector('#ingredientName').value = '테스트';
+  //   document.querySelector('#ingredientAmount').value = '1개';
+  document.querySelector('#inputAI').value = '';
+}
+
+function openInputBox() {
+  const inputAI = document.querySelector('#inputAI');
+  const generateButton = document.querySelector('#generateButton');
+  if (inputAI.style.display === 'none') {
+    inputAI.style.display = 'block';
+    generateButton.style.display = 'block';
+  } else {
+    inputAI.style.display = 'none';
+    generateButton.style.display = 'none';
+  }
 }

@@ -1,6 +1,6 @@
 (async function viewCount() {
   const recipeId = window.location.pathname.split('/recipe/').pop();
-  const expiryTime = Date.now() + 60 * 1000; // 만료시간
+  const expiryTime = Date.now() + 60 * 1000; // 만료시간(1분)
 
 //   만료시간이 지나면 로컬스토리지 삭제
   if (localStorage.getItem(`${recipeId}`) < Date.now()) {
