@@ -70,7 +70,13 @@ html {
 }
 #AIName {
   color: #ffc0b3;
-  font-size: 10px;
+  font-size: 20px;
+}
+
+#AIBox img{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
 
 /*  --------- */
@@ -78,6 +84,7 @@ html {
 h3 {
   font-size: 24px;
   margin-left: 10px;
+  margin-top: 20px;
 }
 
 #infoRp {
@@ -226,11 +233,10 @@ h3 {
 }
 
 #ingredient ul li {
-
 }
 
 #ingredient .ingredientBox {
-  background-color: #FCA391;
+  background-color: #fca391;
   height: 20px;
   /* border: 1px solid #fdd8d1; */
   border-radius: 10px;
@@ -291,7 +297,6 @@ h3 {
   background-color: #fa6d51;
 }
 
-
 #cookingTools ul {
   display: flex;
   flex-direction: row;
@@ -301,11 +306,10 @@ h3 {
 }
 
 #cookingTools ul li {
-
 }
 
 #cookingTools .cookingToolBox {
-  background-color: #FCA391;
+  background-color: #fca391;
   height: 20px;
   /* border: 1px solid #fdd8d1; */
   border-radius: 10px;
@@ -331,75 +335,15 @@ h3 {
   padding-right: 5px;
 }
 
-
-
-
-/* #cookingStep {
-  width: 350px;
-  height: 450px;
-  margin: 0 auto;
-  border: 1px solid #fdd8d1;
-  border-radius: 5px;
-}
-#cookingStep #cookingStep1 {
-  width: 210px;
-  height: 70px;
-  border: 1px solid #fa6d51;
-  border: none;
-}
-#cookingStep #StepItem1 {
-  margin: 10px;
-}
-#cookingStep #StepNum1 {
-  float: left;
-  color: #fa6d51;
-}
-#cookingStep button {
-  width: 100px;
-  height: 70px;
-  border: 1px solid #fdd8d1;
-  border-radius: 5px;
-  float: right;
-  cursor: pointer;
-  font-size: 48px;
-  background-color: white;
-  color: #fdd8d1;
-} */
-
-/* ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-li {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 10px;
-} */
-
-/* #cookingStep p {
-  font-size: 1rem;
-  margin: auto;
-}
-
-#cookingStep textarea {
-  width: 50%;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-  resize: none;
-  box-sizing: border-box;
-  margin-bottom: 5px;
-} */
-
 /* cookingStep */
 #cookingStep {
+  width: 350px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   border: 1px solid #fdd8d1;
+  border-radius: 5px;
+  margin: 5px;
 }
 
 #cookingStep > div {
@@ -463,15 +407,19 @@ li {
   color: #fdd8d1;
 }
 
-#writeRpBtn {
+.writeBtn #writeRpBtn {
   width: 200px;
   height: 30px;
-  margin: 10px 10px auto;
+  /* margin: 10px 10px auto; */
   margin-left: 25%;
   text-align: center;
   background-color: #fca391;
   border: none;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
   color: white;
   cursor: pointer;
 }
@@ -536,6 +484,12 @@ li {
   #AIName {
     color: #ffc0b3;
     font-size: 12px;
+  }
+
+  #AIBox img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
   }
 
   /*  --------- */
@@ -682,31 +636,27 @@ li {
   #ingredient ul {
     margin: 10px 10px;
   }
-  
+
   #ingredient ul li {
-  
   }
-  
+
   #ingredient .ingredientBox {
     height: 30px;
     border-radius: 15px;
     margin: 5px 10px;
     padding: 0 10px;
   }
-  
+
   #ingredient span {
     font-size: 13px;
     margin: 0 5px;
   }
-  
+
   #ingredient .remove-btn {
     font-size: 13px;
     padding-left: 10px;
     padding-right: 5px;
   }
-
-
-
 
   #cookingTools {
     width: 1070px;
@@ -741,27 +691,25 @@ li {
     background-color: #fa6d51;
   }
 
-
   #cookingTools ul {
     margin: 10px 10px;
   }
-  
+
   #cookingTools ul li {
-  
   }
-  
+
   #cookingTools .cookingToolBox {
     height: 30px;
     border-radius: 15px;
     margin: 5px 10px;
     padding: 0 10px;
   }
-  
+
   #cookingTools span {
     font-size: 13px;
     margin: 0 5px;
   }
-  
+
   #cookingTools .remove-btn {
     font-size: 13px;
     padding-left: 10px;
@@ -769,6 +717,7 @@ li {
   }
 
   #cookingStep {
+    width: 1070px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -837,7 +786,7 @@ li {
     color: #fdd8d1;
   }
 
-  #writeRpBtn {
+  .writeBtn #writeRpBtn {
     width: 450px;
     height: 45px;
     margin: 10px 10px auto;
@@ -854,8 +803,9 @@ li {
     flex-direction: column;
     line-height: 2;
     justify-content: center;
+    margin-top: 10px;
   }
-  #writeRpBtn:hover {
+  .writeBtn #writeRpBtn:hover {
     background-color: #fa6d51;
   }
 }

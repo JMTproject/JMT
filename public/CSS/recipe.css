@@ -32,6 +32,23 @@ header {
     text-align: center;
 }
 
+#view-count-info {
+    display: flex;
+    justify-content: left;
+    margin: 5px;
+    margin-left: 10px;
+}
+
+.material-symbols-rounded.visibility {
+    font-size: 1.5rem;
+    color: #fca391;
+}
+
+#view-count {
+    margin-left: 5px;
+    line-height: 1.5rem;
+}
+
 #thumbnail {
     width: 340px;
     height: 200px;
@@ -372,6 +389,17 @@ header {
     border-radius: 5px;
     margin: 20px 10px 20px 20px;
     cursor: pointer;
+    cursor: pointer;
+    position: relative;
+}
+
+.review_photo_upload img {
+    max-width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+    margin-top: -50px;
+    /* object-fit: cover; */
 }
 
 .material-symbols-rounded.add {
@@ -528,6 +556,77 @@ textarea::placeholder {
     height: 70px;
     /* background-color: #a0522d; */
     margin: 10px;
+}
+
+.review-edit-textarea {
+    width: 95%;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    font-size: 0.625rem;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    /* margin-left: -30px; */
+    margin-top: -10px;
+}
+
+.edit-btn:hover {
+    color: #fca391;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    /* margin: -5px; */
+    font: inherit;
+    font-size: 0.625rem;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    margin-left: 50px;
+    margin-top: -10px;
+}
+
+.delete-btn:hover {
+    color: #fca391;
+}
+
+.save-btn {
+    width: 80px;
+    height: 20px;
+    background-color: #fca391;
+    border: 1px solid #fca391;
+    border-radius: 12.5px;
+    padding: 0;
+    margin: 10px 0;
+    font: inherit;
+    font-size: 0.625rem;
+    color: white;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background-color: #fdd8d1;
+    border-radius: 12.5px;
+    color: black;
+}
+
+.home {
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+    color: #fdd8d1;
+    margin-left: 300px;
+}
+
+.home:hover {
+    font-size: 0.875rem;
+    line-height: 2rem;
+    color: #fca391;
 }
 
 @media (min-width: 1080px) {
@@ -942,7 +1041,7 @@ textarea::placeholder {
         display: block;
         margin: 0 auto;
         margin-top: -100px;
-        object-fit: cover;
+        /* object-fit: cover; */
     }
 
     .material-symbols-rounded.add {
@@ -1052,6 +1151,10 @@ textarea::placeholder {
 
     .review_profile {
         flex: 1;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
     }
 
     .review_profile .review_info {
@@ -1062,10 +1165,12 @@ textarea::placeholder {
     }
 
     .review_info {
+        width: 600px;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        /* margin-top: 5px; */
+        flex-grow: 1;
+        justify-content: space-between;
     }
 
     .review_info.no-img {
@@ -1077,6 +1182,10 @@ textarea::placeholder {
         line-height: 1.5rem;
         color: #fca391;
         margin: 0;
+        margin-left: 140px;
+        padding-right: 10px;
+        flex-grow: 1;
+        word-break: break-all;
     }
 
     .review_info .review_date {
@@ -1085,8 +1194,8 @@ textarea::placeholder {
     }
 
     .review_profile .review_content {
-        width: 600px;
-        margin-left: 10px;
+        /* width: 600px; */
+        /* margin-left: 10px; */
         box-sizing: content-box;
     }
 
@@ -1103,14 +1212,60 @@ textarea::placeholder {
     }
 
     .edit-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        font: inherit;
+        font-size: 0.875rem;
+        color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+    }
+
+    .edit-btn:hover {
         color: #fca391;
+    }
+
+    .delete-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: -5px;
+        font: inherit;
+        font-size: 0.875rem;
+        color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+    }
+
+    .delete-btn:hover {
+        color: #fca391;
+    }
+
+    .save-btn {
+        width: 100px;
+        height: 25px;
+        background-color: #fca391;
+        border: 1px solid #fca391;
+        border-radius: 12.5px;
+        padding: 0;
+        margin: 10px 0;
+        font: inherit;
+        font-size: 0.875rem;
+        color: white;
+        cursor: pointer;
+    }
+
+    .save-btn:hover {
+        background-color: #fdd8d1;
+        border-radius: 12.5px;
+        color: black;
     }
 
     .review_1 .review_img {
         width: 160px;
         height: 100px;
         /* background-color: #a0522d; */
-        margin-left: 20px;
+        /* margin-left: 20px; */
     }
 
     .show-more-reviews-btn {
@@ -1130,6 +1285,19 @@ textarea::placeholder {
         background-color: #fdd8d1;
         color: black;
     }
+
+    .home {
+        font-size: 0.875rem;
+        line-height: 2rem;
+        color: #fdd8d1;
+        margin-left: 980px;
+    }
+
+    .home:hover {
+        font-size: 0.875rem;
+        line-height: 2rem;
+        color: #fca391;
+    }
 }
 
 @media (min-width: 650px) and (max-width: 1079px) {
@@ -1148,6 +1316,23 @@ textarea::placeholder {
         /* background-color: bisque; */
         margin: 0 auto;
         text-align: center;
+    }
+
+    #view-count-info {
+        display: flex;
+        justify-content: left;
+        margin: 5px;
+        margin-left: 0px;
+    }
+
+    .material-symbols-rounded.visibility {
+        font-size: 1.5rem;
+        color: #fca391;
+    }
+
+    #view-count {
+        margin-left: 5px;
+        line-height: 1.5rem;
     }
 
     #thumbnail {
@@ -1489,6 +1674,17 @@ textarea::placeholder {
         border-radius: 5px;
         margin: 20px 10px 20px 20px;
         cursor: pointer;
+        position: relative;
+        /* overflow: hidden; */
+    }
+
+    .review_photo_upload img {
+        max-width: 100%;
+        height: 100%;
+        display: block;
+        margin: 0 auto;
+        margin-top: -80px;
+        /* object-fit: cover; */
     }
 
     .material-symbols-rounded.add {
@@ -1538,6 +1734,7 @@ textarea::placeholder {
         border: 1px solid #fca391;
         border-radius: 5px;
         resize: none;
+        margin-top: 10px;
     }
 
     textarea::placeholder {
@@ -1548,7 +1745,7 @@ textarea::placeholder {
 
     .review_write_upload button[type='button'] {
         width: 80px;
-        height: 55px;
+        height: 45px;
         background-color: #fca391;
         border: 1px solid #fca391;
         display: inline-block;
@@ -1556,7 +1753,7 @@ textarea::placeholder {
         color: white;
         font-size: 1rem;
         margin: 20px;
-        margin-top: 45px;
+        margin-top: 55px;
         margin-left: 20px;
         border-radius: 5px;
     }
@@ -1599,6 +1796,10 @@ textarea::placeholder {
 
     .review_profile {
         flex: 1;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
     }
 
     .review_profile .review_info {
@@ -1608,14 +1809,16 @@ textarea::placeholder {
         margin-left: -150px;
     }
     .review_info {
+        width: 600px;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        /* margin-top: 5px; */
+        flex-grow: 1;
+        justify-content: space-between;
     }
 
     .review_info.no-img {
-        margin-left: -250px;
+        margin-left: -300px;
     }
 
     .review_info p {
@@ -1623,6 +1826,10 @@ textarea::placeholder {
         line-height: 1rem;
         color: #fca391;
         margin: 0;
+        margin-left: 140px;
+        padding-right: 10px;
+        flex-grow: 1;
+        word-break: break-all;
     }
 
     .review_info .review_date {
@@ -1631,8 +1838,8 @@ textarea::placeholder {
     }
 
     .review_profile .review_content {
-        width: 400px;
-        margin-left: 10px;
+        /* width: 400px;
+        margin-left: 10px; */
         box-sizing: content-box;
     }
 
@@ -1653,5 +1860,68 @@ textarea::placeholder {
         height: 80px;
         /* background-color: #a0522d; */
         /* margin-left: 20px; */
+    }
+
+    .edit-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        font: inherit;
+        font-size: 0.875rem;
+        color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+    }
+
+    .edit-btn:hover {
+        color: #fca391;
+    }
+
+    .delete-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: -5px;
+        font: inherit;
+        font-size: 0.875rem;
+        color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+    }
+
+    .delete-btn:hover {
+        color: #fca391;
+    }
+
+    .save-btn {
+        width: 100px;
+        height: 25px;
+        background-color: #fca391;
+        border: 1px solid #fca391;
+        border-radius: 12.5px;
+        padding: 0;
+        margin: 10px 0;
+        font: inherit;
+        font-size: 0.875rem;
+        color: white;
+        cursor: pointer;
+    }
+
+    .save-btn:hover {
+        background-color: #fdd8d1;
+        border-radius: 12.5px;
+        color: black;
+    }
+
+    .home {
+        font-size: 0.875rem;
+        line-height: 2rem;
+        color: #fdd8d1;
+        margin-left: 640px;
+    }
+
+    .home:hover {
+        font-size: 0.875rem;
+        line-height: 2rem;
+        color: #fca391;
     }
 }

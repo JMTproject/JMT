@@ -39,7 +39,7 @@ const arrayFiles = upload.fields([
 ]);
 
 const uploadFunc = async (req, res) => {
-  console.log('@@@@@', req.body);
+  // console.log('@@@@@', req.body);
   arrayFiles(req, res, async (err) => {
     if (err) {
       return res.status(500).json({ result: false, message: '업도르 오류' });
@@ -54,7 +54,7 @@ const uploadFunc = async (req, res) => {
       const { files1, files2, files3, files4, files5, files6 } = req.files;
 
       const filesArray = [files2, files3, files4, files5, files6];
-      console.log('파일즈2', files2[0].location);
+      // console.log('파일즈2', files2[0].location);
       const { title, introduceRp, servings, cookingTime, ingredientNames, ingredientAmounts, tools, stepContents } =
         req.body;
 

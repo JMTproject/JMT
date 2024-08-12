@@ -40,9 +40,12 @@
   </header>
   <main>
     <div class="container">
+
       
       <div id="AIBox"> <!-- AI레시피생성 --> 
-        <input type="text" id="inputAI" placeholder="원하는 요리 이름을 입력하세요. 예) 제육볶음" style="display: none;">
+        <img id="loadingGif" src="../public/images/loading.gif" style="display: none;">
+        <input type="text" id="inputAI" onkeypress="generateRecipe()" placeholder="원하는 요리 이름을 입력하세요. 예) 제육볶음" style="display: none;">
+
         <button id="generateButton" onclick="generateRecipe()" style="display: none;">레시피 생성</button>
         <div id="openInputBox" onclick="openInputBox()">
           <span class="material-icons-round smart_toy">smart_toy</span>
@@ -151,8 +154,10 @@
             </div>
           </div>
         </div>
+        <div class="writeBtn">
+          <button type="button" id="writeRpBtn" onclick="writeRpUploadFunc()">레시피 등록</button>
+        </div>
     </div>
-    <button type="button" id="writeRpBtn" onclick="writeRpUploadFunc()">레시피 등록</button>
     </form>
     </div>
   </main>

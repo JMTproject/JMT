@@ -148,6 +148,7 @@ h3 {
 #ingredient #inputButton:hover {
   background-color: #fa6d51;
 }
+
 #ingredient ul {
   display: flex;
   flex-direction: row;
@@ -155,12 +156,15 @@ h3 {
   flex-wrap: wrap;
   margin: 10px 10px;
 }
+
+
 #ingredient ul li {
 }
+
 #ingredient .ingredientBox {
   background-color: #fca391;
   height: 20px;
-  /* border: 1px solid #FDD8D1; */
+  /* border: 1px solid #fdd8d1; */
   border-radius: 10px;
   margin: 5px 10px;
   display: flex;
@@ -168,10 +172,12 @@ h3 {
   align-items: center;
   padding: 0 5px;
 }
+
 #ingredient span {
   font-size: 11px;
   margin: 0 5px;
 }
+
 #ingredient .remove-btn {
   cursor: pointer;
   border: none;
@@ -181,6 +187,7 @@ h3 {
   padding-left: 10px;
   padding-right: 5px;
 }
+
 /* cooking */
 #cookingTools {
   width: 350px;
@@ -215,6 +222,7 @@ h3 {
 #cookingTools #inputButton:hover {
   background-color: #fa6d51;
 }
+
 #cookingTools ul {
   display: flex;
   flex-direction: row;
@@ -222,12 +230,14 @@ h3 {
   flex-wrap: wrap;
   margin: 10px 10px;
 }
+
 #cookingTools ul li {
 }
+
 #cookingTools .cookingToolBox {
   background-color: #fca391;
   height: 20px;
-  /* border: 1px solid #FDD8D1; */
+  /* border: 1px solid #fdd8d1; */
   border-radius: 10px;
   margin: 5px 10px;
   display: flex;
@@ -235,10 +245,12 @@ h3 {
   align-items: center;
   padding: 0 5px;
 }
+
 #cookingTools span {
   font-size: 11px;
   margin: 0 5px;
 }
+
 #cookingTools .remove-btn {
   cursor: pointer;
   border: none;
@@ -477,21 +489,26 @@ h3 {
   #ingredient #inputButton:hover {
     background-color: #fa6d51;
   }
+
   #ingredient ul {
     margin: 10px 10px;
   }
+
   #ingredient ul li {
   }
+
   #ingredient .ingredientBox {
     height: 30px;
     border-radius: 15px;
     margin: 5px 10px;
     padding: 0 10px;
   }
+
   #ingredient span {
     font-size: 13px;
     margin: 0 5px;
   }
+
   #ingredient .remove-btn {
     font-size: 13px;
     padding-left: 10px;
@@ -529,26 +546,32 @@ h3 {
   #cookingTools #inputButton:hover {
     background-color: #fa6d51;
   }
+
   #cookingTools ul {
     margin: 10px 10px;
   }
+
   #cookingTools ul li {
   }
+
   #cookingTools .cookingToolBox {
     height: 30px;
     border-radius: 15px;
     margin: 5px 10px;
     padding: 0 10px;
   }
+
   #cookingTools span {
     font-size: 13px;
     margin: 0 5px;
   }
+
   #cookingTools .remove-btn {
     font-size: 13px;
     padding-left: 10px;
     padding-right: 5px;
   }
+
   #cookingStep {
     display: flex;
     flex-direction: column;

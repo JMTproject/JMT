@@ -2,7 +2,6 @@ const aws = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const { User, Recipe, Ingredient, CookingTools, CookingStep } = require('../models');
-const { where } = require('sequelize');
 
 //aws 설정
 aws.config.update({
@@ -37,12 +36,12 @@ const arrayFiles = upload.fields([
   { name: 'files6' },
 ]);
 
-console.log(',,,,,,,,,', arrayFiles);
-
 const updateFunc = async (req, res) => {
-  console.log('==================================', req.body);
   const step = [1, 2, 3, 4, 5];
+
   arrayFiles(req, res, async (err) => {
+    console.log('req.body:', req.body);
+    console.log('req.files:', req.files);
     if (err) {
       return res.status(500).json({ result: false, message: '업로드 오류' });
     }
@@ -57,6 +56,7 @@ const updateFunc = async (req, res) => {
       const { stepImages, mainImage, title, introduceRp, servings, cookingTime } = req.body;
       const { amounts, stepContents, ingredients, cookingTools, recipeId } = req.body;
       const filesArray = [];
+
 
       for (let i = 0; i < stepImages.length; i++) {
         filesArray.push(stepImages[i]);
@@ -78,8 +78,6 @@ const updateFunc = async (req, res) => {
         },
         { where: { recipeId } }
       );
-      console.log(5);
-      console.log(ingredients.length);
       await Ingredient.destroy({ where: { recipeId } });
       for (let i = 0; i < ingredients.length; i++) {
         await Ingredient.create({
@@ -108,12 +106,8 @@ const updateFunc = async (req, res) => {
           },
           { where: { recipeId, step: [i + 1] } }
         );
-        console.log('===========', stepContents[i]);
-        console.log('===========', [i]);
-        
       }
-
-      console.log(4);
+      
       res.json({ result: true });
     } catch (error) {
       res.status(500).json({ result: false });
