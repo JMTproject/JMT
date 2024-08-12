@@ -32,10 +32,12 @@ const upload = multer({
 const arrayFiles = upload.array('files');
 
 exports.submitReview = async (req, res) => {
+
     arrayFiles(req, res, async (err) => {
         if (err) {
             return res.status(500).json({ result: false });
         }
+
 
         const recipeId = req.params.id;
         const { rating, content } = req.body;
