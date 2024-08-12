@@ -39,10 +39,9 @@ const arrayFiles = upload.fields([
   { name: 'files6' },
 ]);
 const updateFunc = async (req, res) => {
-  console.log('req.body:', req.body);
-  console.log('req.files:', req.files);
-
   arrayFiles(req, res, async (err) => {
+    console.log('req.body:', req.body);
+    console.log('req.files:', req.files);
     if (err) {
       return res.status(500).json({ result: false, message: '업도르 오류' });
     }
@@ -78,12 +77,14 @@ const updateFunc = async (req, res) => {
       // console.log('stepContents!!!!', stepContents);
       // console.log('stepsImg!!!!', stepsImg);
       // console.log('img', stepImg);
+
       console.log('파싱전 스텝', stepContents);
       //JSON 문자열을 배열로 파싱
       const parsedIngredients = JSON.parse(ingredientNames);
       const parsedAmounts = JSON.parse(ingredientAmounts);
       const parsedTools = JSON.parse(tools);
       const parsedStepContents = JSON.parse(stepContents);
+
       // const parsedStepsImg = JSON.parse(stepImg);
       // console.log('1', parsedIngredients);
       // console.log('2', parsedAmounts);
@@ -92,7 +93,7 @@ const updateFunc = async (req, res) => {
       // console.log('5', parsedStepsImg);
       // introduceRp, files1[0].location, servings, cookingTime, userId
 
-      const recipe = await Recipe.update(
+      const recipe = await Recipe.destroy(
         {
           recipeTitle: title,
           description: introduceRp,
@@ -140,6 +141,7 @@ const updateFunc = async (req, res) => {
         );
       }
       console.log('data', cookingStepData);
+
       // let cookingStepData = [];
       // console.log('뭐징', parsedStepsImg);
       // for (i = 0; i < parsedSteps.length; i++) {
@@ -151,11 +153,11 @@ const updateFunc = async (req, res) => {
       //   });
       // }
 
-      await CookingTools.bulkupdate(cookingToolData, { where: { recipeId } });
+      await CookingTools.bulkCreate(cookingToolData, { where: { recipeId } });
 
-      await Ingredient.bulkupdate(ingredientData, { where: { recipeId } });
+      await Ingredient.bulkCreate(ingredientData, { where: { recipeId } });
 
-      await CookingStep.bulkupdate(cookingStepData, { where: { recipeId } });
+      await CookingStep.bulkCreate(cookingStepData, { where: { recipeId } });
 
       res.json({ result: true });
     } catch (error) {
