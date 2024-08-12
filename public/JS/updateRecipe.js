@@ -205,16 +205,27 @@ function displayImage(event, step) {
 
 function UpdateRpUploadFunc() {
   // 사용자가 입력한 각 필드의 값을 가져옴
+  // const title = document.getElementById('title').value;
+  // const mainImage = document.querySelector('#uploadedImg');
+  // const introduceRp = document.getElementById('introduceRp').value;
+  // const servings = document.getElementById('servings').value;
+  // const cookingTime = document.getElementById('cookingTime').value;
+  // const stepImg1 = document.querySelector('#imgPreview1');
+  // const stepImg2 = document.querySelector('#imgPreview2');
+  // const stepImg3 = document.querySelector('#imgPreview3');
+  // const stepImg4 = document.querySelector('#imgPreview4');
+  // const stepImg5 = document.querySelector('#imgPreview5');
+
   const title = document.getElementById('title').value;
-  const mainImage = document.getElementById('uploadedImg');
+  const mainImage = document.getElementById('fileInput');
   const introduceRp = document.getElementById('introduceRp').value;
   const servings = document.getElementById('servings').value;
   const cookingTime = document.getElementById('cookingTime').value;
-  const stepImg1 = document.getElementById('imgPreview1');
-  const stepImg2 = document.getElementById('imgPreview2');
-  const stepImg3 = document.getElementById('imgPreview3');
-  const stepImg4 = document.getElementById('imgPreview4');
-  const stepImg5 = document.getElementById('imgPreview5');
+  const stepImg1 = document.getElementById('fileInput1');
+  const stepImg2 = document.getElementById('fileInput2');
+  const stepImg3 = document.getElementById('fileInput3');
+  const stepImg4 = document.getElementById('fileInput4');
+  const stepImg5 = document.getElementById('fileInput5');
 
   // 필수 필드가 비어 있는지 확인하고, 비어 있을 경우 경고 메시지를 표시
   if (!title || !mainImage || !introduceRp || !servings || !cookingTime) {
@@ -240,10 +251,15 @@ function UpdateRpUploadFunc() {
   console.log();
   console.log('title!!!!', title);
   formData.append('title', title);
-  console.log('data!!!!', formData);
+  // console.log('data!!!!', formData);
   formData.append('introduceRp', introduceRp);
+  console.log('introduceRp!!!!', introduceRp);
+
   formData.append('servings', servings);
+  console.log('servings!!!!', servings);
+
   formData.append('cookingTime', cookingTime);
+  console.log('cookingTime!!!!', cookingTime);
 
   // 재료 목록을 배열로 만들어 폼 데이터에 추가
   const ingredientNames = [];
@@ -278,25 +294,64 @@ function UpdateRpUploadFunc() {
 
   formData.append('stepContents', JSON.stringify(stepContents));
 
-  // if (mainImage.files[0]) {
-  //   formData.append('files1', mainImage.files[0]);
-  // }
-  // console.log('메인이미지!!!!', mainImage.files[0]);
+  if (mainImage.files[0]) {
+    formData.append('files1', mainImage.files[0]);
+  }
+  console.log('메인이미지!!!!', mainImage.files[0]);
 
-  // if (stepImg1.files[0]) {
+  if (stepImg1.files[0]) {
+    formData.append('files2', stepImg1.files[0]);
+  }
+  if (stepImg2.files[0]) {
+    formData.append('files3', stepImg2.files[0]);
+  }
+  if (stepImg3.files[0]) {
+    formData.append('files4', stepImg3.files[0]);
+  }
+  if (stepImg4.files[0]) {
+    formData.append('files5', stepImg4.files[0]);
+  }
+  if (stepImg5.files[0]) {
+    formData.append('files6', stepImg5.files[0]);
+  }
+  // if (mainImage.files.length === 0) {
+  //   console.log('메인이미지가 선택되지 않았습니다.');
+  //   formData.append('files1', mainImage.files[0]);
+
+  //   return;
+  // }
+  // if (stepImg1.files.length === 0) {
+  //   console.log('1단계 이미지가 선택되지 않았습니다.');
   //   formData.append('files2', stepImg1.files[0]);
+
+  //   return;
   // }
-  // if (stepImg2.files[0]) {
+  // if (stepImg2.files.length === 0) {
+  //   console.log('2단계 이미지가 선택되지 않았습니다.');
   //   formData.append('files3', stepImg2.files[0]);
+
+  //   return;
   // }
-  // if (stepImg3.files[0]) {
+  // if (stepImg3.files.length === 0) {
+  //   console.log('3단계 이미지가 선택되지 않았습니다.');
   //   formData.append('files4', stepImg3.files[0]);
+
+  //   return;
   // }
-  // if (stepImg4.files[0]) {
+  // if (stepImg4.files.length === 0) {
+  //   console.log('4단계 이미지가 선택되지 않았습니다.');
   //   formData.append('files5', stepImg4.files[0]);
+
+  //   return;
   // }
-  // if (stepImg5.files[0]) {
+  // if (stepImg5.files.length === 0) {
+  //   console.log('5단계 이미지가 선택되지 않았습니다.');
   //   formData.append('files6', stepImg5.files[0]);
+
+  //   return;
+  // }
+  // for (const mainI of formData.mainImage) {
+  //   console.log('ma!!!!', mainI);
   // }
 
   // formData.append('files1', mainImage.files[0]);
@@ -306,13 +361,17 @@ function UpdateRpUploadFunc() {
   // formData.append('files4', stepImg3.files[0]);
   // formData.append('files5', stepImg4.files[0]);
   // formData.append('files6', stepImg5.files[0]);
-  for (let i = 1; i <= 5; i++) {
-    const fileInput = document.getElementById(`fileInput${i}`);
-    if (fileInput.files.length > 0) {
-      formData.append(`files${i}`, fileInput.files[0]);
-    }
-  }
-  console.log('메인이미지!!!!', mainImage.files[0]);
+  // for (let i = 1; i <= 5; i++) {
+  //   const fileInput = document.getElementById(`fileInput${i}`);
+  //   if (fileInput.files.length > 0) {
+  //     formData.append(`files${i}`, fileInput.files[0]);
+  //   }
+  // }
+  // console.log('메인이미지!!!!', mainImage.files[0]);
+  // console.log('stepImg1!!!!', stepImg1.files[0]);
+  // console.log('메인이미지!!!!', mainImage.files);
+  // console.log('메인이미지!!!!', mainImage.files);
+  // console.log('메인이미지!!!!', mainImage.files);
   // console.log('콘솔확인@@@', mainImage.files[0]); // 폼 데이터에 있는 파일들을 콘솔에 출력
   // console.log(title);
 
@@ -328,7 +387,7 @@ function UpdateRpUploadFunc() {
     data: formData,
     headers: {
       Authorization: token,
-      'Content-Type': 'multipart/form-data',
+      // 'Content-Type': 'multipart/form-data',
     },
   })
     .then((res) => {
