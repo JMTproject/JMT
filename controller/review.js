@@ -37,12 +37,6 @@ exports.submitReview = async (req, res) => {
       return res.status(500).json({ result: false });
     }
 
-    const recipeId = req.params.id;
-    const { rating, content } = req.body;
-    const reviewImg = req.files[0] ? req.files[0].location : '';
-    const { userId } = req.userInfo;
-
-
         const recipeId = req.params.id;
         const { rating, content } = req.body;
         const reviewImg = req.files[0] ? req.files[0].location : '';
