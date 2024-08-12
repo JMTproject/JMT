@@ -463,22 +463,6 @@ li {
   color: #fdd8d1;
 }
 
-/* form #writeRpBtn {
-  width: 200px;
-  height: 30px;
-  margin: 10px 10px auto;
-  margin-left: 25%;
-  text-align: center;
-  background-color: #fca391;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-}
-form #writeRpBtn:hover {
-  background-color: #fa6d51;
-} */
-
 #writeRpBtn {
   width: 200px;
   height: 30px;
