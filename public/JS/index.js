@@ -11,10 +11,10 @@ let currentRecipes = [];
 const recipesPerPage = 12; // 한페이지당 몇개의 레시피를 띄울지 정함
 let currentPage = 1; //현재페이지
 let totalPages = 0; //만들어질 전체 페이지
-let pageButtons = []; //5개묶음으로된 배열(buttonPack)들이 원소인 배열
-let buttonPack = [];
-let currentButtonPack = 0;
-let startRecipe = 0;
+let buttonPack = []; // 5개씩 페이지번호 넣을 예정
+let pageButtons = []; //buttonPack들이 원소인 배열 -> 모든 페이지 번호들이 들어있음
+let currentButtonPack = 0; //pageButtons배열의 인덱스값을 지정하기 위한 변수
+let startRecipe = 0; //리스트를 펼칠때 12개씩 끊을 레시피 리스트 배열의 첫번째 인덱스
 let endRecipe = recipesPerPage;
 
 // 레시피카드 펼지기
@@ -157,16 +157,12 @@ const selectPage = (page) => {
 
   // 모든 레시피 별점 평균 계산
   const C = allRecipe.reduce((acc, recipe) => acc + parseFloat(recipe.rating), 0) / allRecipe.length;
-
   // m: 리뷰수의 중요도를 결정하는 계수 -> 사용자가 많아 전체적인 리뷰수가 높을수록 높게 잡아야함
   const m = 10;
-
   // 가중 평균 계산하여 allRecipe에 속성 추가
   allRecipe.forEach((recipe) => {
     recipe.wr = (recipe.reviewCount * parseFloat(recipe.rating) + C * m) / (parseInt(recipe.reviewCount) + m);
   });
-  console.log('콘솔확인@@@', allRecipe);
-
   // wr값을 기준으로 내림차순으로 정렬
   allRecipe.sort((a, b) => b.wr - a.wr);
 
