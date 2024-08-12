@@ -32,16 +32,18 @@ const upload = multer({
 const arrayFiles = upload.array('files');
 
 exports.submitReview = async (req, res) => {
+
     arrayFiles(req, res, async (err) => {
         if (err) {
             return res.status(500).json({ result: false });
         }
 
+
         const recipeId = req.params.id;
         const { rating, content } = req.body;
-        const reviewImg = req.files[0].location;
-        const { userId } = req.userInfo;
-        console.log('########', reviewImg);
+        const reviewImg = req.files[0] ? req.files[0].location : '';
+        // const { userId } = req.userInfo;
+        const userId = req.userInfo ? req.userInfo.userId : null;
 
         try {
             if (!rating || !content) {
@@ -55,6 +57,21 @@ exports.submitReview = async (req, res) => {
                 content: content,
                 reviewImg: reviewImg,
             });
+
+            //   리뷰 평점 구하고 레시피 테이블에 넣기 ------------------- hyun
+            const reviewRatings = await Review.findAll({
+                where: { recipeId },
+                attributes: ['rating'],
+            });
+            console.log('모든 리뷰 레이팅', reviewRatings);
+
+            const averageRating =
+                reviewRatings.reduce((acc, rating) => acc + parseFloat(rating.dataValues.rating), 0) /
+                reviewRatings.length;
+            console.log('평균 점수', averageRating);
+
+            const updateResult = await Recipe.update({ rating: averageRating }, { where: { recipeId } });
+            console.log('결과!@!@', updateResult);
 
             res.json({
                 review: {
@@ -70,4 +87,55 @@ exports.submitReview = async (req, res) => {
             res.status(500).send('서버 오류');
         }
     });
+};
+
+exports.updateReview = async (req, res) => {
+    try {
+        const reviewId = req.params.id;
+        const { content } = req.body;
+        const { email } = req.body;
+        const userId = req.userInfo ? req.userInfo.userId : null;
+        console.log('#####@@@@@@@', email);
+        const review = await Review.findByPk(reviewId);
+
+        if (!review) {
+            return res.status(404).send('리뷰를 찾을 수 없습니다.');
+        }
+
+        if (review.userId !== userId.userId && email !== 'admin@admin.com') {
+            return res.status(403).send('이 리뷰를 수정할 권한이 없습니다.');
+        }
+
+        review.content = content;
+        await review.save();
+
+        res.json({ result: true });
+    } catch (error) {
+        console.error('리뷰 수정 에러:', error);
+        res.status(500).send('서버 오류');
+    }
+};
+
+exports.deleteReview = async (req, res) => {
+    try {
+        const reviewId = req.params.id;
+        const { userId, email } = req.userInfo;
+        const review = await Review.findByPk(reviewId);
+
+        if (!review) {
+            return res.status(404).send('리뷰를 찾을 수 없습니다.');
+        }
+
+        if (review.userId !== userId.userId && email !== 'admin@admin.com') {
+            return res.status(403).send('이 리뷰를 삭제할 권한이 없습니다.');
+        }
+
+        review.isEnabled = false;
+        await review.save();
+
+        res.json({ result: true });
+    } catch (error) {
+        console.error('리뷰 삭제 에러:', error);
+        res.status(500).send('서버 오류');
+    }
 };

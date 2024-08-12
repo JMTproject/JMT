@@ -4,6 +4,7 @@ const multerS3 = require('multer-s3');
 const { User, Recipe, Review, Ingredient, CookingTools, CookingStep } = require('../models');
 const recipe = require('../models/recipe');
 const { Json } = require('sequelize/lib/utils');
+const { where } = require('sequelize');
 
 //aws 설정
 aws.config.update({
@@ -37,9 +38,10 @@ const arrayFiles = upload.fields([
   { name: 'files5' },
   { name: 'files6' },
 ]);
+const updateFunc = async (req, res) => {
+  console.log('req.body:', req.body);
+  console.log('req.files:', req.files);
 
-const uploadFunc = async (req, res) => {
-  console.log('@@@@@', req.body);
   arrayFiles(req, res, async (err) => {
     if (err) {
       return res.status(500).json({ result: false, message: '업도르 오류' });
@@ -55,8 +57,17 @@ const uploadFunc = async (req, res) => {
 
       const filesArray = [files2, files3, files4, files5, files6];
       console.log('파일즈2', files2[0].location);
-      const { title, introduceRp, servings, cookingTime, ingredientNames, ingredientAmounts, tools, stepContents } =
-        req.body;
+      const {
+        recipeId,
+        title,
+        introduceRp,
+        servings,
+        cookingTime,
+        ingredientNames,
+        ingredientAmounts,
+        tools,
+        stepContents,
+      } = req.body;
 
       // console.log('title!!!!', title);
       // console.log('introduceRp!!!!', introduceRp);
@@ -81,40 +92,52 @@ const uploadFunc = async (req, res) => {
       // console.log('5', parsedStepsImg);
       // introduceRp, files1[0].location, servings, cookingTime, userId
 
-      const recipe = await Recipe.create({
-        recipeTitle: title,
-        description: introduceRp,
-        mainImg: files1[0].location,
-        servings,
-        cookingTime,
-        userId,
-      });
+      const recipe = await Recipe.update(
+        {
+          recipeTitle: title,
+          description: introduceRp,
+          mainImg: files1[0].location,
+          servings,
+          cookingTime,
+          userId,
+        },
+        { where: { recipeId } }
+      );
 
       let ingredientData = [];
       for (i = 0; i < parsedIngredients.length; i++) {
-        ingredientData.push({
-          ingredientName: parsedIngredients[i],
-          quantity: parsedAmounts[i],
-          recipeId: recipe.dataValues.recipeId,
-        });
+        ingredientData.push(
+          {
+            ingredientName: parsedIngredients[i],
+            quantity: parsedAmounts[i],
+            recipeId: recipe.dataValues.recipeId,
+          },
+          { where: { recipeId } }
+        );
       }
       console.log('재료데이터:', ingredientData);
       let cookingToolData = [];
       for (i = 0; i < parsedTools.length; i++) {
-        cookingToolData.push({
-          toolName: parsedTools[i],
-          recipeId: recipe.dataValues.recipeId,
-        });
+        cookingToolData.push(
+          {
+            toolName: parsedTools[i],
+            recipeId: recipe.dataValues.recipeId,
+          },
+          { where: { recipeId } }
+        );
       }
 
       let cookingStepData = [];
       for (i = 0; i < parsedStepContents.length; i++) {
-        cookingStepData.push({
-          step: i + 1,
-          content: parsedStepContents[i],
-          stepImg: filesArray[i] != undefined ? filesArray[i][0].location : '',
-          recipeId: recipe.dataValues.recipeId,
-        });
+        cookingStepData.push(
+          {
+            step: i + 1,
+            content: parsedStepContents[i],
+            stepImg: filesArray[i] != undefined ? filesArray[i][0].location : '',
+            recipeId: recipe.dataValues.recipeId,
+          },
+          { where: { recipeId } }
+        );
       }
       console.log('data', cookingStepData);
       // let cookingStepData = [];
@@ -128,11 +151,11 @@ const uploadFunc = async (req, res) => {
       //   });
       // }
 
-      await CookingTools.bulkCreate(cookingToolData);
+      await CookingTools.bulkupdate(cookingToolData, { where: { recipeId } });
 
-      await Ingredient.bulkCreate(ingredientData);
+      await Ingredient.bulkupdate(ingredientData, { where: { recipeId } });
 
-      await CookingStep.bulkCreate(cookingStepData);
+      await CookingStep.bulkupdate(cookingStepData, { where: { recipeId } });
 
       res.json({ result: true });
     } catch (error) {
@@ -141,8 +164,4 @@ const uploadFunc = async (req, res) => {
   });
 };
 
-const main = (req, res) => {
-  res.render('writeRecipe');
-};
-
-module.exports = { uploadFunc, main };
+module.exports = { updateFunc };

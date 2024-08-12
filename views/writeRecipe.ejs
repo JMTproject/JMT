@@ -40,6 +40,16 @@
   </header>
   <main>
     <div class="container">
+      
+      <div id="AIBox"> <!-- AI레시피생성 --> 
+        <input type="text" id="inputAI" placeholder="원하는 요리 이름을 입력하세요. 예) 제육볶음" style="display: none;">
+        <button id="generateButton" onclick="generateRecipe()" style="display: none;">레시피 생성</button>
+        <div id="openInputBox" onclick="openInputBox()">
+          <span class="material-icons-round smart_toy">smart_toy</span>
+          <span id="AIName">AI쉐프</span>
+        </div>
+
+      </div>
       <form id="writeRp">
         <div id="infoRp">
           <h3>레시피 정보</h3>
@@ -74,7 +84,7 @@
           <div id="ingredientInput">
             <input type="text" id="ingredientName" placeholder="재료 입력" />
             <input type="text" id="ingredientAmount" placeholder="계량 kg/g/1t" />
-            <button type="button" onclick="addIngredient()">입력</button>
+            <button id="inputButton" type="button" onclick="addIngredient()">입력</button>
           </div>
           <ul id="ingredientList"></ul>
         </div>
@@ -83,7 +93,7 @@
         <div id="cookingTools">
           <div id="cookingToolInput">
             <input type="text" id="toolName" placeholder="ex)후라이팬" />
-            <button type="button" onclick="addCookingTool()">입력</button>
+            <button id="inputButton" type="button" onclick="addCookingTool()">입력</button>
           </div>
           <ul id="cookingToolList"></ul>
         </div>
@@ -92,7 +102,7 @@
         <div id="cookingStep">
           <div id="StepItem1">
             <p id="pnone">1.</p>
-            <textarea placeholder="조리 과정을 적어주세요!"></textarea>
+            <textarea id="stepContent1" placeholder="조리 과정을 적어주세요!"></textarea>
             <div class="upload-box" onclick="triggerFileUpload(1)">
               <input type="file" id="fileInput1" style="display:none;" accept="image/*"
                 onchange="displayImage(event, 1)">
@@ -102,7 +112,7 @@
           </div>
           <div id="StepItem1">
             <p>2.</p>
-            <textarea placeholder="조리 과정을 적어주세요!"></textarea>
+            <textarea id="stepContent2" placeholder="조리 과정을 적어주세요!"></textarea>
             <div class="upload-box" onclick="triggerFileUpload(2)">
               <input type="file" id="fileInput2" style="display:none;" accept="image/*"
                 onchange="displayImage(event, 2)">
@@ -112,7 +122,7 @@
           </div>
           <div id="StepItem1">
             <p>3.</p>
-            <textarea placeholder="조리 과정을 적어주세요!"></textarea>
+            <textarea id="stepContent3" placeholder="조리 과정을 적어주세요!"></textarea>
             <div class="upload-box" onclick="triggerFileUpload(3)">
               <input type="file" id="fileInput3" style="display:none;" accept="image/*"
                 onchange="displayImage(event, 3)">
@@ -122,7 +132,7 @@
           </div>
           <div id="StepItem1">
             <p>4.</p>
-            <textarea placeholder="조리 과정을 적어주세요!"></textarea>
+            <textarea id="stepContent4" placeholder="조리 과정을 적어주세요!"></textarea>
             <div class="upload-box" onclick="triggerFileUpload(4)">
               <input type="file" id="fileInput4" style="display:none;" accept="image/*"
                 onchange="displayImage(event, 4)">
@@ -132,7 +142,7 @@
           </div>
           <div id="StepItem1">
             <p>5.</p>
-            <textarea placeholder="조리 과정을 적어주세요!"></textarea>
+            <textarea id="stepContent5" placeholder="조리 과정을 적어주세요!"></textarea>
             <div class="upload-box" onclick="triggerFileUpload(5)">
               <input type="file" id="fileInput5" style="display:none;" accept="image/*"
                 onchange="displayImage(event, 5)">

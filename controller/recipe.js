@@ -3,7 +3,7 @@ const { Recipe, CookingStep, CookingTools, Ingredient, Review, User } = require(
 exports.getRecipePage = async (req, res) => {
     try {
         const recipeId = req.params.id;
-
+        const userId = req.userInfo ? req.userInfo.userId : null;
         const recipe = await Recipe.findByPk(recipeId);
         const cookingSteps = await CookingStep.findAll({ where: { recipeId } });
         const cookingTools = await CookingTools.findAll({ where: { recipeId } });
@@ -13,7 +13,7 @@ exports.getRecipePage = async (req, res) => {
             include: [
                 {
                     model: User,
-                    attributes: ['nickName', 'profileImg', 'aboutMe'],
+                    attributes: ['nickName', 'profileImg', 'aboutMe', 'email'],
                 },
             ],
         });
@@ -34,6 +34,7 @@ exports.getRecipePage = async (req, res) => {
             reviews,
             user,
             averageRating,
+            userId,
         });
     } catch (error) {
         res.status(500).json({ error: error.message });

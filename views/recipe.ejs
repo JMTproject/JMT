@@ -14,6 +14,9 @@
     <link href="../public/CSS/recipe.css" rel="stylesheet" type="text/css" />
     <link href="../public/CSS/headerFooter.css" rel="stylesheet" type="text/css" />
     <script defer src="../public/JS/purchase.js"></script>
+    <link rel="shortcut icon" href="http://www.example.com/myicon.ico" />
+    <script defer src="../public/JS/viewCount.js"></script>
+
 </head>
 
 <body>
@@ -33,6 +36,10 @@
     <div class="container">
         <div class="between"></div>
         <div id="recipe_info">
+            <div id="view-count-info">
+                <span class="material-symbols-rounded visibility">visibility</span>
+                <p id="view-count"></p>
+            </div>
             <div id="thumbnail">
                 <img id="recipe-mainImg" src="" alt="Thumbnail" />
             </div>
@@ -89,10 +96,8 @@
                     <h3>리뷰</h3>
                     <p>(<span id="review-count"></span>개)</p>
                 </div>
-
-
-                <div id="review_rating_av">평균 별점: 0</div>
                 <div id="average_stars" class="stars"></div>
+                <div id="review_rating_av">평균 별점: 0</div>
             </div>
             <div class="review_box">
 
@@ -100,7 +105,7 @@
                     <div class="review_photo_upload" onclick="document.getElementById('file_1').click();"
                         style="cursor: pointer">
                         <span class="material-symbols-rounded add">add</span>
-                        <input type="file" id="file_1" style="display: none" />
+                        <input type="file" id="file_1" accept="image/*" style="display: none" />
                     </div>
 
                     <div class="review_write_info">
@@ -124,6 +129,7 @@
                 </div>
 
                 <div id="reviews"></div>
+                
             </div>
         </div>
         <a href="/"><span class="material-symbols-rounded">redo</span></a>
