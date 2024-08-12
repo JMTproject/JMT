@@ -4,21 +4,18 @@ html {
   padding: 0;
   font-family: 'Noto Sans', sans-serif;
   box-sizing: border-box;
-  /* background-color: #f7f7f7;
+  /* background-color: #F7F7F7;
   color: #333; */
 }
-
 .container {
   min-height: 600px;
   width: 360px;
   margin: 120px auto;
 }
-
 h3 {
   font-size: 24px;
   margin-left: 10px;
 }
-
 #infoRp {
   width: 350px;
   height: 480px;
@@ -66,7 +63,6 @@ h3 {
 #infoRp #servingBox {
   margin-bottom: 10px;
 }
-
 #infoRp #cookingTime {
   width: 60px;
   height: 25px;
@@ -78,19 +74,17 @@ h3 {
   margin-left: 20px;
   text-align: center;
 }
-
 /* #infoRp input[type='file']::file-selector-button {
   width: 150px;
   height: 30px;
   background: #fff;
-  border: 1px solid #fdd8d1;
+  border: 1px solid #FDD8D1;
   border-radius: 10px;
   cursor: pointer;
   display: block;
   text-align: center;
   font-size: 10px;
 } */
-
 .uploadImg {
   display: flex;
   flex-direction: row;
@@ -162,6 +156,7 @@ h3 {
   flex-wrap: wrap;
   margin: 10px 10px;
 }
+
 
 #ingredient ul li {
 }
@@ -272,17 +267,14 @@ h3 {
   gap: 10px;
   border: 1px solid #fdd8d1;
 }
-
 #cookingStep > div {
   display: flex;
   align-items: stretch;
   overflow: hidden;
 }
-
 #cookingStep #pnone {
   border: none;
 }
-
 #cookingStep p {
   flex: 0 0 30px;
   margin: 0;
@@ -291,7 +283,6 @@ h3 {
   justify-content: center;
   border-top: 1px solid #fdd8d1;
 }
-
 #cookingStep textarea {
   flex: 1;
   border: none;
@@ -299,7 +290,6 @@ h3 {
   resize: none;
   margin: 0;
 }
-
 .upload-box {
   position: relative;
   width: 100px;
@@ -311,7 +301,6 @@ h3 {
   cursor: pointer;
   margin: 5px;
 }
-
 .upload-box img {
   position: absolute;
   top: 0;
@@ -320,7 +309,6 @@ h3 {
   height: 100%;
   object-fit: cover;
 }
-
 .upload-btn {
   background: none;
   border: none;
@@ -333,7 +321,6 @@ h3 {
   justify-content: center;
   color: #fdd8d1;
 }
-
 #writeRpBtn {
   width: 200px;
   height: 30px;
@@ -346,11 +333,9 @@ h3 {
   color: white;
   cursor: pointer;
 }
-
 #writeRpBtn:hover {
   background-color: #fa6d51;
 }
-
 @media screen and (min-width: 1024px) {
   body,
   html {
@@ -358,7 +343,7 @@ h3 {
     padding: 0;
     font-family: 'Noto Sans', sans-serif;
     box-sizing: border-box;
-    /* background-color: #f7f7f7;
+    /* background-color: #F7F7F7;
     color: #333; */
   }
   header span {
@@ -366,17 +351,14 @@ h3 {
     flex-direction: column;
     color: #fdd8d1;
   }
-
   .container {
     width: 1080px;
     margin: 120px auto;
   }
-
   h3 {
     font-size: 24px;
     margin-left: 10px;
   }
-
   #infoRp {
     width: 1070px;
     height: 480px;
@@ -433,7 +415,6 @@ h3 {
     /* display: flex;
       flex-direction: column; */
   }
-
   #infoRp #cookingTime #minute {
     width: 60px;
     height: 25px;
@@ -445,7 +426,6 @@ h3 {
     /* margin-left: 20px; */
     /* text-align: center; */
   }
-
   .uploadImg {
     display: flex;
     flex-direction: row;
@@ -477,7 +457,6 @@ h3 {
     background-color: #fa6d51;
     color: white;
   }
-
   #ingredient {
     width: 1070px;
     height: 200px;
@@ -600,26 +579,22 @@ h3 {
     border: 1px solid #fdd8d1;
     border-radius: 3px;
   }
-
   #cookingStep > div {
     display: flex;
     align-items: stretch;
     overflow: hidden;
   }
-
   #cookingStep #pnone {
     border: none;
   }
-
   #cookingStep p {
     flex: 0 0 30px;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border-top: 1px solid #fdd8d1; */
+    /* border-top: 1px solid #FDD8D1; */
   }
-
   #cookingStep textarea {
     flex: 1;
     border: none;
@@ -627,7 +602,6 @@ h3 {
     resize: none;
     margin: 0;
   }
-
   .upload-box {
     position: relative;
     width: 100px;
@@ -639,7 +613,6 @@ h3 {
     cursor: pointer;
     margin: 5px;
   }
-
   .upload-box img {
     position: absolute;
     top: 0;
@@ -648,7 +621,6 @@ h3 {
     height: 100%;
     object-fit: cover;
   }
-
   .upload-btn {
     background: none;
     border: none;
@@ -667,7 +639,6 @@ h3 {
     height: 85px;
     margin: 10px 10px auto;
     /* margin-left: 25%; */
-
     font-size: 22px;
     text-align: center;
     background-color: #fca391;
