@@ -8,7 +8,7 @@ module.exports = {
                 {
                     rating: 4,
                     content: '정말 맛있네요!',
-                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     isEnabled: true,
                     userId: 3,
                     recipeId: 1,
@@ -18,7 +18,7 @@ module.exports = {
                 {
                     rating: 3,
                     content: '해먹어 보니 별론데요?',
-                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     isEnabled: true,
                     userId: 3,
                     recipeId: 1,
@@ -28,7 +28,7 @@ module.exports = {
                 {
                     rating: 2,
                     content: '굿굿',
-                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     isEnabled: true,
                     userId: 3,
                     recipeId: 1,
@@ -38,7 +38,7 @@ module.exports = {
                 {
                     rating: 4,
                     content: '정말 맛있네요!',
-                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     isEnabled: true,
                     userId: 3,
                     recipeId: 2,
@@ -48,7 +48,7 @@ module.exports = {
                 {
                     rating: 4,
                     content: '해먹어 보니 별론데요?',
-                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     isEnabled: true,
                     userId: 3,
                     recipeId: 2,
@@ -58,7 +58,7 @@ module.exports = {
                 {
                     rating: 4,
                     content: '굿굿',
-                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     isEnabled: true,
                     userId: 3,
                     recipeId: 2,
@@ -68,7 +68,7 @@ module.exports = {
                 {
                     rating: 4,
                     content: '정말 맛있네요!',
-                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     isEnabled: true,
                     userId: 3,
                     recipeId: 3,
@@ -78,7 +78,7 @@ module.exports = {
                 {
                     rating: 4,
                     content: '해먹어 보니 별론데요?',
-                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     isEnabled: true,
                     userId: 3,
                     recipeId: 3,
@@ -88,7 +88,7 @@ module.exports = {
                 {
                     rating: 4,
                     content: '굿굿',
-                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     isEnabled: true,
                     userId: 3,
                     recipeId: 3,
@@ -98,7 +98,7 @@ module.exports = {
                 {
                     rating: 4,
                     content: '삭제된 리뷰(뜨면안됨)',
-                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     isEnabled: false,
                     userId: 3,
                     recipeId: 1,
@@ -108,7 +108,7 @@ module.exports = {
                 {
                     rating: 4,
                     content: '삭제된 리뷰(뜨면안됨)',
-                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    reviewImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     isEnabled: false,
                     userId: 3,
                     recipeId: 1,
