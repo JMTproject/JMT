@@ -56,6 +56,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     //     token = sessionStorage.getItem('token');
     // }
 
+    // JWT 토큰에서 사용자 정보 추출
+    let currentUserId = null;
+    let currentEmail = null;
+    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+    if (token) {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        currentUserId = payload.userId;
+        currentEmail = payload.email;
+    }
+
     try {
         const recipeId = window.location.pathname.split('/recipe/').pop();
         const res = await axios({
@@ -136,10 +146,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         //리뷰 불러와서 추가하기
         const reviewBox = document.querySelector('.review_box');
         const reviewArray = res.data.reviews;
-        const userId = res.data.userId;
-        const email = res.data.user.email;
 
-        const maxVisibleReviews = 5;
+        // const maxVisibleReviews = 5;
 
         for (let i = 0; i < reviewArray.length; i++) {
             const reviewDiv = document.createElement('div');
@@ -149,8 +157,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const nickName = reviewArray[i].user ? reviewArray[i].user.nickName : '';
             const reviewInfoClass = reviewArray[i].reviewImg ? '' : 'no-img';
 
-            // const currentUser = reviewArray[i].userId === res.data.userId;
-            const currentUser = reviewArray[i].userId === userId || email === 'admin@admin.com';
+            // 현재 사용자와 리뷰 작성자를 비교하거나 관리자 여부 확인
+            const currentUser = reviewArray[i].userId === currentUserId || currentEmail === 'admin@admin.com';
 
             const fullStars = Math.floor(reviewArray[i].rating);
             const halfStar = reviewArray[i].rating % 1 !== 0;
@@ -171,87 +179,76 @@ document.addEventListener('DOMContentLoaded', async () => {
             const html = `<div class="review">
             <div class="review_1">
                 <img class="review_profile_img" src="${profileImage}" alt="Profile Image"> 
-                    <div class="review_profile">
-                        <div class="review_info ${reviewInfoClass} ">
-                            <p>${nickName}</p>
-                            <span class="review_date">${new Date(reviewArray[i].createdAt).toLocaleString(
-                                'ko-KR'
-                            )}</span>
-                            <div class="review_rating">${starHtml}</div>
+                <div class="review_profile">
+                    <div class="review_info ${reviewInfoClass}">
+                        <p>${nickName}</p>
+                        <span class="review_date">${new Date(reviewArray[i].createdAt).toLocaleString('ko-KR')}</span>
+                        <div class="review_rating">${starHtml}</div>
                         ${
                             currentUser
-                                ? ` 
-                    <button class="edit-btn" data-id="${reviewArray[i].reviewId}">수정</button> 
-                    <button class="delete-btn" data-id="${reviewArray[i].reviewId}">삭제</button> 
-                    `
+                                ? `
+                        <button class="edit-btn" data-id="${reviewArray[i].reviewId}">수정</button> 
+                        <button class="delete-btn" data-id="${reviewArray[i].reviewId}">삭제</button> 
+                        `
                                 : ''
                         }
-                        </div>
-                        <div class="review_content">
-                            <p>${reviewArray[i].content}</p>
-                        </div>
                     </div>
-                    <img class="review_img" src="${reviewArray[i].reviewImg}" alt="Review Image"${
+                    <div class="review_content">
+                        <p>${reviewArray[i].content}</p>
+                    </div>
+                </div>
+                <img class="review_img" src="${reviewArray[i].reviewImg}" alt="Review Image"${
                 reviewArray[i].reviewImg ? '' : 'style="display:none;"'
             }>
-                </div>
-            </div>`;
+            </div>
+        </div>`;
             reviewBox.insertAdjacentHTML('beforeend', html);
         }
 
-        // 전체보기 버튼 추가 및 처리
-        if (reviewArray.length > maxVisibleReviews) {
-            const showMoreButton = document.createElement('button');
-            showMoreButton.id = 'show-more-reviews';
-            showMoreButton.textContent = '전체보기';
-            showMoreButton.classList.add('show-more-reviews-btn');
+        // // 전체보기 버튼 추가 및 처리
+        // if (reviewArray.length > maxVisibleReviews) {
+        //     const showMoreButton = document.createElement('button');
+        //     showMoreButton.id = 'show-more-reviews';
+        //     showMoreButton.textContent = '전체보기';
+        //     showMoreButton.classList.add('show-more-reviews-btn');
 
-            showMoreButton.addEventListener('click', () => {
-                document.querySelectorAll('.review_1').forEach((review, index) => {
-                    if (index >= maxVisibleReviews) {
-                        review.style.display = 'block';
-                    }
-                });
-                showMoreButton.style.display = 'none'; // 버튼 숨기기
-            });
+        //     showMoreButton.addEventListener('click', () => {
+        //         document.querySelectorAll('.review_1').forEach((review, index) => {
+        //             if (index >= maxVisibleReviews) {
+        //                 review.style.display = 'block';
+        //             }
+        //         });
+        //         showMoreButton.style.display = 'none'; // 버튼 숨기기
+        //     });
 
-            // 버튼을 리뷰 박스 맨 아래에 추가
-            reviewBox.appendChild(showMoreButton);
-        }
+        //     // 버튼을 리뷰 박스 맨 아래에 추가
+        //     reviewBox.appendChild(showMoreButton);
+        // }
 
         //리뷰 수정 버튼
         document.querySelectorAll('.edit-btn').forEach((button) => {
-            if (localStorage.getItem('token')) {
-                token = localStorage.getItem('token');
-            } else if (sessionStorage.getItem('token')) {
-                token = sessionStorage.getItem('token');
-            }
             button.addEventListener('click', async (e) => {
+                const token = localStorage.getItem('token') || sessionStorage.getItem('token');
                 const reviewId = e.target.dataset.id;
-                console.log('#####1', reviewId);
                 const reviewDiv = e.target.closest('.review');
                 const reviewContentDiv = reviewDiv.querySelector('.review_content');
                 const currentContent = reviewContentDiv.querySelector('p').textContent;
 
-                // 기존의 <p> 요소를 <textarea>로 변경
                 const textarea = document.createElement('textarea');
                 textarea.classList.add('review-edit-textarea');
                 textarea.value = currentContent;
 
-                // 기존의 p 요소를 textarea로 대체
                 reviewContentDiv.innerHTML = '';
                 reviewContentDiv.appendChild(textarea);
 
-                // 수정 완료 버튼 추가
                 const saveButton = document.createElement('button');
-                saveButton.textContent = '수정';
+                saveButton.textContent = '수정 완료';
                 saveButton.classList.add('save-btn');
 
-                saveButton.addEventListener('click', async (e) => {
-                    e.preventDefault();
+                saveButton.addEventListener('click', async () => {
                     const newContent = textarea.value;
                     try {
-                        const res = await axios({
+                        await axios({
                             method: 'put',
                             url: `/api/recipe/data/${reviewId}/update`,
                             data: { content: newContent },
@@ -259,7 +256,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 Authorization: token,
                             },
                         });
-                        console.log(res);
                         alert('리뷰가 성공적으로 수정되었습니다.');
                         document.location.reload();
                     } catch (error) {
@@ -271,13 +267,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         });
 
+        // 리뷰 삭제 버튼
         document.querySelectorAll('.delete-btn').forEach((button) => {
-            if (localStorage.getItem('token')) {
-                token = localStorage.getItem('token');
-            } else if (sessionStorage.getItem('token')) {
-                token = sessionStorage.getItem('token');
-            }
             button.addEventListener('click', async (e) => {
+                const token = localStorage.getItem('token') || sessionStorage.getItem('token');
                 const reviewId = e.target.dataset.id;
                 if (confirm('정말로 이 리뷰를 삭제하시겠습니까?')) {
                     try {
@@ -301,11 +294,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         //별점 평균 값 구하기
         const averageRating = res.data.averageRating;
         if (averageRating !== null && averageRating !== undefined) {
-            document.getElementById('review_rating_av').textContent = averageRating.toFixed(2);
+            document.getElementById('review_rating_av').textContent = averageRating.toFixed(1);
         } else {
             document.getElementById('review_rating_av').textContent = '0.00';
         }
-        // document.getElementById('review_rating_av').textContent = averageRating.toFixed(1);
 
         const starsContainer = document.getElementById('average_stars');
         const fullStars = Math.floor(averageRating);

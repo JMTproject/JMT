@@ -32,12 +32,10 @@ const upload = multer({
 const arrayFiles = upload.array('files');
 
 exports.submitReview = async (req, res) => {
-
     arrayFiles(req, res, async (err) => {
         if (err) {
             return res.status(500).json({ result: false });
         }
-
 
         const recipeId = req.params.id;
         const { rating, content } = req.body;
@@ -93,16 +91,15 @@ exports.updateReview = async (req, res) => {
     try {
         const reviewId = req.params.id;
         const { content } = req.body;
-        const { email } = req.body;
+        const email = req.userInfo.email;
         const userId = req.userInfo ? req.userInfo.userId : null;
-        console.log('#####@@@@@@@', email);
         const review = await Review.findByPk(reviewId);
 
         if (!review) {
             return res.status(404).send('리뷰를 찾을 수 없습니다.');
         }
 
-        if (review.userId !== userId.userId && email !== 'admin@admin.com') {
+        if (review.userId !== userId && email !== 'admin@admin.com') {
             return res.status(403).send('이 리뷰를 수정할 권한이 없습니다.');
         }
 
@@ -119,14 +116,15 @@ exports.updateReview = async (req, res) => {
 exports.deleteReview = async (req, res) => {
     try {
         const reviewId = req.params.id;
-        const { userId, email } = req.userInfo;
+        const userId = req.userInfo ? req.userInfo.userId : null;
+        const email = req.userInfo.email;
         const review = await Review.findByPk(reviewId);
 
         if (!review) {
             return res.status(404).send('리뷰를 찾을 수 없습니다.');
         }
 
-        if (review.userId !== userId.userId && email !== 'admin@admin.com') {
+        if (review.userId !== userId && email !== 'admin@admin.com') {
             return res.status(403).send('이 리뷰를 삭제할 권한이 없습니다.');
         }
 
