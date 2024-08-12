@@ -50,20 +50,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //레시피 정보 불러오기
 document.addEventListener('DOMContentLoaded', async () => {
-    if (localStorage.getItem('token')) {
-        token = localStorage.getItem('token');
-    } else if (sessionStorage.getItem('token')) {
-        token = sessionStorage.getItem('token');
-    }
+    // if (localStorage.getItem('token')) {
+    //     token = localStorage.getItem('token');
+    // } else if (sessionStorage.getItem('token')) {
+    //     token = sessionStorage.getItem('token');
+    // }
 
     try {
         const recipeId = window.location.pathname.split('/recipe/').pop();
         const res = await axios({
             method: 'get',
             url: `/api/recipe/data/${recipeId}`,
-            headers: {
-                Authorization: token,
-            },
+            // headers: {
+            //     Authorization: token,
+            // },
         });
         console.log(res.data);
 
