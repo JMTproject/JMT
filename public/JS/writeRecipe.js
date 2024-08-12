@@ -299,11 +299,15 @@ async function generateRecipe() {
 
   const cookingName = document.querySelector('#inputAI').value;
 
+  document.querySelector('#loadingGif').style.display = 'block'
   const res = await axios({
     method: 'post',
     url: '/api/recipe/generateRecipe',
     data: { cookingName },
   });
+
+  document.querySelector('#loadingGif').style.display = 'none'
+  
 
   console.log('제미나이응답 : ', res.data);
   const { recipeTitle, description, servings, cookingTime, cookingTools, ingredients, quantity, cookingSteps } =
