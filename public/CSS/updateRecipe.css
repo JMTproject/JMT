@@ -140,7 +140,7 @@ h3 {
   border-radius: 12px;
   text-align: center;
 }
-#ingredient button {
+#ingredient #inputButton {
   width: 80px;
   height: 25px;
   /* margin: 10px 10px auto; */
@@ -151,8 +151,46 @@ h3 {
   color: white;
   cursor: pointer;
 }
-#ingredient button:hover {
+#ingredient #inputButton:hover {
   background-color: #fa6d51;
+}
+
+#ingredient ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 10px 10px;
+}
+
+#ingredient ul li {
+}
+
+#ingredient .ingredientBox {
+  background-color: #fca391;
+  height: 20px;
+  /* border: 1px solid #fdd8d1; */
+  border-radius: 10px;
+  margin: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 5px;
+}
+
+#ingredient span {
+  font-size: 11px;
+  margin: 0 5px;
+}
+
+#ingredient .remove-btn {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  font-size: 11px;
+  padding-left: 10px;
+  padding-right: 5px;
 }
 
 /* cooking */
@@ -174,7 +212,7 @@ h3 {
   text-align: center;
   opacity: 70%;
 }
-#cookingTools button {
+#cookingTools #inputButton {
   width: 80px;
   height: 25px;
   /* margin: 10px 10px auto; */
@@ -186,10 +224,47 @@ h3 {
   cursor: pointer;
   margin: 10px auto;
 }
-#cookingTools button:hover {
+#cookingTools #inputButton:hover {
   background-color: #fa6d51;
 }
 
+#cookingTools ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 10px 10px;
+}
+
+#cookingTools ul li {
+}
+
+#cookingTools .cookingToolBox {
+  background-color: #fca391;
+  height: 20px;
+  /* border: 1px solid #fdd8d1; */
+  border-radius: 10px;
+  margin: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 5px;
+}
+
+#cookingTools span {
+  font-size: 11px;
+  margin: 0 5px;
+}
+
+#cookingTools .remove-btn {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  font-size: 11px;
+  padding-left: 10px;
+  padding-right: 5px;
+}
 /* cookingStep */
 #cookingStep {
   display: flex;
@@ -421,7 +496,7 @@ h3 {
     text-align: center;
     opacity: 70%;
   }
-  #ingredient button {
+  #ingredient #inputButton {
     width: 80px;
     height: 25px;
     /* margin: 10px 10px auto; */
@@ -432,8 +507,33 @@ h3 {
     color: white;
     cursor: pointer;
   }
-  #ingredient button:hover {
+  #ingredient #inputButton:hover {
     background-color: #fa6d51;
+  }
+
+  #ingredient ul {
+    margin: 10px 10px;
+  }
+
+  #ingredient ul li {
+  }
+
+  #ingredient .ingredientBox {
+    height: 30px;
+    border-radius: 15px;
+    margin: 5px 10px;
+    padding: 0 10px;
+  }
+
+  #ingredient span {
+    font-size: 13px;
+    margin: 0 5px;
+  }
+
+  #ingredient .remove-btn {
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 5px;
   }
   #cookingTools {
     width: 1070px;
@@ -453,7 +553,7 @@ h3 {
     text-align: center;
     opacity: 70%;
   }
-  #cookingTools button {
+  #cookingTools #inputButton {
     width: 80px;
     height: 25px;
     /* margin: 10px 10px auto; */
@@ -464,8 +564,33 @@ h3 {
     color: white;
     cursor: pointer;
   }
-  #cookingTools button:hover {
+  #cookingTools #inputButton:hover {
     background-color: #fa6d51;
+  }
+
+  #cookingTools ul {
+    margin: 10px 10px;
+  }
+
+  #cookingTools ul li {
+  }
+
+  #cookingTools .cookingToolBox {
+    height: 30px;
+    border-radius: 15px;
+    margin: 5px 10px;
+    padding: 0 10px;
+  }
+
+  #cookingTools span {
+    font-size: 13px;
+    margin: 0 5px;
+  }
+
+  #cookingTools .remove-btn {
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 5px;
   }
 
   #cookingStep {
