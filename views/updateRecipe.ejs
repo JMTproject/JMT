@@ -49,7 +49,7 @@
     <div class="container">
       <form id="writeRp">
         <div id="infoRp">
-          <h3>레시피 정보</h3>
+          <!-- <h3>레시피 정보</h3> -->
           <input type="text" id="title" placeholder="제목" /><br />
           <textarea id="introduceRp" placeholder="레시피 소개"></textarea>
           <div id="cookingInfoBox">
@@ -76,28 +76,35 @@
           </div>
         </div>
         <!-- ingredient -->
-        <h3>재료</h3>
+        <div id="ingredients">
+          <h3>재료</h3>
+          <h5>(최대 10개)</h5>
+        </div>
         <div id="ingredient">
           <div id="ingredientInput">
             <input type="text" id="ingredientName" placeholder="재료 입력" />
+            <span>,</span>
             <input type="text" id="ingredientAmount" placeholder="계량 kg/g/1t" />
             <button id="inputButton1" type="button" onclick="addIngredient()">입력</button>
           </div>
           <ul id="ingredientList"></ul>
         </div>
         <!-- cookingTools  -->
-        <h3>조리 도구</h3>
+        <h3 id="toolh3">조리 도구</h3>
         <div id="cookingTools">
           <div id="cookingToolInput">
             <input type="text" id="toolName" placeholder="ex)후라이팬" />
-            <button id="inputButton" type="button" onclick="addCookingTool()">입력</button>
+            <button id="inputButton2" type="button" onclick="addCookingTool()">입력</button>
           </div>
           <ul id="cookingToolList"></ul>
         </div>
         <!-- cookingStep -->
-        <h3>조리 순서(최대 5단계)</h3>
+        <div id="cookingStepHBox">
+          <h3>조리 순서</h3>
+          <h5>(최대 5단계)</h5>
+        </div>
         <div id="cookingStep">
-          <div id="StepItem1">
+          <div id="StepItem1" class="firstBox">
             <p id="pnone">1.</p>
             <textarea id="stepContent1" placeholder="조리 과정을 적어주세요!"></textarea>
             <div class="upload-box" onclick="triggerFileUpload(1)">
@@ -148,12 +155,11 @@
             </div>
           </div>
         </div>
-    </div>
-    <div id="butonBox">
-      <button type="button" id="writeRpBtn" onclick="UpdateRpUploadFunc()">레시피 수정</button>
-      <button type="button" id="writeRpBtn" onclick="cancel()">취소</button>
-    </div>
-
+        <div id="butonBox">
+          <button type="button" id="writeRpBtn" onclick="UpdateRpUploadFunc()">레시피 수정</button>
+          <button type="button" id="writeRpBtn" onclick="cancel()">취소</button>
+        </div>
+      </div>
     </form>
     </div>
   </main>
