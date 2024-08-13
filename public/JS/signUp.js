@@ -1,7 +1,3 @@
-document.getElementById('titleImg').addEventListener('click', ()=>{
-  location.href = '/'
-})
-
 async function emailCheckFunc() {
     const email = document.querySelector('#email');
     const authCode = document.querySelector('#authCode');
