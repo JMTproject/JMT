@@ -26,6 +26,10 @@ body {
     align-items: center;
 }
 
+.mainHeader #searchBox::placeholder {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
 #searchBox .material-symbols-rounded.search {
     font-size: 1.75rem;
     line-height: 1.5rem;
@@ -53,70 +57,22 @@ body {
     position: relative; /* 말풍선을 위한 포지션 */
 }
 
-/* .orderByBox button {
-    font-size: 11px;
-    width: 60px;
-    margin: 0 5px;
-    border-radius: 16.5px;
-    border: 1px solid #fca391;
-    background-color: #fdd8d1;
-} */
-
-#orderByStars {
-    font-size: 14px;
-    width: 100px;
+.orderByBox button {
+    width: 80px;
     height: 25px;
-    margin: 0 10px;
+    border: 1px solid #fca391;
     border-radius: 12.5px;
     display: inline-block;
     cursor: pointer;
-    color: white;
-    background-color: #fca391;
-    border: 1px solid #fca391;
-}
-
-#orderByStars:hover {
-    background-color: #fdd8d1;
-    border-radius: 12.5px;
     color: black;
+    font-size: 0.875rem;
+    margin-left: 10px;
 }
 
-#orderByLatest button[type='button'] {
-    font-size: 14px;
-    width: 100px;
-    height: 25px;
-    margin: 0 10px;
-    border-radius: 12.5px;
-    display: inline-block;
-    cursor: pointer;
-    color: white;
-    background-color: #fca391;
-    border: 1px solid #fca391;
-}
-
-#orderByLatest button[type='button']:hover {
-    background-color: #fdd8d1;
-    border-radius: 12.5px;
-    color: black;
-}
-
-#orderByViewCount button[type='button'] {
-    font-size: 14px;
-    width: 100px;
-    height: 25px;
-    margin: 0 10px;
-    border-radius: 12.5px;
-    display: inline-block;
-    cursor: pointer;
-    color: white;
-    background-color: #fca391;
-    border: 1px solid #fca391;
-}
-
-#orderByViewCount button[type='button']:hover {
-    background-color: #fdd8d1;
-    border-radius: 12.5px;
-    color: black;
+.orderByBox button:hover,
+.orderByBox button.active {
+    background-color: #fdd8d1 !important;
+    color: black !important;
 }
 
 .mainHeader a {
@@ -160,6 +116,10 @@ body {
     border-width: 10px;
     pointer-events: none;
     content: ' ';
+}
+
+.material-symbols-rounded.edit:hover {
+    color: #fca391;
 }
 
 #write_a:hover + p.arrowWrite {
@@ -234,9 +194,10 @@ body {
 }
 
 .recipe ul li #recipeCard #content #title p {
-    text-align: center;
+    /* text-align: center; */
     font-size: 16px;
     font-weight: bold;
+    margin-left: 20px;
 }
 #content #starsReviewCount {
     display: flex;
@@ -319,61 +280,22 @@ body {
     .mainHeader .orderByBox {
     }
 
-    #orderByStars {
-        font-size: 14px;
+    .orderByBox button {
         width: 100px;
         height: 25px;
-        margin: 0 10px;
+        border: 1px solid #fca391;
         border-radius: 12.5px;
         display: inline-block;
         cursor: pointer;
-        color: white;
-        background-color: #fca391;
-        border: 1px solid #fca391;
-    }
-
-    #orderByStars:hover {
-        background-color: #fdd8d1;
-        border-radius: 12.5px;
         color: black;
+        font-size: 0.875rem;
+        margin-left: 10px;
     }
 
-    #orderByLatest {
-        font-size: 14px;
-        width: 100px;
-        height: 25px;
-        margin: 0 10px;
-        border-radius: 12.5px;
-        display: inline-block;
-        cursor: pointer;
-        color: white;
-        background-color: #fca391;
-        border: 1px solid #fca391;
-    }
-
-    #orderByLatest:hover {
-        background-color: #fdd8d1;
-        border-radius: 12.5px;
-        color: black;
-    }
-
-    #orderByViewCount {
-        font-size: 14px;
-        width: 100px;
-        height: 25px;
-        margin: 0 10px;
-        border-radius: 12.5px;
-        display: inline-block;
-        cursor: pointer;
-        color: white;
-        background-color: #fca391;
-        border: 1px solid #fca391;
-    }
-
-    #orderByViewCount:hover {
-        background-color: #fdd8d1;
-        border-radius: 12.5px;
-        color: black;
+    .orderByBox button:hover,
+    .orderByBox button.active {
+        background-color: #fdd8d1 !important;
+        color: black !important;
     }
 
     .mainHeader a {
@@ -468,9 +390,10 @@ body {
         margin-top: 5px;
     }
     .recipe ul li #recipeCard #content #title p {
-        text-align: center;
+        /* text-align: center; */
         font-size: 16px;
         font-weight: bold;
+        margin-top: 3px;
     }
     #content #starsReviewCount {
         display: flex;
@@ -510,8 +433,8 @@ body {
     }
 
     #paginationBox span {
-        font-size: 20px;
-        margin: 0 8px;
+        font-size: 18px;
+        margin: 10px 8px;
         padding: 0 7px 3px;
         border-radius: 7px;
     }

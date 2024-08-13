@@ -13,7 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" />
     <link href="../public/CSS/recipe.css" rel="stylesheet" type="text/css" />
     <link href="../public/CSS/headerFooter.css" rel="stylesheet" type="text/css" />
-    <link rel="shortcut icon" href="http://www.example.com/myicon.ico" />
+    <link rel="shortcut icon" href="../public/favicon_io/favicon.ico">
+    <script defer src="../public/JS/header.js"></script>
     <script defer src="../public/JS/purchase.js"></script>
     <script defer src="../public/JS/viewCount.js"></script>
 
@@ -24,10 +25,23 @@
         <div class="header">
             <a class="logo" href="/">
                 <img class="logoImg" src="../public/images/logo.png" alt="" />
+                <img class="logoImg-word" src="../public/images/JMT-logo-word.png" alt="" />
             </a>
+
             <div class="iconBox">
-                <a href="/login"><span class="material-symbols-rounded login">login</span></a>
-                <a href="/profile"><span class="material-symbols-rounded account_circle">account_circle</span></a>
+                <div id="logout_div" onclick="logoutFunc()"><span class="material-symbols-rounded logout">logout</span>
+                </div>
+                <p class="arrowLogout">로그아웃</p>
+                <a id="login_a" href="/login"><span class="material-symbols-rounded login">login</span></a>
+                <p class="arrowLogin">로그인</p>
+                <div id="profile_div" onclick="myPageToggle()">
+                    <span class="material-symbols-rounded account_circle">account_circle</span>
+                </div>
+                <p class="arrowProfile">마이페이지</p>
+                <div class="myPageBox" style="display: none">
+                    <a href="/profile">개인정보 수정</a>
+                    <a href="/myrecipe">나의 레시피</a>
+                </div>
             </div>
         </div>
         <div class="navBar"></div>

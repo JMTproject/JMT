@@ -17,17 +17,90 @@ let currentButtonPack = 0; //pageButtons배열의 인덱스값을 지정하기 �
 let startRecipe = 0; //리스트를 펼칠때 12개씩 끊을 레시피 리스트 배열의 첫번째 인덱스
 let endRecipe = recipesPerPage;
 
-// 레시피카드 펼지기
+// // 레시피카드 펼지기
+// const makeRecipeCard = () => {
+//     currentRecipes = allRecipe.slice(startRecipe, endRecipe);
+
+//     recipeUl.innerHTML = '';
+//     currentRecipes.forEach((recipe) => {
+//         const ratingStars = parseInt(recipe.rating);
+//         let starsHtml = '';
+//         for (i = 1; i <= ratingStars; i++) {
+//             starsHtml += '<span class="material-symbols-rounded star">star</span>';
+//         }
+
+//         recipeUl.innerHTML += `
+//         <li id="sample">
+//               <a href="/recipe/${recipe.recipeId}">
+//                 <div id="recipeCard">
+
+//                   <div id="thumbnail">
+//                     <img src=${recipe.mainImg} />
+//                   </div>
+//                   <div id="content">
+//                   <div id="viewCount">
+//                     <span class="material-symbols-rounded visibility">visibility</span>
+//                     <p>${recipe.viewCount}</p>
+//                   </div>
+//                     <div id="title">
+//                       <p>${recipe.recipeTitle}</p>
+//                     </div>
+//                     <div id="starsReviewCount">
+//                       <div id="stars">
+//                         ${starsHtml}
+//                         <span class="rating">(${recipe.rating})</span>
+//                       </div>
+//                       <div id="reviewCount">
+//                         <span>리뷰 (${recipe.reviewCount}개)</span>
+//                       </div>
+
+//                     </div>
+//                   </div>
+//                 </div>
+//               </a>
+//             </li>
+//         `;
+//     });
+// };
+
+// 숫자를 1000 단위로 변환하는 함수
+const formatLargeNumber = (number) => {
+    if (number < 1e3) return number;
+    if (number >= 1e3 && number < 1e6) return +(number / 1e3).toFixed(1) + 'K';
+    if (number >= 1e6 && number < 1e9) return +(number / 1e6).toFixed(1) + 'M';
+    if (number >= 1e9 && number < 1e12) return +(number / 1e9).toFixed(1) + 'B';
+    if (number >= 1e12) return +(number / 1e12).toFixed(1) + 'T';
+};
+
+// 레시피 카드 생성 함수
 const makeRecipeCard = () => {
     currentRecipes = allRecipe.slice(startRecipe, endRecipe);
 
     recipeUl.innerHTML = '';
     currentRecipes.forEach((recipe) => {
-        const ratingStars = parseInt(recipe.rating);
+        // const ratingStars = parseInt(recipe.rating);
+        // let starsHtml = '';
+        // for (let i = 1; i <= ratingStars; i++) {
+        //     starsHtml += '<span class="material-symbols-rounded star">star</span>';
+        // }
+        const fullStars = Math.floor(recipe.rating);
+        const halfStar = recipe.rating % 1 !== 0;
         let starsHtml = '';
-        for (i = 1; i <= ratingStars; i++) {
-            starsHtml += '<span class="material-symbols-rounded star">star</span>';
+
+        for (let j = 0; j < fullStars; j++) {
+            starsHtml += '★'; // 채워진 별
         }
+
+        if (halfStar) {
+            starsHtml += '☆'; // 반쯤 채워진 별
+        }
+
+        for (let j = fullStars + halfStar; j < 5; j++) {
+            starsHtml += '☆'; // 빈 별
+        }
+
+        const formattedViewCount = formatLargeNumber(recipe.viewCount);
+        const formattedReviewCount = formatLargeNumber(recipe.reviewCount);
 
         recipeUl.innerHTML += `
         <li id="sample">
@@ -40,7 +113,7 @@ const makeRecipeCard = () => {
                   <div id="content">
                   <div id="viewCount">
                     <span class="material-symbols-rounded visibility">visibility</span>
-                    <p>${recipe.viewCount}</p>
+                    <p>${formattedViewCount}</p>
                   </div>
                     <div id="title">
                       <p>${recipe.recipeTitle}</p>
@@ -51,7 +124,7 @@ const makeRecipeCard = () => {
                         <span class="rating">(${recipe.rating})</span>
                       </div>
                       <div id="reviewCount">
-                        <span>리뷰 (${recipe.reviewCount}개)</span>
+                        <span>리뷰 (${formattedReviewCount}개)</span>
                       </div>
                       
                     </div>
@@ -87,7 +160,7 @@ const makePageButtons = () => {
     });
 
     if (currentButtonPack !== pageButtons.length - 1) {
-        paginationBox.innerHTML += `<span class="material-icons-round arrow_right" onclick="nextPages()">arrow_right</span>`;
+        paginationBox.innerHTML += `<span class="material-symbols-rounded chevron_right" onclick="nextPages()">chevron_right</span>`;
     }
 };
 
@@ -96,7 +169,7 @@ const nextPages = () => {
     paginationBox.innerHTML = '';
     currentButtonPack++;
     if (currentButtonPack !== 0) {
-        paginationBox.innerHTML += `<span class="material-icons-round arrow_left" onclick="prevPages()">arrow_left</span>`;
+        paginationBox.innerHTML += `<span class="material-symbols-rounded chevron_left" onclick="prevPages()">chevron_left</span>`;
     }
 
     pageButtons[currentButtonPack].forEach((html) => {
@@ -104,7 +177,7 @@ const nextPages = () => {
     });
 
     if (currentButtonPack !== pageButtons.length - 1) {
-        paginationBox.innerHTML += `<span class="material-icons-round arrow_right" onclick="nextPages()">arrow_right</span>`;
+        paginationBox.innerHTML += `<span class="material-symbols-rounded chevron_right" onclick="nextPages()">keyboard_arrow_right</span>`;
     }
 };
 
@@ -113,7 +186,7 @@ const prevPages = () => {
     paginationBox.innerHTML = '';
     currentButtonPack--;
     if (currentButtonPack !== 0) {
-        paginationBox.innerHTML += `<span class="material-icons-round arrow_left" onclick="prevPages()">arrow_left</span>`;
+        paginationBox.innerHTML += `<span class="material-symbols-rounded chevron_left" onclick="prevPages()">chevron_left</span>`;
     }
 
     pageButtons[currentButtonPack].forEach((html) => {
@@ -121,7 +194,7 @@ const prevPages = () => {
     });
 
     if (currentButtonPack !== pageButtons.length - 1) {
-        paginationBox.innerHTML += `<span class="material-icons-round arrow_right" onclick="nextPages()">arrow_right</span>`;
+        paginationBox.innerHTML += `<span class="material-symbols-rounded chevron_right" onclick="nextPages()">chevron_right</span>`;
     }
 };
 
@@ -131,10 +204,11 @@ const selectPage = (page) => {
     const allPageButton = document.querySelectorAll('#paginationBox span');
 
     allPageButton.forEach((button) => {
-        button.style.backgroundColor = '#fff';
+        button.style.color = 'black';
     });
 
-    pageButton.style.backgroundColor = '#FCA391';
+    // pageButton.style.backgroundColor = '#FCA391';
+    pageButton.style.color = '#FCA391';
 
     endRecipe = page * recipesPerPage;
     startRecipe = endRecipe - recipesPerPage;
@@ -144,8 +218,11 @@ const selectPage = (page) => {
 // 새로고침
 (async function recipeList() {
     orderByLatestButton.style.backgroundColor = '#fff';
+    orderByLatestButton.style.color = 'black';
     orderByStarsButton.style.backgroundColor = '#FCA391';
+    orderByStarsButton.style.color = '#fff';
     orderByViewCountButton.style.backgroundColor = '#fff';
+    orderByViewCountButton.style.color = 'black';
     recipeUl.innerHTML = '';
     const res = await axios({
         method: 'post',
@@ -173,8 +250,11 @@ const selectPage = (page) => {
 
 const orderByLatest = async () => {
     orderByLatestButton.style.backgroundColor = '#FCA391';
+    orderByLatestButton.style.color = '#fff';
     orderByStarsButton.style.backgroundColor = '#fff';
+    orderByStarsButton.style.color = 'black';
     orderByViewCountButton.style.backgroundColor = '#fff';
+    orderByViewCountButton.style.color = 'black';
     recipeUl.innerHTML = '';
     const res = await axios({
         method: 'post',
@@ -192,8 +272,11 @@ const orderByLatest = async () => {
 
 const orderByStars = async () => {
     orderByLatestButton.style.backgroundColor = '#fff';
+    orderByLatestButton.style.color = 'black';
     orderByStarsButton.style.backgroundColor = '#FCA391';
+    orderByStarsButton.style.color = '#fff';
     orderByViewCountButton.style.backgroundColor = '#fff';
+    orderByViewCountButton.style.color = 'black';
     recipeUl.innerHTML = '';
     const res = await axios({
         method: 'post',
@@ -225,8 +308,11 @@ const orderByStars = async () => {
 
 const orderByViewCount = async () => {
     orderByLatestButton.style.backgroundColor = '#fff';
+    orderByLatestButton.style.color = 'black';
     orderByStarsButton.style.backgroundColor = '#fff';
+    orderByStarsButton.style.color = 'black';
     orderByViewCountButton.style.backgroundColor = '#FCA391';
+    orderByViewCountButton.style.color = '#fff';
     recipeUl.innerHTML = '';
     const res = await axios({
         method: 'post',
