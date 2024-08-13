@@ -1,319 +1,166 @@
+@charset "utf-8";
+@import url(reset.css);
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
 .container {
-  min-height: 600px;
-  width: 360px;
-  margin: auto;
+    min-height: 600px;
+    width: 360px;
+    margin: auto;
 }
 
 .mainHeader {
-  margin: 80px 10px 0;
-  display: flex;
-  flex-direction: column;
+    margin: 80px 10px 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .mainHeader #searchBox {
-  margin: 0 auto;
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+    margin: 0 auto;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.mainHeader #searchBox::placeholder {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#searchBox .material-symbols-rounded.search {
+    font-size: 1.75rem;
+    line-height: 1.5rem;
+    margin-top: 5px;
 }
 
 .mainHeader #searchBox #searchInput {
-  width: 270px;
-  height: 27px;
-  margin-left: 10px;
-  border: 2px solid #ffc8bd;
-  border-radius: 7px;
-  padding-left: 8px;
+    width: 270px;
+    height: 27px;
+    margin-left: 10px;
+    border: 2px solid #ffc8bd;
+    border-radius: 12.5px;
+    padding-left: 8px;
+}
+
+#searchInput input::placeholder {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .mainHeader .orderByBox {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 
-  position: relative; /* 말풍선을 위한 포지션 */
+    position: relative; /* 말풍선을 위한 포지션 */
 }
 
-.mainHeader button {
-  font-size: 11px;
-  width: 60px;
-  margin: 0 5px;
-  border-radius: 16.5px;
-  border: 1px solid #fca391;
-  background-color: #fdd8d1;
+.orderByBox button {
+    width: 80px;
+    height: 25px;
+    border: 1px solid #fca391;
+    border-radius: 12.5px;
+    display: inline-block;
+    cursor: pointer;
+    color: black;
+    font-size: 0.875rem;
+    margin-left: 10px;
 }
+
+.orderByBox button:hover,
+.orderByBox button.active {
+    background-color: #fdd8d1 !important;
+    color: black !important;
+}
+
 .mainHeader a {
-  margin-left: auto;
-  margin-right: 10px;
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 .mainHeader span {
-  font-size: 30px;
-  color: #ffc8bd;
-}
-
-#searchBox {
+    font-size: 30px;
+    color: #ffc8bd;
 }
 
 /* 말풍선 */
 .mainHeader .arrowWrite {
-  z-index: 10;
-  display: none;
-  position: absolute;
-  width: 100px;
-  padding: 8px;
-  bottom: -50px;
-  right: -35px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  background: #333;
-  color: #fff;
-  font-size: 14px;
-  text-align: center;
+    z-index: 10;
+    display: none;
+    position: absolute;
+    width: 100px;
+    padding: 8px;
+    bottom: -50px;
+    right: -35px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background: #333;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
 }
 
 .arrowWrite:after {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  margin-left: -10px;
-  border: solid transparent;
-  border-color: rgba(51, 51, 51, 0);
-  border-bottom-color: #333;
-  border-width: 10px;
-  pointer-events: none;
-  content: ' ';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    margin-left: -10px;
+    border: solid transparent;
+    border-color: rgba(51, 51, 51, 0);
+    border-bottom-color: #333;
+    border-width: 10px;
+    pointer-events: none;
+    content: ' ';
+}
+
+.material-symbols-rounded.edit:hover {
+    color: #fca391;
 }
 
 #write_a:hover + p.arrowWrite {
-  display: block;
+    display: block;
 } /* 여기까지 말풍선 */
 
 .recipe {
-  padding: 10px 10px;
+    padding: 10px 10px;
 }
 
 .recipe ul li a {
-  color: black;
-  text-decoration: none;
+    color: black;
+    text-decoration: none;
 }
 .recipe ul li #recipeCard {
-  border-radius: 10px;
-  padding: 10px 0;
-  margin: 10px 0 10px;
-  background-color: #fdd8d1;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-
-
-.recipe ul li #recipeCard #thumbnail {
-  margin-left: 10px;
-  display: flex;
-  align-items: center;
-  height: 100px;
-  width: 30%;
-  border-radius: 5px;
-
-  overflow: hidden; /* 추가: 부모 요소를 벗어나는 부분을 숨김 */
-  position: relative; /* 추가: 자식 요소의 절대 위치를 기준으로 함 */
-}
-
-.recipe ul li #recipeCard img {
-  border-radius: 5px;
-  background-color: aliceblue;
-  margin-left: 10px;
-
-  position: absolute; /* 추가: 절대 위치 */
-  top: 50%; /* 이미지가 부모 요소의 가운데로 이동 */
-  left: 50%; /* 이미지가 부모 요소의 가운데로 이동 */
-  transform: translate(-50%, -50%); /* 가운데 정렬 */
-  width: auto; /* 원본 비율 유지 */
-  height: auto; /* 원본 비율 유지 */
-  max-width: 150%; /* 부모 요소보다 커질 수 있도록(1.5배 까지만) 설정 */
-  max-height: 150%; /* 부모 요소보다 커질 수 있도록(1.5배 까지만) 설정 */
-}
-
-.recipe ul li #recipeCard #content {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-}
-
-#recipeCard #viewCount {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-#recipeCard #viewCount span{
-  color: #7a7a7a;
-  font-size: 18px;
-  margin: 10px 0px 10px 22px;
-}
-#recipeCard #viewCount p{
-  font-size: 13px;
-  margin: 10px 0px 10px 5px;
-}
-
-.recipe ul li #recipeCard #content #title p {
-  text-align: center;
-  font-size: 16px;
-  font-weight: bold;
-}
-#content #starsReviewCount {
-  display: flex;
-  flex-direction: row;
-  margin: 15px 20px 5px;
-}
-
-#starsReviewCount #stars {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-#starsReviewCount .material-icons-round.star {
-  color: #7a7a7a;
-  font-size: 18px;
-}
-
-#starsReviewCount .rating {
-  margin-left: 3px;
-  font-size: 13px;
-}
-
-#starsReviewCount #reviewCount {
-  margin-left: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-#starsReviewCount #reviewCount span {
-  font-size: 13px;
-}
-
-
-
-#paginationBox {
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-#paginationBox span {
-  cursor: pointer;
-  font-size: 15px;
-  margin: 0 5px;
-  padding: 0 5px 3px;
-  border-radius: 5px;
-}
-
-#paginationBox .material-icons-round {
-  color: #fca391;
-  font-size: 40px;
-  margin: 0px;
-}
-
-/* pc 기준 */
-@media screen and (min-width: 1024px) {
-  .container {
-    min-height: 600px;
-    width: 1080px;
-    margin: auto;
-  }
-  .mainHeader {
-    margin: 120px 10px 0;
-  }
-
-  .mainHeader #searchBox {
-  
-  }
-
-  .mainHeader #searchBox #searchInput {
-
-  }
-
-  .mainHeader .orderByBox {
-
-  }
-
-  .mainHeader button {
-    font-size: 14px;
-    width: 100px;
-    height: 30px;
-    margin: 0 10px;
-    border-radius: 15px;
-    border: 1px solid #fca391;
-    background-color: #ffffff;
-  }
-  .mainHeader a {
-    margin-right: 0px;
-  }
-
-  .mainHeader span {
-    font-size: 30px;
-  }
-
-  .recipe {
-    padding: 0px 0px 0 20px;
-  }
-  .recipe ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    padding: 0; /* 양 끝에 여백 제거 */
-  }
-  .recipe ul li {
-    width: 25%;
-  }
-
-  .recipe ul li a {
-    display: flex;
-    justify-content: center;
-  }
-
-  .recipe ul li:nth-child(4n + 1) a {
-    justify-content: flex-start;
-  }
-
-  .recipe ul li:nth-child(4n) {
-    justify-content: flex-end;
-  }
-
-  .recipe ul li #recipeCard {
-    width: 250px;
-    height: 290px;
     border-radius: 10px;
     padding: 10px 0;
-    margin: 10px 0 20px;
-    flex-direction: column;
-  }
-
-  .recipe ul li #recipeCard #thumbnail {
+    margin: 10px 0 10px;
+    background-color: #fdd8d1;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 225px;
-    height: 220px;
-    margin-left: 0;
+}
+
+.recipe ul li #recipeCard #thumbnail {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 30%;
+    border-radius: 5px;
 
     overflow: hidden; /* 추가: 부모 요소를 벗어나는 부분을 숨김 */
     position: relative; /* 추가: 자식 요소의 절대 위치를 기준으로 함 */
-  }
+}
 
-  .recipe ul li #recipeCard img {
+.recipe ul li #recipeCard img {
     border-radius: 5px;
-    margin: 0;
+    background-color: aliceblue;
+    margin-left: 10px;
 
     position: absolute; /* 추가: 절대 위치 */
     top: 50%; /* 이미지가 부모 요소의 가운데로 이동 */
@@ -321,83 +168,279 @@
     transform: translate(-50%, -50%); /* 가운데 정렬 */
     width: auto; /* 원본 비율 유지 */
     height: auto; /* 원본 비율 유지 */
-    max-width: 150%; /* 부모 요소보다 커질 수 있도록 설정 */
-    max-height: 150%; /* 부모 요소보다 커질 수 있도록 설정 */
-  }
+    max-width: 150%; /* 부모 요소보다 커질 수 있도록(1.5배 까지만) 설정 */
+    max-height: 150%; /* 부모 요소보다 커질 수 있도록(1.5배 까지만) 설정 */
+}
 
-  .recipe ul li #recipeCard #content {
-    width: 100%;
-    padding: 0 10px;
+.recipe ul li #recipeCard #content {
+    width: 70%;
     display: flex;
     flex-direction: column;
-  }
+}
 
-  #recipeCard #viewCount {
-  }
-  #recipeCard #viewCount span{
-    font-size: 18px;
-    margin: 10px 0px 0px 22px;
-  }
-  #recipeCard #viewCount p{
-    font-size: 13px;
-    margin: 10px 0px 0px 5px;
-  }
-  
-
-  .recipe ul li #recipeCard #content #title {
-    margin-top: 5px;
-  }
-  .recipe ul li #recipeCard #content #title p {
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-  }
-  #content #starsReviewCount {
-    display: flex;
-    flex-direction: row;
-    margin: 15px 20px 5px;
-  }
-
-  #starsReviewCount #stars {
+#recipeCard #viewCount {
     display: flex;
     flex-direction: row;
     align-items: center;
-  }
-
-  #starsReviewCount .material-icons-round.star {
+}
+#recipeCard #viewCount span {
     color: #7a7a7a;
     font-size: 18px;
-  }
+    margin: 10px 0px 10px 22px;
+}
+#recipeCard #viewCount p {
+    font-size: 13px;
+    margin: 10px 0px 10px 5px;
+}
 
-  #starsReviewCount .rating {
+.recipe ul li #recipeCard #content #title p {
+    /* text-align: center; */
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+#content #starsReviewCount {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 20px 5px;
+}
+
+#starsReviewCount #stars {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#starsReviewCount .material-icons-round.star {
+    color: #7a7a7a;
+    font-size: 18px;
+}
+
+#starsReviewCount .rating {
     margin-left: 3px;
     font-size: 13px;
-  }
+}
 
-  #starsReviewCount #reviewCount {
+#starsReviewCount #reviewCount {
     margin-left: auto;
     display: flex;
     flex-direction: row;
     align-items: center;
-  }
+}
 
-  #starsReviewCount #reviewCount span {
+#starsReviewCount #reviewCount span {
     font-size: 13px;
-  }
+}
 
-  #paginationBox {
+#paginationBox {
     margin-bottom: 20px;
-  }
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
-  #paginationBox span {
-    font-size: 20px;
-    margin: 0 8px;
-    padding: 0 7px 3px;
-    border-radius: 7px;
-  }
+#paginationBox span {
+    cursor: pointer;
+    font-size: 15px;
+    margin: 0 5px;
+    padding: 0 5px 3px;
+    border-radius: 5px;
+}
 
-  #paginationBox .material-icons-round {
-    font-size: 50px;
+#paginationBox .material-icons-round {
+    color: #fca391;
+    font-size: 40px;
     margin: 0px;
-  }
+}
+
+/* pc 기준 */
+@media screen and (min-width: 1024px) {
+    .container {
+        min-height: 600px;
+        width: 1080px;
+        margin: auto;
+    }
+    .mainHeader {
+        margin: 120px 10px 0;
+    }
+
+    .mainHeader #searchBox {
+        margin: 0 auto;
+        margin-left: 750px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .mainHeader #searchBox #searchInput {
+    }
+
+    .mainHeader .orderByBox {
+    }
+
+    .orderByBox button {
+        width: 100px;
+        height: 25px;
+        border: 1px solid #fca391;
+        border-radius: 12.5px;
+        display: inline-block;
+        cursor: pointer;
+        color: black;
+        font-size: 0.875rem;
+        margin-left: 10px;
+    }
+
+    .orderByBox button:hover,
+    .orderByBox button.active {
+        background-color: #fdd8d1 !important;
+        color: black !important;
+    }
+
+    .mainHeader a {
+        margin-right: 0px;
+    }
+
+    .mainHeader span {
+        font-size: 30px;
+    }
+
+    .recipe {
+        padding: 0px 0px 0 20px;
+    }
+    .recipe ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding: 0; /* 양 끝에 여백 제거 */
+    }
+    .recipe ul li {
+        width: 25%;
+    }
+
+    .recipe ul li a {
+        display: flex;
+        justify-content: center;
+    }
+
+    .recipe ul li:nth-child(4n + 1) a {
+        justify-content: flex-start;
+    }
+
+    .recipe ul li:nth-child(4n) {
+        justify-content: flex-end;
+    }
+
+    .recipe ul li #recipeCard {
+        width: 250px;
+        height: 290px;
+        border-radius: 10px;
+        padding: 10px 0;
+        margin: 10px 0 20px;
+        flex-direction: column;
+    }
+
+    .recipe ul li #recipeCard #thumbnail {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 225px;
+        height: 220px;
+        margin-left: 0;
+
+        overflow: hidden; /* 추가: 부모 요소를 벗어나는 부분을 숨김 */
+        position: relative; /* 추가: 자식 요소의 절대 위치를 기준으로 함 */
+    }
+
+    .recipe ul li #recipeCard img {
+        border-radius: 5px;
+        margin: 0;
+
+        position: absolute; /* 추가: 절대 위치 */
+        top: 50%; /* 이미지가 부모 요소의 가운데로 이동 */
+        left: 50%; /* 이미지가 부모 요소의 가운데로 이동 */
+        transform: translate(-50%, -50%); /* 가운데 정렬 */
+        width: auto; /* 원본 비율 유지 */
+        height: auto; /* 원본 비율 유지 */
+        max-width: 150%; /* 부모 요소보다 커질 수 있도록 설정 */
+        max-height: 150%; /* 부모 요소보다 커질 수 있도록 설정 */
+    }
+
+    .recipe ul li #recipeCard #content {
+        width: 100%;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #recipeCard #viewCount {
+    }
+    #recipeCard #viewCount span {
+        font-size: 18px;
+        margin: 10px 0px 0px 22px;
+    }
+    #recipeCard #viewCount p {
+        font-size: 13px;
+        margin: 10px 0px 0px 5px;
+    }
+
+    .recipe ul li #recipeCard #content #title {
+        margin-top: 5px;
+    }
+    .recipe ul li #recipeCard #content #title p {
+        /* text-align: center; */
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 3px;
+    }
+    #content #starsReviewCount {
+        display: flex;
+        flex-direction: row;
+        margin: 15px 20px 5px;
+    }
+
+    #starsReviewCount #stars {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #starsReviewCount .material-icons-round.star {
+        color: #7a7a7a;
+        font-size: 18px;
+    }
+
+    #starsReviewCount .rating {
+        margin-left: 3px;
+        font-size: 13px;
+    }
+
+    #starsReviewCount #reviewCount {
+        margin-left: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    #starsReviewCount #reviewCount span {
+        font-size: 13px;
+    }
+
+    #paginationBox {
+        margin-bottom: 20px;
+    }
+
+    #paginationBox span {
+        font-size: 18px;
+        margin: 10px 8px;
+        padding: 0 7px 3px;
+        border-radius: 7px;
+    }
+
+    #paginationBox .material-icons-round {
+        font-size: 50px;
+        margin: 0px;
+    }
 }

@@ -1,10 +1,7 @@
 const aws = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
-const { User, Recipe, Review, Ingredient, CookingTools, CookingStep } = require('../models');
-const recipe = require('../models/recipe');
-const { Json } = require('sequelize/lib/utils');
-const { where } = require('sequelize');
+const { Recipe, Ingredient, CookingTools, CookingStep } = require('../models');
 
 //aws 설정
 aws.config.update({
@@ -31,132 +28,105 @@ const upload = multer({
 });
 
 const arrayFiles = upload.fields([
+  { name: 'mainImage' },
   { name: 'files1' },
   { name: 'files2' },
   { name: 'files3' },
   { name: 'files4' },
   { name: 'files5' },
-  { name: 'files6' },
 ]);
+
 const updateFunc = async (req, res) => {
-  console.log('req.body:', req.body);
-  console.log('req.files:', req.files);
-
   arrayFiles(req, res, async (err) => {
-    if (err) {
-      return res.status(500).json({ result: false, message: '업도르 오류' });
-    }
+    console.log('req.body', req.body);
+    console.log('req.files', req.files);
 
+    if (err) {
+      return res.status(500).json({ result: false, message: '업로드 오류' });
+    }
     try {
-      if (!req.userInfo) {
+      const { userId } = req.userInfo;
+      if (!userId) {
         res.json({ result: false, message: '로그인 오류' });
         return;
       }
-      const { userId } = req.userInfo;
-      const { files1, files2, files3, files4, files5, files6 } = req.files;
+      const { title, introduceRp, servings, cookingTime } = req.body;
+      const { amounts, stepContents, ingredients, cookingTools, recipeId } = req.body;
+      const { mainImage, files1, files2, files3, files4, files5 } = req.files;
+      const filesArray = [files1, files2, files3, files4, files5];
+      console.log(1);
 
-      const filesArray = [files2, files3, files4, files5, files6];
-      console.log('파일즈2', files2[0].location);
-      const {
-        recipeId,
-        title,
-        introduceRp,
-        servings,
-        cookingTime,
-        ingredientNames,
-        ingredientAmounts,
-        tools,
-        stepContents,
-      } = req.body;
+      const parsedIngredients = ingredients.split(',');
+      const parsedAmounts = amounts.split(',');
+      const parsedTools = cookingTools.split(',');
+      const parsedStepContents = stepContents.split(',');
+      console.log(parsedIngredients);
+      console.log(parsedAmounts);
+      console.log(parsedTools);
+      console.log(parsedStepContents);
 
-      // console.log('title!!!!', title);
-      // console.log('introduceRp!!!!', introduceRp);
-      // console.log('servings!!!!', servings);
-      // console.log('cookingTime!!!!', cookingTime);
-      // console.log('ingredientNames!!!!', ingredientNames);
-      // console.log('ingredientAmounts!!!!', ingredientAmounts);
-      // console.log('stepContents!!!!', stepContents);
-      // console.log('stepsImg!!!!', stepsImg);
-      // console.log('img', stepImg);
-      console.log('파싱전 스텝', stepContents);
-      //JSON 문자열을 배열로 파싱
-      const parsedIngredients = JSON.parse(ingredientNames);
-      const parsedAmounts = JSON.parse(ingredientAmounts);
-      const parsedTools = JSON.parse(tools);
-      const parsedStepContents = JSON.parse(stepContents);
-      // const parsedStepsImg = JSON.parse(stepImg);
-      // console.log('1', parsedIngredients);
-      // console.log('2', parsedAmounts);
-      // console.log('3', parsedTools);
-      // console.log('4', parsedSteps);
-      // console.log('5', parsedStepsImg);
-      // introduceRp, files1[0].location, servings, cookingTime, userId
-
-      const recipe = await Recipe.update(
-        {
-          recipeTitle: title,
-          description: introduceRp,
-          mainImg: files1[0].location,
-          servings,
-          cookingTime,
-          userId,
-        },
-        { where: { recipeId } }
-      );
-
-      let ingredientData = [];
-      for (i = 0; i < parsedIngredients.length; i++) {
-        ingredientData.push(
-          {
-            ingredientName: parsedIngredients[i],
-            quantity: parsedAmounts[i],
-            recipeId: recipe.dataValues.recipeId,
-          },
-          { where: { recipeId } }
-        );
+      const find = await Recipe.findOne({ where: { recipeId } });
+      console.log(1);
+      if (!find) {
+        return res.status(404).json({ result: false, message: 'recipeId없음' });
       }
-      console.log('재료데이터:', ingredientData);
-      let cookingToolData = [];
-      for (i = 0; i < parsedTools.length; i++) {
-        cookingToolData.push(
-          {
-            toolName: parsedTools[i],
-            recipeId: recipe.dataValues.recipeId,
-          },
-          { where: { recipeId } }
-        );
+      console.log(1);
+      const Default = await Recipe.findOne({ where: { recipeId } });
+      //https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1723536345806-%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202024-06-10%20205000.png
+      //https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1723535944311-%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202024-05-30%20010345.png
+
+      const data =
+        mainImage != undefined
+          ? {
+              recipeTitle: title,
+              description: introduceRp,
+              mainImg: mainImage[0].location,
+              servings,
+              cookingTime,
+            }
+          : {
+              recipeTitle: title,
+              description: introduceRp,
+              servings,
+              cookingTime,
+            };
+
+      await Recipe.update(data, { where: { recipeId } });
+      console.log('=============');
+      await Ingredient.destroy({ where: { recipeId } });
+      for (let i = 0; i < parsedIngredients.length; i++) {
+        await Ingredient.create({
+          ingredientName: parsedIngredients[i],
+          quantity: parsedAmounts[i],
+          recipeId,
+        });
       }
-
-      let cookingStepData = [];
-      for (i = 0; i < parsedStepContents.length; i++) {
-        cookingStepData.push(
-          {
-            step: i + 1,
-            content: parsedStepContents[i],
-            stepImg: filesArray[i] != undefined ? filesArray[i][0].location : '',
-            recipeId: recipe.dataValues.recipeId,
-          },
-          { where: { recipeId } }
-        );
+      console.log(2);
+      await CookingTools.destroy({ where: { recipeId } });
+      for (let i = 0; i < parsedTools.length; i++) {
+        await CookingTools.create({
+          toolName: parsedTools[i],
+          recipeId,
+        });
       }
-      console.log('data', cookingStepData);
-      // let cookingStepData = [];
-      // console.log('뭐징', parsedStepsImg);
-      // for (i = 0; i < parsedSteps.length; i++) {
-      //   cookingStepData.push({
-      //     step: [i + 1],
-      //     content: parsedSteps[i],
-      //         stepImg: parsedStepsImg[i],
-      //     recipeId: recipe.dataValues.recipeId,
-      //   });
-      // }
+      console.log(3);
 
-      await CookingTools.bulkupdate(cookingToolData, { where: { recipeId } });
+      for (let i = 0; i < parsedStepContents.length; i++) {
+        let CookingStepData =
+          filesArray[i] != undefined
+            ? {
+                step: i + 1,
+                content: parsedStepContents[i],
+                stepImg: filesArray[i][0].location,
+              }
+            : {
+                step: i + 1,
+                content: parsedStepContents[i],
+              };
 
-      await Ingredient.bulkupdate(ingredientData, { where: { recipeId } });
-
-      await CookingStep.bulkupdate(cookingStepData, { where: { recipeId } });
-
+        await CookingStep.update(CookingStepData, { where: { recipeId, step: [i + 1] } });
+      }
+      console.log(4);
       res.json({ result: true });
     } catch (error) {
       res.status(500).json({ result: false });

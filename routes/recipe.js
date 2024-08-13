@@ -8,7 +8,6 @@ const recipe = require('../controller/recipe');
 const { verify } = require('../controller/verify');
 const { viewCount } = require('../controller/viewCount');
 const { generateRecipe } = require('../controller/geminiAI');
-
 const { openRecipe } = require('../controller/openRecipe');
 const { updateFunc } = require('../controller/updateRecipe');
 

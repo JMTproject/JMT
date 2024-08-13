@@ -25,7 +25,6 @@ const NNcheckFunc = async (req, res) => {
 
 const emailCheck = async (req, res) =>{
   try {
-    console.log('sss=====================',req.body);
     const { email } = req.body;
     const find = await User.findOne({where : {email}})
     if(!find){

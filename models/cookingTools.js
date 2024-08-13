@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 const cookingTools = (seq) => {
+
     return seq.define('cookingTools', {
         toolId : {
             type : DataTypes.INTEGER,

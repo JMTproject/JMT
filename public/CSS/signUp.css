@@ -1,306 +1,398 @@
-* {
-  box-sizing: border-box;
+@charset "utf-8";
+@import url(reset.css);
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .container {
-  width: 360px;
-  min-height: 835px;
-  margin: 0 auto;
+    width: 360px;
+    min-height: 900px;
+    margin: 0 auto;
 }
 
 #titleImg {
-  width: 360px;
-  height: 80px;
-  margin: 0 auto;
-  padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    height: 250px;
+    /* margin-right: 20px; */
+    padding: 70px 0 30px 0;
+    margin: 0 auto;
 }
 
-#titleImg #imgSample {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto;
+#titleImg img:first-child {
+    /* background-color: #fca391; */
+    margin-right: 20px;
+    width: 80px;
 }
 
-#titleImg #imgSample img {
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  line-height: 2;
+#titleImg img:nth-child(2) {
+    /* background-color: #fca391; */
+    /* margin-right: 20px; */
+    height: 80px;
 }
 
 .content {
-  width: 350px;
-  height: 550px;
-  margin: 0 auto;
-  border: 1.5px solid #fca391;
-  border-radius: 15px;
-  padding: 10px;
-  position: relative;
+    width: 350px;
+    height: 550px;
+    margin: 0 auto;
+    border: 1.5px solid #fca391;
+    border-radius: 15px;
+    padding: 10px;
+    position: relative;
 }
 
 #titleBox {
-  width: 100%;
-  height: 66px;
-  font-size: 24pt;
-  text-align: center;
-  /* border: 1px solid #333; */
+    width: 100%;
+    height: 66px;
+    font-size: 24pt;
+    text-align: center;
+    /* border: 1px solid #333; */
 }
 
 #titleBox p {
-  width: 100%;
-  height: 100%;
-  line-height: 2;
+    width: 100%;
+    height: 100%;
+    line-height: 2;
+    font-size: 22px;
 }
 
 .signUpBox #emailDiv {
-  width: 300px;
-  height: 40px;
-  border: 1px solid #fca391;
-  border-radius: 5px;
-  margin: 0 auto;
-  position: relative;
+    width: 300px;
+    height: 40px;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .signUpBox #emailDiv input {
-  border: none;
-  position: absolute;
-  border-radius: 5px;
-  height: 100%;
-  width: 240px;
-  padding-left: 15px;
-  left: 0;
+    border: none;
+    position: absolute;
+    border-radius: 5px;
+    height: 100%;
+    width: 299px;
+    padding-left: 15px;
+    left: 0;
 }
 
 .signUpBox #emailDiv button {
-  border: none;
-  position: absolute;
-  height: 100%;
-  background-color: #fca391;
-  border-radius: 5px;
-  color: #ffffff;
-  width: 60px;
-  right: 0;
+    border: none;
+    position: absolute;
+    height: 100%;
+    background-color: #fca391;
+    border-radius: 0 5px 5px 0;
+    color: #ffffff;
+    width: 60px;
+    right: 0;
+    cursor: pointer;
+}
+
+.signUpBox #emailDiv button:hover {
+    background-color: #fdd8d1;
+    border: 1px solid #fca391;
+    color: black;
+    cursor: pointer;
 }
 
 .signUpBox #authDiv {
-  width: 300px;
-  height: 40px;
-  border: 1px solid #fca391;
-  border-radius: 5px;
-  margin: 0 auto;
-  position: relative;
+    width: 300px;
+    height: 40px;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .signUpBox #authDiv input {
-  border: none;
-  position: absolute;
-  height: 100%;
-  width: 240px;
-  padding-left: 15px;
-  border-radius: 5px;
-  left: 0;
+    border: none;
+    position: absolute;
+    height: 100%;
+    width: 299px;
+    padding-left: 15px;
+    border-radius: 5px;
+    left: 0;
 }
 
 .signUpBox #authDiv button {
-  border: none;
-  position: absolute;
-  background-color: #fca391;
-  color: #ffffff;
-  border-radius: 5px;
-  height: 100%;
-  width: 60px;
-  right: 0;
+    border: none;
+    position: absolute;
+    background-color: #fca391;
+    color: #ffffff;
+    border-radius: 0 5px 5px 0;
+    height: 100%;
+    width: 60px;
+    right: 0;
+    cursor: pointer;
+}
+.signUpBox #authDiv button:hover {
+    background-color: #fdd8d1;
+    border: 1px solid #fca391;
+    color: black;
+    cursor: pointer;
 }
 
 .signUpBox p {
-  padding-left: 20px;
-  font-size: 12px;
-  margin: 5px 0;
+    padding-left: 20px;
+    font-size: 12px;
+    margin: 5px 0;
 }
 
 .signUpBox #passDiv {
-  width: 300px;
-  height: 80px;
-  border: 1px solid #fca391;
-  border-radius: 5px;
-  margin: 0 auto;
-  position: relative;
+    width: 300px;
+    height: 80px;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .signUpBox #passDiv input {
-  border: none;
-  position: absolute;
-  height: 50%;
-  width: 298px;
-  padding-left: 15px;
-  font-size: 16px;
+    border: none;
+    position: absolute;
+    height: 50%;
+    width: 298px;
+    padding-left: 15px;
+    font-size: 16px;
 }
 
 .signUpBox #passDiv #pwd1 {
-  top: 0;
-  border-bottom: 1px solid #fca391;
-  border-radius: 5px 5px 0 0;
+    top: 0;
+    border-bottom: 1px solid #fca391;
+    border-radius: 5px 5px 0 0;
 }
+.signUpBox #passDiv #pwd1::placeholder {
+    font-size: 14px;
+}
+
 .signUpBox #passDiv #pwd2 {
-  bottom: 0;
-  border-radius: 0 0 5px 5px;
+    bottom: 0;
+    border-radius: 0 0 5px 5px;
+}
+
+.signUpBox #passDiv #pwd2::placeholder {
+    font-size: 14px;
 }
 
 .signUpBox #NNDiv {
-  width: 300px;
-  height: 40px;
-  border: 1px solid #fca391;
-  border-radius: 5px;
-  margin: 0 auto;
-  position: relative;
+    width: 300px;
+    height: 40px;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .signUpBox #NNDiv input {
-  border: none;
-  position: absolute;
-  height: 100%;
-  width: 240px;
-  border-radius: 5px;
-  padding-left: 15px;
-  left: 0;
+    border: none;
+    position: absolute;
+    height: 100%;
+    width: 299px;
+    border-radius: 5px;
+    padding-left: 15px;
+    left: 0;
 }
 
 .signUpBox #NNDiv button {
-  border: none;
-  position: absolute;
-  background-color: #fca391;
-  color: #ffffff;
-  border-radius: 5px;
-  height: 100%;
-  width: 60px;
-  right: 0;
+    border: none;
+    position: absolute;
+    background-color: #fca391;
+    color: #ffffff;
+    border-radius: 0 5px 5px 0;
+    height: 100%;
+    width: 60px;
+    right: 0;
+    cursor: pointer;
+}
+
+.signUpBox #NNDiv button:hover {
+    background-color: #fdd8d1;
+    border: 1px solid #fca391;
+    color: black;
+    cursor: pointer;
 }
 
 #signUpRadio {
-  width: 300px;
-  height: 40px;
-  margin: 0 auto;
-  border: 1px solid #fca391;
-  border-radius: 5px;
-  color: #fca391;
+    width: 300px;
+    height: 40px;
+    margin: 0 auto;
+    border: 1px solid #fca391;
+    border-radius: 5px;
+    color: #fca391;
 
-  position: relative;
-  margin-top: 20px;
+    position: relative;
+    margin-top: 20px;
 }
 #signUpRadio #signUpRadioInput {
-  width: 18px;
-  height: 18px;
-  margin: 10px;
-  margin-left: 0;
-  position: absolute;
-  left: 10px;
-  align-items: center;
+    width: 18px;
+    height: 18px;
+    margin: 10px;
+    margin-left: 0;
+    position: absolute;
+    left: 10px;
+    align-items: center;
 }
 
 #signUpRadio label p {
-  width: 200px;
-  height: 100%;
-  padding-left: 5%;
-  position: absolute;
-  font-size: 18px;
-  left: 24px;
-  align-items: center;
-  line-height: 2;
+    width: 200px;
+    height: 100%;
+    padding-left: 5%;
+    position: absolute;
+    font-size: 16px;
+    left: 24px;
+    top: 10px;
+    align-items: center;
+    line-height: 16px;
 }
 #signUpRadio #checkBox {
-  position: absolute;
-  right: 10px;
+    position: absolute;
+    right: 10px;
 }
+
 #signUpRadio #checkBox span {
-  font-size: 40px;
-  padding: 0;
-  margin: 0;
+    font-size: 40px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
 }
+
 .content #SignUpForm #btnDiv {
-  width: 300px;
-  height: 50px;
-  margin: 0 auto;
-  margin-top: 20px;
+    width: 300px;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
 .content #agreement {
-  position: relative;
-  margin: 0 auto;
-  background-color: aliceblue;
-  border: 1px solid #333;
-  border-radius: 10px;
-  top: -350px;
-  padding: 10px;
+    width: 90%;
+    position: absolute;
+    /* margin: 0 auto; */
+    background-color: #fdd8d1;
+    border: 1px solid #fca391;
+    border-radius: 10px;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
 }
 .content #agreement h3 {
-  display: flex;
-  height: 10px;
-  justify-content: center;
+    display: flex;
+    font-weight: 500;
+    height: 10px;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.content #agreement button {
+    all: unset;
+}
+.content #agreement button:hover {
+    color: #fff;
 }
 
 .content #closeBtn span {
-  width: 20px;
-  height: 20px;
-  display: flex;
-  justify-content: end;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+    /* margin-right: 500px; */
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }
 
 .content #agreement p {
-  font-size: 12px;
-  text-align: justify;
-  display: flex;
+    font-size: 12px;
+    text-align: justify;
+    display: flex;
 }
 
 .content #SignUpForm #signUpBtn {
-  width: 100%;
-  height: 100%;
-  color: #ffffff;
-  background-color: #ccc;
-  border: none;
-  border-radius: 5px;
-  font-size: 20px;
-  margin: 0 auto;
+    /* width: 100%;
+    height: 100%; */
+    width: 300px;
+    height: 50px;
+    color: #ffffff;
+    background-color: #fdd8d1;
+    border: 1px solid #fca391 !important;
+    border-radius: 5px;
+    font-size: 20px;
+    margin: 0 auto;
+    cursor: pointer;
+    position: absolute;
+    top: 80%;
+}
+
+.content #SignUpForm #signUpBtn:hover {
+    background-color: #fdd8d1 !important;
+    border: 1px solid #fca391 !important ;
+    color: #fff;
+    cursor: pointer;
 }
 
 @media (min-width: 1080px) {
-  .container {
-    width: 600px;
-    min-height: 835px;
-    margin: 0 auto;
-  }
+    .container {
+        width: 600px;
+        min-height: 835px;
+        margin: 0 auto;
+    }
 
-  #titleImg {
-    height: 200px;
-    margin: 0 auto;
-    margin-top: 30px;
-    padding: 70px 0 30px 0;
-  }
+    #titleImg {
+        height: 200px;
+        margin: 0 auto;
+        margin-top: 30px;
+        padding: 70px 0 30px 0;
+    }
 
-  .content {
-    width: 600px;
-    height: 500px;
-    padding: 20px;
-  }
+    .content {
+        width: 600px;
+        height: 500px;
+        padding: 20px;
+    }
 
-  #titleBox p {
-    line-height: 1.5;
-  }
+    #titleBox p {
+        line-height: 1.5;
+    }
 
-  #SignUpForm {
-    height: 85%;
-  }
+    #SignUpForm {
+        height: 85%;
+    }
 
-  #SignUpForm .signUpBox {
-    margin-bottom: 10%;
-  }
+    #SignUpForm .signUpBox {
+        margin-bottom: 10%;
+    }
 
-  #signUpRadio {
-    margin-bottom: 10%;
-  }
+    #signUpRadio {
+        position: absolute;
+        top: 65%;
+        left: 25%;
+    }
 
-  .content #signUpBtn {
-    width: 100%;
-    height: 15%;
-    font-size: 22px;
-  }
+    .content #signUpBtn {
+        width: 100%;
+        height: 15%;
+        font-size: 22px;
+    }
+
+    .content #agreement {
+        width: 90%;
+        position: absolute;
+        /* margin: 0 auto; */
+        background-color: #fdd8d1;
+        border: 1px solid #fca391;
+        border-radius: 10px;
+        top: 38%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+    }
+
+    #emailResult,
+    #checkPwd,
+    #checkNN {
+        margin-left: 110px;
+    }
 }

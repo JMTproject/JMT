@@ -4,8 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
-  <title>Document</title>
+  <link rel="shortcut icon" href="../public/favicon_io/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" />
+  <title>JMT</title>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" href="../public/CSS/headerFooter.css">
   <link rel="stylesheet" href="../public/CSS/updateRecipe.css">
@@ -20,14 +24,17 @@
     <div class="header">
       <a class="logo" href="/">
         <img class="logoImg" src="../public/images/logo.png" alt="" />
+        <img class="logoImg-word" src="../public/images/JMT-logo-word.png" alt="" />
       </a>
+
       <div class="iconBox">
-        <div id="logout_div" onclick="logoutFunc()"><span class="material-icons-round logout">logout</span></div>
+        <div id="logout_div" onclick="logoutFunc()"><span class="material-symbols-rounded logout">logout</span>
+        </div>
         <p class="arrowLogout">로그아웃</p>
-        <a id="login_a" href="/login"><span class="material-icons-round key">key</span></a>
+        <a id="login_a" href="/login"><span class="material-symbols-rounded login">login</span></a>
         <p class="arrowLogin">로그인</p>
         <div id="profile_div" onclick="myPageToggle()">
-          <span class="material-icons-round account_circle">account_circle</span>
+          <span class="material-symbols-rounded account_circle">account_circle</span>
         </div>
         <p class="arrowProfile">마이페이지</p>
         <div class="myPageBox" style="display: none">
@@ -74,7 +81,7 @@
           <div id="ingredientInput">
             <input type="text" id="ingredientName" placeholder="재료 입력" />
             <input type="text" id="ingredientAmount" placeholder="계량 kg/g/1t" />
-            <button type="button" onclick="addIngredient()">입력</button>
+            <button id="inputButton1" type="button" onclick="addIngredient()">입력</button>
           </div>
           <ul id="ingredientList"></ul>
         </div>
@@ -83,7 +90,7 @@
         <div id="cookingTools">
           <div id="cookingToolInput">
             <input type="text" id="toolName" placeholder="ex)후라이팬" />
-            <button type="button" onclick="addCookingTool()">입력</button>
+            <button id="inputButton" type="button" onclick="addCookingTool()">입력</button>
           </div>
           <ul id="cookingToolList"></ul>
         </div>

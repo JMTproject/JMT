@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken');
 
 exports.auth = (req, res, next) => {
     const token = req.headers.authorization;
-    console.log('콘솔확인', token);
-
     if (!token) {
         return res.json({ result: false, message: '토큰 정보 없음' });
     }

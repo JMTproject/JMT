@@ -8,7 +8,7 @@ module.exports = {
                 {
                     step: 1,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 1,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -16,7 +16,7 @@ module.exports = {
                 {
                     step: 2,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 1,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -24,7 +24,7 @@ module.exports = {
                 {
                     step: 3,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 1,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -32,7 +32,7 @@ module.exports = {
                 {
                     step: 4,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 1,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -48,7 +48,7 @@ module.exports = {
                 {
                     step: 1,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 2,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -56,7 +56,7 @@ module.exports = {
                 {
                     step: 2,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 2,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -64,7 +64,7 @@ module.exports = {
                 {
                     step: 3,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 2,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -72,7 +72,7 @@ module.exports = {
                 {
                     step: 4,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 2,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -80,7 +80,7 @@ module.exports = {
                 {
                     step: 5,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 2,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -88,7 +88,7 @@ module.exports = {
                 {
                     step: 1,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 3,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -96,7 +96,7 @@ module.exports = {
                 {
                     step: 2,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 3,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -104,7 +104,7 @@ module.exports = {
                 {
                     step: 3,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 3,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -112,7 +112,7 @@ module.exports = {
                 {
                     step: 4,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 3,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',
@@ -120,7 +120,7 @@ module.exports = {
                 {
                     step: 5,
                     content: '후라이팬에 고기와 소스를 넣고 5분간 볶습니다.',
-                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/1721636568075-monkey2.jpg',
+                    stepImg: 'https://kdt13-hyun1.s3.ap-northeast-2.amazonaws.com/food-example.jpg',
                     recipeId: 3,
                     createdAt: '2024-07-24 20:56:57',
                     updatedAt: '2024-07-24 20:56:57',

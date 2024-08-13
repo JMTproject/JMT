@@ -4,21 +4,17 @@ html {
   padding: 0;
   font-family: 'Noto Sans', sans-serif;
   box-sizing: border-box;
-  /* background-color: #f7f7f7;
-  color: #333; */
 }
-
 .container {
   min-height: 600px;
   width: 360px;
   margin: 120px auto;
 }
-
 h3 {
   font-size: 24px;
   margin-left: 10px;
+  margin-top: 20px;
 }
-
 #infoRp {
   width: 350px;
   height: 480px;
@@ -51,10 +47,7 @@ h3 {
   flex-direction: row;
   margin-top: 20px;
 }
-/* #infoRp #cookingInfoBox{
-  display: flex;
-  flex-direction: column;
-} */
+
 #infoRp #servings {
   width: 60px;
   height: 20px;
@@ -66,7 +59,6 @@ h3 {
 #infoRp #servingBox {
   margin-bottom: 10px;
 }
-
 #infoRp #cookingTime {
   width: 60px;
   height: 25px;
@@ -78,18 +70,6 @@ h3 {
   margin-left: 20px;
   text-align: center;
 }
-
-/* #infoRp input[type='file']::file-selector-button {
-  width: 150px;
-  height: 30px;
-  background: #fff;
-  border: 1px solid #fdd8d1;
-  border-radius: 10px;
-  cursor: pointer;
-  display: block;
-  text-align: center;
-  font-size: 10px;
-} */
 
 .uploadImg {
   display: flex;
@@ -140,10 +120,9 @@ h3 {
   border-radius: 12px;
   text-align: center;
 }
-#ingredient button {
+#ingredient #inputButton1 {
   width: 80px;
   height: 25px;
-  /* margin: 10px 10px auto; */
   border: 1px solid #fdd8d1;
   border-radius: 12px;
   text-align: center;
@@ -151,8 +130,45 @@ h3 {
   color: white;
   cursor: pointer;
 }
-#ingredient button:hover {
+#ingredient #inputButton1:hover {
   background-color: #fa6d51;
+}
+
+#ingredient ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 10px 10px;
+}
+
+#ingredient ul li {
+}
+
+#ingredient .ingredientBox {
+  background-color: #fca391;
+  height: 20px;
+  border-radius: 10px;
+  margin: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 5px;
+}
+
+#ingredient span {
+  font-size: 11px;
+  margin: 0 5px;
+}
+
+#ingredient .remove-btn {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  font-size: 11px;
+  padding-left: 10px;
+  padding-right: 5px;
 }
 
 /* cooking */
@@ -174,10 +190,9 @@ h3 {
   text-align: center;
   opacity: 70%;
 }
-#cookingTools button {
+#cookingTools #inputButton {
   width: 80px;
   height: 25px;
-  /* margin: 10px 10px auto; */
   border: 1px solid #fdd8d1;
   border-radius: 12px;
   text-align: center;
@@ -186,10 +201,46 @@ h3 {
   cursor: pointer;
   margin: 10px auto;
 }
-#cookingTools button:hover {
+#cookingTools #inputButton:hover {
   background-color: #fa6d51;
 }
 
+#cookingTools ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 10px 10px;
+}
+
+#cookingTools ul li {
+}
+
+#cookingTools .cookingToolBox {
+  background-color: #fca391;
+  height: 20px;
+  border-radius: 10px;
+  margin: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 5px;
+}
+
+#cookingTools span {
+  font-size: 11px;
+  margin: 0 5px;
+}
+
+#cookingTools .remove-btn {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  font-size: 11px;
+  padding-left: 10px;
+  padding-right: 5px;
+}
 /* cookingStep */
 #cookingStep {
   display: flex;
@@ -197,17 +248,14 @@ h3 {
   gap: 10px;
   border: 1px solid #fdd8d1;
 }
-
 #cookingStep > div {
   display: flex;
   align-items: stretch;
   overflow: hidden;
 }
-
 #cookingStep #pnone {
   border: none;
 }
-
 #cookingStep p {
   flex: 0 0 30px;
   margin: 0;
@@ -216,7 +264,6 @@ h3 {
   justify-content: center;
   border-top: 1px solid #fdd8d1;
 }
-
 #cookingStep textarea {
   flex: 1;
   border: none;
@@ -224,7 +271,6 @@ h3 {
   resize: none;
   margin: 0;
 }
-
 .upload-box {
   position: relative;
   width: 100px;
@@ -236,7 +282,6 @@ h3 {
   cursor: pointer;
   margin: 5px;
 }
-
 .upload-box img {
   position: absolute;
   top: 0;
@@ -245,7 +290,6 @@ h3 {
   height: 100%;
   object-fit: cover;
 }
-
 .upload-btn {
   background: none;
   border: none;
@@ -258,7 +302,6 @@ h3 {
   justify-content: center;
   color: #fdd8d1;
 }
-
 #writeRpBtn {
   width: 200px;
   height: 30px;
@@ -271,11 +314,9 @@ h3 {
   color: white;
   cursor: pointer;
 }
-
 #writeRpBtn:hover {
   background-color: #fa6d51;
 }
-
 @media screen and (min-width: 1024px) {
   body,
   html {
@@ -283,25 +324,20 @@ h3 {
     padding: 0;
     font-family: 'Noto Sans', sans-serif;
     box-sizing: border-box;
-    /* background-color: #f7f7f7;
-    color: #333; */
   }
   header span {
     display: flex;
     flex-direction: column;
     color: #fdd8d1;
   }
-
   .container {
     width: 1080px;
     margin: 120px auto;
   }
-
   h3 {
     font-size: 24px;
     margin-left: 10px;
   }
-
   #infoRp {
     width: 1070px;
     height: 480px;
@@ -336,17 +372,9 @@ h3 {
     margin-top: 20px;
     justify-content: center;
   }
-  /* #infoRp #cookingInfoBox{
-    display: flex;
-    flex-direction: column;
-  } */
   #infoRp #servingBox {
-    /* margin-bottom: 10px; */
     display: flex;
     justify-content: center;
-    /* margin: 3px; */
-    /* flex-direction: column; */
-    /* align-items: ; */
   }
   #infoRp #servings {
     width: 80px;
@@ -354,23 +382,14 @@ h3 {
     border: 1px solid #fdd8d1;
     border-radius: 3px;
     opacity: 70%;
-    /* margin-left: 5%; */
-    /* display: flex;
-      flex-direction: column; */
   }
-
   #infoRp #cookingTime #minute {
     width: 60px;
     height: 25px;
     border: 1px solid #fdd8d1;
     border-radius: 3px;
     opacity: 70%;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* margin-left: 20px; */
-    /* text-align: center; */
   }
-
   .uploadImg {
     display: flex;
     flex-direction: row;
@@ -383,9 +402,7 @@ h3 {
     border-radius: 13px;
     margin: 10px auto;
     background-color: white;
-    /* float: left; */
     margin-left: 265px;
-    /* margin-right: 50px; */
   }
   .uploadImg button {
     width: 250px;
@@ -395,14 +412,12 @@ h3 {
     background-color: white;
     cursor: pointer;
     float: right;
-    /* margin-bottom: 10px; */
     margin-left: 140px;
   }
   .uploadImg button:hover {
     background-color: #fa6d51;
     color: white;
   }
-
   #ingredient {
     width: 1070px;
     height: 200px;
@@ -421,10 +436,9 @@ h3 {
     text-align: center;
     opacity: 70%;
   }
-  #ingredient button {
+  #ingredient #inputButton {
     width: 80px;
     height: 25px;
-    /* margin: 10px 10px auto; */
     border: 1px solid #fdd8d1;
     border-radius: 12px;
     text-align: center;
@@ -432,8 +446,33 @@ h3 {
     color: white;
     cursor: pointer;
   }
-  #ingredient button:hover {
+  #ingredient #inputButton:hover {
     background-color: #fa6d51;
+  }
+
+  #ingredient ul {
+    margin: 10px 10px;
+  }
+
+  #ingredient ul li {
+  }
+
+  #ingredient .ingredientBox {
+    height: 30px;
+    border-radius: 15px;
+    margin: 5px 10px;
+    padding: 0 10px;
+  }
+
+  #ingredient span {
+    font-size: 13px;
+    margin: 0 5px;
+  }
+
+  #ingredient .remove-btn {
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 5px;
   }
   #cookingTools {
     width: 1070px;
@@ -453,10 +492,9 @@ h3 {
     text-align: center;
     opacity: 70%;
   }
-  #cookingTools button {
+  #cookingTools #inputButton {
     width: 80px;
     height: 25px;
-    /* margin: 10px 10px auto; */
     border: 1px solid #fdd8d1;
     border-radius: 12px;
     text-align: center;
@@ -464,8 +502,33 @@ h3 {
     color: white;
     cursor: pointer;
   }
-  #cookingTools button:hover {
+  #cookingTools #inputButton:hover {
     background-color: #fa6d51;
+  }
+
+  #cookingTools ul {
+    margin: 10px 10px;
+  }
+
+  #cookingTools ul li {
+  }
+
+  #cookingTools .cookingToolBox {
+    height: 30px;
+    border-radius: 15px;
+    margin: 5px 10px;
+    padding: 0 10px;
+  }
+
+  #cookingTools span {
+    font-size: 13px;
+    margin: 0 5px;
+  }
+
+  #cookingTools .remove-btn {
+    font-size: 13px;
+    padding-left: 10px;
+    padding-right: 5px;
   }
 
   #cookingStep {
@@ -475,26 +538,21 @@ h3 {
     border: 1px solid #fdd8d1;
     border-radius: 3px;
   }
-
   #cookingStep > div {
     display: flex;
     align-items: stretch;
     overflow: hidden;
   }
-
   #cookingStep #pnone {
     border: none;
   }
-
   #cookingStep p {
     flex: 0 0 30px;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border-top: 1px solid #fdd8d1; */
   }
-
   #cookingStep textarea {
     flex: 1;
     border: none;
@@ -502,7 +560,6 @@ h3 {
     resize: none;
     margin: 0;
   }
-
   .upload-box {
     position: relative;
     width: 100px;
@@ -514,7 +571,6 @@ h3 {
     cursor: pointer;
     margin: 5px;
   }
-
   .upload-box img {
     position: absolute;
     top: 0;
@@ -523,7 +579,6 @@ h3 {
     height: 100%;
     object-fit: cover;
   }
-
   .upload-btn {
     background: none;
     border: none;
@@ -541,8 +596,6 @@ h3 {
     width: 850px;
     height: 85px;
     margin: 10px 10px auto;
-    /* margin-left: 25%; */
-
     font-size: 22px;
     text-align: center;
     background-color: #fca391;
@@ -552,8 +605,6 @@ h3 {
     cursor: pointer;
     align-items: center;
     line-height: 2;
-    /* display: flex;
-    flex-direction: row; */
   }
   form #writeRpBtn:hover {
     background-color: #fa6d51;

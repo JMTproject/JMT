@@ -9,9 +9,9 @@ const { submitReview, updateReview, deleteReview } = require('../controller/revi
 router.post('/recipe/data/:id/reviews', auth, submitReview);
 
 // 리뷰 수정
-router.put('/recipe/data/:id/update', updateReview);
+router.put('/recipe/data/:id/update', auth, updateReview);
 
 // 리뷰 삭제
-router.put('/recipe/data/:id/delete', deleteReview);
+router.put('/recipe/data/:id/delete', auth, deleteReview);
 
 module.exports = router;
