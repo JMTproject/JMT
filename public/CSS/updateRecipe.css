@@ -120,7 +120,7 @@ h3 {
   border-radius: 12px;
   text-align: center;
 }
-#ingredient #inputButton {
+#ingredient #inputButton1 {
   width: 80px;
   height: 25px;
   border: 1px solid #fdd8d1;
@@ -130,7 +130,7 @@ h3 {
   color: white;
   cursor: pointer;
 }
-#ingredient #inputButton:hover {
+#ingredient #inputButton1:hover {
   background-color: #fa6d51;
 }
 
