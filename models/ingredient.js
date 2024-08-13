@@ -8,10 +8,6 @@ const ingredient = (seq) => {
             autoIncrement : true,
             primaryKey : true,
         },
-        ingredientNum :{
-            type : DataTypes.INTEGER(2),
-            allowNull : false,
-        },
         ingredientName : {
             type : DataTypes.STRING(91),
             allowNull : false,

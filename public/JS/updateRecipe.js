@@ -23,41 +23,13 @@ if (localStorage.getItem('token')) {
       alert('로그인이 필요한 페이지 입니다');
       document.location.href = '/login';
     }
-    // console.log('recipeTitle@@@@@@', res.data.recipe.recipeTitle);
-    // console.log('ingredientName@@@@@@', res.data.ingredient[0].ingredientName);
-    // console.log('quantity@@@@@@', res.data.ingredient[0].quantity);
-    // console.log('toolName@@@@@@', res.data.cookingtools[0].toolName);
-    // console.log('content@@@@@@', res.data.cookingstep[0].content);
-    // console.log('stepImg@@@@@@', res.data.cookingstep[0].stepImg);
-
-    // document.querySelector('#title').value = res.data.recipe.recipeTitle;
-    // document.querySelector('#introduceRp').value = res.data.recipe.description;
-    // document.querySelector('#servings').value = res.data.recipe.servings;
-    // document.querySelector('#cookingTime').value = res.data.recipe.cookingTime;
-    // document.querySelector('#uploadedImg').src = res.data.recipe.mainImg;
-
-    // for (let i = 0; i < res.data.ingredient.length; i++) {
-    //   document.querySelector('#ingredientName').value = res.data.ingredient[i].ingredientName;
-    //   document.querySelector('#ingredientAmount').value = res.data.ingredient[i].quantity;
-    //   addIngredient();
-    // }
-
-    // for (let i = 0; i < res.data.cookingtools.length; i++) {
-    //   document.querySelector('#toolName').value = res.data.cookingtools[i].toolName;
-    //   addCookingTool();
-    // }
-
-    // for (let i = 0; i < res.data.cookingstep.length; i++) {
-    //   document.querySelector(`#stepContent${i + 1}`).value = res.data.cookingstep[i].content;
-    //   // console.log(`${i}img${res.data.cookingstep$[i].stepImg}`);
-    //   document.querySelector(`#imgPreview${i + 1}`).src = res.data.cookingstep[i].stepImg;
-    //   // console.log(`${i}content`, res.data.cookingstep[i].content);
-    // }
     // 레시피 제목, 설명, 서빙 수, 요리 시간 설정
     document.querySelector('#title').value = res.data.recipe.recipeTitle;
     document.querySelector('#introduceRp').value = res.data.recipe.description;
     document.querySelector('#servings').value = res.data.recipe.servings;
     document.querySelector('#cookingTime').value = res.data.recipe.cookingTime;
+
+
 
     // 메인 이미지 설정
     const mainImgUrl = res.data.recipe.mainImg;
@@ -207,7 +179,6 @@ function addCookingTool() {
     removeCookingTool(this);
   };
 
-
   // 삭제 버튼을 cookingToolBox에 추가
   cookingToolBox.appendChild(removeButton);
 
@@ -241,14 +212,18 @@ function displayImage(event, step) {
   }
 }
 
-
-async function UpdateRpUploadFunc() {
-
+function UpdateRpUploadFunc() {
   const title = document.getElementById('title').value;
-  const mainImage = document.getElementById('uploadedImg').src;
   const introduceRp = document.getElementById('introduceRp').value;
   const servings = document.getElementById('servings').value;
   const cookingTime = document.getElementById('cookingTime').value;
+  const mainImage = document.getElementById('fileInput');
+  const stepImg1 = document.getElementById('fileInput1');
+  const stepImg2 = document.getElementById('fileInput2');
+  const stepImg3 = document.getElementById('fileInput3');
+  const stepImg4 = document.getElementById('fileInput4');
+  const stepImg5 = document.getElementById('fileInput5');
+
   // 필수 필드가 비어 있는지 확인하고, 비어 있을 경우 경고 메시지를 표시
   if (!title || !mainImage || !introduceRp || !servings || !cookingTime) {
     alert('모든 필드를 입력해주세요');
@@ -258,65 +233,51 @@ async function UpdateRpUploadFunc() {
   const recipeId = window.location.pathname.split('/updaterecipe/').pop();
 
   //재료, 수량 배열
-  const ingredientItems = document.querySelectorAll('#ingredientList li');
   const amounts = [];
   const ingredients = [];
-  for (let i = 1; i <= ingredientItems.length; i++) {
-    const ingredient = document.querySelector(`#ingredientList li:nth-child(${i}) .igdNameSpan`).textContent;
-    ingredients.push(ingredient);
-  }
-
-  for (let i = 1; i <= ingredientItems.length; i++) {
-    const amount = document.querySelector(`#ingredientList li:nth-child(${i}) .igdAmountSpan`).textContent;
-    amounts.push(amount);
-  }
-
-  //조리도구 배열
-  const cookingToolItems = document.querySelectorAll('#cookingToolList li');
   const cookingTools = [];
-  for (let i = 1; i <= cookingToolItems.length; i++) {
-    const cookingTool = document.querySelector(`#cookingToolList li:nth-child(${i}) .cookingToolName`).textContent;
-    cookingTools.push(cookingTool);
-  }
-
-  //textarea 배열
   const stepContents = [];
+  document.querySelectorAll('#ingredientList .igdNameSpan').forEach((span) => {
+    ingredients.push(span.textContent);
+  });
+  document.querySelectorAll('#ingredientList .igdAmountSpan').forEach((span) => {
+    amounts.push(span.textContent);
+  });
+  document.querySelectorAll('#cookingToolList .cookingToolName').forEach((span) => {
+    cookingTools.push(span.textContent);
+  });
+
   for (let i = 1; i <= 5; i++) {
     const textarea = document.querySelector(`#stepContent${i}`);
-
-    stepContents.push(textarea.value || '');
+    stepContents.push([textarea.value] || ['']);
   }
 
-  //이미지 배열
-  const stepImages = [];
-  for (let i = 1; i <= 5; i++) {
-    const image = document.getElementById(`imgPreview${i}`);
-    if (image) {
-      stepImages.push(image.src);
-    } else {
-      stepImages.push('');
-    }
-  }
+  const formData = new FormData();
+  //이미지
+  formData.append('recipeId', recipeId);
+  formData.append('title', title);
 
-  const data = {
-    recipeId,
-    title,
-    mainImage,
-    introduceRp,
-    servings,
-    cookingTime,
-    ingredients,
-    amounts,
-    cookingTools,
-    stepImages,
-    stepContents,
-  };
+  formData.append('introduceRp', introduceRp);
+  formData.append('servings', servings);
+  formData.append('cookingTime', cookingTime);
+  formData.append('ingredients', ingredients);
+  formData.append('amounts', amounts);
+  formData.append('cookingTools', cookingTools);
+  formData.append('stepContents', stepContents);
+  formData.append('mainImage',  mainImage.files[0]);
+  formData.append('files1', stepImg1.files[0]);
+  formData.append('files2', stepImg2.files[0]);
+  formData.append('files3', stepImg3.files[0]);
+  formData.append('files4', stepImg4.files[0]);
+  formData.append('files5', stepImg5.files[0]);
+  console.log(formData);
 
-  await axios({
+  axios({
     method: 'post',
     url: '/api/recipe/updaterecipe',
-    data,
+    data: formData,
     headers: {
+      'Content-Type': 'multipart/form-data',
       Authorization: token,
     },
   })
@@ -335,6 +296,6 @@ async function UpdateRpUploadFunc() {
     });
 }
 
-// function cancel() {
-//   document.location.href = '/myrecipe';
-// }
+function cancel() {
+  document.location.href = '/myrecipe';
+}

@@ -8,10 +8,6 @@ const cookingTools = (seq) => {
             autoIncrement : true,
             primaryKey : true,
         },
-        toolNum : {
-            type : DataTypes.INTEGER(2),
-            allowNull : false,
-        },
         toolName : {
             type : DataTypes.STRING(91),
             allowNull : false,
