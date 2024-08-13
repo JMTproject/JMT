@@ -49,7 +49,19 @@ function fileUploadFunc() {
     reader.readAsDataURL(fileInput.files[0]);
   }
 }
+document.getElementById('ingredientName').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton1').click();
+  }
+});
 
+document.getElementById('ingredientAmount').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton1').click();
+  }
+});
 //addIngredient
 function addIngredient() {
   //html에서 재료 이름과 계량 값을 가져옴
@@ -62,7 +74,17 @@ function addIngredient() {
     return;
   }
 
+  // 현재 재료 목록의 개수를 확인
+  const ingredientsList = document.getElementById('ingredientList');
+  const ingredientItems = ingredientsList.getElementsByClassName('ingredient-item');
+
+  if (ingredientItems.length >= 10) {
+    alert('재료는 최대 10개까지만 추가할 수 있습니다.');
+    return;
+  }
+
   //새로운 <li> 요소를 생성
+  const ul = document.querySelector('#ingredientList');
   const li = document.createElement('li');
   //<li> 요소에 클래스 이름 'ingredient-item'을 추가
   li.className = 'ingredient-item';
@@ -115,8 +137,14 @@ function removeIngredient(button) {
   //삭제 버튼의 부모 요소인 <li> 요소를 가져 옴
   const li = button.parentNode;
   //<li> 요소를 리스트에서 제거
-  li.parentNode.removeChild(li);
+  li.parentNode.remove(li);
 }
+document.getElementById('toolName').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton2').click();
+  }
+});
 
 //addCookingTool
 function addCookingTool() {
@@ -134,15 +162,14 @@ function addCookingTool() {
   // <li> 요소에 클래스 이름 'cooking-tool-item'을 추가
   li.className = 'cooking-tool-item';
 
-  const cookingToolBox = document.createElement('div')
-  cookingToolBox.className = 'cookingToolBox'
-  li.appendChild(cookingToolBox)
-
+  const cookingToolBox = document.createElement('div');
+  cookingToolBox.className = 'cookingToolBox';
+  li.appendChild(cookingToolBox);
 
   // 조리 도구 이름을 <span>으로 생성하고, 이를 cookingToolBox에 추가
   const cookingToolName = document.createElement('span');
-  cookingToolName.className = 'cookingToolName'
-  cookingToolName.textContent = `${toolName}`
+  cookingToolName.className = 'cookingToolName';
+  cookingToolName.textContent = `${toolName}`;
   cookingToolBox.appendChild(cookingToolName);
 
   // 삭제 버튼을 생성
@@ -171,7 +198,6 @@ function removeCookingTool(button) {
   // <li> 요소를 리스트에서 제거
   li.parentNode.removeChild(li);
 }
-
 
 //cookingStep
 function triggerFileUpload(step) {
@@ -262,8 +288,8 @@ function writeRpUploadFunc() {
   formData.append('files5', stepImg4.files[0]);
   formData.append('files6', stepImg5.files[0]);
 
-  console.log('콘솔확인@@@', mainImage.files[0]); // 폼 데이터에 있는 파일들을 콘솔에 출력
-  console.log(title);
+  // console.log('콘솔확인@@@', mainImage.files[0]); // 폼 데이터에 있는 파일들을 콘솔에 출력
+  // console.log(title);
 
   // Axios를 사용하여 폼 데이터를 서버에 전송
   console.log('폼데이터-툴즈!!', formData);
@@ -277,7 +303,7 @@ function writeRpUploadFunc() {
     },
   })
     .then((res) => {
-      console.log('서버 응답', res); // 서버 응답을 콘솔에 출력
+      console.log('서버 응답', res.data.message); // 서버 응답을 콘솔에 출력
       if (res.data.result) {
         alert('레시피 등록 성공! 메인 페이지로 이동 합니다'); // 성공 시 알림 표시
         document.location.href = '/'; // 메인 페이지로 이동
@@ -293,21 +319,22 @@ function writeRpUploadFunc() {
 
 // AI활용 레시피 생성---------------------------------------------- hyun
 
+
+
 async function generateRecipe() {
   document.querySelector('#ingredientList').replaceChildren();
   document.querySelector('#cookingToolList').replaceChildren();
 
   const cookingName = document.querySelector('#inputAI').value;
 
-  document.querySelector('#loadingGif').style.display = 'block'
+  document.querySelector('#loadingGif').style.display = 'block';
   const res = await axios({
     method: 'post',
     url: '/api/recipe/generateRecipe',
     data: { cookingName },
   });
 
-  document.querySelector('#loadingGif').style.display = 'none'
-  
+  document.querySelector('#loadingGif').style.display = 'none';
 
   console.log('제미나이응답 : ', res.data);
   const { recipeTitle, description, servings, cookingTime, cookingTools, ingredients, quantity, cookingSteps } =
@@ -346,3 +373,9 @@ function openInputBox() {
     generateButton.style.display = 'none';
   }
 }
+
+document.getElementById('inputAI').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    generateRecipe();
+  }
+});

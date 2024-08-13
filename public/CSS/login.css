@@ -27,6 +27,7 @@ body {
     margin: 0 auto;
 }
 
+
 #titleImg img:first-child {
     /* background-color: #fca391; */
     margin-right: 20px;
@@ -37,6 +38,7 @@ body {
     /* background-color: #fca391; */
     /* margin-right: 20px; */
     height: 80px;
+
 }
 
 .content {
@@ -153,7 +155,9 @@ body {
 }
 
 #login_form #loginSc input {
+
     margin: 10px 0;
+
 }
 
 .login_button {

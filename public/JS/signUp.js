@@ -171,20 +171,21 @@ function closeBoxFunc() {
 }
 
 function signUpFunc() {
-    const data = {
-        email: document.getElementById('email').value,
-        password: document.getElementById('pwd1').value,
-        nickName: document.getElementById('nickname').value,
-    };
 
-    axios({
-        method: 'post',
-        url: '/api/user/signup',
-        data,
-    }).then((res) => {
-        if (res.data.result) {
-            alert('회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.');
-            // document.location.href = '/login';
-        }
-    });
+  const data = {
+    email: document.getElementById('email').value,
+    password: document.getElementById('pwd1').value,
+    nickName: document.getElementById('nickname').value,
+  };
+
+  axios({
+    method: 'post',
+    url: '/api/user/signup',
+    data,
+  }).then((res) => {
+    if (res.data.result) {
+      alert('회원가입이 완료되었습니다. 로그인 페이지로 이동합니다.');
+      document.location.href = '/login';
+    }
+  });
 }
