@@ -51,7 +51,7 @@ html {
   align-items: center;
   cursor: pointer;
 }
-.material-icons-round.smart_toy {
+.material-symbols-rounded.smart_toy {
   color: #ffc0b3;
   font-size: 30px;
 }
@@ -520,13 +520,13 @@ color: rgb(158, 158, 158);
 
   #AIBox #openInputBox {
   }
-  .material-icons-round.smart_toy {
+  .material-symbols-rounded.smart_toy {
     color: #ffc0b3;
     font-size: 40px;
   }
   #AIName {
     color: #ffc0b3;
-    font-size: 12px;
+    font-size: 13px;
   }
 
   #AIBox img {
