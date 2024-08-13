@@ -41,10 +41,11 @@
   <main>
     <div class="container">
 
-      
-      <div id="AIBox"> <!-- AI레시피생성 --> 
+
+      <div id="AIBox"> <!-- AI레시피생성 -->
         <img id="loadingGif" src="../public/images/loading.gif" style="display: none;">
-        <input type="text" id="inputAI" onkeypress="generateRecipe()" placeholder="원하는 요리 이름을 입력하세요. 예) 제육볶음" style="display: none;">
+        <input type="text" id="inputAI" onkeypress="generateRecipe()" placeholder="원하는 요리 이름을 입력하세요. 예) 제육볶음"
+          style="display: none;">
 
         <button id="generateButton" onclick="generateRecipe()" style="display: none;">레시피 생성</button>
         <div id="openInputBox" onclick="openInputBox()">
@@ -82,12 +83,15 @@
           </div>
         </div>
         <!-- ingredient -->
-        <h3>재료</h3>
+        <div id="ingredients">
+          <h3>재료</h3>
+          <h5>(최대 10개)</h5>
+        </div>
         <div id="ingredient">
           <div id="ingredientInput">
             <input type="text" id="ingredientName" placeholder="재료 입력" />
             <input type="text" id="ingredientAmount" placeholder="계량 kg/g/1t" />
-            <button id="inputButton" type="button" onclick="addIngredient()">입력</button>
+            <button id="inputButton1" type="button" onclick="addIngredient()">입력</button>
           </div>
           <ul id="ingredientList"></ul>
         </div>
@@ -96,12 +100,15 @@
         <div id="cookingTools">
           <div id="cookingToolInput">
             <input type="text" id="toolName" placeholder="ex)후라이팬" />
-            <button id="inputButton" type="button" onclick="addCookingTool()">입력</button>
+            <button id="inputButton2" type="button" onclick="addCookingTool()">입력</button>
           </div>
           <ul id="cookingToolList"></ul>
         </div>
         <!-- cookingStep -->
-        <h3>조리 순서(최대 5단계)</h3>
+        <div id="cookingSteps">
+          <h3>조리 순서</h3>
+          <h5>(최대 5단계)</h5>
+        </div>
         <div id="cookingStep">
           <div id="StepItem1">
             <p id="pnone">1.</p>
