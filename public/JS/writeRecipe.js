@@ -49,7 +49,19 @@ function fileUploadFunc() {
     reader.readAsDataURL(fileInput.files[0]);
   }
 }
+document.getElementById('ingredientName').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton1').click();
+  }
+});
 
+document.getElementById('ingredientAmount').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton1').click();
+  }
+});
 //addIngredient
 function addIngredient() {
   //html에서 재료 이름과 계량 값을 가져옴
@@ -127,6 +139,12 @@ function removeIngredient(button) {
   //<li> 요소를 리스트에서 제거
   li.parentNode.remove(li);
 }
+document.getElementById('toolName').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton2').click();
+  }
+});
 
 //addCookingTool
 function addCookingTool() {
@@ -270,8 +288,8 @@ function writeRpUploadFunc() {
   formData.append('files5', stepImg4.files[0]);
   formData.append('files6', stepImg5.files[0]);
 
-  console.log('콘솔확인@@@', mainImage.files[0]); // 폼 데이터에 있는 파일들을 콘솔에 출력
-  console.log(title);
+  // console.log('콘솔확인@@@', mainImage.files[0]); // 폼 데이터에 있는 파일들을 콘솔에 출력
+  // console.log(title);
 
   // Axios를 사용하여 폼 데이터를 서버에 전송
   console.log('폼데이터-툴즈!!', formData);
@@ -285,7 +303,7 @@ function writeRpUploadFunc() {
     },
   })
     .then((res) => {
-      console.log('서버 응답', res); // 서버 응답을 콘솔에 출력
+      console.log('서버 응답', res.data.message); // 서버 응답을 콘솔에 출력
       if (res.data.result) {
         alert('레시피 등록 성공! 메인 페이지로 이동 합니다'); // 성공 시 알림 표시
         document.location.href = '/'; // 메인 페이지로 이동
@@ -300,6 +318,8 @@ function writeRpUploadFunc() {
 }
 
 // AI활용 레시피 생성---------------------------------------------- hyun
+
+
 
 async function generateRecipe() {
   document.querySelector('#ingredientList').replaceChildren();
@@ -353,3 +373,9 @@ function openInputBox() {
     generateButton.style.display = 'none';
   }
 }
+
+document.getElementById('inputAI').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    generateRecipe();
+  }
+});
