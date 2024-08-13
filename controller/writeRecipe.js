@@ -1,9 +1,7 @@
 const aws = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
-const { User, Recipe, Review, Ingredient, CookingTools, CookingStep } = require('../models');
-const recipe = require('../models/recipe');
-const { Json } = require('sequelize/lib/utils');
+const { Recipe, Ingredient, CookingTools, CookingStep } = require('../models');
 
 //aws 설정
 aws.config.update({
@@ -43,7 +41,6 @@ const uploadFunc = async (req, res) => {
     if (err) {
       return res.status(500).json({ result: false, message: '업도르 오류' });
     }
-
     try {
       if (!req.userInfo) {
         res.json({ result: false, message: '로그인 오류' });
@@ -62,7 +59,7 @@ const uploadFunc = async (req, res) => {
       const parsedAmounts = JSON.parse(ingredientAmounts);
       const parsedTools = JSON.parse(tools);
       const parsedStepContents = JSON.parse(stepContents);
-
+      
       const recipe = await Recipe.create({
         recipeTitle: title,
         description: introduceRp,
@@ -80,6 +77,7 @@ const uploadFunc = async (req, res) => {
           recipeId: recipe.dataValues.recipeId,
         });
       }
+
       let cookingToolData = [];
       for (i = 0; i < parsedTools.length; i++) {
         cookingToolData.push({

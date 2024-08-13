@@ -34,11 +34,11 @@ body {
     width: 80px;
 }
 
+
 #titleImg img:nth-child(2) {
     /* background-color: #fca391; */
     /* margin-right: 20px; */
     height: 80px;
-
 }
 
 .content {
@@ -209,6 +209,26 @@ body {
 
 .container #FPS a:last-child {
     border: none;
+}
+
+#testDiv{
+  width: 350px;
+  margin: 0 auto;
+  border: 1px solid #fca391;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+#testDiv p{
+  line-height: 1.5;
+  text-align: justify;
+}
+
+#textDiv p strong{
+  font-weight: 200
+}
+#testDiv #testTitle{
+  text-align: center;
 }
 
 @media (min-width: 1080px) {
