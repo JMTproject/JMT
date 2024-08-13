@@ -1,73 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
-    <link rel="stylesheet" href="../public/CSS/headerFooter.css" />
-    <link rel="stylesheet" href="../public/CSS/adminRp.css" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script defer src="../public/JS/header.js"></script>
-    <script defer src="../public/JS/adminRp.js"></script>
-    <title>Document</title>
-  </head>
 
-  <body>
-    <header>
-      <div class="header">
-        <a class="logo" href="/adminRp">
-          <img class="logoImg" src="../public/images/logo.png" alt="" />
-        </a>
-        <div class="iconBox">
-          <div id="logout_div" onclick="logoutFunc()"><span class="material-icons-round logout">logout</span></div>
-          <p class="arrowLogout">로그아웃</p>
-          <a id="login_a" href="/login"><span class="material-icons-round key">key</span></a>
-          <p class="arrowLogin">로그인</p>
-          <div id="profile_div" onclick="myPageToggle()"><span class="material-icons-round account_circle">account_circle</span></div>
-          <p class="arrowProfile">마이페이지</p>
-          <div class="myPageBox" style="display: none;">
-            <a href="/profile">개인정보 수정</a>
-            <a href="/myrecipe">나의 레시피</a>
-          </div>
-        </div>
-      </div>
-      <div class="navBar"></div>
-    </header>
-    <main>
-      <div class="navBar">
-        <a href="/adminRp">레시피 리스트</a>
-        <a href="/adminUL">유저 리스트</a>
-      </div>
-      <div class="container">
-        <div class="mainHeader">
-          <div id="searchBox">
-            <label for="searchInput"><span class="material-icons-round search">search</span></label>
-            <input id="searchInput" type="input" placeholder="검색" onkeyup="enterkeySearch()" />
-          </div>
-          <div class="orderByBox">
-            <button id="orderByStars" onclick="orderByStars()">별점순</button>
-            <button id="orderByLatest" onclick="orderByLatest()">최신순</button>
-            <button id="orderByViewCount" onclick="orderByViewCount()">조회수</button>
-            <a id="write_a" href="/writeRecipe"><span class="material-icons-round edit">edit</span></a>
-            <p class="arrowWrite">레시피 작성</p>
-          </div>
-        </div>
-        <div class="recipe">
-          <ul id="recipeList">
-        
-          </ul>
-        </div>
-      </div>
-      <div id="paginationBox">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="../public/favicon_io/favicon.ico">
+  <link rel="stylesheet" href="../public/CSS/headerFooter.css" />
+  <link rel="stylesheet" href="../public/CSS/adminRp.css" />
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script defer src="../public/JS/header.js"></script>
+  <script defer src="../public/JS/adminRp.js"></script>
+  <title>JMT</title>
+</head>
 
+<body>
+  <header>
+    <div class="header">
+      <a class="logo" href="/adminRp">
+        <img class="logoImg" src="../public/images/logo.png" alt="" />
+        <img class="logoImg-word" src="../public/images/JMT-logo-word.png" alt="" />
+      </a>
+
+      <div class="iconBox">
+        <div id="logout_div" onclick="logoutFunc()"><span class="material-symbols-rounded logout">logout</span>
+        </div>
+        <p class="arrowLogout">로그아웃</p>
+        <a id="login_a" href="/login"><span class="material-symbols-rounded login">login</span></a>
+        <p class="arrowLogin">로그인</p>
+        <div id="profile_div" onclick="myPageToggle()">
+          <span class="material-symbols-rounded account_circle">account_circle</span>
+        </div>
+        <p class="arrowProfile">마이페이지</p>
+        <div class="myPageBox" style="display: none">
+          <a href="/profile">개인정보 수정</a>
+          <a href="/myrecipe">나의 레시피</a>
+        </div>
       </div>
+    </div>
+    <div class="navBar"></div>
+  </header>
+  <main>
+    <div class="navBar">
+      <a href="/adminRp">레시피 리스트</a>
+      <a href="/adminUL">유저 리스트</a>
+    </div>
+    <div class="container">
+      <div class="mainHeader">
+        <div id="searchBox">
+          <label for="searchInput"><span class="material-symbols-rounded search">search</span></label>
+          <input id="searchInput" type="input" placeholder="검색" onkeyup="enterkeySearch()" />
+        </div>
+        <div class="orderByBox">
+          <button id="orderByStars" onclick="orderByStars()">별점순</button>
+          <button id="orderByLatest" onclick="orderByLatest()">최신순</button>
+          <button id="orderByViewCount" onclick="orderByViewCount()">조회수</button>
+          <a id="write_a" href="/writeRecipe"><span class="material-symbols-rounded edit">edit</span></a>
+          <p class="arrowWrite">레시피 작성</p>
+        </div>
+      </div>
+      <div class="recipe">
+        <ul id="recipeList">
+
+        </ul>
+      </div>
+    </div>
+    <div id="paginationBox">
 
     </div>
-    </main>
-    <footer>
-      <div class="companyInfo">
-        <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
-      </div>
-    </footer>
-  </body>
+
+    </div>
+  </main>
+  <footer>
+    <div class="companyInfo">
+      <p>COPYRIGHT ⓒ JMT co.,Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
 </html>
