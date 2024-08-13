@@ -49,16 +49,16 @@ function fileUploadFunc() {
     reader.readAsDataURL(fileInput.files[0]);
   }
 }
-document.getElementById('ingredientName').addEventListener('keydown', function (e) {
+document.getElementById('ingredientName').addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
-    event.preventDefault(); // 기본 동작 방지
+    e.preventDefault(); // 기본 동작 방지
     document.getElementById('inputButton1').click();
   }
 });
 
-document.getElementById('ingredientAmount').addEventListener('keydown', function (e) {
+document.getElementById('ingredientAmount').addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
-    event.preventDefault(); // 기본 동작 방지
+    e.preventDefault(); // 기본 동작 방지
     document.getElementById('inputButton1').click();
   }
 });
@@ -135,18 +135,18 @@ function addIngredient() {
 
 function removeIngredient(button) {
   //삭제 버튼의 부모 요소인 <li> 요소를 가져 옴
-  const li = button.parentNode;
+  const li = button.parentNode.parentNode;
   //<li> 요소를 리스트에서 제거
-  li.parentNode.remove(li);
+  li.remove();
 }
-document.getElementById('toolName').addEventListener('keydown', function (e) {
+
+document.getElementById('toolName').addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
-    event.preventDefault(); // 기본 동작 방지
-    document.getElementById('inputButton2').click();
+    e.preventDefault();
+    addCookingTool(); // addCookingTool 함수 호출
   }
 });
 
-//addCookingTool
 function addCookingTool() {
   // HTML에서 조리 도구 이름 입력값을 가져오고, 앞뒤 공백을 제거
   const toolName = document.getElementById('toolName').value.trim();
@@ -159,7 +159,6 @@ function addCookingTool() {
 
   // 새로운 <li> 요소를 생성
   const li = document.createElement('li');
-  // <li> 요소에 클래스 이름 'cooking-tool-item'을 추가
   li.className = 'cooking-tool-item';
 
   const cookingToolBox = document.createElement('div');
@@ -169,13 +168,14 @@ function addCookingTool() {
   // 조리 도구 이름을 <span>으로 생성하고, 이를 cookingToolBox에 추가
   const cookingToolName = document.createElement('span');
   cookingToolName.className = 'cookingToolName';
-  cookingToolName.textContent = `${toolName}`;
+  cookingToolName.textContent = toolName; // 백틱 사용 없이 텍스트 그대로 처리
   cookingToolBox.appendChild(cookingToolName);
 
   // 삭제 버튼을 생성
   const removeButton = document.createElement('button');
   removeButton.textContent = 'x';
   removeButton.className = 'remove-btn';
+
   // 삭제 버튼이 클릭되면 실행될 함수를 설정
   removeButton.onclick = function () {
     removeCookingTool(this);
@@ -194,9 +194,9 @@ function addCookingTool() {
 
 function removeCookingTool(button) {
   // 삭제 버튼의 부모 요소인 <li> 요소를 가져옴
-  const li = button.parentNode;
+  const li = button.parentNode.parentNode;
   // <li> 요소를 리스트에서 제거
-  li.parentNode.removeChild(li);
+  li.remove();
 }
 
 //cookingStep

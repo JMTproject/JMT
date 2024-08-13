@@ -81,16 +81,16 @@ function fileUploadFunc() {
     reader.readAsDataURL(fileInput.files[0]);
   }
 }
-document.getElementById('ingredientName').addEventListener('keydown', function (event) {
-  if (event.key === 'Enter') {
-    event.preventDefault(); // 기본 동작 방지
+document.getElementById('ingredientName').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    e.preventDefault(); // 기본 동작 방지
     document.getElementById('inputButton1').click();
   }
 });
 
-document.getElementById('ingredientAmount').addEventListener('keydown', function (event) {
-  if (event.key === 'Enter') {
-    event.preventDefault(); // 기본 동작 방지
+document.getElementById('ingredientAmount').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    e.preventDefault(); // 기본 동작 방지
     document.getElementById('inputButton1').click();
   }
 });
@@ -160,10 +160,10 @@ function removeIngredient(button) {
   li.parentNode.remove(li);
 }
 
-document.getElementById('toolName').addEventListener('keydown', function (event) {
-  if (event.key === 'Enter') {
-    event.preventDefault(); // 기본 동작 방지
-    document.getElementById('inputButton2').click();
+document.getElementById('toolName').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    addCookingTool(); // addCookingTool 함수 호출
   }
 });
 
