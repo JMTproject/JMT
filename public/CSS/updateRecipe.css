@@ -4,8 +4,6 @@ html {
   padding: 0;
   font-family: 'Noto Sans', sans-serif;
   box-sizing: border-box;
-  /* background-color: #F7F7F7;
-  color: #333; */
 }
 .container {
   min-height: 600px;
@@ -15,6 +13,7 @@ html {
 h3 {
   font-size: 24px;
   margin-left: 10px;
+  margin-top: 20px;
 }
 #infoRp {
   width: 350px;
@@ -48,10 +47,7 @@ h3 {
   flex-direction: row;
   margin-top: 20px;
 }
-/* #infoRp #cookingInfoBox{
-  display: flex;
-  flex-direction: column;
-} */
+
 #infoRp #servings {
   width: 60px;
   height: 20px;
@@ -74,17 +70,7 @@ h3 {
   margin-left: 20px;
   text-align: center;
 }
-/* #infoRp input[type='file']::file-selector-button {
-  width: 150px;
-  height: 30px;
-  background: #fff;
-  border: 1px solid #FDD8D1;
-  border-radius: 10px;
-  cursor: pointer;
-  display: block;
-  text-align: center;
-  font-size: 10px;
-} */
+
 .uploadImg {
   display: flex;
   flex-direction: row;
@@ -137,7 +123,6 @@ h3 {
 #ingredient #inputButton {
   width: 80px;
   height: 25px;
-  /* margin: 10px 10px auto; */
   border: 1px solid #fdd8d1;
   border-radius: 12px;
   text-align: center;
@@ -157,14 +142,12 @@ h3 {
   margin: 10px 10px;
 }
 
-
 #ingredient ul li {
 }
 
 #ingredient .ingredientBox {
   background-color: #fca391;
   height: 20px;
-  /* border: 1px solid #fdd8d1; */
   border-radius: 10px;
   margin: 5px 10px;
   display: flex;
@@ -210,7 +193,6 @@ h3 {
 #cookingTools #inputButton {
   width: 80px;
   height: 25px;
-  /* margin: 10px 10px auto; */
   border: 1px solid #fdd8d1;
   border-radius: 12px;
   text-align: center;
@@ -237,7 +219,6 @@ h3 {
 #cookingTools .cookingToolBox {
   background-color: #fca391;
   height: 20px;
-  /* border: 1px solid #fdd8d1; */
   border-radius: 10px;
   margin: 5px 10px;
   display: flex;
@@ -343,8 +324,6 @@ h3 {
     padding: 0;
     font-family: 'Noto Sans', sans-serif;
     box-sizing: border-box;
-    /* background-color: #F7F7F7;
-    color: #333; */
   }
   header span {
     display: flex;
@@ -393,17 +372,9 @@ h3 {
     margin-top: 20px;
     justify-content: center;
   }
-  /* #infoRp #cookingInfoBox{
-    display: flex;
-    flex-direction: column;
-  } */
   #infoRp #servingBox {
-    /* margin-bottom: 10px; */
     display: flex;
     justify-content: center;
-    /* margin: 3px; */
-    /* flex-direction: column; */
-    /* align-items: ; */
   }
   #infoRp #servings {
     width: 80px;
@@ -411,9 +382,6 @@ h3 {
     border: 1px solid #fdd8d1;
     border-radius: 3px;
     opacity: 70%;
-    /* margin-left: 5%; */
-    /* display: flex;
-      flex-direction: column; */
   }
   #infoRp #cookingTime #minute {
     width: 60px;
@@ -421,10 +389,6 @@ h3 {
     border: 1px solid #fdd8d1;
     border-radius: 3px;
     opacity: 70%;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* margin-left: 20px; */
-    /* text-align: center; */
   }
   .uploadImg {
     display: flex;
@@ -438,9 +402,7 @@ h3 {
     border-radius: 13px;
     margin: 10px auto;
     background-color: white;
-    /* float: left; */
     margin-left: 265px;
-    /* margin-right: 50px; */
   }
   .uploadImg button {
     width: 250px;
@@ -450,7 +412,6 @@ h3 {
     background-color: white;
     cursor: pointer;
     float: right;
-    /* margin-bottom: 10px; */
     margin-left: 140px;
   }
   .uploadImg button:hover {
@@ -478,7 +439,6 @@ h3 {
   #ingredient #inputButton {
     width: 80px;
     height: 25px;
-    /* margin: 10px 10px auto; */
     border: 1px solid #fdd8d1;
     border-radius: 12px;
     text-align: center;
@@ -535,7 +495,6 @@ h3 {
   #cookingTools #inputButton {
     width: 80px;
     height: 25px;
-    /* margin: 10px 10px auto; */
     border: 1px solid #fdd8d1;
     border-radius: 12px;
     text-align: center;
@@ -593,7 +552,6 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* border-top: 1px solid #FDD8D1; */
   }
   #cookingStep textarea {
     flex: 1;
@@ -638,7 +596,6 @@ h3 {
     width: 850px;
     height: 85px;
     margin: 10px 10px auto;
-    /* margin-left: 25%; */
     font-size: 22px;
     text-align: center;
     background-color: #fca391;
@@ -648,8 +605,6 @@ h3 {
     cursor: pointer;
     align-items: center;
     line-height: 2;
-    /* display: flex;
-    flex-direction: row; */
   }
   form #writeRpBtn:hover {
     background-color: #fa6d51;

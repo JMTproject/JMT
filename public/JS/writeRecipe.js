@@ -49,7 +49,19 @@ function fileUploadFunc() {
     reader.readAsDataURL(fileInput.files[0]);
   }
 }
+document.getElementById('ingredientName').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton1').click();
+  }
+});
 
+document.getElementById('ingredientAmount').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton1').click();
+  }
+});
 //addIngredient
 function addIngredient() {
   //html에서 재료 이름과 계량 값을 가져옴
@@ -127,6 +139,12 @@ function removeIngredient(button) {
   //<li> 요소를 리스트에서 제거
   li.parentNode.remove(li);
 }
+document.getElementById('toolName').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton2').click();
+  }
+});
 
 //addCookingTool
 function addCookingTool() {

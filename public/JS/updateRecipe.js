@@ -23,36 +23,7 @@ if (localStorage.getItem('token')) {
       alert('로그인이 필요한 페이지 입니다');
       document.location.href = '/login';
     }
-    // console.log('recipeTitle@@@@@@', res.data.recipe.recipeTitle);
-    // console.log('ingredientName@@@@@@', res.data.ingredient[0].ingredientName);
-    // console.log('quantity@@@@@@', res.data.ingredient[0].quantity);
-    // console.log('toolName@@@@@@', res.data.cookingtools[0].toolName);
-    // console.log('content@@@@@@', res.data.cookingstep[0].content);
-    // console.log('stepImg@@@@@@', res.data.cookingstep[0].stepImg);
 
-    // document.querySelector('#title').value = res.data.recipe.recipeTitle;
-    // document.querySelector('#introduceRp').value = res.data.recipe.description;
-    // document.querySelector('#servings').value = res.data.recipe.servings;
-    // document.querySelector('#cookingTime').value = res.data.recipe.cookingTime;
-    // document.querySelector('#uploadedImg').src = res.data.recipe.mainImg;
-
-    // for (let i = 0; i < res.data.ingredient.length; i++) {
-    //   document.querySelector('#ingredientName').value = res.data.ingredient[i].ingredientName;
-    //   document.querySelector('#ingredientAmount').value = res.data.ingredient[i].quantity;
-    //   addIngredient();
-    // }
-
-    // for (let i = 0; i < res.data.cookingtools.length; i++) {
-    //   document.querySelector('#toolName').value = res.data.cookingtools[i].toolName;
-    //   addCookingTool();
-    // }
-
-    // for (let i = 0; i < res.data.cookingstep.length; i++) {
-    //   document.querySelector(`#stepContent${i + 1}`).value = res.data.cookingstep[i].content;
-    //   // console.log(`${i}img${res.data.cookingstep$[i].stepImg}`);
-    //   document.querySelector(`#imgPreview${i + 1}`).src = res.data.cookingstep[i].stepImg;
-    //   // console.log(`${i}content`, res.data.cookingstep[i].content);
-    // }
     // 레시피 제목, 설명, 서빙 수, 요리 시간 설정
     document.querySelector('#title').value = res.data.recipe.recipeTitle;
     document.querySelector('#introduceRp').value = res.data.recipe.description;
@@ -109,6 +80,19 @@ function fileUploadFunc() {
     reader.readAsDataURL(fileInput.files[0]);
   }
 }
+document.getElementById('ingredientName').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton1').click();
+  }
+});
+
+document.getElementById('ingredientAmount').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton1').click();
+  }
+});
 //addIngredient
 function addIngredient() {
   //html에서 재료 이름과 계량 값을 가져옴
@@ -174,6 +158,14 @@ function removeIngredient(button) {
   //<li> 요소를 리스트에서 제거
   li.parentNode.remove(li);
 }
+
+document.getElementById('toolName').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton2').click();
+  }
+});
+
 //addCookingTool
 function addCookingTool() {
   // HTML에서 조리 도구 이름 입력값을 가져오고, 앞뒤 공백을 제거
@@ -206,7 +198,6 @@ function addCookingTool() {
   removeButton.onclick = function () {
     removeCookingTool(this);
   };
-
 
   // 삭제 버튼을 cookingToolBox에 추가
   cookingToolBox.appendChild(removeButton);
@@ -241,9 +232,7 @@ function displayImage(event, step) {
   }
 }
 
-
 async function UpdateRpUploadFunc() {
-
   const title = document.getElementById('title').value;
   const mainImage = document.getElementById('uploadedImg').src;
   const introduceRp = document.getElementById('introduceRp').value;
