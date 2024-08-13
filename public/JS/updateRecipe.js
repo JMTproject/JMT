@@ -81,6 +81,19 @@ function fileUploadFunc() {
     reader.readAsDataURL(fileInput.files[0]);
   }
 }
+document.getElementById('ingredientName').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton1').click();
+  }
+});
+
+document.getElementById('ingredientAmount').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton1').click();
+  }
+});
 //addIngredient
 function addIngredient() {
   //html에서 재료 이름과 계량 값을 가져옴
@@ -146,6 +159,14 @@ function removeIngredient(button) {
   //<li> 요소를 리스트에서 제거
   li.parentNode.remove(li);
 }
+
+document.getElementById('toolName').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // 기본 동작 방지
+    document.getElementById('inputButton2').click();
+  }
+});
+
 //addCookingTool
 function addCookingTool() {
   // HTML에서 조리 도구 이름 입력값을 가져오고, 앞뒤 공백을 제거
@@ -211,6 +232,7 @@ function displayImage(event, step) {
     imgElement.style.display = 'block'; // 이미지를 표시.
   }
 }
+
 
 function UpdateRpUploadFunc() {
   const title = document.getElementById('title').value;

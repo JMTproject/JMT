@@ -4,9 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet" />
-  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" />
+  <title>JMT</title>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="shortcut icon" href="../public/favicon_io/favicon.ico">
   <link rel="stylesheet" href="../public/CSS/headerFooter.css">
   <link rel="stylesheet" href="../public/CSS/writeRecipe.css">
   <script defer src="../public/JS/writeRecipe.js"></script>
@@ -20,14 +24,17 @@
     <div class="header">
       <a class="logo" href="/">
         <img class="logoImg" src="../public/images/logo.png" alt="" />
+        <img class="logoImg-word" src="../public/images/JMT-logo-word.png" alt="" />
       </a>
+
       <div class="iconBox">
-        <div id="logout_div" onclick="logoutFunc()"><span class="material-icons-round logout">logout</span></div>
+        <div id="logout_div" onclick="logoutFunc()"><span class="material-symbols-rounded logout">logout</span>
+        </div>
         <p class="arrowLogout">로그아웃</p>
-        <a id="login_a" href="/login"><span class="material-icons-round key">key</span></a>
+        <a id="login_a" href="/login"><span class="material-symbols-rounded login">login</span></a>
         <p class="arrowLogin">로그인</p>
         <div id="profile_div" onclick="myPageToggle()">
-          <span class="material-icons-round account_circle">account_circle</span>
+          <span class="material-symbols-rounded account_circle">account_circle</span>
         </div>
         <p class="arrowProfile">마이페이지</p>
         <div class="myPageBox" style="display: none">
@@ -41,10 +48,10 @@
   <main>
     <div class="container">
 
-      
-      <div id="AIBox"> <!-- AI레시피생성 --> 
+      <div id="AIBox"> <!-- AI레시피생성 -->
         <img id="loadingGif" src="../public/images/loading.gif" style="display: none;">
-        <input type="text" id="inputAI" onkeypress="generateRecipe()" placeholder="원하는 요리 이름을 입력하세요. 예) 제육볶음" style="display: none;">
+        <input type="text" id="inputAI" placeholder="원하는 요리 이름을 입력하세요. 예) 제육볶음"
+          style="display: none;">
 
         <button id="generateButton" onclick="generateRecipe()" style="display: none;">레시피 생성</button>
         <div id="openInputBox" onclick="openInputBox()">
@@ -55,7 +62,7 @@
       </div>
       <form id="writeRp">
         <div id="infoRp">
-          <h3>레시피 정보</h3>
+          <!-- <h3>레시피 정보</h3> -->
           <input type="text" id="title" placeholder="제목" /><br />
           <textarea id="introduceRp" placeholder="레시피 소개"></textarea>
           <div id="cookingInfoBox">
@@ -64,6 +71,7 @@
               <span id="serving">인분</span>
             </div>
             <!--cookingTime  -->
+            <div id="cookingTimeBox">
             <select id="cookingTime">
               <% for(let i=1; i < 31; i++){ %>
                 <option value="<%= i %>">
@@ -73,37 +81,45 @@
             </select>
             <span id="minute">분</span>
           </div>
+          </div>
           <div class="uploadImg">
             <div id="imgBox">
               <img id="uploadedImg" src="">
             </div>
             <input type="file" id="fileInput" style="display:none;" onchange="fileUploadFunc()">
-            <button type="button" onclick="document.getElementById('fileInput').click()">파일업로드</button>
+            <button type="button" onclick="document.getElementById('fileInput').click()">이미지 업로드</button>
           </div>
         </div>
         <!-- ingredient -->
-        <h3>재료</h3>
+        <div id="ingredients">
+          <h3>재료</h3>
+          <h5>(최대 10개)</h5>
+        </div>
         <div id="ingredient">
           <div id="ingredientInput">
-            <input type="text" id="ingredientName" placeholder="재료 입력" />
-            <input type="text" id="ingredientAmount" placeholder="계량 kg/g/1t" />
-            <button id="inputButton" type="button" onclick="addIngredient()">입력</button>
+            <input type="text" id="ingredientName" placeholder="재료 ex)감자" />
+            <span>,</span>
+            <input type="text" id="ingredientAmount" placeholder="계량 ex)1개" />
+            <button id="inputButton1" type="button" onclick="addIngredient()">입력</button>
           </div>
           <ul id="ingredientList"></ul>
         </div>
         <!-- cookingTools  -->
-        <h3>조리 도구</h3>
+        <h3 id="toolh3">조리 도구</h3>
         <div id="cookingTools">
           <div id="cookingToolInput">
             <input type="text" id="toolName" placeholder="ex)후라이팬" />
-            <button id="inputButton" type="button" onclick="addCookingTool()">입력</button>
+            <button id="inputButton2" type="button" onclick="addCookingTool()">입력</button>
           </div>
           <ul id="cookingToolList"></ul>
         </div>
         <!-- cookingStep -->
-        <h3>조리 순서(최대 5단계)</h3>
+        <div id="cookingStepHBox">
+          <h3>조리 순서</h3>
+          <h5>(최대 5단계)</h5>
+        </div>
         <div id="cookingStep">
-          <div id="StepItem1">
+          <div id="StepItem1" class="firstBox">
             <p id="pnone">1.</p>
             <textarea id="stepContent1" placeholder="조리 과정을 적어주세요!"></textarea>
             <div class="upload-box" onclick="triggerFileUpload(1)">

@@ -54,7 +54,6 @@ const uploadFunc = async (req, res) => {
       const { title, introduceRp, servings, cookingTime, ingredientNames, ingredientAmounts, tools, stepContents } =
         req.body;
 
-      console.log('파싱전 스텝', stepContents);
       //JSON 문자열을 배열로 파싱
       const parsedIngredients = JSON.parse(ingredientNames);
       const parsedAmounts = JSON.parse(ingredientAmounts);
@@ -78,7 +77,7 @@ const uploadFunc = async (req, res) => {
           recipeId: recipe.dataValues.recipeId,
         });
       }
-      
+
       let cookingToolData = [];
       for (i = 0; i < parsedTools.length; i++) {
         cookingToolData.push({
@@ -96,7 +95,6 @@ const uploadFunc = async (req, res) => {
           recipeId: recipe.dataValues.recipeId,
         });
       }
-      console.log('data', cookingStepData);
 
       await CookingTools.bulkCreate(cookingToolData);
 
@@ -111,8 +109,4 @@ const uploadFunc = async (req, res) => {
   });
 };
 
-const main = (req, res) => {
-  res.render('writeRecipe');
-};
-
-module.exports = { uploadFunc, main };
+module.exports = { uploadFunc };
