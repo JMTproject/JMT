@@ -39,7 +39,6 @@ const arrayFiles = upload.fields([
 ]);
 
 const uploadFunc = async (req, res) => {
-  // console.log('@@@@@', req.body);
   arrayFiles(req, res, async (err) => {
     if (err) {
       return res.status(500).json({ result: false, message: '업도르 오류' });
@@ -58,28 +57,11 @@ const uploadFunc = async (req, res) => {
       const { title, introduceRp, servings, cookingTime, ingredientNames, ingredientAmounts, tools, stepContents } =
         req.body;
 
-      // console.log('title!!!!', title);
-      // console.log('introduceRp!!!!', introduceRp);
-      // console.log('servings!!!!', servings);
-      // console.log('cookingTime!!!!', cookingTime);
-      // console.log('ingredientNames!!!!', ingredientNames);
-      // console.log('ingredientAmounts!!!!', ingredientAmounts);
-      // console.log('stepContents!!!!', stepContents);
-      // console.log('stepsImg!!!!', stepsImg);
-      // console.log('img', stepImg);
-      console.log('파싱전 스텝', stepContents);
       //JSON 문자열을 배열로 파싱
       const parsedIngredients = JSON.parse(ingredientNames);
       const parsedAmounts = JSON.parse(ingredientAmounts);
       const parsedTools = JSON.parse(tools);
       const parsedStepContents = JSON.parse(stepContents);
-      // const parsedStepsImg = JSON.parse(stepImg);
-      // console.log('1', parsedIngredients);
-      // console.log('2', parsedAmounts);
-      // console.log('3', parsedTools);
-      // console.log('4', parsedSteps);
-      // console.log('5', parsedStepsImg);
-      // introduceRp, files1[0].location, servings, cookingTime, userId
 
       const recipe = await Recipe.create({
         recipeTitle: title,
@@ -93,17 +75,14 @@ const uploadFunc = async (req, res) => {
       let ingredientData = [];
       for (i = 0; i < parsedIngredients.length; i++) {
         ingredientData.push({
-          ingredientNum : i+1,
           ingredientName: parsedIngredients[i],
           quantity: parsedAmounts[i],
           recipeId: recipe.dataValues.recipeId,
         });
       }
-      console.log('재료데이터:', ingredientData);
       let cookingToolData = [];
       for (i = 0; i < parsedTools.length; i++) {
         cookingToolData.push({
-          toolNum : i+1,
           toolName: parsedTools[i],
           recipeId: recipe.dataValues.recipeId,
         });
@@ -118,17 +97,6 @@ const uploadFunc = async (req, res) => {
           recipeId: recipe.dataValues.recipeId,
         });
       }
-      console.log('data', cookingStepData);
-      // let cookingStepData = [];
-      // console.log('뭐징', parsedStepsImg);
-      // for (i = 0; i < parsedSteps.length; i++) {
-      //   cookingStepData.push({
-      //     step: [i + 1],
-      //     content: parsedSteps[i],
-      //         stepImg: parsedStepsImg[i],
-      //     recipeId: recipe.dataValues.recipeId,
-      //   });
-      // }
 
       await CookingTools.bulkCreate(cookingToolData);
 
@@ -143,8 +111,4 @@ const uploadFunc = async (req, res) => {
   });
 };
 
-const main = (req, res) => {
-  res.render('writeRecipe');
-};
-
-module.exports = { uploadFunc, main };
+module.exports = { uploadFunc };
