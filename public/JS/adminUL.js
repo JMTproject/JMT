@@ -61,7 +61,7 @@ const makePageButtons = () => {
   });
 
   if (currentButtonPack !== pageButtons.length - 1) {
-    paginationBox.innerHTML += `<span class="material-icons-round arrow_right" onclick="nextPages()">arrow_right</span>`;
+    paginationBox.innerHTML += `<span class="material-symbols-rounded chevron_right" onclick="nextPages()">chevron_right</span>`;
   }
 };
 
@@ -70,7 +70,7 @@ const nextPages = () => {
   paginationBox.innerHTML = '';
   currentButtonPack++;
   if (currentButtonPack !== 0) {
-    paginationBox.innerHTML += `<span class="material-icons-round arrow_left" onclick="prevPages()">arrow_left</span>`;
+    paginationBox.innerHTML += `<span class="material-symbols-rounded chevron_left" onclick="prevPages()">chevron_left</span>`;
   }
 
   pageButtons[currentButtonPack].forEach((html) => {
@@ -78,16 +78,14 @@ const nextPages = () => {
   });
 
   if (currentButtonPack !== pageButtons.length - 1) {
-    paginationBox.innerHTML += `<span class="material-icons-round arrow_right" onclick="nextPages()">arrow_right</span>`;
+    paginationBox.innerHTML += `<span class="material-symbols-rounded chevron_right" onclick="nextPages()">chevron_right</span>`;
   }
 };
 
 // prev버튼 클릭시 페이지 번호 전환
-const prevPages = () => {
-  paginationBox.innerHTML = '';
-  currentButtonPack--;
+const prevPages = () => {   currentButtonPack--;
   if (currentButtonPack !== 0) {
-    paginationBox.innerHTML += `<span class="material-icons-round arrow_left" onclick="prevPages()">arrow_left</span>`;
+    paginationBox.innerHTML += `<span class="material-symbols-rounded chevron_left" onclick="prevPages()">chevron_left</span>`;
   }
 
   pageButtons[currentButtonPack].forEach((html) => {
@@ -95,7 +93,7 @@ const prevPages = () => {
   });
 
   if (currentButtonPack !== pageButtons.length - 1) {
-    paginationBox.innerHTML += `<span class="material-icons-round arrow_right" onclick="nextPages()">arrow_right</span>`;
+    paginationBox.innerHTML += `<span class="material-symbols-rounded chevron_right" onclick="nextPages()">chevron_right</span>`;
   }
 };
 
