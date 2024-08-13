@@ -54,7 +54,7 @@ function loginFunc() {
       console.log(res.data.code === 200);
       if (res.data.result) {
         if (res.data.check) {
-          alert('로그인 성공! 메인 페이지로 이동합니다');
+          // alert('로그인 성공! 메인 페이지로 이동합니다');
           localStorage.setItem('token', res.data.response.token);
           if (res.data.email === 'admin@admin.com') {
             document.location.href = '/adminRp';
@@ -62,7 +62,7 @@ function loginFunc() {
             document.location.href = '/';
           }
         } else if (!res.data.check) {
-          alert('로그인 성공! 메인 페이지로 이동합니다');
+          // alert('로그인 성공! 메인 페이지로 이동합니다');
           sessionStorage.setItem('token', res.data.response.token);
           if (res.data.email === 'admin@admin.com') {
             document.location.href = '/adminRp';
