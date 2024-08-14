@@ -1,5 +1,64 @@
 let currentRating = 0;
 
+// 리뷰 수정 함수
+async function editFunc(reviewId) {
+    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+    const reviewDiv = document.querySelector(`button[data-id="${reviewId}"]`).closest('.review');
+    const reviewContentDiv = reviewDiv.querySelector('.review_content');
+    const currentContent = reviewContentDiv.querySelector('p').textContent;
+
+    const textarea = document.createElement('textarea');
+    textarea.classList.add('review-edit-textarea');
+    textarea.value = currentContent;
+
+    reviewContentDiv.innerHTML = '';
+    reviewContentDiv.appendChild(textarea);
+
+    const saveButton = document.createElement('button');
+    saveButton.textContent = '수정 완료';
+    saveButton.classList.add('save-btn');
+
+    saveButton.addEventListener('click', async () => {
+        const newContent = textarea.value;
+        try {
+            await axios({
+                method: 'put',
+                url: `/api/recipe/data/${reviewId}/update`,
+                data: { content: newContent },
+                headers: {
+                    Authorization: token,
+                },
+            });
+            alert('리뷰가 성공적으로 수정되었습니다.');
+            document.location.reload();
+        } catch (error) {
+            console.error('리뷰 수정 중 오류 발생:', error);
+        }
+    });
+
+    reviewContentDiv.appendChild(saveButton);
+}
+
+async function deleteFunc(reviewId) {
+    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+    if (confirm('정말로 이 리뷰를 삭제하시겠습니까?')) {
+        try {
+            await axios({
+                method: 'put',
+                url: `/api/recipe/data/${reviewId}/delete`,
+                data: { isEnabled: false },
+                headers: {
+                    Authorization: token,
+                },
+            });
+            alert('리뷰가 성공적으로 삭제되었습니다.');
+            document.location.reload();
+        } catch (error) {
+            console.error('리뷰 삭제 중 오류 발생:', error);
+        }
+    }
+}
+
 //별점 입력창 드래그
 document.addEventListener('DOMContentLoaded', () => {
     const stars = document.querySelectorAll('.star');
@@ -184,11 +243,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <p>${nickName}</p>
                         <span class="review_date">${new Date(reviewArray[i].createdAt).toLocaleString('ko-KR')}</span>
                         <div class="review_rating">${starHtml}</div>
+                    </div>
+                    <div class="edit-button">
                         ${
                             currentUser
                                 ? `
-                        <button class="edit-btn" data-id="${reviewArray[i].reviewId}">수정</button> 
-                        <button class="delete-btn" data-id="${reviewArray[i].reviewId}">삭제</button> 
+                        <button class="edit-btn" data-id="${reviewArray[i].reviewId}" onClick="editFunc(${reviewArray[i].reviewId})">
+                            <span class="material-symbols-rounded edit">edit</span>
+                        </button> 
+                        <button class="delete-btn" data-id="${reviewArray[i].reviewId}" onClick="deleteFunc(${reviewArray[i].reviewId})">
+                            <span class="material-symbols-rounded delete">delete</span>
+                        </button> 
                         `
                                 : ''
                         }
@@ -225,71 +290,72 @@ document.addEventListener('DOMContentLoaded', async () => {
         //     reviewBox.appendChild(showMoreButton);
         // }
 
-        //리뷰 수정 버튼
-        document.querySelectorAll('.edit-btn').forEach((button) => {
-            button.addEventListener('click', async (e) => {
-                const token = localStorage.getItem('token') || sessionStorage.getItem('token');
-                const reviewId = e.target.dataset.id;
-                const reviewDiv = e.target.closest('.review');
-                const reviewContentDiv = reviewDiv.querySelector('.review_content');
-                const currentContent = reviewContentDiv.querySelector('p').textContent;
+        // //리뷰 수정 버튼
+        // document.querySelectorAll('.edit-btn').forEach((button) => {
+        //     button.addEventListener('click', async (e) => {
+        //         const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+        //         const reviewId = e.target.dataset.id;
+        //         const reviewDiv = e.target.closest('.review');
+        //         const reviewContentDiv = reviewDiv.querySelector('.review_content');
+        //         const currentContent = reviewContentDiv.querySelector('p').textContent;
+        //         console.log('###########', e.target.dataset);
 
-                const textarea = document.createElement('textarea');
-                textarea.classList.add('review-edit-textarea');
-                textarea.value = currentContent;
+        //         const textarea = document.createElement('textarea');
+        //         textarea.classList.add('review-edit-textarea');
+        //         textarea.value = currentContent;
 
-                reviewContentDiv.innerHTML = '';
-                reviewContentDiv.appendChild(textarea);
+        //         reviewContentDiv.innerHTML = '';
+        //         reviewContentDiv.appendChild(textarea);
 
-                const saveButton = document.createElement('button');
-                saveButton.textContent = '수정 완료';
-                saveButton.classList.add('save-btn');
+        //         const saveButton = document.createElement('button');
+        //         saveButton.textContent = '수정 완료';
+        //         saveButton.classList.add('save-btn');
 
-                saveButton.addEventListener('click', async () => {
-                    const newContent = textarea.value;
-                    try {
-                        await axios({
-                            method: 'put',
-                            url: `/api/recipe/data/${reviewId}/update`,
-                            data: { content: newContent },
-                            headers: {
-                                Authorization: token,
-                            },
-                        });
-                        alert('리뷰가 성공적으로 수정되었습니다.');
-                        document.location.reload();
-                    } catch (error) {
-                        console.error('리뷰 수정 중 오류 발생:', error);
-                    }
-                });
+        //         saveButton.addEventListener('click', async () => {
+        //             const newContent = textarea.value;
+        //             try {
+        //                 await axios({
+        //                     method: 'put',
+        //                     url: `/api/recipe/data/${reviewId}/update`,
+        //                     data: { content: newContent },
+        //                     headers: {
+        //                         Authorization: token,
+        //                     },
+        //                 });
+        //                 alert('리뷰가 성공적으로 수정되었습니다.');
+        //                 document.location.reload();
+        //             } catch (error) {
+        //                 console.error('리뷰 수정 중 오류 발생:', error);
+        //             }
+        //         });
 
-                reviewContentDiv.appendChild(saveButton);
-            });
-        });
+        //         reviewContentDiv.appendChild(saveButton);
+        //     });
+        // });
 
-        // 리뷰 삭제 버튼
-        document.querySelectorAll('.delete-btn').forEach((button) => {
-            button.addEventListener('click', async (e) => {
-                const token = localStorage.getItem('token') || sessionStorage.getItem('token');
-                const reviewId = e.target.dataset.id;
-                if (confirm('정말로 이 리뷰를 삭제하시겠습니까?')) {
-                    try {
-                        await axios({
-                            method: 'put',
-                            url: `/api/recipe/data/${reviewId}/delete`,
-                            data: { isEnabled: false },
-                            headers: {
-                                Authorization: token,
-                            },
-                        });
-                        alert('리뷰가 성공적으로 삭제되었습니다.');
-                        document.location.reload();
-                    } catch (error) {
-                        console.error('리뷰 삭제 중 오류 발생:', error);
-                    }
-                }
-            });
-        });
+        // // 리뷰 삭제 버튼
+        // document.querySelectorAll('.delete-btn').forEach((button) => {
+        //     button.addEventListener('click', async (e) => {
+        //         const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+        //         const reviewId = e.target.dataset.id;
+        //         if (confirm('정말로 이 리뷰를 삭제하시겠습니까?')) {
+        //             try {
+        //                 await axios({
+        //                     method: 'put',
+        //                     url: `/api/recipe/data/${reviewId}/delete`,
+        //                     data: { isEnabled: false },
+        //                     headers: {
+        //                         Authorization: token,
+        //                     },
+        //                 });
+        //                 alert('리뷰가 성공적으로 삭제되었습니다.');
+        //                 document.location.reload();
+        //             } catch (error) {
+        //                 console.error('리뷰 삭제 중 오류 발생:', error);
+        //             }
+        //         }
+        //     });
+        // });
 
         //별점 평균 값 구하기
         const averageRating = res.data.averageRating;
