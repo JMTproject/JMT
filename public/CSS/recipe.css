@@ -486,6 +486,7 @@ textarea::placeholder {
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid #fca391;
+    position: relative;
 }
 
 .review:last-child {
@@ -539,8 +540,7 @@ textarea::placeholder {
 }
 
 .review_content p {
-    margin: 5px;
-    margin-left: 10px;
+    margin: 5px 5px 10px 5px;
     font-size: 0.75rem;
     line-height: 1rem;
 }
@@ -560,6 +560,17 @@ textarea::placeholder {
 
 .review-edit-textarea {
     width: 95%;
+}
+
+.edit-button {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+}
+
+.material-symbols-rounded.edit,
+.material-symbols-rounded.delete {
+    font-size: 0.625rem;
 }
 
 .edit-btn {
@@ -588,8 +599,7 @@ textarea::placeholder {
     font-size: 0.625rem;
     color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
-    margin-left: 50px;
-    margin-top: -10px;
+    margin-right: 5px;
 }
 
 .delete-btn:hover {
@@ -1129,6 +1139,7 @@ textarea::placeholder {
         flex-direction: column;
         border-bottom: 1px solid #fca391;
         padding: 20px 0;
+        position: relative;
     }
 
     .review:last-child {
@@ -1167,7 +1178,7 @@ textarea::placeholder {
     .review_info {
         width: 600px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         flex-grow: 1;
         justify-content: space-between;
@@ -1178,19 +1189,19 @@ textarea::placeholder {
     }
 
     .review_info p {
-        font-size: 1rem;
-        line-height: 1.5rem;
+        font-size: 0.875rem;
+        line-height: 1rem;
         color: #fca391;
         margin: 0;
-        margin-left: 140px;
-        padding-right: 10px;
+        margin-left: -230px;
         flex-grow: 1;
         word-break: break-all;
     }
 
     .review_info .review_date {
-        font-size: 0.875rem;
+        font-size: 0.75rem;
         color: rgba(0, 0, 0, 0.7);
+        margin-left: -180px;
     }
 
     .review_profile .review_content {
@@ -1207,8 +1218,21 @@ textarea::placeholder {
 
     .review_rating {
         color: #fdd8d1;
-        font-size: 0.875rem;
+        font-size: 0.75rem;
         margin: 0;
+        margin-left: -250px;
+    }
+
+    .edit-button {
+        font-size: 0.725rem;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+
+    .material-symbols-rounded.edit,
+    .material-symbols-rounded.delete {
+        font-size: 1.5rem;
     }
 
     .edit-btn {
@@ -1217,28 +1241,27 @@ textarea::placeholder {
         padding: 0;
         margin: 0;
         font: inherit;
-        font-size: 0.875rem;
-        color: rgba(0, 0, 0, 0.5);
         cursor: pointer;
     }
 
     .edit-btn:hover {
         color: #fca391;
+        cursor: pointer;
     }
 
     .delete-btn {
         background: none;
         border: none;
         padding: 0;
-        margin: -5px;
+        margin-left: 5px;
+        margin-right: 5px;
         font: inherit;
-        font-size: 0.875rem;
-        color: rgba(0, 0, 0, 0.5);
         cursor: pointer;
     }
 
     .delete-btn:hover {
         color: #fca391;
+        cursor: pointer;
     }
 
     .save-btn {
@@ -1774,6 +1797,7 @@ textarea::placeholder {
         flex-direction: column;
         border-bottom: 1px solid #fca391;
         padding: 20px 0;
+        position: relative;
     }
 
     .review:last-child {
@@ -1811,7 +1835,7 @@ textarea::placeholder {
     .review_info {
         width: 600px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         justify-content: center;
         flex-grow: 1;
         justify-content: space-between;
@@ -1826,15 +1850,16 @@ textarea::placeholder {
         line-height: 1rem;
         color: #fca391;
         margin: 0;
-        margin-left: 140px;
+        margin-left: -200px;
         padding-right: 10px;
         flex-grow: 1;
         word-break: break-all;
     }
 
     .review_info .review_date {
-        font-size: 0.875rem;
+        font-size: 0.75rem;
         color: rgba(0, 0, 0, 0.7);
+        margin-left: -150px;
     }
 
     .review_profile .review_content {
@@ -1847,12 +1872,54 @@ textarea::placeholder {
         margin: 0;
         font-size: 0.875rem;
         line-height: 1.5rem;
+        margin-top: -5px;
+        margin-left: 10px;
     }
 
     .review_rating {
         color: #fdd8d1;
-        font-size: 0.875rem;
+        font-size: 0.75rem;
         margin: 0;
+        margin-left: -215px;
+    }
+
+    .edit-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        font-size: 0.625rem;
+    }
+
+    .material-symbols-rounded.edit,
+    .material-symbols-rounded.delete {
+        font-size: 1.25rem;
+    }
+
+    .edit-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        font: inherit;
+        cursor: pointer;
+    }
+
+    .edit-btn:hover {
+        color: #fca391;
+    }
+
+    .delete-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        margin-left: 5px;
+        margin-right: 5px;
+        font: inherit;
+        cursor: pointer;
+    }
+
+    .delete-btn:hover {
+        color: #fca391;
     }
 
     .review_1 .review_img {
@@ -1881,7 +1948,8 @@ textarea::placeholder {
         background: none;
         border: none;
         padding: 0;
-        margin: -5px;
+        margin-left: 5px;
+        margin-right: 5px;
         font: inherit;
         font-size: 0.875rem;
         color: rgba(0, 0, 0, 0.5);
